@@ -17,7 +17,7 @@ class Test {
 		var i2 = 2;
 		i2 = 3;
 		// 访问OCaml API
-		var arg = OCamlSys.argv();
+		var arg = OCamlSys.args();
 		trace("Fight:%i,%s\n", i2, arg[0]);
 		// 判断语法
 		if (i2 == 3 && i2 < 2) {

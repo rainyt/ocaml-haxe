@@ -1,5 +1,6 @@
 package haxe.ocaml;
 
+import haxe.macro.TypeTools;
 import haxe.macro.ExprTools;
 import haxe.macro.Expr;
 import haxe.macro.Context;
@@ -11,6 +12,13 @@ class OCamlField {
 			switch (type) {
 				case TInst(t, params):
 					// 兼容@:native实现
+					var classField = TypeTools.findField(t.get(), field, true);
+					if (classField != null) {
+						var mate = classField.meta.get().filter(data -> data.name.indexOf(":native") != -1);
+						if (mate.length > 0) {
+							field = ExprTools.getValue(mate[0].params[0]);
+						}
+					}
 					var mate = t.get().meta.get().filter((data) -> data.name.indexOf(":native") != -1);
 					if (mate.length > 0) {
 						return ExprTools.getValue(mate[0].params[0]) + "." + field;
