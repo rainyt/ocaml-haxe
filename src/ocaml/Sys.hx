@@ -1,7 +1,6 @@
 package ocaml;
 
-@:native("Sys")
-extern class OCamlSys {
+extern class Sys {
     
     @:native("argv")
 	public static function args():Array<String>;

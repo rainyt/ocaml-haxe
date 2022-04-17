@@ -1,4 +1,5 @@
-import ocaml.OCamlSys;
+import ocaml.Stdlib;
+import ocaml.Sys;
 
 @:build(OCamlMacro.build())
 class Test {
@@ -17,7 +18,7 @@ class Test {
 		var i2 = 2;
 		i2 = 3;
 		// 访问OCaml API
-		var arg = OCamlSys.args();
+		var arg = Sys.args();
 		trace("Fight:%i,%s\n", i2, arg[0]);
 		// 判断语法
 		if (i2 == 3 && i2 < 2) {
@@ -34,5 +35,7 @@ class Test {
 		for (i3 in 0...arg.length) {
 			trace("%i\n", i3);
 		}
+		var mlfile = Stdlib.openInput("test2.ml");
+		trace("%s", Stdlib.inputLine(mlfile));
 	}
 }

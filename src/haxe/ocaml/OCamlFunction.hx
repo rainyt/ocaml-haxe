@@ -9,7 +9,12 @@ class OCamlFunction {
 		var code:Array<String> = [];
 		code.push(builtInLibrary(expr, params));
 		for (item in params) {
-			code.push(OCamlTools.toString(item));
+			switch (item.expr) {
+				case ECall(e, params):
+					code.push('(${OCamlTools.toString(item)})');
+				default:
+					code.push(OCamlTools.toString(item));
+			}
 		}
 		return code.join(" ");
 	}
@@ -17,7 +22,7 @@ class OCamlFunction {
 	public static function builtInLibrary(expr:Expr, params:Array<Expr>):String {
 		var code = switch (expr.expr) {
 			case EField(e, field):
-			 	OCamlTools.toString(expr);
+				OCamlTools.toString(expr);
 			default:
 				ExprTools.toString(expr);
 		}

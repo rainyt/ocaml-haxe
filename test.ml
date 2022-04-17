@@ -25,5 +25,7 @@ Printf.printf "%s\n" s
 for i3 = 0 to Array.length !arg do ((
 Printf.printf "%i\n" i3
 )) done;;
+let mlfile=ref (Stdlib.open_in "test2.ml") in
+Printf.printf "%s" (Stdlib.input_line !mlfile);
 ;;
 
