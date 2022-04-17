@@ -24,6 +24,7 @@ class OCamlTools {
 			case EConst(c):
 				switch (c) {
 					case CIdent(s):
+						// todo 存在不需要!的情况，如for(s in array)
 						return "!" + ExprTools.toString(expr);
 					default:
 						return ExprTools.toString(expr);
@@ -37,8 +38,10 @@ class OCamlTools {
 				return code.join("\n");
 			case EIf(econd, eif, eelse):
 				return 'if (${toString(econd)}) then ${toString(eif)} ${eelse != null ? "else " + toString(eelse) : ""}';
+			case EFor(it, expr):
+				return OCamlFor.toString(it, expr);
 			default:
-				return '(* TODO ${expr.expr.getName();} *)';
+				return '(* OCamlTools.TODO ${expr.expr.getName();} *)';
 		}
 		return null;
 	}

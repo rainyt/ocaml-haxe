@@ -16,13 +16,19 @@ class Test {
 		trace("%i\n", i);
 		var i2 = 2;
 		i2 = 3;
+		// 访问OCaml API
 		var arg = OCamlSys.argv();
 		trace("Fight:%i,%s\n", i2, arg[0]);
+		// 判断语法
 		if (i2 == 3 && i2 < 2) {
 			trace("true\n");
 		} else {
 			trace("false\n");
 		}
 		trace("%s", arg[0]);
+		// For循环处理
+		for (s in arg) {
+			trace("%s", s);
+		}
 	}
 }

@@ -16,5 +16,8 @@ Printf.printf "true\n"
 Printf.printf "false\n"
 );
 Printf.printf "%s" !arg.(0);
+Array.iter (fun s -> ((
+Printf.printf "%s" s
+))) !arg;
 ;;
 
