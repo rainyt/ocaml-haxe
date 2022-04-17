@@ -10,14 +10,20 @@ let i2=ref 2 in
 i2 := 3;
 let arg=ref (Sys.argv) in
 Printf.printf "Fight:%i,%s\n" !i2 !arg.(0);
+(* EIf *)
 if (!i2 = 3 && !i2 < 2) then (
 Printf.printf "true\n"
 ) else (
 Printf.printf "false\n"
 );
-Printf.printf "%s" !arg.(0);
+Printf.printf "%s\n" !arg.(0);
+(* For *)
 Array.iter (fun s -> ((
-Printf.printf "%s" s
+Printf.printf "%s\n" s
 ))) !arg;
+(* For *)
+for i3 = 0 to Array.length !arg do ((
+Printf.printf "%i\n" i3
+)) done;;
 ;;
 

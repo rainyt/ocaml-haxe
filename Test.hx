@@ -25,10 +25,14 @@ class Test {
 		} else {
 			trace("false\n");
 		}
-		trace("%s", arg[0]);
+		trace("%s\n", arg[0]);
 		// For循环处理
 		for (s in arg) {
-			trace("%s", s);
+			trace("%s\n", s);
+		}
+		// For循环0...array
+		for (i3 in 0...arg.length) {
+			trace("%i\n", i3);
 		}
 	}
 }

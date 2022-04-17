@@ -15,7 +15,12 @@ Printf.printf "true\n"
 ) else (
 Printf.printf "false\n"
 );
-Printf.printf "%s" !arg.(0);
-Array.iter (fun data -> (print_endline "";)) !arg;
+Printf.printf "%s\n" !arg.(0);
+Array.iter (fun s -> ((
+Printf.printf "%s\n" s
+))) !arg;
+for i = 0 to 5 do
+()
+done;
 ;;
 
