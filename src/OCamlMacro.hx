@@ -1,3 +1,4 @@
+import haxe.ocaml.OCamlRef;
 import haxe.ocaml.OCamlVar;
 import haxe.ocaml.OCamlTools;
 import haxe.ocaml.OCamlFunction;
@@ -10,6 +11,8 @@ import haxe.macro.Expr.Field;
 
 class OCamlMacro {
 	macro public static function build():Array<Field> {
+		// 需要清空所有ref
+		OCamlRef.ref.clear();
 		var array = Context.getBuildFields();
 		var oc = new OCmal();
 		for (item in array) {

@@ -24,8 +24,9 @@ class OCamlTools {
 			case EConst(c):
 				switch (c) {
 					case CIdent(s):
-						// todo 存在不需要!的情况，如for(s in array)
-						return "!" + ExprTools.toString(expr);
+						// 存在不需要!的情况，如for(s in array)
+						var name = ExprTools.toString(expr);
+						return (OCamlRef.ref.exists(name) ? "!" : "") + name;
 					default:
 						return ExprTools.toString(expr);
 				}
