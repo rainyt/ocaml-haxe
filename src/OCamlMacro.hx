@@ -23,7 +23,7 @@ class OCamlMacro {
 						oc.write('let ${item.name} = ');
 					}
 					ExprTools.iter(f.expr, (e) -> {
-						oc.write(OCamlTools.toT(0));
+						// oc.write(OCamlTools.toT(0));
 						switch (e.expr) {
 							case EReturn(e):
 								oc.write(OCamlTools.toString(e) + "\n");
@@ -38,7 +38,7 @@ class OCamlMacro {
 								oc.write(OCamlTools.toString(e) + ";\n");
 						}
 					});
-					oc.write(";;\n");
+					oc.write(";;\n\n");
 				case FProp(get, set, t, e):
 			}
 		}

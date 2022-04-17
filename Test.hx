@@ -13,15 +13,15 @@ class Test {
 	static function main() {
 		var value2 = call1();
 		var i = value2;
-		trace("%i", i);
+		trace("%i\n", i);
 		var i2 = 2;
 		i2 = 3;
 		var arg = OCamlSys.argv()[0];
-		trace("Fight:%i,%s", i2, arg);
+		trace("Fight:%i,%s\n", i2, arg);
 		if (i2 == 3 && i2 < 2) {
-			trace("true");
+			trace("true\n");
 		} else {
-			trace("false");
+			trace("false\n");
 		}
 	}
 }
