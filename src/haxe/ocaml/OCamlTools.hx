@@ -1,5 +1,6 @@
 package haxe.ocaml;
 
+import haxe.macro.Context;
 import haxe.macro.Printer;
 import haxe.macro.ExprTools;
 import haxe.macro.Expr;
@@ -7,8 +8,10 @@ import haxe.macro.Expr;
 class OCamlTools {
 	public static function toString(expr:Expr):String {
 		switch (expr.expr) {
-			case EField(e, field):
-				trace(e, field);
+			// case EField(e, field):
+			// 	var type = Context.getType(ExprTools.toString(e));
+			// 	trace("type=", type);
+			// trace(e, field);
 			case EBinop(op, e1, e2):
 				var opTag = toOp(op);
 				if (opTag == ":=")

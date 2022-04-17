@@ -1,3 +1,5 @@
+import ocaml.OCamlSys;
+
 @:build(OCamlMacro.build())
 class Test {
 	public static var data:String = "";
@@ -22,9 +24,4 @@ class Test {
 			trace("false");
 		}
 	}
-}
-
-@:native("Sys")
-extern class OCamlSys {
-	public static function argv():Array<String>;
 }
