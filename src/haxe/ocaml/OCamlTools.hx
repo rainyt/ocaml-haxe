@@ -25,10 +25,10 @@ class OCamlTools {
 					default:
 						return ExprTools.toString(expr);
 				}
-			case EIf(econd, eif, eelse):
-				return "(* todo EIf *)";
+			// case EIf(econd, eif, eelse):
+				// return "(* todo EIf *)";
 			default:
-				throw "意外符号：" + expr.expr.getName();
+				return '(* TODO ${expr.expr.getName();} *)';
 		}
 		return null;
 	}

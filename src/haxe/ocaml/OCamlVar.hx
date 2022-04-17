@@ -15,7 +15,7 @@ class OCamlVar {
 				trace(e1, e2);
 				code += OCamlTools.toString(item.expr);
 			default:
-				throw "意外符号：" + item.expr.expr.getName();
+				return '(* TODO ${item.expr.expr.getName();} *)';
 		}
 		code += " in";
 		return code;

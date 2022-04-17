@@ -12,8 +12,8 @@ class OCamlFunction {
 				case EConst(c):
 					code.push(OCamlTools.toString(item));
 				default:
-					throw "意外未处理符号：" + item.expr.getName();
-			}
+					return '(* TODO ${item.expr.getName();} *)';
+				}
 		}
 		return code.join(" ");
 	}
