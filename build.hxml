@@ -1,0 +1,4 @@
+--class-path src
+--main Test
+--python bin/main.py
+# --no-output

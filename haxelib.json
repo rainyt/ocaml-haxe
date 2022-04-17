@@ -1,0 +1,11 @@
+{
+	"name": "haxe-in-macro",
+	"url": "",
+	"license": "MIT",
+	"tags": [],
+	"description": "一个宏工具的库",
+	"version": "0.0.1",
+	"releasenote": "宏扩展功能库",
+	"contributors": [ "rainy" ],
+	"classPath": "src"
+}
