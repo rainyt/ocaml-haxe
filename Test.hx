@@ -16,12 +16,13 @@ class Test {
 		trace("%i\n", i);
 		var i2 = 2;
 		i2 = 3;
-		var arg = OCamlSys.argv()[0];
-		trace("Fight:%i,%s\n", i2, arg);
+		var arg = OCamlSys.argv();
+		trace("Fight:%i,%s\n", i2, arg[0]);
 		if (i2 == 3 && i2 < 2) {
 			trace("true\n");
 		} else {
 			trace("false\n");
 		}
+		trace("%s", arg[0]);
 	}
 }

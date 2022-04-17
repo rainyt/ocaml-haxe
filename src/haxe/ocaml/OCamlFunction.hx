@@ -9,12 +9,7 @@ class OCamlFunction {
 		var code:Array<String> = [];
 		code.push(builtInLibrary(expr, params));
 		for (item in params) {
-			switch (item.expr) {
-				case EConst(c):
-					code.push(OCamlTools.toString(item));
-				default:
-					return '(* TODO ${item.expr.getName();} *)';
-			}
+			code.push(OCamlTools.toString(item));
 		}
 		return code.join(" ");
 	}
