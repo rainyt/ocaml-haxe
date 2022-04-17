@@ -25,6 +25,8 @@ class OCamlTools {
 					default:
 						return ExprTools.toString(expr);
 				}
+			case EIf(econd, eif, eelse):
+				return "(* todo EIf *)";
 			default:
 				throw "意外符号：" + expr.expr.getName();
 		}
@@ -38,5 +40,13 @@ class OCamlTools {
 			default:
 				return new Printer("").printBinop(op);
 		}
+	}
+
+	public static function toT(index:Int):String {
+		var code = "\t";
+		for (i in 0...index) {
+			code += "\t";
+		}
+		return code;
 	}
 }

@@ -16,6 +16,9 @@ class Test {
 		i2 = 3;
 		var arg = OCamlSys.argv()[0];
 		trace("Fight:%i,%s", i2, arg);
+		if(i2 == 3){
+			
+		}
 	}
 }
 

@@ -23,18 +23,19 @@ class OCamlMacro {
 						oc.write('let ${item.name} = ');
 					}
 					ExprTools.iter(f.expr, (e) -> {
+						oc.write(OCamlTools.toT(0));
 						switch (e.expr) {
 							case EReturn(e):
-								oc.write(OCamlTools.toString(e));
+								oc.write(OCamlTools.toString(e) + "\n");
 							case EVars(vars):
 								for (item in vars) {
 									oc.write(OCamlVar.toString(item) + "\n");
 								}
 							case ECall(e, params):
+								trace(e.expr.getIndex());
 								oc.write(OCamlFunction.toString(e, params) + ";\n");
 							default:
 								oc.write(OCamlTools.toString(e) + ";\n");
-								// throw "意外元素" + e;
 						}
 					});
 					oc.write(";;\n");

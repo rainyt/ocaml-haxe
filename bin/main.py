@@ -223,6 +223,7 @@ class Test:
         i2 = 3
         arg = python_internal_ArrayImpl._get(Sys.argv(), 0)
         haxe_Log.trace("Fight:%i,%s",_hx_AnonObject({'fileName': "Test.hx", 'lineNumber': 18, 'className': "Test", 'methodName': "main", 'customParams': [i2, arg]}))
+        tmp = (i2 == 3)
 
 
 class haxe_Exception(Exception):
