@@ -25,8 +25,15 @@ class OCamlTools {
 					default:
 						return ExprTools.toString(expr);
 				}
-			// case EIf(econd, eif, eelse):
-				// return "(* todo EIf *)";
+			case EBlock(exprs):
+				var code = ["("];
+				for (item in exprs) {
+					code.push(toString(item));
+				}
+				code.push(")");
+				return code.join("\n");
+			case EIf(econd, eif, eelse):
+				return 'if (${toString(econd)}) then ${toString(eif)} ${eelse != null ? "else " + toString(eelse) : ""}';
 			default:
 				return '(* TODO ${expr.expr.getName();} *)';
 		}
@@ -35,6 +42,8 @@ class OCamlTools {
 
 	public static function toOp(op:Binop):String {
 		switch (op) {
+			case OpEq:
+				return "=";
 			case OpAssign:
 				return ":=";
 			default:

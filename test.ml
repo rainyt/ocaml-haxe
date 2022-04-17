@@ -9,5 +9,9 @@ let () = 	let value2=ref (call1) in
 	i2 := 3;
 	let arg=ref Sys.argv.(0) in
 	Printf.printf "Fight:%i,%s" !i2 !arg;
-	(* TODO EIf *);
+	if (!i2 = 3 && !i2 < 2) then (
+Printf.printf "true"
+) else (
+Printf.printf "false"
+);
 ;;

@@ -16,8 +16,10 @@ class Test {
 		i2 = 3;
 		var arg = OCamlSys.argv()[0];
 		trace("Fight:%i,%s", i2, arg);
-		if(i2 == 3){
-			
+		if (i2 == 3 && i2 < 2) {
+			trace("true");
+		} else {
+			trace("false");
 		}
 	}
 }
