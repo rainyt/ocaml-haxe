@@ -21,6 +21,9 @@ class OCamlMacro {
 		for (item in array) {
 			switch (item.kind) {
 				case FVar(t, e):
+					oc.write('let ${item.name} = ref ' + OCamlTools.toString(e) + ";;\n\n");
+					// todo 这个推导不正确
+					OCamlRef.ref.set(item.name, DYNAMIC);
 				case FFun(f):
 					if (item.name == "main") {
 						oc.write("let () = ");

@@ -12,11 +12,12 @@ typedef TestData = {
 
 @:build(OCamlMacro.build())
 class Test {
-	public static var data:String = "";
+	public static var data:String = "Data var";
 
 	public static function call1():Int {
 		var a = 1;
 		var b = 2;
+		trace("%s\n",data);
 		return 0 + a + b;
 	}
 

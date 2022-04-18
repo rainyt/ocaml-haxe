@@ -1,7 +1,10 @@
 type testdata = {mutable index:int;mutable name:string;}
 
+let data = ref "Data var";;
+
 let call1 = let a = ref 1 in
 let b = ref 2 in
+Printf.printf "%s\n" !data;
 0 + !a + !b
 ;;
 
