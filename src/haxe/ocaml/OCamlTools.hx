@@ -33,6 +33,9 @@ class OCamlTools {
 			case ECall(e, params):
 				return OCamlFunction.toString(e, params);
 			case EArray(e1, e2):
+				// 兼容List
+				if(OCamlRef.isType(e1,LIST))
+					return '(List.nth ${toString(e1)} ${toString(e2)})';
 				return toString(e1) + '.(${toString(e2)})';
 			case EConst(c):
 				switch (c) {

@@ -1,3 +1,4 @@
+import ocaml.OCamlList;
 import ocaml.OCamlString;
 import ocaml.Stdlib;
 import ocaml.Sys;
@@ -17,7 +18,7 @@ class Test {
 	public static function call1():Int {
 		var a = 1;
 		var b = 2;
-		trace("%s\n",data);
+		trace("%s\n", data);
 		return 0 + a + b;
 	}
 
@@ -77,6 +78,11 @@ class Test {
 		var floatValue = 1.0 + (2.3 + call2());
 		var floatValue2 = 2.3;
 		trace("%f%s", floatValue + floatValue2, strValue + " to Haxe!");
-	}
 
+		// 模拟数组
+		var array = ["123"];
+		// 对应OCamlList类型，需要兼容方式访问
+		trace("%s", array[0]);
+		trace("%s", OCamlList.at(array, 0));
+	}
 }

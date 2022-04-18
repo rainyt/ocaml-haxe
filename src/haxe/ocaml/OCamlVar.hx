@@ -11,6 +11,8 @@ class OCamlVar {
 		OCamlRef.retain(item);
 		var code = 'let ${item.name} = ref ';
 		switch (item.expr.expr) {
+			case EArrayDecl(values):
+				code += OCamlTools.toString(item.expr);
 			case EBinop(op, e1, e2):
 				code += "(" + OCamlTools.toString(item.expr) + ")";
 			case EConst(c):
@@ -18,7 +20,6 @@ class OCamlVar {
 			case ECall(e, params):
 				code += "(" + OCamlFunction.toString(e, params) + ")";
 			case EArray(e1, e2):
-				trace(e1, e2);
 				code += OCamlTools.toString(item.expr);
 			case EObjectDecl(fields):
 				OCamlType.retian(item.type);

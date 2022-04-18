@@ -68,6 +68,8 @@ class OCamlRef {
 			case EBinop(op, e1, e2):
 				// todo 这里应该继续推导
 				ref.set(varExpr.name, FLOAT);
+			case EArrayDecl(values):
+				ref.set(varExpr.name, LIST);
 			default:
 				throw "未实现的推导：" + varExpr.name + ":" + varExpr.expr.expr.getName();
 		}
@@ -116,5 +118,6 @@ enum OCamlClassType {
 	FLOAT;
 	BOOL;
 	STRING;
+	LIST;
 	DYNAMIC;
 }
