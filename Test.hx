@@ -20,6 +20,10 @@ class Test {
 		return 0 + a + b;
 	}
 
+	public static function call2():Float {
+		return 1.;
+	}
+
 	static function main() {
 		var value2 = call1();
 		var i = value2;
@@ -69,8 +73,10 @@ class Test {
 
 		trace("%s\n", obj.name);
 
-		var floatValue = 1.0;
+		// 未实现的推导
+		var floatValue = 1.0 + call2();
 		var floatValue2 = 2.3;
-		trace("%f", floatValue + floatValue2);
+		trace("%f%s", floatValue + floatValue2, strValue + " to Haxe!");
 	}
+
 }

@@ -13,12 +13,12 @@ import haxe.ocaml.OCaml;
 
 class OCamlMacro {
 	macro public static function build():Array<Field> {
+		trace("Haxe to OCaml");
 		// 需要清空所有ref
 		OCamlRef.ref.clear();
 		var array = Context.getBuildFields();
 		var oc = new OCaml();
 		for (item in array) {
-			trace("解析：", item.name);
 			switch (item.kind) {
 				case FVar(t, e):
 				case FFun(f):
@@ -26,6 +26,8 @@ class OCamlMacro {
 						oc.write("let () = ");
 					} else {
 						oc.write('let ${item.name} = ');
+						// 记录
+						OCamlRef.retainFunc(item.name, f);
 					}
 					ExprTools.iter(f.expr, (e) -> {
 						// oc.write(OCamlTools.toT(0));
@@ -37,7 +39,6 @@ class OCamlMacro {
 									oc.write(OCamlVar.toString(item) + "\n");
 								}
 							case ECall(e, params):
-								trace(e.expr.getIndex());
 								oc.write(OCamlFunction.toString(e, params) + ";\n");
 							default:
 								oc.write(OCamlTools.toString(e) + ";\n");

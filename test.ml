@@ -1,19 +1,22 @@
 type testdata = {mutable index:int;mutable name:string;}
 
-let call1 = let a=ref 1 in
-let b=ref 2 in
+let call1 = let a = ref 1 in
+let b = ref 2 in
 0 + !a + !b
 ;;
 
-let () = let value2=ref (call1) in
-let i=ref !value2 in
+let call2 = 1.
+;;
+
+let () = let value2 = ref (call1) in
+let i = ref !value2 in
 Printf.printf "%i\n" !i;
-let i2=ref 2 in
+let i2 = ref 2 in
 i2 := 3;
-let str=ref "String:" in
+let str = ref "String:" in
 str := !str ^ (string_of_int !i2);
 Printf.printf "%s\n" !str;
-let arg=ref (Sys.argv) in
+let arg = ref (Sys.argv) in
 Printf.printf "Fight:%i,%s\n" !i2 !arg.(0);
 (* EIf *)
 if (!i2 = 3 && !i2 < 2) then (
@@ -30,18 +33,18 @@ Printf.printf "%s\n" s
 for i3 = 0 to Array.length !arg do ((
 Printf.printf "%i\n" i3
 )) done;;
-let mlfile=ref (Stdlib.open_in "test2.ml") in
+let mlfile = ref (Stdlib.open_in "test2.ml") in
 Printf.printf "%s\n" (Stdlib.input_line !mlfile);
-let obj=ref {name="Test";index=0;} in
+let obj = ref {name="Test";index=0;} in
 !obj.name <- "Test2";
 !obj.name <- String.concat "" [!obj.name;"Test3"];
-let strValue=ref "123" in
-let dataValue=ref 1 in
+let strValue = ref "123" in
+let dataValue = ref 1 in
 strValue := String.concat "" [!strValue;(string_of_int !dataValue)];
 Printf.printf "%s\n" !obj.name;
-let floatValue=ref 1.0 in
-let floatValue2=ref 2.3 in
-Printf.printf "%f" (!floatValue +. !floatValue2);
+let floatValue = ref (1.0 +. call2) in
+let floatValue2 = ref 2.3 in
+Printf.printf "%f%s" (!floatValue +. !floatValue2) (!strValue ^ " to Haxe!");
 ;;
 
 

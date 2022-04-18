@@ -9,8 +9,10 @@ class OCamlVar {
 	public static function toString(item:Var):String {
 		// todo 或许这里能做变量推导的实现
 		OCamlRef.retain(item);
-		var code = 'let ${item.name}=ref ';
+		var code = 'let ${item.name} = ref ';
 		switch (item.expr.expr) {
+			case EBinop(op, e1, e2):
+				code += "(" + OCamlTools.toString(item.expr) + ")";
 			case EConst(c):
 				code += OCamlTools.toString(item.expr);
 			case ECall(e, params):

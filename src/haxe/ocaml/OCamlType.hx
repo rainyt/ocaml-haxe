@@ -33,7 +33,6 @@ class OCamlType {
 	}
 
 	public static function toOCamlTypeString(type:Type):String {
-		trace(type);
 		switch (type) {
 			case TAbstract(t, params):
 				return t.toString().toLowerCase();

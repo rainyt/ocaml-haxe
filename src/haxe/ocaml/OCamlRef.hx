@@ -1,5 +1,6 @@
 package haxe.ocaml;
 
+import haxe.macro.ExprTools;
 import haxe.macro.Expr;
 
 class OCamlRef {
@@ -9,11 +10,38 @@ class OCamlRef {
 	public static var ref:Map<String, OCamlClassType> = [];
 
 	/**
-	 * 保持引用
+	 * 保存引用方法
+	 * @param varFunc 
+	 */
+	public static function retainFunc(name:String, varFunc:Function):Void {
+		trace(name);
+		switch (varFunc.ret) {
+			case TPath(p):
+				switch (p.name) {
+					case "Int":
+						trace("int");
+						ref.set(name, INT);
+						return;
+					case "Float":
+						trace("float");
+						ref.set(name, FLOAT);
+						return;
+					case "String":
+						trace("string");
+						ref.set(name, STRING);
+						return;
+				}
+			default:
+				throw "not support " + varFunc.ret;
+		}
+		ref.set(name, DYNAMIC);
+	}
+
+	/**
+	 * 保持引用变量
 	 * @param expr 
 	 */
 	public static function retain(varExpr:Var):Void {
-		// trace("定义", varExpr.name, varExpr, varExpr.type);
 		// 这里是推导实现
 		switch (varExpr.expr.expr) {
 			case EConst(c):
@@ -37,6 +65,9 @@ class OCamlRef {
 				ref.set(varExpr.name, DYNAMIC);
 			case EObjectDecl(fields):
 				ref.set(varExpr.name, DYNAMIC);
+			case EBinop(op, e1, e2):
+				// todo 这里应该继续推导
+				ref.set(varExpr.name, FLOAT);
 			default:
 				throw "未实现的推导：" + varExpr.name + ":" + varExpr.expr.expr.getName();
 		}
@@ -53,12 +84,28 @@ class OCamlRef {
 	 * @param name 
 	 * @return Bool
 	 */
-	public static function isType(name:String, type:OCamlClassType):Bool {
+	public static function isType(e:Expr, type:OCamlClassType):Bool {
+		var name = ExprTools.toString(e);
+		if(name.indexOf("(") != -1)
+			name = name.substr(0,name.indexOf("("));
+		trace("isType", name, type);
+		switch (e.expr) {
+			case EConst(c):
+				switch (c) {
+					case CInt(v):
+						return type == INT;
+					case CFloat(f):
+						return type == FLOAT;
+					case CString(s, kind):
+						return type == STRING;
+					default:
+				}
+			default:
+		}
 		if (ref.exists(name))
 			return ref.get(name) == type;
 		return false;
 	}
-	
 }
 
 enum OCamlClassType {

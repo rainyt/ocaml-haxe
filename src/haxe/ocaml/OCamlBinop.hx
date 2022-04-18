@@ -19,11 +19,9 @@ class OCamlBinop {
 				return '${left} := String.concat "" [!${left};${OCamlType.toStringType(e2)}]';
 			case "+":
 				// todo 这里需要判断类型，如果是字符串，则使用^，如果是数字，则使用+
-				var param1 = ExprTools.toString(e1);
-				var param2 = ExprTools.toString(e2);
-				if (OCamlRef.isType(param1, STRING) || OCamlRef.isType(param2, STRING)) {
+				if (OCamlRef.isType(e1, STRING) || OCamlRef.isType(e2, STRING)) {
 					return '${OCamlType.toStringType(e1)} ^ ${OCamlType.toStringType(e2)}';
-				} else if (OCamlRef.isType(param1, FLOAT) && OCamlRef.isType(param1, FLOAT)) {
+				} else if (OCamlRef.isType(e1, FLOAT) && OCamlRef.isType(e2, FLOAT)) {
 					return '${OCamlTools.toString(e1)} +. ${OCamlTools.toString(e2)}';
 				}
 			case ":=":
