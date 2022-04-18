@@ -1,6 +1,14 @@
 import ocaml.Stdlib;
 import ocaml.Sys;
 
+/**
+ * 结构体实现
+ */
+typedef TestData = {
+	name:String,
+	index:Int
+}
+
 @:build(OCamlMacro.build())
 class Test {
 	public static var data:String = "";
@@ -41,5 +49,11 @@ class Test {
 		}
 		var mlfile = Stdlib.openInput("test2.ml");
 		trace("%s", Stdlib.inputLine(mlfile));
+
+		// 结构体测试
+		var obj:TestData = {
+			name: "Test",
+			index: 0
+		};
 	}
 }

@@ -1,3 +1,4 @@
+import haxe.ocaml.OCamlBuild;
 import haxe.ocaml.OCamlRef;
 import haxe.ocaml.OCamlVar;
 import haxe.ocaml.OCamlTools;
@@ -8,13 +9,14 @@ import haxe.macro.ExprTools;
 import haxe.macro.MacroUtils;
 import haxe.macro.Context;
 import haxe.macro.Expr.Field;
+import haxe.ocaml.OCaml;
 
 class OCamlMacro {
 	macro public static function build():Array<Field> {
 		// 需要清空所有ref
 		OCamlRef.ref.clear();
 		var array = Context.getBuildFields();
-		var oc = new OCmal();
+		var oc = new OCaml();
 		for (item in array) {
 			trace("解析：", item.name);
 			switch (item.kind) {
@@ -45,18 +47,9 @@ class OCamlMacro {
 				case FProp(get, set, t, e):
 			}
 		}
-		trace("OCaml code:\n" + oc.code);
-		File.saveContent("test.ml", oc.code);
+		// trace("OCaml code:\n" + oc.code);
+		File.saveContent("test.ml", OCamlBuild.build(oc));
 		return array;
 	}
 }
 
-class OCmal {
-	public var code:String = "";
-
-	public function new() {}
-
-	public function write(code:String):Void {
-		this.code += code;
-	}
-}

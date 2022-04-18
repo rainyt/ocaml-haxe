@@ -1,9 +1,17 @@
 package haxe.ocaml;
 
+import haxe.macro.Type;
+import haxe.macro.Context;
 import haxe.macro.ExprTools;
 import haxe.macro.Expr;
+import haxe.ocaml.OCaml;
 
 class OCamlType {
+	/**
+	 * 类型定义
+	 */
+	public static var types:Map<String, OCamlTypeDef> = [];
+
 	/**
 	 * 将类型转换为String类型
 	 * @param expr 
@@ -23,4 +31,69 @@ class OCamlType {
 		}
 		return paramName;
 	}
+
+	public static function toOCamlTypeString(type:Type):String {
+		trace(type);
+		switch (type) {
+			case TAbstract(t, params):
+				return t.toString().toLowerCase();
+			case TInst(t, params):
+				return t.toString().toLowerCase();
+			default:
+				throw "OCaml not suport Other Type";
+		}
+		return null;
+	}
+
+	public static function retian(type:ComplexType):Void {
+		if (type == null) {
+			throw "OCaml need typedef Object Type.";
+		}
+		var typeDef:OCamlTypeDef = {
+			type: type,
+			code: new OCaml()
+		};
+		switch (type) {
+			case TPath(p):
+				trace(p);
+				var type = Context.getType(p.name);
+				switch (type) {
+					case TType(t, params):
+						typeDef.code.write('type ${p.name.toLowerCase()} = {');
+						switch (t.get().type) {
+							case TAnonymous(fields):
+								var f = fields.get().fields;
+								for (item in f) {
+									// trace("变量解析：", item.name);
+									typeDef.code.write(item.name + ":" + toOCamlTypeString(item.type) + ";");
+									// switch (item.kind) {
+									// 	case FVar(t, e):
+									// 		trace(t, e);
+									// 		if (t == e) {
+									//             switch (t){
+									//                 case
+									//             }
+									//             // typeDef.code.write()
+									//         } else throw "OCaml Not support set/get.";
+									// 	default:
+									// 		throw "OCaml Not support define Function.";
+									// }
+								}
+							default:
+								typeDef.code.write('(* OCamlVar.TYPE2.TODO ${type.getName()} *)');
+						}
+						typeDef.code.write("}\n");
+					default:
+						typeDef.code.write('(* OCamlVar.TYPE.TODO ${type.getName()} *)');
+				}
+				types.set(p.name, typeDef);
+			default:
+				throw "Not support type:" + type;
+		}
+	}
+}
+
+typedef OCamlTypeDef = {
+	type:ComplexType,
+	code:OCaml
 }

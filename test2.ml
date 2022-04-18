@@ -1,3 +1,5 @@
+type testdata = {index:string;name:string;};;
+
 let call1 = let a=ref 1 in
 let b=ref 2 in
 0 + !a + !b
@@ -10,6 +12,7 @@ let i2=ref 2 in
 i2 := 3;
 let str=ref "String:" in
 str := !str ^ (string_of_int !i2);
+Printf.printf "%s\n" !str;
 let arg=ref (Sys.argv) in
 Printf.printf "Fight:%i,%s\n" !i2 !arg.(0);
 (* EIf *)
@@ -29,5 +32,7 @@ Printf.printf "%i\n" i3
 )) done;;
 let mlfile=ref (Stdlib.open_in "test2.ml") in
 Printf.printf "%s" (Stdlib.input_line !mlfile);
+let obj=ref  in
 ;;
+
 

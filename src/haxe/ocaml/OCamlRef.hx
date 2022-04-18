@@ -3,6 +3,7 @@ package haxe.ocaml;
 import haxe.macro.Expr;
 
 class OCamlRef {
+
 	/**
 	 * 引用关系
 	 */
@@ -33,6 +34,10 @@ class OCamlRef {
 			case ECall(e, params):
 				// todo 方法应该继续推导
 				ref.set(varExpr.name, DYNAMIC);
+			case EBlock(e):
+				ref.set(varExpr.name, DYNAMIC);
+			case EObjectDecl(fields):
+				ref.set(varExpr.name, DYNAMIC);
 			default:
 				throw "未实现的推导：" + varExpr.name + ":" + varExpr.expr.expr.getName();
 		}
@@ -44,16 +49,16 @@ class OCamlRef {
 	 */
 	public static function release(varExpr:Var):Void {}
 
-    /**
-     * 是否为字符串
-     * @param name 
-     * @return Bool
-     */
-    public static function isString(name:String):Bool{
-        if(ref.exists(name))
-            return ref.get(name) == STRING;
-        return false;
-    }
+	/**
+	 * 是否为字符串
+	 * @param name 
+	 * @return Bool
+	 */
+	public static function isString(name:String):Bool {
+		if (ref.exists(name))
+			return ref.get(name) == STRING;
+		return false;
+	}
 }
 
 enum OCamlClass {

@@ -1,5 +1,6 @@
 package haxe.ocaml;
 
+import haxe.macro.Context;
 import haxe.macro.TypeTools;
 import haxe.macro.ExprTools;
 import haxe.macro.Expr;
@@ -17,8 +18,10 @@ class OCamlVar {
 			case EArray(e1, e2):
 				trace(e1, e2);
 				code += OCamlTools.toString(item.expr);
+			case EObjectDecl(fields):
+				OCamlType.retian(item.type);
 			default:
-				return '(* TODO ${item.expr.expr.getName();} *)';
+				return '(* OCamlVar.TODO ${item.expr.expr.getName();} *)';
 		}
 		code += " in";
 		return code;

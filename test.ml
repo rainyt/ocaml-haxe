@@ -1,3 +1,5 @@
+type testdata = {index:int;name:string;}
+
 let call1 = let a=ref 1 in
 let b=ref 2 in
 0 + !a + !b
@@ -30,5 +32,7 @@ Printf.printf "%i\n" i3
 )) done;;
 let mlfile=ref (Stdlib.open_in "test2.ml") in
 Printf.printf "%s" (Stdlib.input_line !mlfile);
+let obj=ref  in
 ;;
+
 
