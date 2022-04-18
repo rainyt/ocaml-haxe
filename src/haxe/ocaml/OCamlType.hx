@@ -64,20 +64,7 @@ class OCamlType {
 							case TAnonymous(fields):
 								var f = fields.get().fields;
 								for (item in f) {
-									// trace("变量解析：", item.name);
-									typeDef.code.write(item.name + ":" + toOCamlTypeString(item.type) + ";");
-									// switch (item.kind) {
-									// 	case FVar(t, e):
-									// 		trace(t, e);
-									// 		if (t == e) {
-									//             switch (t){
-									//                 case
-									//             }
-									//             // typeDef.code.write()
-									//         } else throw "OCaml Not support set/get.";
-									// 	default:
-									// 		throw "OCaml Not support define Function.";
-									// }
+									typeDef.code.write("mutable " + item.name + ":" + toOCamlTypeString(item.type) + ";");
 								}
 							default:
 								typeDef.code.write('(* OCamlVar.TYPE2.TODO ${type.getName()} *)');

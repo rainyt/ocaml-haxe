@@ -1,4 +1,4 @@
-type testdata = {index:int;name:string;}
+type testdata = {mutable index:int;mutable name:string;}
 
 let call1 = let a=ref 1 in
 let b=ref 2 in
