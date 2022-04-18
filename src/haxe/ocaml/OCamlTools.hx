@@ -9,6 +9,14 @@ import haxe.macro.Expr;
 class OCamlTools {
 	public static function toString(expr:Expr):String {
 		switch (expr.expr) {
+			case EObjectDecl(fields):
+				var code = new OCaml();
+				code.write("{");
+				for (item in fields) {
+					code.write(item.field + "=" + toString(item.expr) + ";");
+				}
+				code.write("}");
+				return code.code;
 			case EField(e, field):
 				return OCamlField.toString(e, field);
 			case EBinop(op, e1, e2):

@@ -48,12 +48,16 @@ class Test {
 			trace("%i\n", i3);
 		}
 		var mlfile = Stdlib.openInput("test2.ml");
-		trace("%s", Stdlib.inputLine(mlfile));
+		trace("%s\n", Stdlib.inputLine(mlfile));
 
 		// 结构体测试
 		var obj:TestData = {
 			name: "Test",
 			index: 0
 		};
+
+		obj.name = "Test2";
+
+		trace("%s\n",obj.name);
 	}
 }

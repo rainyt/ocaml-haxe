@@ -55,7 +55,8 @@ class OCamlType {
 		};
 		switch (type) {
 			case TPath(p):
-				trace(p);
+                if(types.exists(p.name))
+                    return;
 				var type = Context.getType(p.name);
 				switch (type) {
 					case TType(t, params):

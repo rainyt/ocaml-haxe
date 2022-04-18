@@ -20,6 +20,7 @@ class OCamlVar {
 				code += OCamlTools.toString(item.expr);
 			case EObjectDecl(fields):
 				OCamlType.retian(item.type);
+				code += OCamlTools.toString(item.expr);
 			default:
 				return '(* OCamlVar.TODO ${item.expr.expr.getName();} *)';
 		}
