@@ -11,6 +11,8 @@ class OCamlVar {
 		OCamlRef.retain(item);
 		var code = 'let ${item.name} = ref ';
 		switch (item.expr.expr) {
+			case EField(e, field):
+				code += "(" + OCamlTools.toString(item.expr) + ")";
 			case EArrayDecl(values):
 				code += OCamlTools.toString(item.expr);
 			case EBinop(op, e1, e2):

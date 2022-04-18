@@ -1,5 +1,4 @@
 import ocaml.OCamlList;
-import ocaml.OCamlString;
 import ocaml.Stdlib;
 import ocaml.Sys;
 
@@ -84,5 +83,11 @@ class Test {
 		// 对应OCamlList类型，需要兼容方式访问
 		trace("%s", array[0]);
 		trace("%s", OCamlList.at(array, 0));
+
+		// Push操作，只有List才能push
+		// array.push("3333");
+		var listLength = array.length;
+		trace("%i", listLength);
+
 	}
 }

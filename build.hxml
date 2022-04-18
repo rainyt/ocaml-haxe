@@ -1,3 +1,3 @@
 --class-path src
---main Test
---no-output
+--main Test2
+--cmd eval `opam env` && ocaml test2.ml

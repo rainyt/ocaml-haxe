@@ -9,12 +9,41 @@ class OCamlRef {
 	 */
 	public static var ref:Map<String, OCamlClassType> = [];
 
+	public static function retainType(name:String, type:ComplexType):Void {
+		trace(type);
+		switch (type) {
+			case TPath(p):
+				switch (p.name) {
+					case "Int":
+						ref.set(name, INT);
+						return;
+					case "Float":
+						ref.set(name, FLOAT);
+						return;
+					case "String":
+						ref.set(name, STRING);
+						return;
+					case "Bool":
+						ref.set(name, BOOL);
+						return;
+					case "Array":
+						ref.set(name, DYNAMIC);
+					default:
+						throw "未处理的类型";
+				}
+			default:
+				throw "Not support other type";
+		}
+	}
+
 	/**
 	 * 保存引用方法
 	 * @param varFunc 
 	 */
 	public static function retainFunc(name:String, varFunc:Function):Void {
 		trace(name);
+		if (varFunc.ret == null)
+			throw "OCaml function need return value.";
 		switch (varFunc.ret) {
 			case TPath(p):
 				switch (p.name) {
@@ -70,6 +99,8 @@ class OCamlRef {
 				ref.set(varExpr.name, FLOAT);
 			case EArrayDecl(values):
 				ref.set(varExpr.name, LIST);
+			case EField(e, field):
+				ref.set(varExpr.name, DYNAMIC);
 			default:
 				throw "未实现的推导：" + varExpr.name + ":" + varExpr.expr.expr.getName();
 		}

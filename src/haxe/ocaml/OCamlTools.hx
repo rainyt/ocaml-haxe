@@ -9,6 +9,24 @@ import haxe.macro.Expr;
 class OCamlTools {
 	public static function toString(expr:Expr):String {
 		switch (expr.expr) {
+			case ECast(e, t):
+				switch (t) {
+					case TPath(p):
+						switch (p.name) {
+							case "String":
+								return OCamlType.toStringType(e);
+							case "Float":
+								trace("cast to Float",OCamlType.toFloatType(e));
+								return OCamlType.toFloatType(e);
+							default:
+								throw "未处理的类型：" + p.name;
+						}
+					default:
+						throw "Not support other type cast.";
+				}
+				return toString(e);
+			case EReturn(e):
+				return toString(e) + ";";
 			case EParenthesis(e):
 				return '(${toString(e)})';
 			case EArrayDecl(values):
@@ -34,7 +52,7 @@ class OCamlTools {
 				return OCamlFunction.toString(e, params);
 			case EArray(e1, e2):
 				// 兼容List
-				if(OCamlRef.isType(e1,LIST))
+				if (OCamlRef.isType(e1, LIST))
 					return '(List.nth ${toString(e1)} ${toString(e2)})';
 				return toString(e1) + '.(${toString(e2)})';
 			case EConst(c):

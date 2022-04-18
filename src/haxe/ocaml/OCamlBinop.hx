@@ -34,6 +34,8 @@ class OCamlBinop {
 
 	public static function toOp(op:Binop):String {
 		switch (op) {
+			case OpMod:
+				return "mod";
 			case OpEq:
 				return "=";
 			case OpAssign:

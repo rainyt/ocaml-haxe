@@ -17,6 +17,26 @@ class OCamlType {
 	 * @param expr 
 	 * @return String
 	 */
+	 public static function toFloatType(expr:Expr):String {
+		var c = OCamlRef.ref.get(ExprTools.toString(expr));
+		var paramName = OCamlTools.toString(expr);
+		switch (c) {
+			case INT:
+				return '(float_of_int ${paramName})';
+			case STRING:
+				return '(float_of_string ${paramName})';
+			case BOOL:
+				return '(float_of_bool ${paramName})';
+			default:
+		}
+		return paramName;
+	}
+
+	/**
+	 * 将类型转换为String类型
+	 * @param expr 
+	 * @return String
+	 */
 	public static function toStringType(expr:Expr):String {
 		var c = OCamlRef.ref.get(ExprTools.toString(expr));
 		var paramName = OCamlTools.toString(expr);

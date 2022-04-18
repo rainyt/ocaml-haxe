@@ -28,7 +28,12 @@ class OCamlMacro {
 					if (item.name == "main") {
 						oc.write("let () = ");
 					} else {
-						oc.write('let ${item.name} = ');
+						var args = [];
+						for (a in f.args) {
+							args.push(a.name);
+							OCamlRef.retainType(a.name, a.type);
+						}
+						oc.write('let ${item.name} ${args.join(" ")} = ');
 						// 记录
 						OCamlRef.retainFunc(item.name, f);
 					}

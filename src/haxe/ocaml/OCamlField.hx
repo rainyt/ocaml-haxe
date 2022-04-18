@@ -27,9 +27,20 @@ class OCamlField {
 					return "(* TODO type " + type.getName() + " *)";
 			}
 		else {
-			if (field == "length")
+			if (field == "length") {
+				if (OCamlRef.isType(e, LIST))
+					return "List.length " + OCamlTools.toString(e);
 				return "Array.length " + OCamlTools.toString(e);
+			}
 		}
-		return OCamlTools.toString(e) + "." + field;
+		return toOCamlClassName(OCamlTools.toString(e)) + "." + field;
+	}
+
+	public static function toOCamlClassName(name:String):String{
+		switch(name){
+			case "Math":
+				return "Stdlib";
+		}
+		return name;
 	}
 }

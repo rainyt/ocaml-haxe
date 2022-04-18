@@ -8,6 +8,7 @@ extern class Stdlib {
 
     @:native("input_line")
     public static function inputLine(input:InputChannel):String;
+
 }
 
 extern class InputChannel {}
