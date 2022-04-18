@@ -80,15 +80,14 @@ class OCamlRef {
 	public static function release(varExpr:Var):Void {}
 
 	/**
-	 * 是否为字符串
+	 * 是否为某个类型，这里跟类型推导有关系
 	 * @param name 
 	 * @return Bool
 	 */
 	public static function isType(e:Expr, type:OCamlClassType):Bool {
 		var name = ExprTools.toString(e);
-		if(name.indexOf("(") != -1)
-			name = name.substr(0,name.indexOf("("));
-		trace("isType", name, type);
+		if (name.indexOf("(") != -1)
+			name = name.substr(0, name.indexOf("("));
 		switch (e.expr) {
 			case EConst(c):
 				switch (c) {
@@ -100,6 +99,10 @@ class OCamlRef {
 						return type == STRING;
 					default:
 				}
+			case EBinop(op, e1, e2):
+				return isType(e1, type) && isType(e2, type);
+			case EParenthesis(e):
+				return isType(e, type);
 			default:
 		}
 		if (ref.exists(name))

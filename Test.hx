@@ -73,8 +73,7 @@ class Test {
 
 		trace("%s\n", obj.name);
 
-		// 未实现的推导
-		var floatValue = 1.0 + call2();
+		var floatValue = 1.0 + (2.3 + call2());
 		var floatValue2 = 2.3;
 		trace("%f%s", floatValue + floatValue2, strValue + " to Haxe!");
 	}

@@ -9,6 +9,8 @@ import haxe.macro.Expr;
 class OCamlTools {
 	public static function toString(expr:Expr):String {
 		switch (expr.expr) {
+			case EParenthesis(e):
+				return '(${toString(e)})';
 			case EArrayDecl(values):
 				var array:Array<String> = [];
 				for (item in values) {
