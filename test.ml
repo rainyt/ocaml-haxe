@@ -33,7 +33,7 @@ Printf.printf "%i\n" i3
 let mlfile=ref (Stdlib.open_in "test2.ml") in
 Printf.printf "%s\n" (Stdlib.input_line !mlfile);
 let obj=ref {name="Test";index=0;} in
-!obj.name <- "Test2";
+obj.name := "Test2";
 Printf.printf "%s\n" !obj.name;
 ;;
 

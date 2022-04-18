@@ -47,9 +47,7 @@ class OCamlMacro {
 				case FProp(get, set, t, e):
 			}
 		}
-		// trace("OCaml code:\n" + oc.code);
-		File.saveContent("test.ml", OCamlBuild.build(oc));
+		File.saveContent(Context.getLocalClass().toString().toLowerCase() + ".ml", OCamlBuild.build(oc));
 		return array;
 	}
 }
-
