@@ -30,7 +30,10 @@ class OCamlTools {
 							return '${OCamlType.toStringType(e1)} ^ ${OCamlType.toStringType(e2)}';
 						}
 					case ":=":
-						return ExprTools.toString(e1) + ' ${opTag} ' + toString(e2);
+						var left = ExprTools.toString(e1);
+						if (left.indexOf(".") != -1)
+							return "!" + left + ' <- ' + toString(e2);
+						return left + ' ${opTag} ' + toString(e2);
 				}
 				return toString(e1) + ' ${opTag} ' + toString(e2);
 			case ECall(e, params):
