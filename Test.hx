@@ -17,6 +17,10 @@ class Test {
 		trace("%i\n", i);
 		var i2 = 2;
 		i2 = 3;
+		var str = "String:";
+		// todo 需要实现str + i2
+		str = str + i2;
+		trace("%s\n", str);
 		// 访问OCaml API
 		var arg = Sys.args();
 		trace("Fight:%i,%s\n", i2, arg[0]);

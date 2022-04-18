@@ -1,12 +1,13 @@
 package haxe.ocaml;
 
+import haxe.macro.TypeTools;
 import haxe.macro.ExprTools;
 import haxe.macro.Expr;
 
 class OCamlVar {
 	public static function toString(item:Var):String {
 		// todo 或许这里能做变量推导的实现
-		OCamlRef.ref.set(item.name, 1);
+		OCamlRef.retain(item);
 		var code = 'let ${item.name}=ref ';
 		switch (item.expr.expr) {
 			case EConst(c):

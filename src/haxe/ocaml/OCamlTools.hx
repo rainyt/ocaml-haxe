@@ -1,5 +1,6 @@
 package haxe.ocaml;
 
+import haxe.ocaml.OCamlRef.OCamlClass;
 import haxe.macro.Context;
 import haxe.macro.Printer;
 import haxe.macro.ExprTools;
@@ -12,8 +13,17 @@ class OCamlTools {
 				return OCamlField.toString(e, field);
 			case EBinop(op, e1, e2):
 				var opTag = toOp(op);
-				if (opTag == ":=")
-					return ExprTools.toString(e1) + ' ${opTag} ' + toString(e2);
+				switch (opTag) {
+					case "+":
+						// todo 这里需要判断类型，如果是字符串，则使用^，如果是数字，则使用+
+						var param1 = ExprTools.toString(e1);
+						var param2 = ExprTools.toString(e2);
+						if (OCamlRef.isString(param1) || OCamlRef.isString(param2)) {
+							return '${OCamlType.toStringType(e1)} ^ ${OCamlType.toStringType(e2)}';
+						}
+					case ":=":
+						return ExprTools.toString(e1) + ' ${opTag} ' + toString(e2);
+				}
 				return toString(e1) + ' ${opTag} ' + toString(e2);
 			case ECall(e, params):
 				return OCamlFunction.toString(e, params);

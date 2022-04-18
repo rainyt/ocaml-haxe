@@ -8,6 +8,9 @@ let i=ref !value2 in
 Printf.printf "%i\n" !i;
 let i2=ref 2 in
 i2 := 3;
+let str=ref "String:" in
+str := !str ^ (string_of_int !i2);
+Printf.printf "%s\n" !str;
 let arg=ref (Sys.argv) in
 Printf.printf "Fight:%i,%s\n" !i2 !arg.(0);
 (* EIf *)
