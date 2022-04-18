@@ -9,6 +9,13 @@ import haxe.macro.Expr;
 class OCamlTools {
 	public static function toString(expr:Expr):String {
 		switch (expr.expr) {
+			case EArrayDecl(values):
+				var array:Array<String> = [];
+				for (item in values) {
+					var value = toString(item);
+					array.push(value);
+				}
+				return '[${array.join(";")}]';
 			case EObjectDecl(fields):
 				var code = new OCaml();
 				code.write("{");
@@ -20,22 +27,7 @@ class OCamlTools {
 			case EField(e, field):
 				return OCamlField.toString(e, field);
 			case EBinop(op, e1, e2):
-				var opTag = toOp(op);
-				switch (opTag) {
-					case "+":
-						// todo 这里需要判断类型，如果是字符串，则使用^，如果是数字，则使用+
-						var param1 = ExprTools.toString(e1);
-						var param2 = ExprTools.toString(e2);
-						if (OCamlRef.isString(param1) || OCamlRef.isString(param2)) {
-							return '${OCamlType.toStringType(e1)} ^ ${OCamlType.toStringType(e2)}';
-						}
-					case ":=":
-						var left = ExprTools.toString(e1);
-						if (left.indexOf(".") != -1)
-							return "!" + left + ' <- ' + toString(e2);
-						return left + ' ${opTag} ' + toString(e2);
-				}
-				return toString(e1) + ' ${opTag} ' + toString(e2);
+				return OCamlBinop.toString(op, e1, e2);
 			case ECall(e, params):
 				return OCamlFunction.toString(e, params);
 			case EArray(e1, e2):
@@ -64,17 +56,6 @@ class OCamlTools {
 				return '(* OCamlTools.TODO ${expr.expr.getName();} *)';
 		}
 		return null;
-	}
-
-	public static function toOp(op:Binop):String {
-		switch (op) {
-			case OpEq:
-				return "=";
-			case OpAssign:
-				return ":=";
-			default:
-				return new Printer("").printBinop(op);
-		}
 	}
 
 	public static function toT(index:Int):String {

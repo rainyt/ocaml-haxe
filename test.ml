@@ -34,6 +34,10 @@ let mlfile=ref (Stdlib.open_in "test2.ml") in
 Printf.printf "%s\n" (Stdlib.input_line !mlfile);
 let obj=ref {name="Test";index=0;} in
 !obj.name <- "Test2";
+!obj.name <- String.concat "" [!obj.name;"Test3"];
+let strValue=ref "123" in
+let dataValue=ref 1 in
+strValue := String.concat "" [!strValue;(string_of_int !dataValue)];
 Printf.printf "%s\n" !obj.name;
 ;;
 
