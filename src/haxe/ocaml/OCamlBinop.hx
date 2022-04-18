@@ -21,8 +21,10 @@ class OCamlBinop {
 				// todo 这里需要判断类型，如果是字符串，则使用^，如果是数字，则使用+
 				var param1 = ExprTools.toString(e1);
 				var param2 = ExprTools.toString(e2);
-				if (OCamlRef.isString(param1) || OCamlRef.isString(param2)) {
+				if (OCamlRef.isType(param1, STRING) || OCamlRef.isType(param2, STRING)) {
 					return '${OCamlType.toStringType(e1)} ^ ${OCamlType.toStringType(e2)}';
+				} else if (OCamlRef.isType(param1, FLOAT) && OCamlRef.isType(param1, FLOAT)) {
+					return '${OCamlTools.toString(e1)} +. ${OCamlTools.toString(e2)}';
 				}
 			case ":=":
 				if (struct)

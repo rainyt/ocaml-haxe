@@ -32,9 +32,16 @@ Printf.printf "%i\n" i3
 )) done;;
 let mlfile=ref (Stdlib.open_in "test2.ml") in
 Printf.printf "%s\n" (Stdlib.input_line !mlfile);
-let obj={name="Test";index=0;} in
-obj.name <- "Test2";
-Printf.printf "%s\n" obj.name;
+let obj=ref {name="Test";index=0;} in
+!obj.name <- "Test2";
+!obj.name <- String.concat "" [!obj.name;"Test3"];
+let strValue=ref "123" in
+let dataValue=ref 1 in
+strValue := String.concat "" [!strValue;(string_of_int !dataValue)];
+Printf.printf "%s\n" !obj.name;
+let floatValue=ref 1.0 in
+let floatValue2=ref 2.3 in
+Printf.printf "%f" (!floatValue +. !floatValue2);
 ;;
 
 

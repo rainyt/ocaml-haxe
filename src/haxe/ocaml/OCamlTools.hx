@@ -1,6 +1,6 @@
 package haxe.ocaml;
 
-import haxe.ocaml.OCamlRef.OCamlClass;
+import haxe.ocaml.OCamlRef.OCamlClassType;
 import haxe.macro.Context;
 import haxe.macro.Printer;
 import haxe.macro.ExprTools;

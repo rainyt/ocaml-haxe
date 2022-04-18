@@ -62,11 +62,15 @@ class Test {
 		// OCaml里不支持+=，Haxe语法优化处理
 		// OCamlString.concat("", [obj.name, "Test3"]);
 		obj.name += "Test3";
-		
+
 		var strValue = "123";
 		var dataValue = 1;
 		strValue += dataValue;
 
 		trace("%s\n", obj.name);
+
+		var floatValue = 1.0;
+		var floatValue2 = 2.3;
+		trace("%f", floatValue + floatValue2);
 	}
 }

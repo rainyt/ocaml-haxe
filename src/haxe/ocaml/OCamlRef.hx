@@ -3,11 +3,10 @@ package haxe.ocaml;
 import haxe.macro.Expr;
 
 class OCamlRef {
-
 	/**
 	 * 引用关系
 	 */
-	public static var ref:Map<String, OCamlClass> = [];
+	public static var ref:Map<String, OCamlClassType> = [];
 
 	/**
 	 * 保持引用
@@ -54,14 +53,15 @@ class OCamlRef {
 	 * @param name 
 	 * @return Bool
 	 */
-	public static function isString(name:String):Bool {
+	public static function isType(name:String, type:OCamlClassType):Bool {
 		if (ref.exists(name))
-			return ref.get(name) == STRING;
+			return ref.get(name) == type;
 		return false;
 	}
+	
 }
 
-enum OCamlClass {
+enum OCamlClassType {
 	INT;
 	FLOAT;
 	BOOL;
