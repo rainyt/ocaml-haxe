@@ -34,7 +34,7 @@ class OCamlTools {
 					}
 				} else
 					oc.write(toString(e));
-				oc.write("done;");
+				oc.write("done");
 				return oc.code;
 			case ECast(e, t):
 				switch (t) {

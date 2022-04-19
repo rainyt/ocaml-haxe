@@ -3,17 +3,16 @@ exception STRING of string;;
 exception INT of int;;
 exception FLOAT of float;;
 
-let getString () = while true do
-ignore (raise (STRING "123123"));
+let getParam () = try while true do
+ ignore(raise (BOOL false));
 done;
-"123"
+true;
+with BOOL r -> r
 ;;
 
-let getParam () = while true do
-ignore (raise (BOOL false));
-done;
-true
-;;
+let getParam_return () = try 
+  getParam()
+with BOOL r -> r;;
 
 let () = let i = ref 0 in
 while !i < 10 do

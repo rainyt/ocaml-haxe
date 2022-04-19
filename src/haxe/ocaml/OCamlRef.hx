@@ -121,23 +121,9 @@ class OCamlRef {
 		var name = ExprTools.toString(e);
 		if (name.indexOf("(") != -1)
 			name = name.substr(0, name.indexOf("("));
-		switch (e.expr) {
-			case EConst(c):
-				switch (c) {
-					case CInt(v):
-						return type == INT;
-					case CFloat(f):
-						return type == FLOAT;
-					case CString(s, kind):
-						return type == STRING;
-					default:
-				}
-			case EBinop(op, e1, e2):
-				return isType(e1, type) && isType(e2, type);
-			case EParenthesis(e):
-				return isType(e, type);
-			default:
-		}
+		var exprType = OCamlType.toOCamlType(e);
+		if (exprType == type)
+			return true;
 		if (ref.exists(name))
 			return ref.get(name) == type;
 		return false;

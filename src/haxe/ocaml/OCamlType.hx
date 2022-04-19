@@ -1,5 +1,6 @@
 package haxe.ocaml;
 
+import haxe.ocaml.OCamlRef.OCamlClassType;
 import haxe.macro.Type;
 import haxe.macro.Context;
 import haxe.macro.ExprTools;
@@ -17,7 +18,7 @@ class OCamlType {
 	 * @param expr 
 	 * @return String
 	 */
-	 public static function toFloatType(expr:Expr):String {
+	public static function toFloatType(expr:Expr):String {
 		var c = OCamlRef.ref.get(ExprTools.toString(expr));
 		var paramName = OCamlTools.toString(expr);
 		switch (c) {
@@ -52,6 +53,11 @@ class OCamlType {
 		return paramName;
 	}
 
+	/**
+	 * 转换成OCamlType类似格式化
+	 * @param type 
+	 * @return String
+	 */
 	public static function toOCamlTypeString(type:Type):String {
 		switch (type) {
 			case TAbstract(t, params):
@@ -97,6 +103,46 @@ class OCamlType {
 			default:
 				throw "Not support type:" + type;
 		}
+	}
+
+	/**
+	 * 识别expr自身的类型
+	 * @param e 
+	 * @return OCamlClassType
+	 */
+	public static function toOCamlType(e:Expr):OCamlClassType {
+		var name = ExprTools.toString(e);
+		if (name.indexOf("(") != -1)
+			name = name.substr(0, name.indexOf("("));
+		switch (e.expr) {
+			case EConst(c):
+				switch (c) {
+					case CInt(v):
+						return INT;
+					case CFloat(f):
+						return FLOAT;
+					case CString(s, kind):
+						return STRING;
+					case CIdent(s):
+						switch (s) {
+							case "false", "true":
+								return BOOL;
+							default:
+						}
+					case CRegexp(r, opt):
+						throw "Not support CRegexp";
+				}
+			case EBinop(op, e1, e2):
+				if (toOCamlType(e1) == toOCamlType(e2))
+					return toOCamlType(e1);
+			case EParenthesis(e):
+				return toOCamlType(e);
+			default:
+				throw "额外的类型：" + e;
+		}
+		if (OCamlRef.ref.exists(name))
+			return OCamlRef.ref.get(name);
+		return null;
 	}
 }
 
