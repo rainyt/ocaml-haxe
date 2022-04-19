@@ -204,8 +204,10 @@ class OCamlType {
 				return toOCamlType(e1);
 			case EParenthesis(e):
 				return toOCamlType(e);
+			case ECall(e, params):
+				return toOCamlType(e);
 			default:
-				throw "额外的类型：" + e;
+				throw "额外的类型：" + name + ":" + e;
 		}
 		if (OCamlRef.ref.exists(name))
 			return OCamlRef.ref.get(name);

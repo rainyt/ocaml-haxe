@@ -21,6 +21,8 @@ class OCamlMacro {
 			Compiler.addGlobalMetadata("project", '@:build(OCamlMacro.build())');
 			return array;
 		}
+		// 是否统计运行时长
+		var runtime:Bool = true;
 		var oc = new OCaml();
 		for (item in array) {
 			switch (item.kind) {
@@ -31,6 +33,9 @@ class OCamlMacro {
 				case FFun(f):
 					if (item.name == "main") {
 						oc.write("let () = ");
+						if (runtime) {
+							oc.write("let start = Sys.time() in \n");
+						}
 					} else {
 						var args = [];
 						for (a in f.args) {
@@ -63,6 +68,9 @@ class OCamlMacro {
 					});
 					if (item.name != "main")
 						oc.write('with ${OCamlRef.ref.get(item.name)} ret -> ret');
+					if (runtime) {
+						oc.write("Printf.printf \"\\nRuning time:%f\\n\" (Sys.time() -. start)");
+					}
 					oc.write(";;\n\n");
 				case FProp(get, set, t, e):
 			}

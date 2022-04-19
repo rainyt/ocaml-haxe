@@ -1,7 +1,10 @@
 package project;
 
+import ocaml.OCamlSys;
+
 class MathTest {
 	static function main() {
+
 		var f1 = 1.;
 		var i1 = 1;
 
@@ -38,6 +41,14 @@ class MathTest {
 		trace("fi=%f\n", fi);
 		var ifv = i2 * f2;
 		trace("ifv=%f\n", ifv);
-		
+		// div = float
+		var div = i2 / i2;
+		trace("div=%f", div);
+
+		var loop = 10000000;
+		while (loop > 0){
+			loop --;
+		}
+
 	}
 }

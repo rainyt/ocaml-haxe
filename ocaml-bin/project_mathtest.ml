@@ -3,7 +3,8 @@ exception STRING of string;;
 exception INT of int;;
 exception FLOAT of float;;
 
-let () = let f1 = ref 1. in
+let () = let start = Sys.time() in 
+let f1 = ref 1. in
 let i1 = ref 1 in
 let f2 = ref (!f1 +. !f1) in
 Printf.printf "f2=%f\n" !f2;
@@ -31,6 +32,12 @@ let fi = ref (!f2 +. (float_of_int !i2)) in
 Printf.printf "fi=%f\n" !fi;
 let ifv = ref ((float_of_int !i2) *. !f2) in
 Printf.printf "ifv=%f\n" !ifv;
-;;
+let div = ref ((float_of_int !i2) /. (float_of_int !i2)) in
+Printf.printf "div=%f" !div;
+let loop = ref 10000000 in
+let break = ref true in while (!break && (!loop > 0)) do
+loop := !loop - 1;
+done;
+Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
 
 

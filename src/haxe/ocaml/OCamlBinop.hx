@@ -11,7 +11,7 @@ class OCamlBinop {
 		var left = ExprTools.toString(e1);
 		var type1 = OCamlType.toOCamlType(e1);
 		var type2 = OCamlType.toOCamlType(e2);
-		if(type1 == INT && type2 == FLOAT){
+		if(type1 == INT && type2 == FLOAT || opTag == "/"){
 			type1 = FLOAT;
 		}
 		var struct = false;
