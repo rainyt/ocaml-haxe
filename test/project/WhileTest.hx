@@ -9,6 +9,7 @@ class WhileTest {
 				return "123123(" + i + ")";
 			if (i == 8)
 				return "123123(" + i + ")";
+			break;
 		}
 		return "123";
 	}
@@ -24,7 +25,7 @@ class WhileTest {
 		var i = 0;
 		while (i < 10) {
 			i++;
-			trace("%i %b %s", i, getParam(), getString());
+			trace("%i %b %s\n", i, getParam(), getString());
 		}
 	}
 }

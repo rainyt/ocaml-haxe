@@ -12,7 +12,7 @@ class OCamlTools {
 	public static function toString(expr:Expr):String {
 		switch (expr.expr) {
 			case EBreak:
-				throw "OCaml is not support break.";
+				return "break := false";
 			case EUnop(op, postFix, e):
 				trace(op, postFix, e);
 				switch (op) {
@@ -25,7 +25,7 @@ class OCamlTools {
 
 			case EWhile(econd, e, normalWhile):
 				var oc:OCaml = new OCaml();
-				oc.write('while ${toString(econd)} do\n');
+				oc.write('let break = ref false in while (!break && (${toString(econd)})) do\n');
 				if (e.expr.getName() == "EBlock") {
 					switch (e.expr) {
 						case EBlock(exprs):
