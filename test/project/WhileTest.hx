@@ -7,6 +7,8 @@ class WhileTest {
 			i++;
 			if (i == 10)
 				return "123123(" + i + ")";
+			if (i == 8)
+				return "123123(" + i + ")";
 		}
 		return "123";
 	}

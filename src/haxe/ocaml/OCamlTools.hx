@@ -11,6 +11,8 @@ using haxe.ocaml.OCamlTools;
 class OCamlTools {
 	public static function toString(expr:Expr):String {
 		switch (expr.expr) {
+			case EBreak:
+				throw "OCaml is not support break.";
 			case EUnop(op, postFix, e):
 				trace(op, postFix, e);
 				switch (op) {

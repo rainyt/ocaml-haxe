@@ -9,6 +9,8 @@ while true do
 i := !i + 1;
 (* EIf *)
 if (!i = 10) then ignore (raise (STRING ("123123(" ^ (string_of_int !i) ^ ")"))) ;
+(* EIf *)
+if (!i = 8) then ignore (raise (STRING ("123123(" ^ (string_of_int !i) ^ ")"))) ;
 done;
 "123"
 with STRING ret -> ret;;
