@@ -10,6 +10,8 @@ class OCamlFunction {
 		code.push(builtInLibrary(expr, params));
 		for (item in params) {
 			switch (item.expr) {
+				case ECast(e, t):
+					code.push('(ref (${OCamlTools.toString(item)}))');
 				case EBinop(op, e1, e2):
 					code.push('(${OCamlTools.toString(item)})');
 				case ECall(e, params):
