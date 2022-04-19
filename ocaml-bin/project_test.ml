@@ -7,16 +7,16 @@ type testdata = {mutable index:int;mutable name:string;}
 
 let data = ref "Data var";;
 
-let call1  = let a = ref 1 in
+let call1 () = let a = ref 1 in
 let b = ref 2 in
 Printf.printf "%s\n" !data;
 0 + !a + !b
 ;;
 
-let call2  = 1.
+let call2 () = 1.
 ;;
 
-let () = let value2 = ref (call1) in
+let () = let value2 = ref (call1 ()) in
 let i = ref !value2 in
 Printf.printf "%i\n" !i;
 let i2 = ref 2 in
@@ -50,7 +50,7 @@ let strValue = ref "123" in
 let dataValue = ref 1 in
 strValue := String.concat "" [!strValue;(string_of_int !dataValue)];
 Printf.printf "%s\n" !obj.name;
-let floatValue = ref (1.0 +. (2.3 +. call2)) in
+let floatValue = ref (1.0 +. (2.3 +. call2 ())) in
 let floatValue2 = ref 2.3 in
 Printf.printf "%f%s" (!floatValue +. !floatValue2) (!strValue ^ " to Haxe!");
 let array = ref ["123"] in

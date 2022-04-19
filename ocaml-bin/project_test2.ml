@@ -3,7 +3,7 @@ exception STRING of string;;
 exception INT of int;;
 exception FLOAT of float;;
 
-let isPrime n cache cacheSize = let cur = ref 1 in
+let isPrime n cache cacheSize() = let cur = ref 1 in
 (* For *)
 Array.iter (fun item -> ((
 (* EIf *)
@@ -29,9 +29,9 @@ let count = ref 1 in
 let beginCount = ref 3 in
 let endCount = ref 10000000.0 in
 let current = ref !beginCount in
-let beginTime = ref (Unix.time) in
-let endTime = ref (Unix.time) in
-Printf.printf "%i" !count;
+let beginTime = ref (Sys.time) in
+let endTime = ref (Sys.time) in
+Printf.printf "%fs" !endTime;
 ;;
 
 

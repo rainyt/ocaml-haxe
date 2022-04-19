@@ -2,7 +2,7 @@ package project;
 
 import ocaml.OCamlList;
 import ocaml.Stdlib;
-import ocaml.Sys;
+import ocaml.OCamlSys;
 
 /**
  * 结构体实现
@@ -37,7 +37,7 @@ class Test {
 		str = str + i2;
 		trace("%s\n", str);
 		// 访问OCaml API
-		var arg = Sys.args();
+		var arg = OCamlSys.args;
 		trace("Fight:%i,%s\n", i2, arg[0]);
 		// 判断语法
 		if (i2 == 3 && i2 < 2) {
@@ -89,6 +89,5 @@ class Test {
 		// array.push("3333");
 		var listLength = array.length;
 		trace("%i", listLength);
-
 	}
 }

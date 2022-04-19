@@ -38,7 +38,10 @@ class OCamlMacro {
 							args.push(a.name);
 							OCamlRef.retainType(a.name, a.type);
 						}
-						oc.write('let ${item.name} ${args.join(" ")} = ');
+						if (args.length == 0) {
+							oc.write('let ${item.name} ${args.join(" ")}() = ');
+						} else
+							oc.write('let ${item.name} ${args.join(" ")} = ');
 						// 记录
 						OCamlRef.retainFunc(item.name, f);
 					}

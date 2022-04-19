@@ -1,6 +1,7 @@
 package project;
 
-import ocaml.Unix;
+import ocaml.OCamlSys;
+
 
 class Test2 {
 	public static function isPrime(n:Int, cache:Array<Int>, cacheSize:Int):Bool {
@@ -31,15 +32,15 @@ class Test2 {
 		var beginCount = 3;
 		var endCount = 10000000.0;
 		var current = beginCount;
-		var beginTime = Unix.time();
+		var beginTime = OCamlSys.time();
 		// while (current < endCount) {
 		// 	if (isPrime(current, cache, cacheSize)) {
 		// 		count++;
 		// 	}
 		// 	current = current + 2;
 		// }
-		var endTime = Unix.time();
+		var endTime = OCamlSys.time();
 		// trace("Time taken: %f", endTime - beginTime);
-		trace("%i", count);
+		trace("%fs", endTime);
 	}
 }

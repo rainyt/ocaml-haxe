@@ -18,6 +18,9 @@ class OCamlFunction {
 					code.push(OCamlTools.toString(item));
 			}
 		}
+		if(params.length == 0){
+			code.push("()");
+		}
 		return code.join(" ");
 	}
 
