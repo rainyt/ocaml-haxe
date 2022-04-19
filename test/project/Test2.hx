@@ -1,10 +1,11 @@
 package project;
 
-class Test2 {
+import ocaml.Unix;
 
+class Test2 {
 	public static function isPrime(n:Int, cache:Array<Int>, cacheSize:Int):Bool {
 		var cur = 1;
-		for (item in cache) { 
+		for (item in cache) {
 			if (n % item == 0) {
 				return false;
 			}
@@ -28,17 +29,17 @@ class Test2 {
 		var cacheSize = 400;
 		var count = 1;
 		var beginCount = 3;
-		var endCount = 10000000;
+		var endCount = 10000000.0;
 		var current = beginCount;
-		var beginTime = haxe.Timer.stamp();
-		while (current < endCount) {
-			if (isPrime(current, cache, cacheSize)) {
-				count++;
-			}
-			current += 2;
-		}
-		var endTime = haxe.Timer.stamp();
-		trace('Time taken: ${endTime - beginTime}');
-		trace(count);
+		var beginTime = Unix.time();
+		// while (current < endCount) {
+		// 	if (isPrime(current, cache, cacheSize)) {
+		// 		count++;
+		// 	}
+		// 	current = current + 2;
+		// }
+		var endTime = Unix.time();
+		// trace("Time taken: %f", endTime - beginTime);
+		trace("%i", count);
 	}
 }
