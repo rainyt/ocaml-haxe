@@ -1,10 +1,12 @@
 package project;
 
 class WhileTest {
-
-	public static function getString():String{
-		while(true){
-			return "123123";
+	public static function getString():String {
+		var i = 0;
+		while (true) {
+			i++;
+			if (i == 10)
+				return "123123(" + i + ")";
 		}
 		return "123";
 	}
@@ -20,7 +22,7 @@ class WhileTest {
 		var i = 0;
 		while (i < 10) {
 			i++;
-			trace("%i %b", i, getParam());
+			trace("%i %b %s", i, getParam(), getString());
 		}
 	}
 }

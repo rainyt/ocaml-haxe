@@ -133,8 +133,7 @@ class OCamlType {
 						throw "Not support CRegexp";
 				}
 			case EBinop(op, e1, e2):
-				if (toOCamlType(e1) == toOCamlType(e2))
-					return toOCamlType(e1);
+				return toOCamlType(e1);
 			case EParenthesis(e):
 				return toOCamlType(e);
 			default:

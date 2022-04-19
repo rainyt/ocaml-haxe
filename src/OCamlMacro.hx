@@ -45,6 +45,8 @@ class OCamlMacro {
 						// 记录
 						OCamlRef.retainFunc(item.name, f);
 					}
+					if (item.name != "main")
+						oc.write("try ");
 					ExprTools.iter(f.expr, (e) -> {
 						// oc.write(OCamlTools.toT(0));
 						switch (e.expr) {
@@ -60,6 +62,8 @@ class OCamlMacro {
 								oc.write(OCamlTools.toString(e) + ";\n");
 						}
 					});
+					if (item.name != "main")
+						oc.write('with ${OCamlRef.ref.get(item.name)} ret -> ret');
 					oc.write(";;\n\n");
 				case FProp(get, set, t, e):
 			}

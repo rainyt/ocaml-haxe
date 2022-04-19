@@ -47,16 +47,16 @@ class OCamlRef {
 		switch (varFunc.ret) {
 			case TPath(p):
 				switch (p.name) {
+					case "Bool":
+						ref.set(name, BOOL);
+						return;
 					case "Int":
-						trace("int");
 						ref.set(name, INT);
 						return;
 					case "Float":
-						trace("float");
 						ref.set(name, FLOAT);
 						return;
 					case "String":
-						trace("string");
 						ref.set(name, STRING);
 						return;
 				}
