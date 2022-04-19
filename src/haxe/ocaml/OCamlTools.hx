@@ -25,7 +25,7 @@ class OCamlTools {
 
 			case EWhile(econd, e, normalWhile):
 				var oc:OCaml = new OCaml();
-				oc.write('let break = ref false in while (!break && (${toString(econd)})) do\n');
+				oc.write('let break = ref true in while (!break && (${toString(econd)})) do\n');
 				if (e.expr.getName() == "EBlock") {
 					switch (e.expr) {
 						case EBlock(exprs):

@@ -11,7 +11,7 @@ class WhileTest {
 				return "123123(" + i + ")";
 			break;
 		}
-		return "123";
+		return "123!!!";
 	}
 
 	public static function getParam():Bool {
