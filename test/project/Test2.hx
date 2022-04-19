@@ -2,7 +2,6 @@ package project;
 
 import ocaml.OCamlSys;
 
-
 class Test2 {
 	public static function isPrime(n:Int, cache:Array<Int>, cacheSize:Int):Bool {
 		var cur = 1;
@@ -20,7 +19,7 @@ class Test2 {
 			}
 		}
 		if (cache.length < cacheSize) {
-			cache.push(n);
+			// cache.push(n);
 		}
 		return true;
 	}
@@ -34,9 +33,9 @@ class Test2 {
 		var current = beginCount;
 		var beginTime = OCamlSys.time();
 		while (current < endCount) {
-			// if (isPrime(current, cache, cacheSize)) {
-			// 	count++;
-			// }
+			if (isPrime(cast(current, Int), cache, cast(cacheSize, Int))) {
+				count++;
+			}
 			current = current + 2.;
 		}
 		var endTime = OCamlSys.time();

@@ -14,7 +14,6 @@ class OCamlTools {
 			case EBreak:
 				return "break := false";
 			case EUnop(op, postFix, e):
-				trace(op, postFix, e);
 				var type = OCamlType.toOCamlType(e);
 				switch (op) {
 					case OpDecrement:
@@ -59,10 +58,11 @@ class OCamlTools {
 				switch (t) {
 					case TPath(p):
 						switch (p.name) {
+							case "Int":
+								return OCamlType.toIntType(e);
 							case "String":
 								return OCamlType.toStringType(e);
 							case "Float":
-								trace("cast to Float", OCamlType.toFloatType(e));
 								return OCamlType.toFloatType(e);
 							default:
 								throw "未处理的类型：" + p.name;

@@ -22,7 +22,6 @@ ignore (raise (BOOL (false)));
 done;
 (* EIf *)
 if (Array.length !cache < !cacheSize) then (
-!cache.push !n;
 ) ;
 true
 with BOOL ret -> ret;;
@@ -35,6 +34,10 @@ let endCount = ref 10000000.0 in
 let current = ref !beginCount in
 let beginTime = ref (Sys.time ()) in
 let break = ref true in while (!break && (!current < !endCount)) do
+(* EIf *)
+if (isPrime (int_of_float !current) !cache (int_of_float !cacheSize)) then (
+count := !count +. 1.;
+) ;
 current := !current +. 2.;
 done;
 let endTime = ref (Sys.time ()) in

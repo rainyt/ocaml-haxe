@@ -137,7 +137,6 @@ class OCamlType {
 			name = name.substr(0, name.indexOf("("));
 		switch (e.expr) {
 			case EField(e, field):
-				trace("推导？", e, field);
 				var type = try Context.getType(ExprTools.toString(e)) catch (_) null;
 				if (type != null) {
 					switch (type) {

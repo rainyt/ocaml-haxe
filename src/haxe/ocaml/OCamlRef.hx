@@ -10,7 +10,6 @@ class OCamlRef {
 	public static var ref:Map<String, OCamlClassType> = [];
 
 	public static function retainType(name:String, type:ComplexType):Void {
-		trace(type);
 		switch (type) {
 			case TPath(p):
 				switch (p.name) {
@@ -41,7 +40,6 @@ class OCamlRef {
 	 * @param varFunc 
 	 */
 	public static function retainFunc(name:String, varFunc:Function):Void {
-		trace(name);
 		if (varFunc.ret == null)
 			throw "OCaml function need return value.";
 		switch (varFunc.ret) {
@@ -89,7 +87,6 @@ class OCamlRef {
 				}
 			case ECall(e, params):
 				// todo 方法应该继续推导
-				trace("方法推导？", varExpr.name, e);
 				ref.set(varExpr.name, OCamlType.toOCamlType(e));
 			case EBlock(e):
 				ref.set(varExpr.name, DYNAMIC);
