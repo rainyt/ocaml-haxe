@@ -74,7 +74,6 @@ class OCamlRef {
 		// 这里是推导实现
 		switch (varExpr.expr.expr) {
 			case EConst(c):
-				trace("定义变量:", varExpr.name, c);
 				switch (c) {
 					case CInt(v):
 						ref.set(varExpr.name, INT);
@@ -84,13 +83,14 @@ class OCamlRef {
 						ref.set(varExpr.name, STRING);
 					case CIdent(s):
 						// throw s;
-						ref.set(varExpr.name, DYNAMIC);
+						ref.set(varExpr.name, ref.get(s));
 					case CRegexp(r, opt):
 						throw "OCaml Not support Regexp!";
 				}
 			case ECall(e, params):
 				// todo 方法应该继续推导
-				ref.set(varExpr.name, DYNAMIC);
+				trace("方法推导？", varExpr.name, e);
+				ref.set(varExpr.name, OCamlType.toOCamlType(e));
 			case EBlock(e):
 				ref.set(varExpr.name, DYNAMIC);
 			case EObjectDecl(fields):

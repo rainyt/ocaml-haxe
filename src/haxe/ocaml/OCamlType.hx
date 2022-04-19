@@ -1,5 +1,6 @@
 package haxe.ocaml;
 
+import haxe.macro.TypeTools;
 import haxe.ocaml.OCamlRef.OCamlClassType;
 import haxe.macro.Type;
 import haxe.macro.Context;
@@ -38,7 +39,7 @@ class OCamlType {
 	 * @param expr 
 	 * @return String
 	 */
-	 public static function toIntType(expr:Expr):String {
+	public static function toIntType(expr:Expr):String {
 		var c = OCamlRef.ref.get(ExprTools.toString(expr));
 		var paramName = OCamlTools.toString(expr);
 		switch (c) {
@@ -135,6 +136,54 @@ class OCamlType {
 		if (name.indexOf("(") != -1)
 			name = name.substr(0, name.indexOf("("));
 		switch (e.expr) {
+			case EField(e, field):
+				trace("推导？", e, field);
+				var type = try Context.getType(ExprTools.toString(e)) catch (_) null;
+				if (type != null) {
+					switch (type) {
+						case TInst(t, params):
+							var classField = TypeTools.findField(t.get(), field, true);
+							if (classField != null) {
+								// trace("找到定义",);
+								switch (classField.type) {
+									case TFun(args, ret):
+										switch (ret) {
+											case TAbstract(t, params):
+												switch (t.toString()) {
+													case "String":
+														return STRING;
+													case "Int":
+														return INT;
+													case "Float":
+														return FLOAT;
+													case "Bool":
+														return BOOL;
+												}
+											default:
+										}
+									default:
+								}
+							}
+						default:
+					}
+				}
+				return DYNAMIC;
+			case ECast(e, t):
+				switch (t) {
+					case TPath(p):
+						switch (p.name) {
+							case "String":
+								return STRING;
+							case "Int":
+								return INT;
+							case "Float":
+								return FLOAT;
+							case "Bool":
+								return BOOL;
+						}
+					default:
+						throw "未处理的类型" + t;
+				}
 			case EConst(c):
 				switch (c) {
 					case CInt(v):

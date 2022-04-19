@@ -35,10 +35,10 @@ let endCount = ref 10000000.0 in
 let current = ref !beginCount in
 let beginTime = ref (Sys.time ()) in
 let break = ref true in while (!break && (!current < !endCount)) do
-current := !current + 2.;
+current := !current +. 2.;
 done;
 let endTime = ref (Sys.time ()) in
-Printf.printf "Time taken: %f" (!endTime - !beginTime);
+Printf.printf "Time taken: %f" (!endTime -. !beginTime);
 ;;
 
 
