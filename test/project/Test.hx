@@ -12,7 +12,6 @@ typedef TestData = {
 	index:Int
 }
 
-@:build(OCamlMacro.build())
 class Test {
 	public static var data:String = "Data var";
 

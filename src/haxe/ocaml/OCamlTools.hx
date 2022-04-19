@@ -53,7 +53,7 @@ class OCamlTools {
 				}
 				return toString(e);
 			case EReturn(e):
-				return toString(e);
+				return OCamlReturn.toString(e);
 			case EParenthesis(e):
 				return '(${toString(e)})';
 			case EArrayDecl(values):

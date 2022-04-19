@@ -1,3 +1,8 @@
+exception BOOL of bool;;
+exception STRING of string;;
+exception INT of int;;
+exception FLOAT of int;;
+
 type testdata = {mutable index:int;mutable name:string;}
 
 let data = ref "Data var";;

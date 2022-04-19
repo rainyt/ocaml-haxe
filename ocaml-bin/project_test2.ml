@@ -1,31 +1,25 @@
-let boolCall  = false
-;;
+exception BOOL of bool;;
+exception STRING of string;;
+exception INT of int;;
+exception FLOAT of int;;
 
 let isPrime n cache cacheSize = let cur = ref 1 in
 (* For *)
 Array.iter (fun item -> ((
 (* EIf *)
 if (!n mod item = 0) then (
-false;
-) 
+raise (BOOL false);
+) ;
 cur := item;
 ))) !cache;
 let m = ref (Stdlib.floor (Stdlib.sqrt (float_of_int !n))) in
-while true do
+while (float_of_int !cur) < !m do
 cur := !cur + 2;
 (* EIf *)
-if ((float_of_int !cur) > !m) then (
-(* OCamlTools.TODO EBreak *)
-) 
-(* EIf *)
 if (!n mod !cur = 0) then (
-false;
-) 
-done;;
-(* EIf *)
-if (Array.length !cache < !cacheSize) then (
-!cache.push !n
+raise (BOOL false);
 ) ;
+done;;
 true
 ;;
 
@@ -39,8 +33,8 @@ let beginTime = ref (haxe.Timer.stamp) in
 while !current < !endCount do
 (* EIf *)
 if (isPrime !current !cache !cacheSize) then (
-(* OCamlTools.TODO EUnop *)
-) 
+count := !count + 1;
+) ;
 current := String.concat "" [!current;2];
 done;;
 let endTime = ref (haxe.Timer.stamp) in
