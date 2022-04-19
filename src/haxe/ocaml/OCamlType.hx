@@ -34,6 +34,26 @@ class OCamlType {
 	}
 
 	/**
+	 * 将类型转换为Int类型
+	 * @param expr 
+	 * @return String
+	 */
+	 public static function toIntType(expr:Expr):String {
+		var c = OCamlRef.ref.get(ExprTools.toString(expr));
+		var paramName = OCamlTools.toString(expr);
+		switch (c) {
+			case FLOAT:
+				return '(int_of_float ${paramName})';
+			case STRING:
+				return '(int_of_string ${paramName})';
+			case BOOL:
+				return '(int_of_bool ${paramName})';
+			default:
+		}
+		return paramName;
+	}
+
+	/**
 	 * 将类型转换为String类型
 	 * @param expr 
 	 * @return String

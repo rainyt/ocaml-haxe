@@ -14,7 +14,6 @@ import haxe.macro.Compiler;
 
 class OCamlMacro {
 	macro public static function build():Array<Field> {
-		trace("Haxe to OCaml");
 		// 需要清空所有ref
 		OCamlRef.ref.clear();
 		var array = Context.getBuildFields();

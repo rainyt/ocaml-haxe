@@ -1,4 +1,3 @@
-exception BREAK;;
 exception BOOL of bool;;
 exception STRING of string;;
 exception INT of int;;
@@ -14,7 +13,7 @@ ignore (raise (BOOL (false)));
 cur := item;
 ))) !cache;
 let m = ref (Stdlib.floor (Stdlib.sqrt (float_of_int !n))) in
-while (float_of_int !cur) < !m do
+let break = ref true in while (!break && ((float_of_int !cur) < !m)) do
 cur := !cur + 2;
 (* EIf *)
 if (!n mod !cur = 0) then (
@@ -23,6 +22,7 @@ ignore (raise (BOOL (false)));
 done;
 (* EIf *)
 if (Array.length !cache < !cacheSize) then (
+!cache.push !n;
 ) ;
 true
 with BOOL ret -> ret;;
@@ -34,11 +34,7 @@ let beginCount = ref 3. in
 let endCount = ref 10000000.0 in
 let current = ref !beginCount in
 let beginTime = ref (Sys.time ()) in
-while !current < !endCount do
-(* EIf *)
-if (isPrime !current !cache !cacheSize) then (
-count := !count + 1;
-) ;
+let break = ref true in while (!break && (!current < !endCount)) do
 current := !current + 2.;
 done;
 let endTime = ref (Sys.time ()) in

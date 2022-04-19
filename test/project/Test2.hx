@@ -20,7 +20,7 @@ class Test2 {
 			}
 		}
 		if (cache.length < cacheSize) {
-			// cache.push(n);
+			cache.push(n);
 		}
 		return true;
 	}
@@ -34,9 +34,9 @@ class Test2 {
 		var current = beginCount;
 		var beginTime = OCamlSys.time();
 		while (current < endCount) {
-			if (isPrime(current, cache, cacheSize)) {
-				count++;
-			}
+			// if (isPrime(current, cache, cacheSize)) {
+			// 	count++;
+			// }
 			current = current + 2.;
 		}
 		var endTime = OCamlSys.time();

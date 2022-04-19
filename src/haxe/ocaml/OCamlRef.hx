@@ -74,6 +74,7 @@ class OCamlRef {
 		// 这里是推导实现
 		switch (varExpr.expr.expr) {
 			case EConst(c):
+				trace("定义变量:", varExpr.name, c);
 				switch (c) {
 					case CInt(v):
 						ref.set(varExpr.name, INT);
@@ -95,8 +96,7 @@ class OCamlRef {
 			case EObjectDecl(fields):
 				ref.set(varExpr.name, DYNAMIC);
 			case EBinop(op, e1, e2):
-				// todo 这里应该继续推导
-				ref.set(varExpr.name, FLOAT);
+				ref.set(varExpr.name, OCamlType.toOCamlType(e1));
 			case EArrayDecl(values):
 				ref.set(varExpr.name, LIST);
 			case EField(e, field):

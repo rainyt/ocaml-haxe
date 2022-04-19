@@ -15,10 +15,27 @@ class OCamlTools {
 				return "break := false";
 			case EUnop(op, postFix, e):
 				trace(op, postFix, e);
+				var type = OCamlType.toOCamlType(e);
 				switch (op) {
+					case OpDecrement:
+						switch (type) {
+							case INT:
+								return '${toString(e).unDeCitation()} := ${toString(e)} - 1';
+							case FLOAT:
+								return '${toString(e).unDeCitation()} := ${toString(e)} -. 1.';
+							default:
+								throw "Not support op " + op;
+						}
 					case OpIncrement:
 						// ++
-						return '${toString(e).unDeCitation()} := ${toString(e)} + 1';
+						switch (type) {
+							case INT:
+								return '${toString(e).unDeCitation()} := ${toString(e)} + 1';
+							case FLOAT:
+								return '${toString(e).unDeCitation()} := ${toString(e)} +. 1.';
+							default:
+								throw "Not support op " + op;
+						}
 					default:
 						throw "未处理的运算符：" + op;
 				}
