@@ -1,5 +1,12 @@
-@:build(OCamlMacro.build())
+package project;
+
+// @:build(OCamlMacro.build())
 class Test2 {
+
+	public static function boolCall():Bool{
+		return false;
+	}
+
 	public static function isPrime(n:Int, cache:Array<Int>, cacheSize:Int):Bool {
 		var cur = 1;
 		for (item in cache) {
@@ -10,8 +17,8 @@ class Test2 {
 		}
 		var m = Math.floor(Math.sqrt(cast(n, Float)));
 		while (true) {
-			cur += 2;
-			if (cur > m) {
+			cur = cur + 2;
+			if (cast(cur, Float) > m) {
 				break;
 			}
 			if (n % cur == 0) {

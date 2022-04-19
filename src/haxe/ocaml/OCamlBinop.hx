@@ -39,7 +39,7 @@ class OCamlBinop {
 			case OpEq:
 				return "=";
 			case OpAssign:
-				return ":=";
+				return ":="; 
 			default:
 				return new Printer("").printBinop(op);
 		}

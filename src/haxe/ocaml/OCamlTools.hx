@@ -6,9 +6,36 @@ import haxe.macro.Printer;
 import haxe.macro.ExprTools;
 import haxe.macro.Expr;
 
+using haxe.ocaml.OCamlTools;
+
 class OCamlTools {
 	public static function toString(expr:Expr):String {
 		switch (expr.expr) {
+			case EUnop(op, postFix, e):
+				trace(op, postFix, e);
+				switch (op) {
+					case OpIncrement:
+						// ++
+						return '${toString(e).unDeCitation()} := ${toString(e)} + 1';
+					default:
+						throw "未处理的运算符：" + op;
+				}
+
+			case EWhile(econd, e, normalWhile):
+				var oc:OCaml = new OCaml();
+				oc.write('while ${toString(econd)} do\n');
+				if (e.expr.getName() == "EBlock") {
+					switch (e.expr) {
+						case EBlock(exprs):
+							for (e in exprs) {
+								oc.write(toString(e) + ";\n");
+							}
+						default:
+					}
+				} else
+					oc.write(toString(e));
+				oc.write("done;");
+				return oc.code;
 			case ECast(e, t):
 				switch (t) {
 					case TPath(p):
@@ -16,7 +43,7 @@ class OCamlTools {
 							case "String":
 								return OCamlType.toStringType(e);
 							case "Float":
-								trace("cast to Float",OCamlType.toFloatType(e));
+								trace("cast to Float", OCamlType.toFloatType(e));
 								return OCamlType.toFloatType(e);
 							default:
 								throw "未处理的类型：" + p.name;
@@ -26,7 +53,7 @@ class OCamlTools {
 				}
 				return toString(e);
 			case EReturn(e):
-				return toString(e) + ";";
+				return toString(e);
 			case EParenthesis(e):
 				return '(${toString(e)})';
 			case EArrayDecl(values):
@@ -67,7 +94,7 @@ class OCamlTools {
 			case EBlock(exprs):
 				var code = ["("];
 				for (item in exprs) {
-					code.push(toString(item));
+					code.push(toString(item) + ";");
 				}
 				code.push(")");
 				return code.join("\n");
@@ -76,7 +103,7 @@ class OCamlTools {
 			case EFor(it, expr):
 				return "(* For *)\n" + OCamlFor.toString(it, expr);
 			default:
-				return '(* OCamlTools.TODO ${expr.expr.getName();} *)';
+				return '(* OCamlTools.TODO ${expr.expr.getName()} *)';
 		}
 		return null;
 	}
@@ -87,5 +114,9 @@ class OCamlTools {
 			code += "\t";
 		}
 		return code;
+	}
+
+	public static function unDeCitation(str:String):String {
+		return StringTools.replace(str, "!", "");
 	}
 }

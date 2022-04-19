@@ -1,3 +1,5 @@
+--class-path test
 --class-path src
---main Test2
---cmd eval `opam env` && ocaml test2.ml
+--main project.Test
+--macro OCamlMacro.build()
+# --cmd eval `opam env` && ocaml test2.ml

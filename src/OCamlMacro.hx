@@ -10,6 +10,7 @@ import haxe.macro.MacroUtils;
 import haxe.macro.Context;
 import haxe.macro.Expr.Field;
 import haxe.ocaml.OCaml;
+import haxe.macro.Compiler;
 
 class OCamlMacro {
 	macro public static function build():Array<Field> {
@@ -17,6 +18,10 @@ class OCamlMacro {
 		// 需要清空所有ref
 		OCamlRef.ref.clear();
 		var array = Context.getBuildFields();
+		if (array == null) {
+			Compiler.addGlobalMetadata("project", '@:build(OCamlMacro.build())');
+			return array;
+		}
 		var oc = new OCaml();
 		for (item in array) {
 			switch (item.kind) {
@@ -56,7 +61,9 @@ class OCamlMacro {
 				case FProp(get, set, t, e):
 			}
 		}
-		File.saveContent(Context.getLocalClass().toString().toLowerCase() + ".ml", OCamlBuild.build(oc));
+		var className = Context.getLocalClass().toString();
+		className = StringTools.replace(className, ".", "_");
+		File.saveContent("ocaml-bin/" + className.toLowerCase() + ".ml", OCamlBuild.build(oc));
 		return array;
 	}
 }
