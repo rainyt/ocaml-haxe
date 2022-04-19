@@ -23,6 +23,8 @@ class OCamlMacro {
 		}
 		// 是否统计运行时长
 		var runtime:Bool = true;
+		// 是否带入HaxeCode原始代码
+		var haxecode:Bool = true;
 		var oc = new OCaml();
 		for (item in array) {
 			switch (item.kind) {
@@ -52,7 +54,9 @@ class OCamlMacro {
 					if (item.name != "main")
 						oc.write("try ");
 					ExprTools.iter(f.expr, (e) -> {
-						// oc.write(OCamlTools.toT(0));
+						if (haxecode) {
+							oc.write('(*  ${ExprTools.toString(e)}  *)\n');
+						}
 						switch (e.expr) {
 							case EReturn(e):
 								oc.write(OCamlTools.toString(e) + "\n");
@@ -68,7 +72,7 @@ class OCamlMacro {
 					});
 					if (item.name != "main")
 						oc.write('with ${OCamlRef.ref.get(item.name)} ret -> ret');
-					if (runtime) {
+					else if (runtime) {
 						oc.write("Printf.printf \"\\nRuning time:%f\\n\" (Sys.time() -. start)");
 					}
 					oc.write(";;\n\n");

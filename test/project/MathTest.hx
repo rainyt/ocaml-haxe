@@ -1,7 +1,5 @@
 package project;
 
-import ocaml.OCamlSys;
-
 class MathTest {
 	static function main() {
 
