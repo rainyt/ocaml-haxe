@@ -1,7 +1,7 @@
 exception BOOL of bool;;
 exception STRING of string;;
 exception INT of int;;
-exception FLOAT of int;;
+exception FLOAT of float;;
 
 type testdata = {mutable index:int;mutable name:string;}
 

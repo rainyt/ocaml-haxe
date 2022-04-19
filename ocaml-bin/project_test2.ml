@@ -1,7 +1,7 @@
 exception BOOL of bool;;
 exception STRING of string;;
 exception INT of int;;
-exception FLOAT of int;;
+exception FLOAT of float;;
 
 let isPrime n cache cacheSize = let cur = ref 1 in
 (* For *)
