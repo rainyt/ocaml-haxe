@@ -12,7 +12,7 @@ ignore (raise (BOOL (false)));
 ) ;
 cur := item;
 ))) !cache;
-let m = ref (Stdlib.floor (Stdlib.sqrt (ref ((float_of_int !n))))) in
+let m = ref (Stdlib.floor (Stdlib.sqrt ((float_of_int !n)))) in
 let break = ref true in while (!break && ((float_of_int !cur) < !m)) do
 cur := !cur + 2;
 (* EIf *)
@@ -22,6 +22,7 @@ ignore (raise (BOOL (false)));
 done;
 (* EIf *)
 if (Array.length !cache < !cacheSize) then (
+!cache.push !n;
 ) ;
 true
 with BOOL ret -> ret;;
@@ -35,7 +36,7 @@ let current = ref !beginCount in
 let beginTime = ref (Sys.time ()) in
 let break = ref true in while (!break && (!current < !endCount)) do
 (* EIf *)
-if (isPrime (ref ((int_of_float !current))) !cache (ref ((int_of_float !cacheSize)))) then (
+if (isPrime ((int_of_float !current)) !cache ((int_of_float !cacheSize))) then (
 count := !count +. 1.;
 ) ;
 current := !current +. 2.;

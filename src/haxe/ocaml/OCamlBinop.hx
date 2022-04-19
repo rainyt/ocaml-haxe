@@ -10,6 +10,10 @@ class OCamlBinop {
 		var opTag = toOp(op);
 		var left = ExprTools.toString(e1);
 		var type1 = OCamlType.toOCamlType(e1);
+		var type2 = OCamlType.toOCamlType(e2);
+		if(type1 == INT && type2 == FLOAT){
+			type1 = FLOAT;
+		}
 		var struct = false;
 		if (left.indexOf(".") != -1)
 			struct = true;
@@ -29,6 +33,8 @@ class OCamlBinop {
 			case "+", "-", "/", "*":
 				// todo 这里需要判断类型，如果是字符串，则使用^，如果是数字，则使用+
 				switch (type1) {
+					case INT:
+						return '${OCamlType.toIntType(e1)} ${opTag} ${OCamlType.toIntType(e2)}';
 					case FLOAT:
 						return '${OCamlType.toFloatType(e1)} ${opTag}. ${OCamlType.toFloatType(e2)}';
 					case STRING:

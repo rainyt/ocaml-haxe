@@ -19,7 +19,7 @@ class Test2 {
 			}
 		}
 		if (cache.length < cacheSize) {
-			// cache.push(n);
+			cache.push(n);
 		}
 		return true;
 	}
