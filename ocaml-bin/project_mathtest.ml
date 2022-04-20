@@ -64,6 +64,12 @@ Printf.printf ("ifv=%f\n") (!ifv);
 let div = ref ((float_of_int !i2) /. (float_of_int !i2)) in
 (*  trace("div=%f", div)  *)
 Printf.printf ("div=%f") (!div);
+(*  var s1 = "test"  *)
+let s1 = ref "test" in
+(*  var s2 = f1 + s1  *)
+let s2 = ref ((string_of_float !f1) ^ !s1) in
+(*  trace("%s", s2)  *)
+Printf.printf ("%s") (!s2);
 (*  var loop = 10000000  *)
 let loop = ref 10000000 in
 (*  while (loop > 0) {

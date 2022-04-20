@@ -2,7 +2,6 @@ package project;
 
 class MathTest {
 	static function main() {
-
 		var f1 = 1.;
 		var i1 = 1;
 
@@ -43,10 +42,13 @@ class MathTest {
 		var div = i2 / i2;
 		trace("div=%f", div);
 
-		var loop = 10000000;
-		while (loop > 0){
-			loop --;
-		}
+		var s1 = "test";
+		var s2 = f1 + s1;
+		trace("%s", s2);
 
+		var loop = 10000000;
+		while (loop > 0) {
+			loop--;
+		}
 	}
 }

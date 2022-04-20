@@ -222,6 +222,14 @@ class OCamlType {
 						throw "Not support CRegexp";
 				}
 			case EBinop(op, e1, e2):
+				var e1type = toOCamlType(e1);
+				var e2type = toOCamlType(e2);
+				if (e1type == STRING || e2type == STRING) {
+					return STRING;
+				}
+				if (e1type == FLOAT || e2type == FLOAT) {
+					return FLOAT;
+				}
 				return toOCamlType(e1);
 			case EParenthesis(e):
 				return toOCamlType(e);
