@@ -9,7 +9,7 @@ Printf.printf "test";
 	trace(list[0]);
 }  *)
 (* For *)
-for i = 0 to List.length !list do ((
+for i = 0 to List.length !list - 1 do ((
 Printf.printf (List.nth !list 0);
 )) done;
 (*  return 0  *)
@@ -27,7 +27,7 @@ let array = ref [1;2;3;4] in
 	trace("%i=%i\n", i, array[i]);
 }  *)
 (* For *)
-for i = 0 to List.length !array do ((
+for i = 0 to List.length !array - 1 do ((
 Printf.printf "%i=%i\n" i (List.nth !array i);
 )) done;
 (*  var data = call(array)  *)

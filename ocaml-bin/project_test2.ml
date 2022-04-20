@@ -12,7 +12,7 @@ let cur = ref 1 in
 	cur = item;
 }  *)
 (* For *)
-List.iter (fun item -> ((
+Array.iter (fun item -> ((
 (* EIf *)
 if (!n mod item = 0) then (
 ignore (raise (BOOL (false)));
@@ -39,7 +39,7 @@ done;
 }  *)
 (* EIf *)
 if (List.length !cache < !cacheSize) then (
-cache := !n :: cache;
+!cache.push !n;
 ) ;
 (*  return true  *)
 true
