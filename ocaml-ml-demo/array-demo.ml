@@ -1,3 +1,7 @@
+let getArray a = 
+  a := 2 :: !a;
+;;
+
 let () = let array = Array.make 2 "123"  in
   (* Array.set array 1 "123123"; *)
   print_endline array.(1);

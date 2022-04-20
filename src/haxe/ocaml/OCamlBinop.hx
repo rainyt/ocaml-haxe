@@ -24,10 +24,10 @@ class OCamlBinop {
 						return '${left} := ${OCamlType.toIntType(e1)} ${opTag.charAt(0)} (${OCamlType.toIntType(e2)})';
 					case FLOAT:
 						return '${left} := ${OCamlType.toFloatType(e1)} ${opTag.charAt(0)}. (${OCamlType.toFloatType(e2)})';
-					case STRING:
+					case STRING,DYNAMIC:
 						if (struct)
-							return "!" + left + ' <- String.concat "" [!${left};${OCamlType.toStringType(e2)}]';
-						return '${left} := String.concat "" [!${OCamlType.toStringType(e1)};${OCamlType.toStringType(e2)}]';
+							return "!" + left + ' <- String.concat "" [${OCamlType.toStringType(e1)};${OCamlType.toStringType(e2)}]';
+						return '${left} := String.concat "" [${OCamlType.toStringType(e1)};${OCamlType.toStringType(e2)}]';
 					default:
 				}
 			case "+", "-", "/", "*":

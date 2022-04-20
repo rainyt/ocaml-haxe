@@ -43,7 +43,7 @@ if (Array.length !cache < !cacheSize) then (
 ) ;
 (*  return true  *)
 true
-with BOOL ret -> retPrintf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
+with BOOL ret -> ret;;
 
 let () = let start = Sys.time() in 
 (*  var cache:Array<Int> = []  *)
@@ -77,6 +77,6 @@ done;
 let endTime = ref (Sys.time ()) in
 (*  trace("Time taken: %f", endTime - beginTime)  *)
 Printf.printf "Time taken: %f" (!endTime -. !beginTime);
-Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
+with null ret -> ret;;
 
 

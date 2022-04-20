@@ -51,7 +51,8 @@ class OCamlMacro {
 						// 记录
 						OCamlRef.retainFunc(item.name, f);
 					}
-					if (item.name != "main")
+					var funcType = OCamlRef.ref.get(item.name);
+					if (funcType != DYNAMIC && item.name != "main")
 						oc.write("try ");
 					ExprTools.iter(f.expr, (e) -> {
 						if (haxecode) {
@@ -70,9 +71,11 @@ class OCamlMacro {
 								oc.write(OCamlTools.toString(e) + ";\n");
 						}
 					});
-					if (item.name != "main")
-						oc.write('with ${OCamlRef.ref.get(item.name)} ret -> ret');
-					else if (runtime) {
+					if (item.name != "main") {
+						trace("funcType = ", funcType);
+						if (funcType != DYNAMIC)
+							oc.write('with ${OCamlRef.ref.get(item.name)} ret -> ret');
+					} else if (runtime) {
 						oc.write("Printf.printf \"\\nRuning time:%f\\n\" (Sys.time() -. start)");
 					}
 					oc.write(";;\n\n");

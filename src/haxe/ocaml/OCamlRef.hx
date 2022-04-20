@@ -1,5 +1,6 @@
 package haxe.ocaml;
 
+import haxe.macro.Context;
 import haxe.macro.ExprTools;
 import haxe.macro.Expr;
 
@@ -10,6 +11,9 @@ class OCamlRef {
 	public static var ref:Map<String, OCamlClassType> = [];
 
 	public static function retainType(name:String, type:ComplexType):Void {
+		if (type == null) {
+			throw "Type is null by " + Context.getLocalClass() + "." + name;
+		}
 		switch (type) {
 			case TPath(p):
 				switch (p.name) {
@@ -26,7 +30,7 @@ class OCamlRef {
 						ref.set(name, BOOL);
 						return;
 					case "Array":
-						ref.set(name, DYNAMIC);
+						ref.set(name, LIST);
 					default:
 						throw "未处理的类型";
 				}

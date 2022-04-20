@@ -72,6 +72,6 @@ let loop = ref 10000000 in
 let break = ref true in while (!break && (!loop > 0)) do
 loop := !loop - 1;
 done;
-Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
+with null ret -> ret;;
 
 

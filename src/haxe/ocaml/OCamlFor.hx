@@ -11,7 +11,7 @@ class OCamlFor {
 					switch (e2.expr) {
 						case EBinop(op, ee1, ee2):
 							if (op == OpInterval) {
-								return 'for ${StringTools.replace(OCamlTools.toString(e1), "!", "")} = ${OCamlTools.toString(ee1)} to ${OCamlTools.toString(ee2)} do (${OCamlTools.toString(expr)}) done;';
+								return 'for ${StringTools.replace(OCamlTools.toString(e1), "!", "")} = ${OCamlTools.toString(ee1)} to ${OCamlTools.toString(ee2)} do (${OCamlTools.toString(expr)}) done';
 							}
 						default:
 							return "Array.iter (fun " + ExprTools.toString(e1) + " -> (" + OCamlTools.toString(expr) + ")) " + OCamlTools.toString(e2);
