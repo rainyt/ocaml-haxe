@@ -35,7 +35,7 @@ done;
 	cache.push(n);
 }  *)
 if (List.length !cache < !cacheSize) then (
-cache := !n :: !cache;
+cache := !cache @ [!n];
 ) ;
 (*  return true  *)
 true

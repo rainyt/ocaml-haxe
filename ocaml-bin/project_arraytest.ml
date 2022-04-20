@@ -26,6 +26,14 @@ with INT ret -> ret;;
 let () = let start = Sys.time() in 
 (*  var array = [1, 2, 3, 4]  *)
 let array = ref [1;2;3;4] in
+(*  array.push(5)  *)
+array := !array @ [5];
+(*  array.push(6)  *)
+array := !array @ [6];
+(*  array.push(7)  *)
+array := !array @ [7];
+(*  array.push(8)  *)
+array := !array @ [8];
 (*  for (i in 0 ... array.length) {
 	trace("%i=%i\n", i, array[i]);
 }  *)

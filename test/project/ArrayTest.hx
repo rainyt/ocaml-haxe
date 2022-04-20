@@ -25,11 +25,16 @@ class ArrayTest {
 
 	static function main() {
 		var array = [1, 2, 3, 4];
+		array.push(5);
+		array.push(6);
+		array.push(7);
+		array.push(8);
 		for (i in 0...array.length) {
 			trace("%i=%i\n", i, array[i]);
 		}
 		var data = call(array);
 		trace("%i", toArray(array));
 		trace("%i", data);
+		
 	}
 }

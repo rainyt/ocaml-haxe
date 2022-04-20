@@ -72,7 +72,7 @@ class OCamlMacro {
 						}
 					});
 					if (item.name != "main") {
-						trace("funcType = ", funcType);
+						// trace("funcType = ", funcType);
 						if (funcType != DYNAMIC)
 							oc.write('with ${OCamlRef.ref.get(item.name)} ret -> ret');
 					} else if (runtime) {

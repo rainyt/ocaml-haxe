@@ -9,7 +9,7 @@ class OCamlFunction {
 		var code:Array<String> = [];
 		var funcCode = builtInLibrary(expr, params);
 		code.push(funcCode);
-		if (funcCode.indexOf("::") == -1)
+		if (funcCode.indexOf("@") == -1)
 			for (item in params) {
 				var type = OCamlType.toOCamlType(item);
 				var needRef = OCamlRef.ref.exists(ExprTools.toString(expr));
@@ -39,7 +39,7 @@ class OCamlFunction {
 		var code = switch (expr.expr) {
 			case EField(e, field):
 				if (field == "push") {
-					return '${ExprTools.toString(e)} := ${OCamlTools.toString(params[0])} :: !${ExprTools.toString(e)}';
+					return '${ExprTools.toString(e)} := !${ExprTools.toString(e)} @ [${OCamlTools.toString(params[0])}]';
 				}
 				OCamlTools.toString(expr);
 			default:
