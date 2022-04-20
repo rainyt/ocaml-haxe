@@ -10,7 +10,23 @@ using haxe.ocaml.OCamlTools;
 
 class OCamlTools {
 	public static function toString(expr:Expr):String {
+		if (expr == null)
+			return "";
 		switch (expr.expr) {
+			case ESwitch(e, cases, edef):
+				var oc = new OCaml();
+				oc.write('let _ = (match ${toString(e)} with\n');
+				for (item in cases) {
+					var params = item.values[0];
+					oc.write('| ${toString(params)} -> ${toString(item.expr)} \n');
+				}
+				if (edef == null) {
+					oc.write('| _->()');
+				} else {
+					oc.write('| _->(${toString(edef)})');
+				}
+				oc.write(") in");
+				return oc.code;
 			case EVars(vars):
 				var oc = new OCaml();
 				for (item in vars) {
@@ -128,7 +144,8 @@ class OCamlTools {
 						case EVars(vars):
 							code.push(toString(item) + " in");
 						default:
-							code.push(toString(item) + ";");
+							var codeData = toString(item);
+							if (codeData.lastIndexOf("in") == codeData.length - 2) code.push(codeData + ""); else code.push(codeData + ";");
 					}
 				}
 				code.push(")");

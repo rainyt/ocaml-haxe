@@ -24,7 +24,7 @@ class OCamlMacro {
 		// 是否统计运行时长
 		var runtime:Bool = true;
 		// 是否带入HaxeCode原始代码
-		var haxecode:Bool = true;
+		var haxecode:Bool = false;
 		var oc = new OCaml();
 		for (item in array) {
 			switch (item.kind) {
@@ -68,7 +68,8 @@ class OCamlMacro {
 							case ECall(e, params):
 								oc.write(OCamlFunction.toString(e, params) + ";\n");
 							default:
-								oc.write(OCamlTools.toString(e) + ";\n");
+								var code = OCamlTools.toString(e);
+								if (code.lastIndexOf("in") != code.length - 2) oc.write(code + ";\n"); else oc.write(code + "\n");
 						}
 					});
 					if (item.name != "main") {

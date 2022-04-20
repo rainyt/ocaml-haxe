@@ -13,9 +13,7 @@ let i = ref 0 in
 }  *)
 let break = ref true in while (!break && (true)) do
 i := !i + 1;
-(* EIf *)
 if (!i = 10) then ignore (raise (STRING ("123123(" ^ (string_of_int !i) ^ ")"))) ;
-(* EIf *)
 if (!i = 8) then ignore (raise (STRING ("123123(" ^ (string_of_int !i) ^ ")"))) ;
 break := false;
 done;
@@ -42,7 +40,7 @@ let i = ref 0 in
 }  *)
 let break = ref true in while (!break && (!i < 10)) do
 i := !i + 1;
-Printf.printf "%i %b %s\n" !i (getParam ()) (getString ());
+Printf.printf ("%i %b %s\n") (!i) (getParam ()) (getString ());
 done;
 Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
 
