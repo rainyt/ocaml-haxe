@@ -91,6 +91,27 @@ class OCamlType {
 		return null;
 	}
 
+	public static function toType(type:Type, field:String):OCamlClassType {
+		switch (type) {
+			case TAbstract(t, params):
+				switch (t.toString()) {
+					case "ocaml.OCamlArray":
+						return ARRAY;
+					default:
+						return DYNAMIC;
+				}
+			case TInst(t, params):
+				// 兼容@:native实现
+				var classField = TypeTools.findField(t.get(), field, true);
+				if (classField != null) {
+					return toType(classField.type, field);
+				}
+			default:
+				throw "未处理的类型：" + type;
+		}
+		return null;
+	}
+
 	public static function retian(type:ComplexType):Void {
 		if (type == null) {
 			throw "OCaml need typedef Object Type.";

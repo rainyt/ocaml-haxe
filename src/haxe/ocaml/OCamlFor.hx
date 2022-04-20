@@ -16,11 +16,9 @@ class OCamlFor {
 							}
 						default:
 							var type = OCamlType.toOCamlType(e2);
-							if (type == null) {
+							if (type == null || type == ARRAY) {
 								return "Array.iter (fun " + ExprTools.toString(e1) + " -> (" + OCamlTools.toString(expr) + ")) " + OCamlTools.toString(e2);
 							}
-							// return (type == LIST ? "List" : "Array") + ".iter (fun " + ExprTools.toString(e1) + " -> (" + OCamlTools.toString(expr) + ")) "
-							// 	+ OCamlTools.toString(e2);
 							return "List.iter (fun " + ExprTools.toString(e1) + " -> (" + OCamlTools.toString(expr) + ")) " + OCamlTools.toString(e2);
 					}
 				} else

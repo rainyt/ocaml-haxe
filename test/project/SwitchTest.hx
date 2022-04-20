@@ -34,15 +34,16 @@ class SwitchTest {
 				trace("%s", "C");
 		}
 
-		var a:SwitchEnum = A;
-		switch (a) {
-			case A:
+		// 这里未完成Enum支持
+		// var a:SwitchEnum = A;
+		// switch (a) {
+		// 	case A:
 
-			case B:
+		// 	case B:
 
-			case C:
+		// 	case C:
 
-			case D:
-		}
+		// 	case D:
+		// }
 	}
 }

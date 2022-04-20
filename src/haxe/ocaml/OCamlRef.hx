@@ -3,6 +3,7 @@ package haxe.ocaml;
 import haxe.macro.Context;
 import haxe.macro.ExprTools;
 import haxe.macro.Expr;
+import haxe.macro.TypeTools;
 
 class OCamlRef {
 	/**
@@ -101,7 +102,12 @@ class OCamlRef {
 			case EArrayDecl(values):
 				ref.set(varExpr.name, LIST);
 			case EField(e, field):
-				ref.set(varExpr.name, DYNAMIC);
+				var type = try Context.getType(ExprTools.toString(e)) catch (_) null;
+				if (type != null) {
+					var ocType = OCamlType.toType(type, field);
+					ref.set(varExpr.name, ocType);
+				} else
+					ref.set(varExpr.name, DYNAMIC);
 			default:
 				throw "未实现的推导：" + varExpr.name + ":" + varExpr.expr.expr.getName();
 		}
@@ -137,5 +143,6 @@ enum OCamlClassType {
 	BOOL;
 	STRING;
 	LIST;
+	ARRAY;
 	DYNAMIC;
 }

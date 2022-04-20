@@ -39,13 +39,6 @@ Printf.printf ("%s") ("B");
 Printf.printf ("%s") ("C");
 ) 
 | _->()) in ();
-let a = ref A in
-let _ = (match (!a) with
-| A ->  
-| B ->  
-| C ->  
-| D ->  
-| _->()) in ();
 Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
 
 

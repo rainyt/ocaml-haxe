@@ -1,5 +1,5 @@
 --class-path test
 --class-path src
---main project.SwitchTest
+--main project.OCamlArrayTest
 --macro OCamlMacro.build()
 # --cmd eval `opam env` && ocaml test2.ml
