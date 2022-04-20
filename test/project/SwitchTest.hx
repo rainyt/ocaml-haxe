@@ -1,5 +1,7 @@
 package project;
 
+import enums.SwitchEnum;
+
 class SwitchTest {
 	static function main() {
 		var i = 0;
@@ -30,6 +32,17 @@ class SwitchTest {
 				trace("%s", "B");
 			case "C":
 				trace("%s", "C");
+		}
+
+		var a:SwitchEnum = A;
+		switch (a) {
+			case A:
+
+			case B:
+
+			case C:
+
+			case D:
 		}
 	}
 }

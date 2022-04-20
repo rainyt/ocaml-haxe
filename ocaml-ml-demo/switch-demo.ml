@@ -3,6 +3,12 @@ exception STRING of string;;
 exception INT of int;;
 exception FLOAT of float;;
 
+type switchenum = 
+| A
+| B 
+| C
+| D;;
+
 let () = let start = Sys.time() in 
 let i = ref 0 in
 let _ = (match (!i) with
