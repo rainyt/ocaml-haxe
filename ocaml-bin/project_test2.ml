@@ -18,7 +18,7 @@ if (!n mod item = 0) then (
 ignore (raise (BOOL (false)));
 ) ;
 cur := item;
-))) ;
+))) !cache;
 (*  var m = Math.floor(Math.sqrt(cast(n, Float)))  *)
 let m = ref (Stdlib.floor (Stdlib.sqrt ((float_of_int !n)))) in
 (*  while (cast(cur, Float) < m) {
@@ -39,7 +39,7 @@ done;
 }  *)
 (* EIf *)
 if (List.length !cache < !cacheSize) then (
-!cache.push !n;
+cache := !n :: !cache;
 ) ;
 (*  return true  *)
 true
