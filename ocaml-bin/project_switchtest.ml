@@ -12,8 +12,7 @@ let _ = (match (!i) with
 | 2 -> (
 Printf.printf ("%i") (!i);
 ) 
-| _->()) in
-Printf.printf ("%i") (!i);
+| _->()) in ();
 ) 
 | 1 -> (
 Printf.printf ("%i\n") (!i);
@@ -21,14 +20,14 @@ Printf.printf ("%i\n") (!i);
 | 2 -> (
 Printf.printf ("%i\n") (!i);
 ) 
-| _->()) in
+| _->()) in ();
 let _ = (match (!i + 1) with
 | 2 -> (
 Printf.printf ("%i\n") (!i);
 ) 
 | _->((
 Printf.printf ("default:%i\n") (!i);
-))) in
+))) in ();
 let _ = (match ("A") with
 | "A" -> (
 Printf.printf ("%s") ("A");
@@ -39,7 +38,7 @@ Printf.printf ("%s") ("B");
 | "C" -> (
 Printf.printf ("%s") ("C");
 ) 
-| _->()) in
+| _->()) in ();
 Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
 
 

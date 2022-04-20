@@ -10,7 +10,6 @@ class SwitchTest {
 					case 2:
 						trace("%i", i);
 				}
-				trace("%i", i);
 			case 1:
 				trace("%i\n", i);
 			case 2:

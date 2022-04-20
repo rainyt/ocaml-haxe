@@ -25,7 +25,7 @@ class OCamlTools {
 				} else {
 					oc.write('| _->(${toString(edef)})');
 				}
-				oc.write(") in");
+				oc.write(") in ()");
 				return oc.code;
 			case EVars(vars):
 				var oc = new OCaml();
