@@ -3,6 +3,8 @@ exception STRING of string;;
 exception INT of int;;
 exception FLOAT of float;;
 
+type testdata = {mutable index:int;mutable name:string;}
+
 let isPrime n cache cacheSize = try let cur = ref 1 in
 List.iter (fun item -> ((
 if (!n mod item = 0) then (
