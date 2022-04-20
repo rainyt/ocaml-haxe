@@ -74,6 +74,7 @@ class OCamlRef {
 	 */
 	public static function retain(varExpr:Var):Void {
 		// 这里是推导实现
+		trace("定义：", varExpr.expr);
 		switch (varExpr.expr.expr) {
 			case EConst(c):
 				switch (c) {

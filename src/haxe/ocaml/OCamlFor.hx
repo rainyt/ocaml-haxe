@@ -15,7 +15,10 @@ class OCamlFor {
 									'for ${StringTools.replace(OCamlTools.toString(e1), "!", "")} = ${OCamlTools.toString(ee1)} to ${OCamlTools.toString(ee2)} - 1 do (${OCamlTools.toString(expr)}) done';
 							}
 						default:
-							// var type = OCamlType.toOCamlType(e1);
+							var type = OCamlType.toOCamlType(e2);
+							if (type == null) {
+								return "Array.iter (fun " + ExprTools.toString(e1) + " -> (" + OCamlTools.toString(expr) + ")) " + OCamlTools.toString(e2);
+							}
 							// return (type == LIST ? "List" : "Array") + ".iter (fun " + ExprTools.toString(e1) + " -> (" + OCamlTools.toString(expr) + ")) "
 							// 	+ OCamlTools.toString(e2);
 							return "List.iter (fun " + ExprTools.toString(e1) + " -> (" + OCamlTools.toString(expr) + ")) " + OCamlTools.toString(e2);

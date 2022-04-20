@@ -33,7 +33,7 @@ Printf.printf ("true\n");
 Printf.printf ("false\n");
 );
 Printf.printf ("%s\n") !arg.(0);
-List.iter (fun s -> ((
+Array.iter (fun s -> ((
 Printf.printf ("%s\n") (s);
 ))) !arg;
 for i3 = 0 to Array.length !arg - 1 do ((

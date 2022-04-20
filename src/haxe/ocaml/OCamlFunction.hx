@@ -15,7 +15,6 @@ class OCamlFunction {
 				var needRef = OCamlRef.ref.exists(ExprTools.toString(expr));
 				switch (item.expr) {
 					case EConst(c):
-						trace(item);
 						if (type == LIST)
 							code.push((needRef ? "" : "!") + ExprTools.toString(item));
 						else
