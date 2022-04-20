@@ -1,13 +1,13 @@
 package project;
 
 /**
- * 未完成
+ * 基础数组测试
  */
 class ArrayTest {
 	public static function toArray(list:Array<Int>):Int {
 		trace("test");
 		for (i in 0...list.length) {
-			trace(list[0]);
+			trace("%i", list[0]);
 			var f = list[0];
 			return f;
 		}
@@ -15,7 +15,7 @@ class ArrayTest {
 	}
 
 	/**
-	 * 这里应该不需要接引
+	 * 这里应该不需要解引
 	 * @param arr 
 	 * @return Int
 	 */
@@ -29,7 +29,7 @@ class ArrayTest {
 			trace("%i=%i\n", i, array[i]);
 		}
 		var data = call(array);
-		toArray(array);
+		trace("%i", toArray(array));
 		trace("%i", data);
 	}
 }

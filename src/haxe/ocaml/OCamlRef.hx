@@ -10,6 +10,11 @@ class OCamlRef {
 	 */
 	public static var ref:Map<String, OCamlClassType> = [];
 
+	/**
+	 * 当前解析的返回对象
+	 */
+	public static var returnType:OCamlClassType;
+
 	public static function retainType(name:String, type:ComplexType):Void {
 		if (type == null) {
 			throw "Type is null by " + Context.getLocalClass() + "." + name;
@@ -19,16 +24,12 @@ class OCamlRef {
 				switch (p.name) {
 					case "Int":
 						ref.set(name, INT);
-						return;
 					case "Float":
 						ref.set(name, FLOAT);
-						return;
 					case "String":
 						ref.set(name, STRING);
-						return;
 					case "Bool":
 						ref.set(name, BOOL);
-						return;
 					case "Array":
 						ref.set(name, LIST);
 					default:
@@ -51,21 +52,19 @@ class OCamlRef {
 				switch (p.name) {
 					case "Bool":
 						ref.set(name, BOOL);
-						return;
 					case "Int":
 						ref.set(name, INT);
-						return;
 					case "Float":
 						ref.set(name, FLOAT);
-						return;
 					case "String":
 						ref.set(name, STRING);
-						return;
+					default:
+						ref.set(name, DYNAMIC);
 				}
 			default:
 				throw "not support " + varFunc.ret;
 		}
-		ref.set(name, DYNAMIC);
+		returnType = ref.get(name);
 	}
 
 	/**
