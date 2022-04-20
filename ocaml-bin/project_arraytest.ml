@@ -3,16 +3,16 @@ exception STRING of string;;
 exception INT of int;;
 exception FLOAT of float;;
 
-type testdata = {mutable index:int;mutable name:string;}
-
 let toArray list = try (*  for (i in 0 ... list.length) {
 	trace(list[0]);
-	return list[0];
+	var f = list[0];
+	return f;
 }  *)
 (* For *)
 for i = 0 to List.length !list do ((
 Printf.printf (List.nth !list 0);
-ignore (raise (LIST ((List.nth !list 0))));
+let f = (List.nth !list 0) in
+ignore (raise (null (f)));
 )) done;
 (*  return list[0]  *)
 (List.nth !list 0)

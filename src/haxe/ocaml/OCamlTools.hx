@@ -11,6 +11,12 @@ using haxe.ocaml.OCamlTools;
 class OCamlTools {
 	public static function toString(expr:Expr):String {
 		switch (expr.expr) {
+			case EVars(vars):
+				var oc = new OCaml();
+				for (item in vars) {
+					oc.write("let " + item.name + " = " + toString(item.expr));
+				}
+				return oc.code;
 			case EBreak:
 				return "break := false";
 			case EUnop(op, postFix, e):
@@ -46,7 +52,12 @@ class OCamlTools {
 					switch (e.expr) {
 						case EBlock(exprs):
 							for (e in exprs) {
-								oc.write(toString(e) + ";\n");
+								switch (e.expr) {
+									case EVars(vars):
+										oc.write(toString(e) + " in\n");
+									default:
+										oc.write(toString(e) + ";\n");
+								}
 							}
 						default:
 					}
@@ -113,7 +124,12 @@ class OCamlTools {
 			case EBlock(exprs):
 				var code = ["("];
 				for (item in exprs) {
-					code.push(toString(item) + ";");
+					switch (item.expr) {
+						case EVars(vars):
+							code.push(toString(item) + " in");
+						default:
+							code.push(toString(item) + ";");
+					}
 				}
 				code.push(")");
 				return code.join("\n");

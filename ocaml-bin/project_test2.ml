@@ -38,7 +38,7 @@ done;
 	cache.push(n);
 }  *)
 (* EIf *)
-if (Array.length !cache < !cacheSize) then (
+if (List.length !cache < !cacheSize) then (
 !cache.push !n;
 ) ;
 (*  return true  *)
@@ -77,6 +77,6 @@ done;
 let endTime = ref (Sys.time ()) in
 (*  trace("Time taken: %f", endTime - beginTime)  *)
 Printf.printf "Time taken: %f" (!endTime -. !beginTime);
-with null ret -> ret;;
+Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
 
 
