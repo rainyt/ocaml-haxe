@@ -31,15 +31,11 @@ class Test2 {
 		var beginCount = 3.;
 		var endCount = 10000000.0;
 		var current = beginCount;
-		var beginTime = OCamlSys.time();
 		while (current < endCount) {
 			if (isPrime(cast(current, Int), cache, cast(cacheSize, Int))) {
 				count++;
 			}
 			current = current + 2.;
 		}
-		var endTime = OCamlSys.time();
-		trace("Time taken: %f", endTime - beginTime);
-		// trace("%fs", endTime);
 	}
 }

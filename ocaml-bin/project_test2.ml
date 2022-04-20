@@ -12,13 +12,13 @@ let cur = ref 1 in
 	cur = item;
 }  *)
 (* For *)
-Array.iter (fun item -> ((
+List.iter (fun item -> ((
 (* EIf *)
 if (!n mod item = 0) then (
 ignore (raise (BOOL (false)));
 ) ;
 cur := item;
-))) !cache;
+))) ;
 (*  var m = Math.floor(Math.sqrt(cast(n, Float)))  *)
 let m = ref (Stdlib.floor (Stdlib.sqrt ((float_of_int !n)))) in
 (*  while (cast(cur, Float) < m) {
@@ -58,8 +58,6 @@ let beginCount = ref 3. in
 let endCount = ref 10000000.0 in
 (*  var current = beginCount  *)
 let current = ref !beginCount in
-(*  var beginTime = OCamlSys.time()  *)
-let beginTime = ref (Sys.time ()) in
 (*  while (current < endCount) {
 	if (isPrime(cast(current, Int), cache, cast(cacheSize, Int))) {
 		count++;
@@ -73,10 +71,6 @@ count := !count +. 1.;
 ) ;
 current := !current +. 2.;
 done;
-(*  var endTime = OCamlSys.time()  *)
-let endTime = ref (Sys.time ()) in
-(*  trace("Time taken: %f", endTime - beginTime)  *)
-Printf.printf "Time taken: %f" (!endTime -. !beginTime);
 Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
 
 
