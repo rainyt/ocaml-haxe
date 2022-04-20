@@ -3,26 +3,37 @@ exception STRING of string;;
 exception INT of int;;
 exception FLOAT of float;;
 
-let toArray list = try (*  for (i in 0 ... list.length) {
+let toArray list = try (*  trace("test")  *)
+Printf.printf "test";
+(*  for (i in 0 ... list.length) {
 	trace(list[0]);
-	var f = list[0];
-	return f;
 }  *)
 (* For *)
 for i = 0 to List.length !list do ((
 Printf.printf (List.nth !list 0);
-let f = (List.nth !list 0) in
-ignore (raise (null (f)));
 )) done;
-(*  return list[0]  *)
-(List.nth !list 0)
+(*  return 0  *)
+0
+with INT ret -> ret;;
+
+let call arr = try (*  return arr[0]  *)
+(List.nth !arr 0)
 with INT ret -> ret;;
 
 let () = let start = Sys.time() in 
-(*  var array = []  *)
-let array = ref [] in
-(*  toArray(array)  *)
-toArray !array;
+(*  var array = [1, 2, 3, 4]  *)
+let array = ref [1;2;3;4] in
+(*  for (i in 0 ... array.length) {
+	trace("%i=%i\n", i, array[i]);
+}  *)
+(* For *)
+for i = 0 to List.length !array do ((
+Printf.printf "%i=%i\n" i (List.nth !array i);
+)) done;
+(*  var data = call(array)  *)
+let data = ref (call array) in
+(*  trace("%i", data)  *)
+Printf.printf "%i" !data;
 Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
 
 

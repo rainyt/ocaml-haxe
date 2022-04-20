@@ -12,7 +12,7 @@ let cur = ref 1 in
 	cur = item;
 }  *)
 (* For *)
-Array.iter (fun item -> ((
+List.iter (fun item -> ((
 (* EIf *)
 if (!n mod item = 0) then (
 ignore (raise (BOOL (false)));
@@ -39,7 +39,7 @@ done;
 }  *)
 (* EIf *)
 if (List.length !cache < !cacheSize) then (
-!cache.push !n;
+cache := !n :: cache;
 ) ;
 (*  return true  *)
 true
@@ -68,7 +68,7 @@ let beginTime = ref (Sys.time ()) in
 }  *)
 let break = ref true in while (!break && (!current < !endCount)) do
 (* EIf *)
-if (isPrime ((int_of_float !current)) !cache ((int_of_float !cacheSize))) then (
+if (isPrime ((int_of_float !current)) cache ((int_of_float !cacheSize))) then (
 count := !count +. 1.;
 ) ;
 current := !current +. 2.;

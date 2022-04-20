@@ -9,10 +9,15 @@ class OCamlFunction {
 		var code:Array<String> = [];
 		code.push(builtInLibrary(expr, params));
 		for (item in params) {
+			var type = OCamlType.toOCamlType(item);
 			switch (item.expr) {
+				case EConst(c):
+					if(type == LIST)
+						code.push(ExprTools.toString(item));
+					else 
+						code.push(OCamlTools.toString(item));
 				case ECast(e, t):
 					code.push('(${OCamlTools.toString(item)})');
-					// code.push('(ref (${OCamlTools.toString(item)}))');
 				case EBinop(op, e1, e2):
 					code.push('(${OCamlTools.toString(item)})');
 				case ECall(e, params):
@@ -21,7 +26,7 @@ class OCamlFunction {
 					code.push(OCamlTools.toString(item));
 			}
 		}
-		if(params.length == 0){
+		if (params.length == 0) {
 			code.push("()");
 		}
 		return code.join(" ");
