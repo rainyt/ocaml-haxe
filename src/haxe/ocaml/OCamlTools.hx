@@ -134,9 +134,9 @@ class OCamlTools {
 				code.push(")");
 				return code.join("\n");
 			case EIf(econd, eif, eelse):
-				return "(* EIf *)\n" + 'if (${toString(econd)}) then ${toString(eif)} ${eelse != null ? "else " + toString(eelse) : ""}';
+				return 'if (${toString(econd)}) then ${toString(eif)} ${eelse != null ? "else " + toString(eelse) : ""}';
 			case EFor(it, expr):
-				return "(* For *)\n" + OCamlFor.toString(it, expr);
+				return OCamlFor.toString(it, expr);
 			default:
 				return '(* OCamlTools.TODO ${expr.expr.getName()} *)';
 		}

@@ -15,11 +15,11 @@ typedef TestData = {
 class Test {
 	public static var data:String = "Data var";
 
-	public static function call1():Int {
-		var a = 1;
-		var b = 2;
+	public static function call1(param1:Int,param2:Float):Float {
+		var a = param1;
+		var b = param2;
 		trace("%s\n", data);
-		return 0 + a + b;
+		return 0. + a + b;
 	}
 
 	public static function call2():Float {
@@ -27,9 +27,9 @@ class Test {
 	}
 
 	static function main() {
-		var value2 = call1();
+		var value2 = call1(100,2000.);
 		var i = value2;
-		trace("%i\n", i);
+		trace("%f\n", i);
 		var i2 = 2;
 		i2 = 3;
 		var str = "String:";

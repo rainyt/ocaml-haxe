@@ -24,7 +24,7 @@ class OCamlMacro {
 		// 是否统计运行时长
 		var runtime:Bool = true;
 		// 是否带入HaxeCode原始代码
-		var haxecode:Bool = true;
+		var haxecode:Bool = false;
 		var oc = new OCaml();
 		for (item in array) {
 			switch (item.kind) {

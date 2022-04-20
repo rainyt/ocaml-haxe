@@ -1,7 +1,8 @@
 package project;
 
-import ocaml.OCamlSys;
-
+/**
+ * 性能测试程序
+ */
 class Test2 {
 	public static function isPrime(n:Int, cache:Array<Int>, cacheSize:Int):Bool {
 		var cur = 1;
