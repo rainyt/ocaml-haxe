@@ -13,7 +13,13 @@ import haxe.ocaml.OCaml;
 import haxe.macro.Compiler;
 
 class OCamlMacro {
-	macro public static function build():Array<Field> {
+	/**
+	 * [Description]
+	 * @param runtime 是否统计运行时长
+	 * @param haxecode = 是否带入HaxeCode原始代码 
+	 * @return Array<Field>
+	 */
+	macro public static function build(runtime:Bool = true, haxecode:Bool = true):Array<Field> {
 		// 需要清空所有ref
 		OCamlRef.ref.clear();
 		var array = Context.getBuildFields();
@@ -21,10 +27,8 @@ class OCamlMacro {
 			Compiler.addGlobalMetadata("project", '@:build(OCamlMacro.build())');
 			return array;
 		}
-		// 是否统计运行时长
-		var runtime:Bool = true;
-		// 是否带入HaxeCode原始代码
-		var haxecode:Bool = false;
+		//
+		//
 		var oc = new OCaml();
 		for (item in array) {
 			switch (item.kind) {
