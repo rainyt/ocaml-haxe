@@ -1,15 +1,15 @@
-import haxe.ocaml.OCamlBuild;
-import haxe.ocaml.OCamlRef;
-import haxe.ocaml.OCamlVar;
-import haxe.ocaml.OCamlTools;
-import haxe.ocaml.OCamlFunction;
+import haxe.macro.OCamlBuild;
+import haxe.macro.OCamlRef;
+import haxe.macro.OCamlVar;
+import haxe.macro.OCamlTools;
+import haxe.macro.OCamlFunction;
 import haxe.macro.TypeTools;
 import sys.io.File;
 import haxe.macro.ExprTools;
 import haxe.macro.MacroUtils;
 import haxe.macro.Context;
 import haxe.macro.Expr.Field;
-import haxe.ocaml.OCaml;
+import haxe.macro.OCaml;
 import haxe.macro.Compiler;
 
 class OCamlMacro {

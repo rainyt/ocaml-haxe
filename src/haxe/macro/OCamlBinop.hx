@@ -1,4 +1,4 @@
-package haxe.ocaml;
+package haxe.macro;
 
 import haxe.macro.Printer;
 import haxe.macro.ExprTools;

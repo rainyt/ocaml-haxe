@@ -1,12 +1,12 @@
-package haxe.ocaml;
+package haxe.macro;
 
-import haxe.ocaml.OCamlRef.OCamlClassType;
+import haxe.macro.OCamlRef.OCamlClassType;
 import haxe.macro.Context;
 import haxe.macro.Printer;
 import haxe.macro.ExprTools;
 import haxe.macro.Expr;
 
-using haxe.ocaml.OCamlTools;
+using haxe.macro.OCamlTools;
 
 class OCamlTools {
 	public static function toString(expr:Expr):String {

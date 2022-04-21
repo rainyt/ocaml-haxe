@@ -1,4 +1,4 @@
-package haxe.ocaml;
+package haxe.macro;
 
 class OCamlBuild {
 	/**

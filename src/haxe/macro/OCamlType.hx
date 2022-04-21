@@ -1,12 +1,12 @@
-package haxe.ocaml;
+package haxe.macro;
 
 import haxe.macro.TypeTools;
-import haxe.ocaml.OCamlRef.OCamlClassType;
+import haxe.macro.OCamlRef.OCamlClassType;
 import haxe.macro.Type;
 import haxe.macro.Context;
 import haxe.macro.ExprTools;
 import haxe.macro.Expr;
-import haxe.ocaml.OCaml;
+import haxe.macro.OCaml;
 
 class OCamlType {
 	/**
@@ -158,7 +158,11 @@ class OCamlType {
 			name = name.substr(0, name.indexOf("("));
 		switch (e.expr) {
 			case EField(e, field):
-				var type = try Context.getType(ExprTools.toString(e)) catch (_) null;
+				var type = try {
+					Context.getType(ExprTools.toString(e));
+				} catch (_) {
+					null;
+				};
 				if (type != null) {
 					switch (type) {
 						case TInst(t, params):
