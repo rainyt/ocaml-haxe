@@ -23,6 +23,21 @@ class OCamlField {
 					if (mate.length > 0) {
 						return ExprTools.getValue(mate[0].params[0]) + "." + field;
 					}
+					var mate = t.get().meta.get().filter(data -> data.name.indexOf(":build") != -1);
+					if (mate.length > 0) {
+						for (param in mate[0].params) {
+							switch (param.expr) {
+								case ECall(e, params):
+									// 类型引用
+									if (ExprTools.toString(e) == "OCamlMacro.build") {
+										var moudle = StringTools.replace(t.toString(), ".", "_").toLowerCase();
+										moudle = moudle.charAt(0).toUpperCase() + moudle.substr(1);
+										return '${moudle}.${field}';
+									}
+								default:
+							}
+						}
+					}
 				default:
 					return "(* TODO type " + type.getName() + " *)";
 			}
@@ -36,11 +51,12 @@ class OCamlField {
 		return toOCamlClassName(OCamlTools.toString(e)) + "." + field;
 	}
 
-	public static function toOCamlClassName(name:String):String{
-		switch(name){
+	public static function toOCamlClassName(name:String):String {
+		switch (name) {
 			case "Math":
 				return "Stdlib";
 		}
+
 		return name;
 	}
 }

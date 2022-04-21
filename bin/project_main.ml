@@ -13,7 +13,6 @@ Printf.printf ("%i") (!data);
 (*  if (true) { } else if (false) { } else { }  *)
 if (true) then (
 ) else if (false) then (
-
 ) else (
 );
 Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;

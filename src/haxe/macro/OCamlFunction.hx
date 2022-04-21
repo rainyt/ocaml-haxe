@@ -26,7 +26,11 @@ class OCamlFunction {
 					case ECall(e, params):
 						code.push('(${OCamlTools.toString(item)})');
 					default:
-						code.push(OCamlTools.toString(item));
+						var ret = OCamlTools.toString(item);
+						if (ret.indexOf("[") != -1) {
+							ret = '(ref ${ret})';
+						}
+						code.push(ret);
 				}
 			}
 		if (params.length == 0) {

@@ -3,6 +3,7 @@ package project;
 /**
  * 基础数组测试
  */
+@:build(OCamlMacro.build())
 class ArrayTest {
 	public static function toArray(list:Array<Int>):Int {
 		trace("test");

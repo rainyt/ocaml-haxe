@@ -1,5 +1,5 @@
 --class-path haxe_test
 --class-path src
---main project.ArrayTest
+--main project.Main
 --macro OCamlMacro.build()
 # --cmd eval `opam env` && ocaml test2.ml
