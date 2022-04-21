@@ -1,4 +1,7 @@
 (executable
+ (flags -w +42)
  (public_name ocaml_bin)
- (name main)
- (libraries ocaml_bin))
+ (name project_main)
+ (libraries ocaml_bin)
+ (modules project_arraytest project_main)
+)

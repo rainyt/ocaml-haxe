@@ -47,7 +47,7 @@ Printf.printf ("%i") (toArray array);
 (*  trace("%i", data)  *)
 Printf.printf ("%i") (!data);
 (*  array = array.concat([1, 2, 3])  *)
-array := !array.concat [1;2;3];
+(* array := !array.concat [1;2;3]; *)
 Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
 
 
