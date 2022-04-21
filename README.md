@@ -2,7 +2,7 @@
 这还不是一个完成的项目，仍然在积极开发中。This is not a completed project and is still under active development.
 
 ## OCaml-haxe
-这是一个使用Haxe编写OCaml的宏工具。
+这是一个使用Haxe编写OCaml的宏工具。This is a macro tool for writing Ocaml using haxe.
 
 ## 简单的测试
 ```shell
@@ -10,9 +10,22 @@ haxe build.hxml
 ```
 
 ## 项目结构
-- ocaml-bin 这是编译出来的项目ml内容。
-- test/project 这是编译ml的Haxe内容。
+- bin 这是编译出来的项目ml内容。
+- haxe_test/project 这是编译ml的Haxe内容。
 
 ## 路线图
-1. 陆续实现Haxe的所能支持的语法
-2. 由于是第一次对语言进行翻译，还不确定能完成到什么程度，后续再更新路线图
+陆续实现Haxe的所能支持的语法，由于是第一次对语言进行翻译，还不确定能完成到什么程度，后续再更新路线图。Realize the syntax that haxe can support one after another. Since it is the first time to translate the language, it is uncertain to what extent it can be completed. Update the roadmap later
+
+- [ ] 类型推导
+- [ ] 非静态方法调用实现
+- [x] extern OCaml API @:native 支持
+- [ ] 基础语法转译OCaml (Basic grammar translation OCaml)
+- [ ] 类型方法访问 (Type method access)
+- [x] 判断语句IF (If)
+- [x] Return与Break （Return and Break）
+- [x] Switch int float string
+- [ ] Switch Enum
+- [x] Array数组访问与创建
+- [x] For循环
+- [x] While循环
+- [x] 基础运算符:+ - * / += /= *= -= -- ++
