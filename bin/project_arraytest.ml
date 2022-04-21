@@ -24,8 +24,8 @@ let call arr = try (*  return arr[0]  *)
 with INT ret -> ret;;
 
 let () = let start = Sys.time() in 
-(*  var array = [1, 2, 3, 4]  *)
-let array = ref [1;2;3;4] in
+(*  var array = [1, 2, 3, 4, 5, 6]  *)
+let array = ref [1;2;3;4;5;6] in
 (*  array.push(5)  *)
 array := !array @ [5];
 (*  array.push(6)  *)
@@ -46,6 +46,8 @@ let data = ref (call array) in
 Printf.printf ("%i") (toArray array);
 (*  trace("%i", data)  *)
 Printf.printf ("%i") (!data);
+(*  array = array.concat([1, 2, 3])  *)
+array := !array.concat [1;2;3];
 Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
 
 

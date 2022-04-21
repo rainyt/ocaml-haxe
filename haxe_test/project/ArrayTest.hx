@@ -24,7 +24,7 @@ class ArrayTest {
 	}
 
 	static function main() {
-		var array = [1, 2, 3, 4];
+		var array = [1, 2, 3, 4, 5, 6];
 		array.push(5);
 		array.push(6);
 		array.push(7);
@@ -35,6 +35,8 @@ class ArrayTest {
 		var data = call(array);
 		trace("%i", toArray(array));
 		trace("%i", data);
-		
+
+		// todo 拼接，可以用@？
+		array = array.concat([1, 2, 3]);
 	}
 }

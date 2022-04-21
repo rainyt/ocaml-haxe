@@ -89,7 +89,7 @@ class OCamlMacro {
 		}
 		var className = Context.getLocalClass().toString();
 		className = StringTools.replace(className, ".", "_");
-		File.saveContent("ocaml-bin/" + className.toLowerCase() + ".ml", OCamlBuild.build(oc));
+		File.saveContent("bin/" + className.toLowerCase() + ".ml", OCamlBuild.build(oc));
 		return array;
 	}
 }

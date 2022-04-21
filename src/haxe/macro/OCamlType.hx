@@ -241,6 +241,8 @@ class OCamlType {
 				return toOCamlType(e);
 			case EArray(e1, e2):
 				return toOCamlType(e1);
+			case EArrayDecl(values):
+				return LIST;
 			default:
 				throw "额外的类型：" + name + ":" + e;
 		}
