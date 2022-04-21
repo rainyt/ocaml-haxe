@@ -19,13 +19,16 @@ haxe build.hxml
 - [ ] 类型推导
 - [ ] 非静态方法调用实现
 - [x] extern OCaml API @:native 支持
+    - OCaml的API仍然可以通过extern以及@:native来实现。OCaml's API can still be implemented through extern and @: native.
 - [ ] 基础语法转译OCaml (Basic grammar translation OCaml)
 - [ ] 类型方法访问 (Type method access)
 - [x] 判断语句IF (If)
 - [x] Return与Break （Return and Break）
+    - OCaml中不支持return/break，但在Haxe中仍然可以使用。Return / Break is not supported in Ocaml, but it can still be used in haxe.
 - [x] Switch int float string
 - [ ] Switch Enum
 - [x] Array数组访问与创建
 - [x] For循环
 - [x] While循环
 - [x] 基础运算符:+ - * / += /= *= -= -- ++
+    - 运算符有增强实现，会自动转换为String/Float，不受OCaml的类型限制。The operator has an enhanced implementation and will be automatically converted to string / float, which is not limited by the type of Ocaml.
