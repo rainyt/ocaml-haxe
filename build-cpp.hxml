@@ -1,0 +1,3 @@
+--class-path haxe_test
+--main project.Test2
+--cpp cpp_bin/cpp

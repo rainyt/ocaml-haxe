@@ -3,17 +3,8 @@ package project;
 class Main {
 	static function main() {
 		trace("%s", "Hello World");
-        // 翻译至：let data = ref (Project_arraytest.toArray (ref [1;2;3])) in
 		var data = ArrayTest.toArray([1, 2, 3]);
 		trace("%i", data);
-        if(true){
-            
-        }
-        else if(false){
-
-        }
-        else{
-
-        }
+		if (true) {} else if (false) {} else {}
 	}
 }
