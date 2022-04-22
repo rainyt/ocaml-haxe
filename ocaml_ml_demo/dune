@@ -1,0 +1,7 @@
+(executable
+ (flags -w +42)
+ (public_name ocaml_ml_demo)
+ (name xls_demo)
+ (libraries lwt.unix)
+ (modules xls_demo)
+)

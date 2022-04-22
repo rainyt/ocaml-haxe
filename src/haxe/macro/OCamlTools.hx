@@ -13,6 +13,12 @@ class OCamlTools {
 		if (expr == null)
 			return "";
 		switch (expr.expr) {
+			case EMeta(s, e):
+				if (s.name.indexOf(":") == -1) {
+					// 没有:的都是标签变量
+					return '~${s.name}:${toString(e)}';
+				}
+				return toString(e);
 			case ESwitch(e, cases, edef):
 				var oc = new OCaml();
 				oc.write('let _ = (match ${toString(e)} with\n');

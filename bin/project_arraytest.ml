@@ -3,8 +3,8 @@ exception STRING of string;;
 exception INT of int;;
 exception FLOAT of float;;
 
-let toArray list = try (*  trace("test")  *)
-Printf.printf ("test");
+let toArray list = try (*  trace("test=%i\n", ApiTest.labelFunc(@a 1, @b 2))  *)
+Printf.printf ("test=%i\n") (Api_test.labelFunc ~a:1 ~b:2);
 (*  for (i in 0 ... list.length) {
 	trace("%i", list[0]);
 	var f = list[0];
@@ -46,8 +46,6 @@ let data = ref (call array) in
 Printf.printf ("%i") (toArray array);
 (*  trace("%i", data)  *)
 Printf.printf ("%i") (!data);
-(*  array = array.concat([1, 2, 3])  *)
-array := !array.concat (ref [1;2;3]);
 Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
 
 

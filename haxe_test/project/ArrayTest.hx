@@ -1,11 +1,13 @@
 package project;
 
+import externapi.ApiTest;
+
 /**
  * 基础数组测试
  */
 class ArrayTest {
 	public static function toArray(list:Array<Int>):Int {
-		trace("test");
+		trace("test=%i\n", ApiTest.labelFunc(@a 1, @b 2));
 		for (i in 0...list.length) {
 			trace("%i", list[0]);
 			var f = list[0];
@@ -37,6 +39,6 @@ class ArrayTest {
 		trace("%i", data);
 
 		// todo 拼接，可以用@？
-		array = array.concat([1, 2, 3]);
+		// array = array.concat([1, 2, 3]);
 	}
 }

@@ -243,6 +243,8 @@ class OCamlType {
 				return toOCamlType(e1);
 			case EArrayDecl(values):
 				return LIST;
+			case EMeta(s, e):
+				return toOCamlType(e);
 			default:
 				throw "额外的类型：" + name + ":" + e;
 		}
