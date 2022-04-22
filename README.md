@@ -34,3 +34,4 @@ haxe build.hxml
     - 运算符有增强实现，会自动转换为String/Float，不受OCaml的类型限制。The operator has an enhanced implementation and will be automatically converted to string / float, which is not limited by the type of Ocaml.
 - [x] 标签变量
     - 可通过`@param 1`的表达式来处理，例如：`ApiTest.labelFunc(@a 1, @b 2)`
+    - 注意不能含:，否则会无法识别。
