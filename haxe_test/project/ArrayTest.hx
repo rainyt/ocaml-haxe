@@ -35,10 +35,10 @@ class ArrayTest {
 			trace("%i=%i\n", i, array[i]);
 		}
 		var data = call(array);
-		trace("%i", toArray(array));
-		trace("%i", data);
+		trace("%i\n", toArray(array));
+		trace("%i\n", data);
 
 		// todo 拼接，可以用@？
-		// array = array.concat([1, 2, 3]);
+		array = array.concat([1, 2, 3]);
 	}
 }

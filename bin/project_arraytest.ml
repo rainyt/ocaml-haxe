@@ -42,10 +42,12 @@ Printf.printf ("%i=%i\n") (i) (List.nth !array i);
 )) done;
 (*  var data = call(array)  *)
 let data = ref (call array) in
-(*  trace("%i", toArray(array))  *)
-Printf.printf ("%i") (toArray array);
-(*  trace("%i", data)  *)
-Printf.printf ("%i") (!data);
+(*  trace("%i\n", toArray(array))  *)
+Printf.printf ("%i\n") (toArray array);
+(*  trace("%i\n", data)  *)
+Printf.printf ("%i\n") (!data);
+(*  array = array.concat([1, 2, 3])  *)
+array := !array @ [1;2;3];
 Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
 
 

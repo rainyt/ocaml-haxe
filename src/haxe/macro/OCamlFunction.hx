@@ -42,8 +42,11 @@ class OCamlFunction {
 	public static function builtInLibrary(expr:Expr, params:Array<Expr>):String {
 		var code = switch (expr.expr) {
 			case EField(e, field):
-				if (field == "push") {
-					return '${ExprTools.toString(e)} := !${ExprTools.toString(e)} @ [${OCamlTools.toString(params[0])}]';
+				switch (field) {
+					case "push":
+						return '${ExprTools.toString(e)} := !${ExprTools.toString(e)} @ [${OCamlTools.toString(params[0])}]';
+					case "concat":
+						return '!${ExprTools.toString(e)} @ ${OCamlTools.toString(params[0])}';
 				}
 				OCamlTools.toString(expr);
 			default:
