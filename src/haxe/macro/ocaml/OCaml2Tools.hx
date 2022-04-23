@@ -61,8 +61,8 @@ class OCaml2Tools {
 		}
 		lastExpr = expr;
 		switch (expr.expr) {
-			// case TFor(v, e1, e2):
-			// return "FOROFOROFR";
+			case TBreak:
+				return "break := false";
 			case TIf(econd, eif, eelse):
 				return 'if (${toString(econd)}) then (\n${toString(eif)} ${eelse != null ? ")else(" + toString(eelse) + ")" : ")"}';
 			case TArray(e1, e2):

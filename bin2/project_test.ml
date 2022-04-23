@@ -40,6 +40,7 @@ let _g1 = ref (Array.length !arg) in
 let break = ref true in while (!break && (!_g < !_g1)) do
 let i3 = ref (!_g + 1) in
 (Printf.printf "%i\n" (!i3));
+break := false;
  done;
 ;
 let mlfile = ref ((Stdlib.open_in ("test2.ml"))) in

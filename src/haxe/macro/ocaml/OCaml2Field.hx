@@ -13,15 +13,17 @@ class OCaml2Field {
 		var isOCamlArrayCast:Bool = false;
 		switch (e.expr) {
 			case TLocal(v):
-				// trace(v.name, v.t, v.meta.get()[0]);
-				var meta = v.meta.get()[0];
-				if (meta != null && meta.name == "@:cast") {
-					var param = ExprTools.getValue(meta.params[0]);
-					if (param == "ocaml.OCamlArray")
-						isOCamlArrayCast = true;
+				if (OCaml2Type.toString(v.t) == "ocaml.OCamlArray") {
+					isOCamlArrayCast = true;
+				} else {
+					var meta = v.meta.get()[0];
+					if (meta != null && meta.name == "@:cast") {
+						var param = ExprTools.getValue(meta.params[0]);
+						if (param == "ocaml.OCamlArray")
+							isOCamlArrayCast = true;
+					}
 				}
 			default:
-				// throw "Not support FInstance expr:" + e.expr;
 				return false;
 		}
 		return isOCamlArrayCast;

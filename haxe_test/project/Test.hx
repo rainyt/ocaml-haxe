@@ -54,6 +54,7 @@ class Test {
 		// For循环0...array
 		for (i3 in 0...arg.length) {
 			trace(i3);
+			break;
 		}
 		var mlfile = Stdlib.openInput("test2.ml");
 		trace(Stdlib.inputLine(mlfile));
