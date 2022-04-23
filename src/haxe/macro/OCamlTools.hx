@@ -1,5 +1,6 @@
 package haxe.macro;
 
+#if macro
 import haxe.macro.OCamlRef.OCamlClassType;
 import haxe.macro.Context;
 import haxe.macro.Printer;
@@ -179,3 +180,4 @@ class OCamlTools {
 		return StringTools.replace(str, "!", "");
 	}
 }
+#end
