@@ -1,5 +1,6 @@
 package haxe.macro;
 
+import haxe.macro.Type.TypedExpr;
 import haxe.macro.Expr;
 
 class OCamlReturn {
@@ -10,4 +11,5 @@ class OCamlReturn {
 		var type = OCamlRef.getReturnType();
 		return 'ignore (raise (${type} (${OCamlTools.toString(e)})))';
 	}
+
 }

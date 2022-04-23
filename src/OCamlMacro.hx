@@ -11,6 +11,7 @@ import haxe.macro.Context;
 import haxe.macro.Expr.Field;
 import haxe.macro.OCaml;
 import haxe.macro.Compiler;
+import OCamlGlobalMacro;
 
 class OCamlMacro {
 	/**
@@ -19,13 +20,12 @@ class OCamlMacro {
 	 * @param haxecode = 是否带入HaxeCode原始代码 
 	 * @return Array<Field>
 	 */
-	macro public static function build(classPkg:String = "", runtime:Bool = true, haxecode:Bool = true):Array<Field> {
+	macro public static function build(runtime:Bool = true, haxecode:Bool = true):Array<Field> {
 		// 需要清空所有ref
 		// trace("清空", OCamlRef.ref);
 		// OCamlRef.ref.clear();
 		var array = Context.getBuildFields();
 		if (array == null) {
-			Compiler.addGlobalMetadata(classPkg, '@:build(OCamlMacro.build())');
 			return array;
 		}
 		var oc = new OCaml();

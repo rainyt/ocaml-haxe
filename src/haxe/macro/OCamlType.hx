@@ -60,6 +60,7 @@ class OCamlType {
 	 * @return String
 	 */
 	public static function toStringType(expr:Expr):String {
+		trace("expr=",Context.getLocalClass(), expr);
 		var c = OCamlRef.getType(ExprTools.toString(expr));
 		var paramName = OCamlTools.toString(expr);
 		switch (c) {

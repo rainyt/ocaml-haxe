@@ -6,6 +6,16 @@ package ocaml.lib;
 class File {
 	public static function getContent(path:String):String {
 		// sys.io.File.getContent
-		return path;
+		var input = Stdlib.openInput(path);
+		var context = Stdlib.inputLine(input);
+		context = Stdlib.inputLine(input);
+		// var line = "";
+		// while (true) {
+		// 	line += Stdlib.inputLine(input) + "\n";
+		// }
+		// var content = Stdlib.inputLine(input) + "\n";
+		// return content;
+		return context;
+
 	}
 }
