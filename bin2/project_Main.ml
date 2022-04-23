@@ -1,14 +1,14 @@
 exception STRING of string
 
 let afunc s = try 
-ignore (raise (STRING (s)));s;
+ignore (raise (STRING (!s)));!s;
 with STRING ret -> ret;;
 
-let () = let a = "test" in
-let b = "README.md" in
-let content = (Ocaml_lib_file.getContent b) in
-let input = (Stdlib.open_in b) in
-(Printf.printf "%s%s\n" "太棒了：" (afunc (Stdlib.input_line input)));
-(Printf.printf "%s%s\n" "Goods!" content);
+let () = let a = ref "test" in
+let b = ref "README.md" in
+let content = ref (Ocaml_lib_file.getContent (ref !b)) in
+let input = ref (Stdlib.open_in !b) in
+(Printf.printf "%s%s\n" "HelloWorld:" (afunc (ref (Stdlib.input_line !input))));
+(Printf.printf "%s%s\n" "Goods!" !content);
 ;;
 

@@ -18,8 +18,9 @@ class OCaml2Tools {
 	 * @return String
 	 */
 	public static function toString(expr:TypedExpr):String {
-		// trace(expr);
 		switch (expr.expr) {
+			case TBinop(op, e1, e2):
+				return OCaml2Binop.toString(op, e1, e2);
 			case TArrayDecl(el):
 				var oc = new OCaml();
 				oc.write("[");
@@ -71,9 +72,10 @@ class OCaml2Tools {
 						throw "Not support TConst:" + c;
 				}
 			case TVar(v, expr):
-				return 'let ${v.name} = ${toString(expr)} in';
+				// OCaml2Ref.retianType(v.name, v.t);
+				return 'let ${v.name} = ref ${toString(expr)} in';
 			case TLocal(v):
-				return v.name;
+				return "!" + v.name;
 			case TCall(e, el):
 				return '(${OCaml2Function.toString(e, el)})';
 			case TReturn(e):
@@ -114,6 +116,30 @@ class OCaml2Tools {
 				// throw "Not support " + expr.expr.getName();
 		}
 		return null;
+	}
+
+	/**
+	 * 是否为Haxe转OCaml文件
+	 * @param expr 
+	 * @return Bool
+	 */
+	public static function isHaxe2OCamlType(expr:TypedExpr):Bool {
+		switch (expr.expr) {
+			case TField(e, fa):
+				// trace(e.t);
+				switch (e.t) {
+					case TType(t, params):
+						var type = Context.getType(t.get().module);
+						switch (type) {
+							case TInst(t, params):
+								return OCamlGlobalMacro.mlCompileEReg.match(t.get().module);
+							default:
+						}
+					default:
+				}
+			default:
+		}
+		return false;
 	}
 }
 #end

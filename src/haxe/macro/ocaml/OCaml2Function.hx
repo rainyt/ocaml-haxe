@@ -2,8 +2,9 @@ package haxe.macro.ocaml;
 
 import haxe.macro.Type.TypedExpr;
 
-#if macro
+using haxe.macro.ocaml.OCaml2Utils;
 
+#if macro
 class OCaml2Function {
 	public static function toString(expr:TypedExpr, array:Array<TypedExpr>):String {
 		var args:Array<String> = [];
@@ -44,9 +45,14 @@ class OCaml2Function {
 				for (index => value in array) {
 					args.push(OCaml2Tools.toString(value));
 				}
+				var needRef = OCaml2Tools.isHaxe2OCamlType(expr);
+				if (needRef) {
+					for (index => value in args) {
+						args[index] = '(ref ${value})';
+					}
+				}
 				return funName + " " + args.join(" ");
 		}
 	}
 }
-
 #end

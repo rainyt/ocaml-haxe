@@ -1,3 +1,4 @@
+import haxe.macro.Compiler;
 import haxe.macro.ocaml.OCaml2Type;
 import haxe.macro.OCaml;
 import haxe.macro.ocaml.OCaml2Tools;
@@ -9,16 +10,18 @@ import haxe.macro.Context;
 
 #if macro
 class OCamlGlobalMacro {
+	public static var mlCompileEReg:EReg;
+
 	macro public static function build(classPkg:String):Array<Field> {
 		trace("compile OCaml code...");
 		var array = classPkg.split(";");
 		trace("compile pkgs:", array);
-		var r = new EReg(array.join("|"), "g");
+		mlCompileEReg = new EReg(array.join("|"), "g");
 		Context.onAfterTyping((types) -> {
 			for (t in types) {
 				switch (t) {
 					case TClassDecl(t):
-						if (r.match(t.toString())) {
+						if (mlCompileEReg.match(t.toString())) {
 							var ocaml = new OCaml();
 							var type = t.get();
 							OCaml2Tools.currentType = type;

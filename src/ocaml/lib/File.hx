@@ -8,7 +8,7 @@ class File {
 		// sys.io.File.getContent
 		var input = Stdlib.openInput(path);
 		var context = Stdlib.inputLine(input);
-		context = Stdlib.inputLine(input);
+		context += Stdlib.inputLine(input);
 		// var line = "";
 		// while (true) {
 		// 	line += Stdlib.inputLine(input) + "\n";
