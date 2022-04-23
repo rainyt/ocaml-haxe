@@ -139,7 +139,8 @@ class OCamlTools {
 					case CIdent(s):
 						// 存在不需要!的情况，如for(s in array)
 						var name = ExprTools.toString(expr);
-						return (OCamlRef.ref.exists(name) ? "!" : "") + name;
+						// trace("查找：", name, Context.getLocalClass().toString(), OCamlRef.exists(name));
+						return (OCamlRef.exists(name) ? "!" : "") + name;
 					default:
 						return ExprTools.toString(expr);
 				}

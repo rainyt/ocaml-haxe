@@ -3,5 +3,5 @@
  (public_name ocaml_bin)
  (name project_main)
  (libraries ocaml_bin)
- (modules api_test project_arraytest project_main hxlist )
+ (modules api_test project_arraytest project_main hxlist ocaml_lib_file)
 )

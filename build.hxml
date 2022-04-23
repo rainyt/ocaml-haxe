@@ -1,5 +1,6 @@
 --class-path haxe_test
 --class-path src
 --main project.Main
---macro OCamlMacro.build()
+--macro OCamlMacro.build("project")
+--macro OCamlMacro.build("ocaml.lib")
 # --cmd eval `opam env` && ocaml test2.ml

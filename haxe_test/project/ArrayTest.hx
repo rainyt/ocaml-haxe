@@ -36,9 +36,10 @@ class ArrayTest {
 		}
 		var data = call(array);
 		trace("%i\n", toArray(array));
-		trace("%i\n", data);
+		trace("%i\n", data);	
 
 		// todo 拼接，可以用@？
 		array = array.concat([1, 2, 3]);
+
 	}
 }

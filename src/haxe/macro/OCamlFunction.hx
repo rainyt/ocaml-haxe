@@ -12,13 +12,17 @@ class OCamlFunction {
 		if (funcCode.indexOf("@") == -1)
 			for (item in params) {
 				var type = OCamlType.toOCamlType(item);
-				var needRef = OCamlRef.ref.exists(ExprTools.toString(expr));
+				// trace("OCamlRef.ref", ExprTools.toString(expr),item, OCamlRef.ref);
+				// trace("判断是否needRef", expr);
+				// var needRef = OCamlRef.exists(ExprTools.toString(expr));
+				var needRef = OCamlRef.needRef(expr, item);
 				switch (item.expr) {
 					case EConst(c):
 						if (type == LIST)
 							code.push((needRef ? "" : "!") + ExprTools.toString(item));
 						else
 							code.push('(${needRef ? "ref " : ""}${OCamlTools.toString(item)})');
+					// code.push('(${needRef ? "ref " : ""}${OCamlTools.toString(item)})');
 					case ECast(e, t):
 						code.push('(${needRef ? "ref " : ""}${OCamlTools.toString(item)})');
 					case EBinop(op, e1, e2):

@@ -7,7 +7,7 @@ class OCamlReturn {
 
 	public static function toString(e:Expr):String {
 		// var type = OCamlType.toOCamlType(e);
-		var type = OCamlRef.returnType;
+		var type = OCamlRef.getReturnType();
 		return 'ignore (raise (${type} (${OCamlTools.toString(e)})))';
 	}
 }

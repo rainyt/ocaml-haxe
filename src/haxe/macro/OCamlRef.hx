@@ -1,22 +1,110 @@
 package haxe.macro;
 
+import haxe.macro.Type.ClassType;
 import haxe.macro.Context;
 import haxe.macro.ExprTools;
 import haxe.macro.Expr;
 import haxe.macro.TypeTools;
 
+/**
+ * 记录每个类的定义引用关系
+ */
 class OCamlRef {
 	/**
 	 * 引用关系
 	 */
-	public static var ref:Map<String, OCamlClassType> = [];
+	public static var ocamlClassRef:Map<String, OCamlClassRef> = [];
+
+	public static function getRefClass():OCamlClassRef {
+		var type = Context.getLocalClass().toString();
+		if (!ocamlClassRef.exists(type)) {
+			ocamlClassRef.set(type, new OCamlClassRef());
+		}
+		return ocamlClassRef.get(type);
+	}
+
+	public static function getReturnType():OCamlClassType {
+		return getRefClass().returnType;
+	}
+
+	public static function needRef(expr:Expr, item:Expr):Bool {
+		switch (expr.expr) {
+			case EField(e, field):
+				// EField
+				var type = ExprTools.toString(e);
+				var c:Type = Context.getType(type);
+				switch (c) {
+					case TInst(t, params):
+						// 访问类型
+						var c = t.get();
+						for (meta in c.meta.get()) {
+							if (meta.name == ":build") {
+								if (ExprTools.toString(meta.params[0]).indexOf("OCamlMacro.build") != -1) {
+									return true;
+								}
+							}
+						}
+					default:
+				}
+				return false;
+			default:
+				return exists(ExprTools.toString(expr));
+		}
+	}
+
+	public static function exists(name:String):Bool {
+		return getRefClass().ref.exists(name);
+	}
+
+	public static function getType(name:String):OCamlClassType {
+		return getRefClass().ref.get(name);
+	}
+
+	public static function isType(e:Expr, c:OCamlClassType):Bool {
+		return getRefClass().isType(e, c);
+	}
+
+	public static function retain(item:Var):Void {
+		getRefClass().retain(item);
+	}
+
+	public static function retainName(name:String, type:OCamlClassType):Void {
+		getRefClass().ref.set(name, type);
+	}
+
+	public static function retainType(name:String, type:ComplexType):Void {
+		getRefClass().retainType(name, type);
+	}
+
+	public static function retainFunc(name:String, func:Function):Void {
+		getRefClass().retainFunc(name, func);
+	}
+}
+
+enum OCamlClassType {
+	INT;
+	FLOAT;
+	BOOL;
+	STRING;
+	LIST;
+	ARRAY;
+	DYNAMIC;
+}
+
+/**
+ * 类型引用关系
+ */
+class OCamlClassRef {
+	public var ref:Map<String, OCamlClassType> = [];
+
+	public function new() {}
 
 	/**
 	 * 当前解析的返回对象
 	 */
-	public static var returnType:OCamlClassType;
+	public var returnType:OCamlClassType;
 
-	public static function retainType(name:String, type:ComplexType):Void {
+	public function retainType(name:String, type:ComplexType):Void {
 		if (type == null) {
 			throw "Type is null by " + Context.getLocalClass() + "." + name;
 		}
@@ -45,7 +133,7 @@ class OCamlRef {
 	 * 保存引用方法
 	 * @param varFunc 
 	 */
-	public static function retainFunc(name:String, varFunc:Function):Void {
+	public function retainFunc(name:String, varFunc:Function):Void {
 		if (varFunc.ret == null)
 			throw "OCaml function need return value.";
 		switch (varFunc.ret) {
@@ -72,9 +160,9 @@ class OCamlRef {
 	 * 保持引用变量
 	 * @param expr 
 	 */
-	public static function retain(varExpr:Var):Void {
+	public function retain(varExpr:Var):Void {
 		// 这里是推导实现
-		// trace("定义：", varExpr.expr);
+		// trace("定义：", varExpr.name, varExpr.expr);
 		switch (varExpr.expr.expr) {
 			case EConst(c):
 				switch (c) {
@@ -84,6 +172,7 @@ class OCamlRef {
 						ref.set(varExpr.name, FLOAT);
 					case CString(s, kind):
 						ref.set(varExpr.name, STRING);
+					// trace("定义成功：", varExpr.name, ref);
 					case CIdent(s):
 						// throw s;
 						ref.set(varExpr.name, ref.get(s));
@@ -117,14 +206,14 @@ class OCamlRef {
 	 * 释放引用
 	 * @param expr 
 	 */
-	public static function release(varExpr:Var):Void {}
+	public function release(varExpr:Var):Void {}
 
 	/**
 	 * 是否为某个类型，这里跟类型推导有关系
 	 * @param name 
 	 * @return Bool
 	 */
-	public static function isType(e:Expr, type:OCamlClassType):Bool {
+	public function isType(e:Expr, type:OCamlClassType):Bool {
 		var name = ExprTools.toString(e);
 		if (name.indexOf("(") != -1)
 			name = name.substr(0, name.indexOf("("));
@@ -135,14 +224,4 @@ class OCamlRef {
 			return ref.get(name) == type;
 		return false;
 	}
-}
-
-enum OCamlClassType {
-	INT;
-	FLOAT;
-	BOOL;
-	STRING;
-	LIST;
-	ARRAY;
-	DYNAMIC;
 }

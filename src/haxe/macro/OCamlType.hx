@@ -20,7 +20,7 @@ class OCamlType {
 	 * @return String
 	 */
 	public static function toFloatType(expr:Expr):String {
-		var c = OCamlRef.ref.get(ExprTools.toString(expr));
+		var c = OCamlRef.getType(ExprTools.toString(expr));
 		var paramName = OCamlTools.toString(expr);
 		switch (c) {
 			case INT:
@@ -40,7 +40,7 @@ class OCamlType {
 	 * @return String
 	 */
 	public static function toIntType(expr:Expr):String {
-		var c = OCamlRef.ref.get(ExprTools.toString(expr));
+		var c = OCamlRef.getType(ExprTools.toString(expr));
 		var paramName = OCamlTools.toString(expr);
 		switch (c) {
 			case FLOAT:
@@ -60,7 +60,7 @@ class OCamlType {
 	 * @return String
 	 */
 	public static function toStringType(expr:Expr):String {
-		var c = OCamlRef.ref.get(ExprTools.toString(expr));
+		var c = OCamlRef.getType(ExprTools.toString(expr));
 		var paramName = OCamlTools.toString(expr);
 		switch (c) {
 			case INT:
@@ -248,8 +248,8 @@ class OCamlType {
 			default:
 				throw "额外的类型：" + name + ":" + e;
 		}
-		if (OCamlRef.ref.exists(name))
-			return OCamlRef.ref.get(name);
+		if (OCamlRef.exists(name))
+			return OCamlRef.getType(name);
 		return null;
 	}
 }

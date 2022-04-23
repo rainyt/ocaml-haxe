@@ -19,23 +19,22 @@ class OCamlMacro {
 	 * @param haxecode = 是否带入HaxeCode原始代码 
 	 * @return Array<Field>
 	 */
-	macro public static function build(runtime:Bool = true, haxecode:Bool = true):Array<Field> {
+	macro public static function build(classPkg:String = "", runtime:Bool = true, haxecode:Bool = true):Array<Field> {
 		// 需要清空所有ref
-		OCamlRef.ref.clear();
+		// trace("清空", OCamlRef.ref);
+		// OCamlRef.ref.clear();
 		var array = Context.getBuildFields();
 		if (array == null) {
-			Compiler.addGlobalMetadata("project", '@:build(OCamlMacro.build())');
+			Compiler.addGlobalMetadata(classPkg, '@:build(OCamlMacro.build())');
 			return array;
 		}
-		//
-		//
 		var oc = new OCaml();
 		for (item in array) {
 			switch (item.kind) {
 				case FVar(t, e):
 					oc.write('let ${item.name} = ref ' + OCamlTools.toString(e) + ";;\n\n");
 					// todo 这个推导不正确
-					OCamlRef.ref.set(item.name, DYNAMIC);
+					OCamlRef.retainName(item.name, DYNAMIC);
 				case FFun(f):
 					if (item.name == "main") {
 						oc.write("let () = ");
@@ -55,7 +54,7 @@ class OCamlMacro {
 						// 记录
 						OCamlRef.retainFunc(item.name, f);
 					}
-					var funcType = OCamlRef.ref.get(item.name);
+					var funcType = OCamlRef.getType(item.name);
 					if (funcType != DYNAMIC && item.name != "main")
 						oc.write("try ");
 					ExprTools.iter(f.expr, (e) -> {
@@ -79,7 +78,7 @@ class OCamlMacro {
 					if (item.name != "main") {
 						// trace("funcType = ", funcType);
 						if (funcType != DYNAMIC)
-							oc.write('with ${OCamlRef.ref.get(item.name)} ret -> ret');
+							oc.write('with ${OCamlRef.getType(item.name)} ret -> ret');
 					} else if (runtime) {
 						oc.write("Printf.printf \"\\nRuning time:%f\\n\" (Sys.time() -. start)");
 					}
