@@ -2,6 +2,7 @@ package project;
 
 import ocaml.Stdlib;
 import ocaml.lib.File;
+import project.MathTest;
 
 class Main {
 	public static function afunc(s:String):String {

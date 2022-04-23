@@ -38,6 +38,12 @@ class OCaml2Function {
 					switch (value) {
 						case "String":
 							types[index] = "%s";
+						case "Float":
+							types[index] = "%f";
+						case "Int":
+							types[index] = "%i";
+						default:
+							throw "Not support trace type:" + value;
 					}
 				}
 				return 'Printf.printf "${types.join("")}\\n" ${args.join(" ")}';

@@ -18,7 +18,7 @@ haxe build.hxml
 
 所有实现正在重构：
 
-- [ ] 类型推导
+- [x] 类型推导（重构后不再需要判断，使用Haxe自身的AST解析）
 - [ ] 非静态方法调用实现
 - [x] extern OCaml API @:native 支持
     - OCaml的API仍然可以通过extern以及@:native来实现。OCaml's API can still be implemented through extern and @: native.
@@ -32,7 +32,7 @@ haxe build.hxml
 - [ ] Array数组访问与创建
 - [ ] For循环
 - [ ] While循环
-- [ ] 基础运算符:+ - * / += /= *= -= -- ++
+- [x] 基础运算符:+ - * / += /= *= -= -- ++
     - 运算符有增强实现，会自动转换为String/Float，不受OCaml的类型限制。The operator has an enhanced implementation and will be automatically converted to string / float, which is not limited by the type of Ocaml.
 - [ ] 标签变量
     - 可通过`@param 1`的表达式来处理，例如：`ApiTest.labelFunc(@a 1, @b 2)`

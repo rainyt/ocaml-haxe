@@ -2,6 +2,8 @@ package haxe.macro.ocaml;
 
 import haxe.macro.Type;
 
+using haxe.macro.ocaml.OCaml2Utils;
+
 #if macro
 /**
  * 使用OCamlGlobalMacro实现的第二轮解析工具
@@ -12,6 +14,36 @@ class OCaml2Tools {
 	 */
 	public static var currentType:ClassType;
 
+	public static function toStringByType(expr:TypedExpr, type:String):String {
+		var selfType = OCaml2Type.toString(expr.t);
+		switch (type) {
+			case "String":
+				switch (selfType) {
+					case "Float":
+						return '(string_of_float ${toString(expr)})';
+					case "Int":
+						return '(string_of_int ${toString(expr)})';
+				}
+			case "Float":
+				switch (selfType) {
+					case "String":
+						return '(float_of_string ${toString(expr)})';
+					case "Int":
+						return '(float_of_int ${toString(expr)})';
+				}
+			case "Int":
+				switch (selfType) {
+					case "Float":
+						return '(int_of_float ${toString(expr)})';
+					case "String":
+						return '(int_of_string ${toString(expr)})';
+				}
+			default:
+				throw "Not support toStringByType type:" + type;
+		}
+		return toString(expr);
+	}
+
 	/**
 	 * 编译为OCaml语法
 	 * @param expr 
@@ -19,6 +51,46 @@ class OCaml2Tools {
 	 */
 	public static function toString(expr:TypedExpr):String {
 		switch (expr.expr) {
+			case TUnop(op, postFix, e):
+				var type = OCaml2Type.toString(e.t);
+				switch (op) {
+					case OpDecrement:
+						switch (type) {
+							case "Int":
+								return '${toString(e).removeDeCitation()} := ${toString(e)} - 1';
+							case "Float":
+								return '${toString(e).removeDeCitation()} := ${toString(e)} -. 1.';
+							default:
+								throw "Not support op " + op;
+						}
+					case OpIncrement:
+						// ++
+						switch (type) {
+							case "Int":
+								return '${toString(e).removeDeCitation()} := ${toString(e)} + 1';
+							case "Float":
+								return '${toString(e).removeDeCitation()} := ${toString(e)} +. 1.';
+							default:
+								throw "Not support op " + op;
+						}
+					default:
+						throw "未处理的运算符：" + op;
+				}
+			case TParenthesis(e):
+				return toString(e);
+			case TWhile(econd, e, normalWhile):
+				var oc:OCaml = new OCaml();
+				oc.write('let break = ref true in while (!break && (${toString(econd)})) do\n');
+				if (e.expr.getName() == "TBlock") {
+					switch (e.expr) {
+						case TBlock(exprs):
+							oc.write(toString(e));
+						default:
+					}
+				} else
+					oc.write(toString(e));
+				oc.write(";\ndone");
+				return oc.code;
 			case TBinop(op, e1, e2):
 				return OCaml2Binop.toString(op, e1, e2);
 			case TArrayDecl(el):
@@ -61,6 +133,8 @@ class OCaml2Tools {
 			// return toString(e) + "." + fa.getParameters()[1];
 			case TConst(c):
 				switch (c) {
+					case TBool(b):
+						return Std.string(b);
 					case TInt(i):
 						return Std.string(i);
 					case TString(s):
@@ -68,12 +142,14 @@ class OCaml2Tools {
 						s = StringTools.replace(s, "\r", "\\r");
 						s = StringTools.replace(s, "\t", "\\t");
 						return '"${s}"';
+					case TFloat(s):
+						return Std.string(s);
 					default:
 						throw "Not support TConst:" + c;
 				}
 			case TVar(v, expr):
 				// OCaml2Ref.retianType(v.name, v.t);
-				return 'let ${v.name} = ref ${toString(expr)} in';
+				return 'let ${v.name} = ref (${toString(expr)}) in';
 			case TLocal(v):
 				return "!" + v.name;
 			case TCall(e, el):
@@ -84,7 +160,7 @@ class OCaml2Tools {
 				var oc:OCaml = new OCaml();
 				for (item in el) {
 					var code = toString(item);
-					if (code == "")
+					if (code == null)
 						continue;
 					oc.write(code);
 					if (code.length - 2 != code.lastIndexOf("*)") && code.length - 2 != code.lastIndexOf("in")) {
