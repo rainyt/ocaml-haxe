@@ -14,6 +14,11 @@ class OCaml2Tools {
 	 */
 	public static var currentType:ClassType;
 
+	/**
+	 * 上一个lastExpr
+	 */
+	public static var lastExpr:TypedExpr;
+
 	public static function toStringByType(expr:TypedExpr, type:String):String {
 		var selfType = OCaml2Type.toString(expr.t);
 		switch (type) {
@@ -47,13 +52,17 @@ class OCaml2Tools {
 	/**
 	 * 编译为OCaml语法
 	 * @param expr 
+	 * @param ref 是否ref中
 	 * @return String
 	 */
-	public static function toString(expr:TypedExpr):String {
+	public static function toString(expr:TypedExpr, ref:Bool = false):String {
 		if (expr == null) {
 			return "(* expr is null? *)";
 		}
+		lastExpr = expr;
 		switch (expr.expr) {
+			// case TFor(v, e1, e2):
+			// return "FOROFOROFR";
 			case TCast(e, m):
 				// todo 这里的m会不存在
 				return toString(e);
@@ -62,14 +71,17 @@ class OCaml2Tools {
 			case TArray(e1, e2):
 				return '${toString(e1)}.(${toString(e2)})';
 			case TUnop(op, postFix, e):
+				var oc = new OCaml();
+				if (!ref)
+					oc.write('${toString(e).removeDeCitation()} := ');
 				var type = OCaml2Type.toString(e.t);
 				switch (op) {
 					case OpDecrement:
 						switch (type) {
 							case "Int":
-								return '${toString(e).removeDeCitation()} := ${toString(e)} - 1';
+								oc.write('${toString(e)} - 1');
 							case "Float":
-								return '${toString(e).removeDeCitation()} := ${toString(e)} -. 1.';
+								oc.write('${toString(e)} -. 1');
 							default:
 								throw "Not support op " + op;
 						}
@@ -77,15 +89,16 @@ class OCaml2Tools {
 						// ++
 						switch (type) {
 							case "Int":
-								return '${toString(e).removeDeCitation()} := ${toString(e)} + 1';
+								oc.write('${toString(e)} + 1');
 							case "Float":
-								return '${toString(e).removeDeCitation()} := ${toString(e)} +. 1.';
+								oc.write('${toString(e)} +. 1');
 							default:
 								throw "Not support op " + op;
 						}
 					default:
 						throw "未处理的运算符：" + op;
 				}
+				return oc.code;
 			case TParenthesis(e):
 				return toString(e);
 			case TWhile(econd, e, normalWhile):
@@ -99,7 +112,7 @@ class OCaml2Tools {
 					}
 				} else
 					oc.write(toString(e));
-				oc.write(";\ndone");
+				oc.write("done");
 				return oc.code;
 			case TBinop(op, e1, e2):
 				return OCaml2Binop.toString(op, e1, e2);
@@ -156,7 +169,8 @@ class OCaml2Tools {
 				}
 			case TVar(v, expr):
 				// OCaml2Ref.retianType(v.name, v.t);
-				return 'let ${v.name} = ref (${toString(expr)}) in';
+				var name = v.name;
+				return 'let ${name} = ref (${toString(expr, true)}) in';
 			case TLocal(v):
 				return "!" + v.name;
 			case TCall(e, el):

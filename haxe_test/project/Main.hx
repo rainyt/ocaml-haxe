@@ -1,5 +1,6 @@
 package project;
 
+import ocaml.OCamlSys;
 import ocaml.Stdlib;
 import ocaml.lib.File;
 import project.MathTest;
@@ -18,5 +19,10 @@ class Main {
 		var input = Stdlib.openInput(b);
 		trace("HelloWorld:", afunc(Stdlib.inputLine(input)));
 		trace("Goods!", content);
+
+		var array = OCamlSys.args;
+		for (item in array) {
+			trace(item);
+		}
 	}
 }

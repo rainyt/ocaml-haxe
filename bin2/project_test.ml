@@ -29,19 +29,17 @@ if (!i2 = 3 && !i2 < 2) then
 (Printf.printf "%s%s\n" "%s\n" !arg.(0));
 let _g = ref (0) in
 let _g1 = ref (!arg) in
-let break = ref true in while (!break && (!_g < List.length !_g1)) do
+let break = ref true in while (!break && (!_g < Array.length !_g1)) do
 let s = ref (!_g1.(!_g)) in
 _g := !_g + 1;
 (Printf.printf "%s%s\n" "%s\n" !s);
-;
 done;
 ;
 let _g = ref (0) in
-let _g1 = ref (List.length !arg) in
+let _g1 = ref (Array.length !arg) in
 let break = ref true in while (!break && (!_g < !_g1)) do
-let i3 = ref (_g := !_g + 1) in
+let i3 = ref (!_g + 1) in
 (Printf.printf "%s%i\n" "%i\n" !i3);
-;
 done;
 ;
 let mlfile = ref ((Stdlib.open_in "test2.ml")) in
@@ -62,7 +60,7 @@ let floatValue2 = ref (2.3) in
 let array = ref (["123"]) in
 (Printf.printf "%s%s\n" "%s" !array.(0));
 (Printf.printf "%s{dynamic}\n" "%s" (List.nth !array 0));
-let listLength = ref (List.length !array) in
+let listLength = ref (Array.length !array) in
 (Printf.printf "%s%i\n" "%i" !listLength);
 ;;
 

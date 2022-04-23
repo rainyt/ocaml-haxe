@@ -17,13 +17,12 @@ class OCaml2Field {
 					}
 				}
 			case FInstance(c, params, cf):
-				trace(c.get().module);
 				switch (c.toString()) {
 					case "Array":
 						switch (cf.toString()) {
 							case "length":
 								// todo 需要判断是List还是Array
-								return 'List.length ${OCaml2Tools.toString(e)}';
+								return 'Array.length ${OCaml2Tools.toString(e)}';
 						}
 				}
 				return "FInstance";
