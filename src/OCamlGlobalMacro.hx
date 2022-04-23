@@ -26,6 +26,7 @@ class OCamlGlobalMacro {
 							var type = t.get();
 							OCaml2Tools.currentType = type;
 							ocaml.write("exception STRING of string\n");
+							ocaml.write("exception FLOAT of float\n");
 							ocaml.write("\n");
 							for (item in type.statics.get()) {
 								parserField(ocaml, item);
@@ -44,8 +45,9 @@ class OCamlGlobalMacro {
 		var haxecode = true;
 		switch (item.kind) {
 			case FVar(read, write):
-			// 定义
-
+				// 定义
+				oc.write("let " + item.name + ' = ref (${OCaml2Tools.toString(item.expr())})');
+				oc.write(";;\n\n");
 			case FMethod(k):
 				// 方法
 				if (item.name == "main") {
@@ -55,13 +57,6 @@ class OCamlGlobalMacro {
 				}
 				oc.write(OCaml2Tools.toString(item.expr()) + ";;\n\n");
 		}
-		// trace(item.kind);
-		// trace(TypedExprTools.toString(item.expr()));
-		// switch(item.expr().expr){
-		//     case TArray(e1, e2):
-		// }
-		// switch (item.expr()){
-		// }
 	}
 }
 #end

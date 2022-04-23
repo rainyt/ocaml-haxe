@@ -42,6 +42,8 @@ class OCaml2Function {
 							types[index] = "%f";
 						case "Int":
 							types[index] = "%i";
+						case "Dynamic":
+							types[index] = "{dynamic}";
 						default:
 							throw "Not support trace type:" + value;
 					}

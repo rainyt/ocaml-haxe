@@ -50,7 +50,17 @@ class OCaml2Tools {
 	 * @return String
 	 */
 	public static function toString(expr:TypedExpr):String {
+		if (expr == null) {
+			return "(* expr is null? *)";
+		}
 		switch (expr.expr) {
+			case TCast(e, m):
+				// todo 这里的m会不存在
+				return toString(e);
+			case TIf(econd, eif, eelse):
+				return 'if (${toString(econd)}) then\n${toString(eif)} ${eelse != null ? "else " + toString(eelse) : ""}';
+			case TArray(e1, e2):
+				return '${toString(e1)}.(${toString(e2)})';
 			case TUnop(op, postFix, e):
 				var type = OCaml2Type.toString(e.t);
 				switch (op) {
@@ -126,9 +136,6 @@ class OCaml2Tools {
 						throw "Not support TTypeExpr:" + m;
 				}
 			case TField(e, fa):
-				// var t = Context.getType("ocaml.lib.File");
-				// trace(fa,t);
-				// return fa.getParameters()[0] + ".__" + fa.getParameters()[1];
 				return OCaml2Field.toString(e, fa);
 			// return toString(e) + "." + fa.getParameters()[1];
 			case TConst(c):

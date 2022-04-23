@@ -1,4 +1,5 @@
 exception STRING of string
+exception FLOAT of float
 
 let afunc s = try 
 ignore (raise (STRING (!s)));!s;

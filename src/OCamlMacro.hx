@@ -13,7 +13,8 @@ import haxe.macro.OCaml;
 import haxe.macro.Compiler;
 import OCamlGlobalMacro;
 
-
+#if macro
+@:deprecated("OCamlMacro deprecated, use OCamlGlobalMacro Class.")
 class OCamlMacro {
 	/**
 	 * [Description]
@@ -93,3 +94,4 @@ class OCamlMacro {
 		return array;
 	}
 }
+#end
