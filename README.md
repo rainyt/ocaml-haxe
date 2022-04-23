@@ -24,8 +24,8 @@ haxe build.hxml
     - OCaml的API仍然可以通过extern以及@:native来实现。OCaml's API can still be implemented through extern and @: native.
 - [ ] 基础语法转译OCaml (Basic grammar translation OCaml)
 - [ ] 类型方法访问 (Type method access)
-- [ ] 判断语句IF (If)
-- [ ] Return与Break （Return and Break）
+- [x] 判断语句IF (If)
+- [x] Return与Break （Return and Break）
     - OCaml中不支持return/break，但在Haxe中仍然可以使用。Return / Break is not supported in Ocaml, but it can still be used in haxe.
 - [ ] Switch int float string
 - [ ] Switch Enum
