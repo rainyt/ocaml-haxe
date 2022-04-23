@@ -33,14 +33,14 @@ let break = ref true in while (!break && (!_g < Array.length !_g1)) do
 let s = ref (!_g1.(!_g)) in
 _g := !_g + 1;
 (Printf.printf "%s\n" (!s));
-done;
+ done;
 ;
 let _g = ref (0) in
 let _g1 = ref (Array.length !arg) in
 let break = ref true in while (!break && (!_g < !_g1)) do
 let i3 = ref (!_g + 1) in
 (Printf.printf "%i\n" (!i3));
-done;
+ done;
 ;
 let mlfile = ref ((Stdlib.open_in ("test2.ml"))) in
 (Printf.printf "%s\n" ((Stdlib.input_line (!mlfile))));

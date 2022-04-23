@@ -88,7 +88,7 @@ class OCaml2Tools {
 							case "Int":
 								oc.write('${toString(e)} - 1');
 							case "Float":
-								oc.write('${toString(e)} -. 1');
+								oc.write('${toString(e)} -. 1.');
 							default:
 								throw "Not support op " + op;
 						}
@@ -98,7 +98,7 @@ class OCaml2Tools {
 							case "Int":
 								oc.write('${toString(e)} + 1');
 							case "Float":
-								oc.write('${toString(e)} +. 1');
+								oc.write('${toString(e)} +. 1.');
 							default:
 								throw "Not support op " + op;
 						}
@@ -119,7 +119,7 @@ class OCaml2Tools {
 					}
 				} else
 					oc.write(toString(e));
-				oc.write("done");
+				oc.write(" done");
 				return oc.code;
 			case TBinop(op, e1, e2):
 				return OCaml2Binop.toString(op, e1, e2);

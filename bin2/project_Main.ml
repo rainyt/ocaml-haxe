@@ -18,7 +18,7 @@ let break = ref true in while (!break && (!_g < Array.length !_g1)) do
 let item = ref (!_g1.(!_g)) in
 _g := !_g + 1;
 (Printf.printf "%s\n" (!item));
-done;
+ done;
 ;
 ;;
 

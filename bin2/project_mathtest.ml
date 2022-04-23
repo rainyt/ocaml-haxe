@@ -12,8 +12,8 @@ f2 := !f2 /. !f1 /. !f1;
 f2 := !f2 *. !f1 -. !f1 +. 1.;
 (Printf.printf "%s%f\n" ("f2=") (!f2));
 f2 := !f2 -. !f1;
-f2 := !f2 +. 1;
-f2 := !f2 -. 1;
+f2 := !f2 +. 1.;
+f2 := !f2 -. 1.;
 (Printf.printf "%s%f\n" ("f2=") (!f2));
 let i2 = ref (!i1 + !i1) in
 (Printf.printf "%s%i\n" ("i2=") (!i2));
@@ -36,6 +36,6 @@ let s2 = ref ((string_of_float !f1) ^ !s1) in
 (Printf.printf "%s\n" (!s2));
 let loop = ref (10000000) in
 let break = ref true in while (!break && (!loop > 0)) do
-loop := !loop - 1done;
+loop := !loop - 1 done;
 ;;
 
