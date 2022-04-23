@@ -24,7 +24,7 @@ class OCamlGlobalMacro {
 							for (item in t.get().statics.get()) {
 								parserField(ocaml, item);
 							}
-							File.saveContent("bin2/" + t.toString() + ".ml", ocaml.code);
+							File.saveContent("bin2/" + StringTools.replace(t.toString(), ".", "_") + ".ml", ocaml.code);
 						}
 					default:
 				}
@@ -47,7 +47,7 @@ class OCamlGlobalMacro {
 				} else {
 					oc.write("let " + item.name);
 				}
-				oc.write(OCaml2Tools.parserExpr(item.expr()) + ";\n\n");
+				oc.write(OCaml2Tools.toString(item.expr()) + ";;\n\n");
 		}
 		// trace(item.kind);
 		// trace(TypedExprTools.toString(item.expr()));
