@@ -67,7 +67,7 @@ class OCaml2Tools {
 				// todo 这里的m会不存在
 				return toString(e);
 			case TIf(econd, eif, eelse):
-				return 'if (${toString(econd)}) then\n${toString(eif)} ${eelse != null ? "else " + toString(eelse) : ""}';
+				return 'if (${toString(econd)}) then (\n${toString(eif)} ${eelse != null ? ")else(" + toString(eelse) + ")" : ")"}';
 			case TArray(e1, e2):
 				return '${toString(e1)}.(${toString(e2)})';
 			case TUnop(op, postFix, e):
@@ -168,11 +168,13 @@ class OCaml2Tools {
 						throw "Not support TConst:" + c;
 				}
 			case TVar(v, expr):
-				// OCaml2Ref.retianType(v.name, v.t);
 				var name = v.name;
+				name = StringTools.replace(name, "`", "g");
 				return 'let ${name} = ref (${toString(expr, true)}) in';
 			case TLocal(v):
-				return "!" + v.name;
+				var name = v.name;
+				name = StringTools.replace(name, "`", "g");
+				return "!" + name;
 			case TCall(e, el):
 				return '(${OCaml2Function.toString(e, el)})';
 			case TReturn(e):

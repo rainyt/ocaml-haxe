@@ -33,6 +33,8 @@ class OCamlGlobalMacro {
 							}
 							File.saveContent("bin2/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".ml", ocaml.code);
 						}
+					case TTypeDecl(t):
+						trace("t=", t.get().module, t.toString());
 					default:
 				}
 			}

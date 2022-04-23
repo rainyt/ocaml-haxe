@@ -48,6 +48,9 @@ class OCaml2Function {
 							throw "Not support trace type:" + value;
 					}
 				}
+				for (index => value in args) {
+					args[index] = "(" + value + ")";
+				}
 				return 'Printf.printf "${types.join("")}\\n" ${args.join(" ")}';
 			default:
 				for (index => value in array) {
@@ -58,8 +61,12 @@ class OCaml2Function {
 					for (index => value in args) {
 						args[index] = '(ref ${value})';
 					}
+				} else {
+					for (index => value in args) {
+						args[index] = '(${value})';
+					}
 				}
-				return funName + " " + args.join(" ");
+				return funName + " " + (args.length > 0 ? args.join(" ") : "()");
 		}
 	}
 }
