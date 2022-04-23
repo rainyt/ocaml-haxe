@@ -1,0 +1,5 @@
+(executable
+ (flags -w +42)
+ (name project_main)
+ (public_name bin2 )
+ (modules project_main ocaml_lib_file))

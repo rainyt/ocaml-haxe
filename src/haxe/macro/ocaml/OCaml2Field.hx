@@ -37,6 +37,10 @@ class OCaml2Field {
 				call = call.toLowerCase();
 				call = call.charAt(0).toUpperCase() + call.substr(1);
 
+				// call，需要确认是否为当前类型，如果是，则无需定义
+				if (OCaml2Tools.currentType.module == ctype.module) {
+					return callName;
+				}
 				return call + "." + callName;
 			default:
 				throw "Not support Field:" + e.t;

@@ -7,6 +7,7 @@ import haxe.macro.Expr.Field;
 import sys.io.File;
 import haxe.macro.Context;
 
+#if macro
 class OCamlGlobalMacro {
 	macro public static function build(classPkg:String):Array<Field> {
 		trace("compile OCaml code...");
@@ -19,9 +20,11 @@ class OCamlGlobalMacro {
 					case TClassDecl(t):
 						if (r.match(t.toString())) {
 							var ocaml = new OCaml();
+							var type = t.get();
+							OCaml2Tools.currentType = type;
 							ocaml.write("exception STRING of string\n");
 							ocaml.write("\n");
-							for (item in t.get().statics.get()) {
+							for (item in type.statics.get()) {
 								parserField(ocaml, item);
 							}
 							File.saveContent("bin2/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".ml", ocaml.code);
@@ -58,3 +61,4 @@ class OCamlGlobalMacro {
 		// }
 	}
 }
+#end

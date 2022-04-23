@@ -1,13 +1,22 @@
 package haxe.macro.ocaml;
 
-import haxe.macro.Type.TypedExpr;
+import haxe.macro.Type;
 
 #if macro
-
 /**
  * 使用OCamlGlobalMacro实现的第二轮解析工具
  */
 class OCaml2Tools {
+	/**
+	 * 当前类型
+	 */
+	public static var currentType:ClassType;
+
+	/**
+	 * 编译为OCaml语法
+	 * @param expr 
+	 * @return String
+	 */
 	public static function toString(expr:TypedExpr):String {
 		// trace(expr);
 		switch (expr.expr) {
@@ -107,5 +116,4 @@ class OCaml2Tools {
 		return null;
 	}
 }
-
 #end
