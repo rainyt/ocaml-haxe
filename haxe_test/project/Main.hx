@@ -14,7 +14,7 @@ class Main {
 		var b = "README.md";
 		var content = File.getContent(b);
 		var input = Stdlib.openInput(b);
-		trace("%s\n", afunc(a));
-		trace("%s", content);
+		trace("太棒了：", afunc(a));
+		trace("Goods!", content);
 	}
 }

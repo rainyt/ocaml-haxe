@@ -60,7 +60,7 @@ class OCaml2Tools {
 			case TLocal(v):
 				return v.name;
 			case TCall(e, el):
-				return OCaml2Function.toString(e, el);
+				return '(${OCaml2Function.toString(e, el)})';
 			case TReturn(e):
 				return OCaml2Return.toString(e) + ";" + toString(e);
 			case TBlock(el):
