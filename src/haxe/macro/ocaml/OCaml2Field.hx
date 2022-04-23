@@ -2,12 +2,13 @@ package haxe.macro.ocaml;
 
 import haxe.macro.Type;
 
+#if macro
 class OCaml2Field {
 	public static function toString(e:TypedExpr, fa:FieldAccess):String {
 		var callName = null;
 		switch (fa) {
 			case FStatic(c, cf):
-                callName = cf.toString();
+				callName = cf.toString();
 				for (item in cf.get().meta.get()) {
 					if (item.name == ":native") {
 						callName = ExprTools.getValue(item.params[0]);
@@ -43,3 +44,4 @@ class OCaml2Field {
 		return "";
 	}
 }
+#end

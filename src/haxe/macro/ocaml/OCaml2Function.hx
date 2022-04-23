@@ -2,6 +2,8 @@ package haxe.macro.ocaml;
 
 import haxe.macro.Type.TypedExpr;
 
+#if macro
+
 class OCaml2Function {
 	public static function toString(expr:TypedExpr, array:Array<TypedExpr>):String {
 		var args:Array<String> = [];
@@ -46,3 +48,5 @@ class OCaml2Function {
 		}
 	}
 }
+
+#end

@@ -2,6 +2,8 @@ package haxe.macro.ocaml;
 
 import haxe.macro.Type.TypedExpr;
 
+#if macro
+
 /**
  * 使用OCamlGlobalMacro实现的第二轮解析工具
  */
@@ -105,3 +107,5 @@ class OCaml2Tools {
 		return null;
 	}
 }
+
+#end

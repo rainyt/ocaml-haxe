@@ -6,6 +6,8 @@ import haxe.macro.ExprTools;
 import haxe.macro.Expr;
 import haxe.macro.TypeTools;
 
+#if macro
+
 /**
  * 记录每个类的定义引用关系
  */
@@ -225,3 +227,5 @@ class OCamlClassRef {
 		return false;
 	}
 }
+
+#end
