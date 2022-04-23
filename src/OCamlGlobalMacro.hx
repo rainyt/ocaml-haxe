@@ -24,7 +24,7 @@ class OCamlGlobalMacro {
 							for (item in t.get().statics.get()) {
 								parserField(ocaml, item);
 							}
-							File.saveContent("bin2/" + StringTools.replace(t.toString(), ".", "_") + ".ml", ocaml.code);
+							File.saveContent("bin2/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".ml", ocaml.code);
 						}
 					default:
 				}

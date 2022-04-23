@@ -42,7 +42,11 @@ class OCaml2Tools {
 						throw "Not support TTypeExpr:" + m;
 				}
 			case TField(e, fa):
-				return toString(e) + "." + fa.getParameters()[1];
+				// var t = Context.getType("ocaml.lib.File");
+				// trace(fa,t);
+				// return fa.getParameters()[0] + ".__" + fa.getParameters()[1];
+				return OCaml2Field.toString(e, fa);
+			// return toString(e) + "." + fa.getParameters()[1];
 			case TConst(c):
 				switch (c) {
 					case TInt(i):
@@ -84,7 +88,6 @@ class OCaml2Tools {
 					oc.write("()");
 				else
 					for (a in tfunc.args) {
-						trace(a);
 						oc.write(" " + a.v.name);
 					}
 				if (type != "VOID")

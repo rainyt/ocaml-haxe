@@ -8,9 +8,6 @@ class OCaml2Function {
 		var funName = OCaml2Tools.toString(expr);
 		switch (funName) {
 			case "Haxe_log.trace":
-				// for (index => value in array) {
-				// 	args.push(OCaml2Tools.toString(value));
-				// }
 				// 特殊处理
 				var types = [];
 				types.push(OCaml2Type.toString(array[0].t));
