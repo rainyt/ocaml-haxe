@@ -7,11 +7,11 @@ context := !context ^ (Stdlib.input_line (!input));
 let line = ref ("") in
 let break = ref true in while (!break && (true)) do
 try
+  Printf.printf "%s" "next";
 line := !line ^ (Stdlib.input_line (!input)) ^ "\n";
-with _ -> 
-(Stdlib.close_in (!input));
-ignore (raise (STRING (!line)));!line;
-() done;
+with _ -> ignore (raise (STRING (!line)));
+()
+done;
 ignore (raise (STRING (!context)));!context;
 with STRING ret -> ret;;
 

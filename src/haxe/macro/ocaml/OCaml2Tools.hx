@@ -66,6 +66,14 @@ class OCaml2Tools {
 		}
 		lastExpr = expr;
 		switch (expr.expr) {
+			case TTry(e, catches):
+				var oc:OCaml = new OCaml();
+				oc.write("try\n" + toString(e) + "with _ -> \n");
+				for (item in catches) {
+					oc.write(toString(item.expr));
+				}
+				oc.write("()");
+				return oc.code;
 			case TBreak:
 				return "break := false";
 			case TIf(econd, eif, eelse):
@@ -238,7 +246,7 @@ class OCaml2Tools {
 					oc.write("with " + OCaml2Type.toString(tfunc.t).toUpperCase() + " ret -> ret");
 				return oc.code;
 			default:
-				return '(* Not suppor ${expr.expr.getName()} *)';
+				return '(* Not suppor ${expr.expr.getName()} *)\n';
 				// throw "Not support " + expr.expr.getName();
 		}
 		return null;
