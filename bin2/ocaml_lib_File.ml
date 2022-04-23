@@ -1,5 +1,4 @@
 exception STRING of string
-exception FLOAT of float
 
 let getContent path = try 
 let input = ref ((Stdlib.open_in (!path))) in

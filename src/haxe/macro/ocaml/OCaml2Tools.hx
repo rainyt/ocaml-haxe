@@ -15,6 +15,11 @@ class OCaml2Tools {
 	public static var currentType:ClassType;
 
 	/**
+	 * 当前的脚本编译器
+	 */
+	public static var currentOCaml:OCaml;
+
+	/**
 	 * 上一个lastExpr
 	 */
 	public static var lastExpr:TypedExpr;

@@ -1,5 +1,3 @@
-exception STRING of string
-exception FLOAT of float
 
 let () = let f1 = ref (1.) in
 let i1 = ref (1) in

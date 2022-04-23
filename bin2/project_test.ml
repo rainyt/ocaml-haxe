@@ -1,4 +1,3 @@
-exception STRING of string
 exception FLOAT of float
 
 let data = ref ("Data var");;
