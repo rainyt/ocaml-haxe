@@ -47,7 +47,7 @@ class OCaml2Binop {
 						throw "Not support type:" + type1;
 				}
 		}
-		return OCaml2Tools.toString(e1).removeDeCitation() + ' ${opTag} ' + OCaml2Tools.toString(e2);
+		return OCaml2Tools.toString(e1) + ' ${opTag} ' + OCaml2Tools.toString(e2);
 	}
 
 	public static function toOp(op:Binop):String {

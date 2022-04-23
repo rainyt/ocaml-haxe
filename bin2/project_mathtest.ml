@@ -34,7 +34,7 @@ let s1 = ref ("test") in
 let s2 = ref ((string_of_float !f1) ^ !s1) in
 (Printf.printf "%s\n" !s2);
 let loop = ref (10000000) in
-let break = ref true in while (!break && (loop > 0)) do
+let break = ref true in while (!break && (!loop > 0)) do
 loop := !loop - 1;
 done;
 ;;
