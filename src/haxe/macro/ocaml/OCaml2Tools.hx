@@ -63,13 +63,20 @@ class OCaml2Tools {
 		switch (expr.expr) {
 			// case TFor(v, e1, e2):
 			// return "FOROFOROFR";
-			case TCast(e, m):
-				// todo 这里的m会不存在
-				return toString(e);
 			case TIf(econd, eif, eelse):
 				return 'if (${toString(econd)}) then (\n${toString(eif)} ${eelse != null ? ")else(" + toString(eelse) + ")" : ")"}';
 			case TArray(e1, e2):
-				return '${toString(e1)}.(${toString(e2)})';
+				// todo 这里需要判断Array或者List
+				var type = OCaml2Type.toString(e1.t);
+				switch (type) {
+					case "ocaml.OCamlArray":
+						return '${toString(e1)}.(${toString(e2)})';
+				}
+				var isOCamlArrayCast = OCaml2Field.isOCamlArrayCast(e1);
+				if (isOCamlArrayCast) {
+					return '${toString(e1)}.(${toString(e2)})';
+				}
+				return 'List.nth ${toString(e1)} (${toString(e2)})';
 			case TUnop(op, postFix, e):
 				var oc = new OCaml();
 				if (!ref)
@@ -170,7 +177,22 @@ class OCaml2Tools {
 			case TVar(v, expr):
 				var name = v.name;
 				name = StringTools.replace(name, "`", "g");
+				switch (expr.expr) {
+					case TCast(e, m):
+						var castToType = OCaml2Type.toString(e.t);
+						trace("castToType", name, castToType);
+						if (!v.meta.has("@:cast")) {
+							v.meta.add("@:cast", [macro $v{castToType}], Context.currentPos());
+						}
+					default:
+				}
+				// 临时变量都是经过Cast处理的
+				// trace('${name}=${expr.t}');
 				return 'let ${name} = ref (${toString(expr, true)}) in';
+
+			case TCast(e, m):
+				// todo 这里的m会不存在
+				return toString(e);
 			case TLocal(v):
 				var name = v.name;
 				name = StringTools.replace(name, "`", "g");

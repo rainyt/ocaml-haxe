@@ -4,9 +4,40 @@ import haxe.macro.Type;
 
 #if macro
 class OCaml2Field {
+	/**
+	 * 是否由OCamlArrayCast转换的
+	 * @param e 
+	 * @return Bool
+	 */
+	public static function isOCamlArrayCast(e:TypedExpr):Bool {
+		var isOCamlArrayCast:Bool = false;
+		switch (e.expr) {
+			case TLocal(v):
+				// trace(v.name, v.t, v.meta.get()[0]);
+				var meta = v.meta.get()[0];
+				if (meta != null && meta.name == "@:cast") {
+					var param = ExprTools.getValue(meta.params[0]);
+					if (param == "ocaml.OCamlArray")
+						isOCamlArrayCast = true;
+				}
+			default:
+				// throw "Not support FInstance expr:" + e.expr;
+				return false;
+		}
+		return isOCamlArrayCast;
+	}
+
 	public static function toString(e:TypedExpr, fa:FieldAccess):String {
 		var callName = null;
 		var callClassField:ClassField = null;
+		var isOCamlArrayCast = isOCamlArrayCast(e);
+		switch (e.expr) {
+			case TLocal(v):
+				if (OCaml2Type.toString(v.t) == "ocaml.OCamlArray") {
+					isOCamlArrayCast = true;
+				}
+			default:
+		}
 		switch (fa) {
 			case FStatic(c, cf):
 				callClassField = cf.get();
@@ -22,12 +53,13 @@ class OCaml2Field {
 						switch (cf.toString()) {
 							case "length":
 								// todo 需要判断是List还是Array
-								return 'Array.length ${OCaml2Tools.toString(e)}';
+								trace("isOCamlArrayCast = ", OCaml2Tools.toString(e), e.t, isOCamlArrayCast);
+								if (isOCamlArrayCast)
+									return 'Array.length ${OCaml2Tools.toString(e)}';
+								return 'List.length ${OCaml2Tools.toString(e)}';
 						}
 				}
 				return "FInstance";
-			case FAnon(cf):
-				return "FAnon";
 			default:
 				throw "Not support FieldAccess:" + fa;
 		}

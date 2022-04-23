@@ -1,5 +1,6 @@
 package project;
 
+import ocaml.OCamlArray;
 import ocaml.OCamlList;
 import ocaml.Stdlib;
 import ocaml.OCamlSys;
@@ -37,7 +38,7 @@ class Test {
 		str = str + i2;
 		trace(str);
 		// 访问OCaml API
-		var arg = OCamlSys.args;
+		var arg:OCamlArray<String> = OCamlSys.args;
 		trace("Fight:", i2, arg[0]);
 		// 判断语法
 		if (i2 == 3 && i2 < 2) {

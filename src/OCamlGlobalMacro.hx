@@ -1,3 +1,4 @@
+import haxe.macro.TypedExprTools;
 import haxe.macro.Compiler;
 import haxe.macro.ocaml.OCaml2Type;
 import haxe.macro.OCaml;
@@ -32,9 +33,10 @@ class OCamlGlobalMacro {
 								parserField(ocaml, item);
 							}
 							File.saveContent("bin2/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".ml", ocaml.code);
+							File.saveContent("bin2/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".log", ocaml.log);
 						}
 					case TTypeDecl(t):
-						trace("t=", t.get().module, t.toString());
+					// trace("t=", t.get().module, t.toString());
 					default:
 				}
 			}
@@ -58,6 +60,7 @@ class OCamlGlobalMacro {
 					oc.write("let " + item.name);
 				}
 				oc.write(OCaml2Tools.toString(item.expr()) + ";;\n\n");
+				oc.writeDebugLog(TypedExprTools.toString(item.expr()));
 		}
 	}
 }

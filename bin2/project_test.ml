@@ -51,9 +51,9 @@ let floatValue = ref (1.0 +. 2.3 +. (call2 ())) in
 let floatValue2 = ref (2.3) in
 (Printf.printf "%f%s\n" (!floatValue +. !floatValue2) (!strValue ^ " to Haxe!"));
 let array = ref (["123"]) in
-(Printf.printf "%s\n" (!array.(0)));
+(Printf.printf "%s\n" (List.nth !array (0)));
 (Printf.printf "%s\n" ((List.nth (!array) (0))));
-let listLength = ref (Array.length !array) in
+let listLength = ref (List.length !array) in
 (Printf.printf "%i\n" (!listLength));
 ;;
 

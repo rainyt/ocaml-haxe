@@ -1,0 +1,279 @@
+[Function:() -> Void]
+	[Block:Void]
+		[Var f1(7792):Float] [Const:Float] 1.
+		[Var i1(7793):Int] [Const:Int] 1
+		[Var f2(7794):Float]
+			[Binop:Float]
+				[Local f1(7792):Float:Float]
+				+
+				[Local f1(7792):Float:Float]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "f2="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 12
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(7794):Float:Float]
+		[Binop:Float]
+			[Local f2(7794):Float:Float]
+			+=
+			[Binop:Float]
+				[Local f1(7792):Float:Float]
+				*
+				[Local f1(7792):Float:Float]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "f2="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 14
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(7794):Float:Float]
+		[Binop:Float]
+			[Local f2(7794):Float:Float]
+			/=
+			[Binop:Float]
+				[Local f1(7792):Float:Float]
+				/
+				[Local f1(7792):Float:Float]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "f2="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 16
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(7794):Float:Float]
+		[Binop:Float]
+			[Local f2(7794):Float:Float]
+			*=
+			[Binop:Float]
+				[Binop:Float]
+					[Local f1(7792):Float:Float]
+					-
+					[Local f1(7792):Float:Float]
+				+
+				[Const:Float] 1.
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "f2="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 18
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(7794):Float:Float]
+		[Binop:Float]
+			[Local f2(7794):Float:Float]
+			-=
+			[Local f1(7792):Float:Float]
+		[Unop:Float]
+			++
+			Postfix
+			[Local f2(7794):Float:Float]
+		[Unop:Float]
+			--
+			Postfix
+			[Local f2(7794):Float:Float]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "f2="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 22
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(7794):Float:Float]
+		[Var i2(7876):Int]
+			[Binop:Int]
+				[Local i1(7793):Int:Int]
+				+
+				[Local i1(7793):Int:Int]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "i2="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 26
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(7876):Int:Int]
+		[Binop:Int]
+			[Local i2(7876):Int:Int]
+			+=
+			[Binop:Int]
+				[Local i1(7793):Int:Int]
+				*
+				[Local i1(7793):Int:Int]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "i2="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 28
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(7876):Int:Int]
+		[Binop:Int]
+			[Local i2(7876):Int:Int]
+			*=
+			[Binop:Int]
+				[Binop:Int]
+					[Local i1(7793):Int:Int]
+					-
+					[Local i1(7793):Int:Int]
+				+
+				[Const:Int] 1
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "i2="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 30
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(7876):Int:Int]
+		[Binop:Int]
+			[Local i2(7876):Int:Int]
+			-=
+			[Local i1(7793):Int:Int]
+		[Unop:Int]
+			++
+			Postfix
+			[Local i2(7876):Int:Int]
+		[Unop:Int]
+			--
+			Postfix
+			[Local i2(7876):Int:Int]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "i2="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 34
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(7876):Int:Int]
+		[Var fi(7877):Float]
+			[Binop:Float]
+				[Local f2(7794):Float:Float]
+				+
+				[Local i2(7876):Int:Int]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "fi="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 38
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local fi(7877):Float:Float]
+		[Var ifv(7878):Float]
+			[Binop:Float]
+				[Local i2(7876):Int:Int]
+				*
+				[Local f2(7794):Float:Float]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "ifv="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 40
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local ifv(7878):Float:Float]
+		[Var div(7879):Float]
+			[Binop:Float]
+				[Local i2(7876):Int:Int]
+				/
+				[Local i2(7876):Int:Int]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "div="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 43
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local div(7879):Float:Float]
+		[Var s1(7880):String] [Const:String] "test"
+		[Var s2(7881):String]
+			[Binop:String]
+				[Local f1(7792):Float:Float]
+				+
+				[Local s1(7880):String:String]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Local s2(7881):String:String]
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
+				fileName: [Const:String] "haxe_test/project/MathTest.hx"
+				lineNumber: [Const:Int] 47
+				className: [Const:String] "project.MathTest"
+				methodName: [Const:String] "main"
+		[Var loop(7882):Int] [Const:Int] 10000000
+		[While:Void]
+			[Parenthesis:Bool]
+				[Binop:Bool]
+					[Local loop(7882):Int:Int]
+					>
+					[Const:Int] 0
+			[Unop:Int]
+				--
+				Postfix
+				[Local loop(7882):Int:Int]
