@@ -42,10 +42,18 @@ class OCamlExternTools {
 			var fun = funcName.matched(0);
 			var args = line.split(":")[1];
 			args = args.split("=")[0];
+			var funArgs = ~/[(][a-z -\\>]{1,}\)/g;
+			if (funArgs.match(args))
+				args = funArgs.replace(args, "fun");
 			var haxeArgs = args.split("->");
 			var ret = toType(haxeArgs.pop());
+			var m = 0;
 			for (index => value in haxeArgs) {
-				haxeArgs[index] = "a" + index + ":" + toType(value);
+				if (toType(value) == "fun") {
+					haxeArgs[index] = "a" + index + ":" + toType(funArgs.matched(m));
+					m++;
+				} else
+					haxeArgs[index] = "a" + index + ":" + toType(value);
 			}
 			haxeCode.write('public static function ${fun.split(" ")[1]}(${haxeArgs.join(",")}):${ret};\n');
 		}
@@ -58,9 +66,28 @@ class OCamlExternTools {
 				return "Void";
 			case "string", "int", "float", "bool":
 				return type.charAt(0).toUpperCase() + type.substr(1).toLowerCase();
-			case "char", "bytes":
-				return "Dynamic";
+			case "bytes":
+				return "haxe.io.Bytes";
+			case "char":
+				return "OCamlChar";
+			case "fun":
+				return "fun";
+			case "stringlist":
+				return "Array<String>";
+			case "floatlist":
+				return "Array<Float>";
+			case "intlist":
+				return "Array<Int>";
 			default:
+				if (type.indexOf("(") != -1) {
+					type = StringTools.replace(type, "(", "");
+					type = StringTools.replace(type, ")", "");
+					var calls = type.split("->");
+					for (index => value in calls) {
+						calls[index] = toType(value);
+					}
+					return calls.join("->");
+				}
 				return "Dynamic";
 				// return '<${type}>';
 				// throw "未处理的类型:" + type;

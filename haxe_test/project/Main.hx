@@ -43,7 +43,7 @@ class Main {
 
 		var content2 = OCamlString.concat("test", ["123", "123", "123"]);
 		trace("拼接字符串：", content2);
-
+		trace(OCamlString.index(content2,"1"));
 		trace("文本的长度：" + OCamlString.length(content));
 	}
 }
