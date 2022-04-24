@@ -25,6 +25,8 @@ dune exec bin2
 
 所有实现正在重构：
 
+- [x] 支持using语句。
+- [ ] 新增一个OCaml的extern自动化工具。
 - [x] trace输出，能够自动识别每个参数的类型，使用Printf.printf正确输出的支持。
 - [x] 类型推导（重构后不再需要判断，使用Haxe自身的AST解析）
 - [ ] 非静态方法调用实现

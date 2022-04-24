@@ -101,6 +101,24 @@ class OCaml2Field {
 				return call + "." + callName;
 			case TInst(t, params):
 
+			case TAnonymous(a):
+				switch (e.expr) {
+					case TTypeExpr(m):
+						switch (m) {
+							case TClassDecl(c):
+								var array = c.get().meta.get().filter((data) -> data.name == ":native");
+								if (array.length > 0) {
+									callName = '${ExprTools.getValue(array[0].params[0])}.${callName}';
+								} else {
+									callName = '${c.toString()}.${callName}';
+								}
+							default:
+								throw "Not support TAnonymous.Type.TClassDecl" + m;
+						}
+					default:
+						throw "Not support TAnonymous.Type:" + e;
+				}
+				return callName;
 			default:
 				throw "Not support Field:" + e.t;
 		}

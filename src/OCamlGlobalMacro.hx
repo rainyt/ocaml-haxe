@@ -1,10 +1,7 @@
 import haxe.macro.TypedExprTools;
-import haxe.macro.Compiler;
-import haxe.macro.ocaml.OCaml2Type;
 import haxe.macro.ocaml.OCaml;
 import haxe.macro.ocaml.OCaml2Tools;
 import haxe.macro.Type.ClassField;
-import haxe.macro.Type.FieldKind;
 import haxe.macro.Expr.Field;
 import sys.io.File;
 import haxe.macro.Context;

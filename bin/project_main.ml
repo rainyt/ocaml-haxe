@@ -33,6 +33,8 @@ _g := !_g + 1;
 (Printf.printf "%i\n" (!i));
  done;
 ;
-(Printf.printf "%s\n" ("文本的长度：" ^ (string_of_int (String.length !content))));
+let content2 = ref ("test") in
+content2 := (String.concat (!content2) (["1";"2";"3";"4"]));
+(Printf.printf "%s%s\n" ("拼接后：") (!content2));
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 
