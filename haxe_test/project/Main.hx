@@ -41,10 +41,9 @@ class Main {
 		content2 = content2.concat(["1", "2", "3", "4"]);
 		trace("拼接后：", content2);
 
-		// var content2 = OCamlString.concat("test", ["123", "123", "123"]);
-		// trace("拼接字符串：", content2);
+		var content2 = OCamlString.concat("test", ["123", "123", "123"]);
+		trace("拼接字符串：", content2);
 
-		// trace("文本的长度：" + OCamlString.length(content));
-		// var array = content.split("\n");
+		trace("文本的长度：" + OCamlString.length(content));
 	}
 }

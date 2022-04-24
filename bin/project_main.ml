@@ -26,15 +26,18 @@ let list = ref ([1;2;3;4;5]) in
 (list := !list @ [ (8) ]);
 (list := !list @ [ (9) ]);
 list := (!list @  ([10;11;12]));
-let _g = ref (0) in
-let break = ref true in while (!break && (!_g < List.length !list)) do
-let i = ref (List.nth !list (!_g)) in
-_g := !_g + 1;
+let _g2 = ref (0) in
+let break = ref true in while (!break && (!_g2 < List.length !list)) do
+let i = ref (List.nth !list (!_g2)) in
+_g2 := !_g2 + 1;
 (Printf.printf "%i\n" (!i));
  done;
 ;
 let content2 = ref ("test") in
 content2 := (String.concat (!content2) (["1";"2";"3";"4"]));
 (Printf.printf "%s%s\n" ("拼接后：") (!content2));
+let content2 = ref ((String.concat ("test") (["123";"123";"123"]))) in
+(Printf.printf "%s%s\n" ("拼接字符串：") (!content2));
+(Printf.printf "%s\n" ("文本的长度：" ^ (string_of_int ((String.length (!content))))));
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 
