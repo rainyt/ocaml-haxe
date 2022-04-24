@@ -34,5 +34,7 @@ class Main {
 		for (i in list) {
 			trace(i);
 		}
+
+		var array = content.split("\n");
 	}
 }

@@ -209,7 +209,7 @@ class OCaml2Tools {
 				return toString(e);
 			case TLocal(v):
 				var name = v.name;
-				name = StringTools.replace(name, "`", "g");
+				name = StringTools.replace(name, "`", "_g");
 				return "!" + name;
 			case TCall(e, el):
 				return '(${OCaml2Function.toString(e, el)})';

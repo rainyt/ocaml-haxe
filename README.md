@@ -38,6 +38,7 @@ dune exec bin2
 - [ ] Switch int float string
 - [ ] Switch Enum
 - [ ] Array数组访问与创建
+- [ ] String字符串操作API
 - [x] For循环
 - [x] While循环
 - [x] 基础运算符:+ - * / += /= *= -= -- ++

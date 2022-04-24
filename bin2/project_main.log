@@ -1,25 +1,25 @@
 [Function:(s : String) -> String]
-	[Arg:String] [Local s(256528):String]
-	[Block:Dynamic] [Return:Dynamic] [Local s(256528):String:String][Function:() -> Void]
+	[Arg:String] [Local s(264079):String]
+	[Block:Dynamic] [Return:Dynamic] [Local s(264079):String:String][Function:() -> Void]
 	[Block:Void]
-		[Var a(256529):String] [Const:String] "test"
-		[Var b(256530):String] [Const:String] "README.md"
-		[Var content(256531):String]
+		[Var a(264080):String] [Const:String] "test"
+		[Var b(264081):String] [Const:String] "README.md"
+		[Var content(264082):String]
 			[Call:String]
 				[Field:(path : String) -> String]
 					[TypeExpr ocaml.lib.File:Class<ocaml.lib.File>]
 					[FStatic:(path : String) -> String]
 						ocaml.lib.File
 						getContent:(path : String) -> String
-				[Local b(256530):String:String]
-		[Var input(256532):ocaml.InputChannel]
+				[Local b(264081):String:String]
+		[Var input(264083):ocaml.InputChannel]
 			[Call:ocaml.InputChannel]
 				[Field:(path : String) -> ocaml.InputChannel]
 					[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
 					[FStatic:(path : String) -> ocaml.InputChannel]
 						ocaml.Stdlib
 						openInput:(path : String) -> ocaml.InputChannel
-				[Local b(256530):String:String]
+				[Local b(264081):String:String]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -45,7 +45,7 @@
 								[FStatic:(input : ocaml.InputChannel) -> String]
 									ocaml.Stdlib
 									inputLine:(input : ocaml.InputChannel) -> String
-							[Local input(256532):ocaml.InputChannel:ocaml.InputChannel]
+							[Local input(264083):ocaml.InputChannel:ocaml.InputChannel]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -58,48 +58,48 @@
 				lineNumber: [Const:Int] 21
 				className: [Const:String] "project.Main"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local content(256531):String:String]
-		[Var array(256533):ocaml.OCamlArray<String>]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local content(264082):String:String]
+		[Var array(264084):ocaml.OCamlArray<String>]
 			[Field:ocaml.OCamlArray<String>]
 				[TypeExpr ocaml.OCamlSys:Class<ocaml.OCamlSys>]
 				[FStatic:ocaml.OCamlArray<String>]
 					ocaml.OCamlSys
 					args:ocaml.OCamlArray<String>
 		[Block:Void]
-			[Var _g(256536):Int] [Const:Int] 0
-			[Var _g1(256537):Array<String>] [Cast:Array<String>] [Local array(256533):ocaml.OCamlArray<String>:ocaml.OCamlArray<String>]
+			[Var _g(264087):Int] [Const:Int] 0
+			[Var _g1(264088):Array<String>] [Cast:Array<String>] [Local array(264084):ocaml.OCamlArray<String>:ocaml.OCamlArray<String>]
 			[While:Void]
 				[Parenthesis:Bool]
 					[Binop:Bool]
-						[Local _g(256536):Int:Int]
+						[Local _g(264087):Int:Int]
 						<
 						[Field:Int]
-							[Local _g1(256537):Array<String>:Array<String>]
+							[Local _g1(264088):Array<String>:Array<String>]
 							[FInstance:Int]
 								Array<String>
 								length:Int
 				[Block:Void]
-					[Var item(256535):String]
+					[Var item(264086):String]
 						[Array:String]
-							[Local _g1(256537):Array<String>:Array<String>]
-							[Local _g(256536):Int:Int]
+							[Local _g1(264088):Array<String>:Array<String>]
+							[Local _g(264087):Int:Int]
 					[Unop:Int]
 						++
 						Prefix
-						[Local _g(256536):Int:Int]
+						[Local _g(264087):Int:Int]
 					[Call:Void]
 						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 							[TypeExpr haxe.Log:Class<haxe.Log>]
 							[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 								haxe.Log
 								trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
-						[Local item(256535):String:String]
+						[Local item(264086):String:String]
 						[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
 							fileName: [Const:String] "haxe_test/project/Main.hx"
 							lineNumber: [Const:Int] 25
 							className: [Const:String] "project.Main"
 							methodName: [Const:String] "main"
-		[Var list(256538):Array<Int>]
+		[Var list(264089):Array<Int>]
 			[ArrayDecl:Array<Int>]
 				[Const:Int] 1
 				[Const:Int] 2
@@ -108,38 +108,38 @@
 				[Const:Int] 5
 		[Call:Int]
 			[Field:(x : Int) -> Int]
-				[Local list(256538):Array<Int>:Array<Int>]
+				[Local list(264089):Array<Int>:Array<Int>]
 				[FInstance:(x : Int) -> Int]
 					Array<Int>
 					push:(x : Array.T) -> Int
 			[Const:Int] 123
 		[Call:Int]
 			[Field:(x : Int) -> Int]
-				[Local list(256538):Array<Int>:Array<Int>]
+				[Local list(264089):Array<Int>:Array<Int>]
 				[FInstance:(x : Int) -> Int]
 					Array<Int>
 					push:(x : Array.T) -> Int
 			[Const:Int] 7
 		[Call:Int]
 			[Field:(x : Int) -> Int]
-				[Local list(256538):Array<Int>:Array<Int>]
+				[Local list(264089):Array<Int>:Array<Int>]
 				[FInstance:(x : Int) -> Int]
 					Array<Int>
 					push:(x : Array.T) -> Int
 			[Const:Int] 8
 		[Call:Int]
 			[Field:(x : Int) -> Int]
-				[Local list(256538):Array<Int>:Array<Int>]
+				[Local list(264089):Array<Int>:Array<Int>]
 				[FInstance:(x : Int) -> Int]
 					Array<Int>
 					push:(x : Array.T) -> Int
 			[Const:Int] 9
 		[Binop:Array<Int>]
-			[Local list(256538):Array<Int>:Array<Int>]
+			[Local list(264089):Array<Int>:Array<Int>]
 			=
 			[Call:Array<Int>]
 				[Field:(a : Array<Int>) -> Array<Int>]
-					[Local list(256538):Array<Int>:Array<Int>]
+					[Local list(264089):Array<Int>:Array<Int>]
 					[FInstance:(a : Array<Int>) -> Array<Int>]
 						Array<Int>
 						concat:(a : Array<Array.T>) -> Array<Array.T>
@@ -148,35 +148,43 @@
 					[Const:Int] 11
 					[Const:Int] 12
 		[Block:Void]
-			[Var _g(256540):Int] [Const:Int] 0
+			[Var _g(264091):Int] [Const:Int] 0
 			[While:Void]
 				[Parenthesis:Bool]
 					[Binop:Bool]
-						[Local _g(256540):Int:Int]
+						[Local _g(264091):Int:Int]
 						<
 						[Field:Int]
-							[Local list(256538):Array<Int>:Array<Int>]
+							[Local list(264089):Array<Int>:Array<Int>]
 							[FInstance:Int]
 								Array<Int>
 								length:Int
 				[Block:Void]
-					[Var i(256539):Int]
+					[Var i(264090):Int]
 						[Array:Int]
-							[Local list(256538):Array<Int>:Array<Int>]
-							[Local _g(256540):Int:Int]
+							[Local list(264089):Array<Int>:Array<Int>]
+							[Local _g(264091):Int:Int]
 					[Unop:Int]
 						++
 						Prefix
-						[Local _g(256540):Int:Int]
+						[Local _g(264091):Int:Int]
 					[Call:Void]
 						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 							[TypeExpr haxe.Log:Class<haxe.Log>]
 							[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 								haxe.Log
 								trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
-						[Local i(256539):Int:Int]
+						[Local i(264090):Int:Int]
 						[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
 							fileName: [Const:String] "haxe_test/project/Main.hx"
 							lineNumber: [Const:Int] 35
 							className: [Const:String] "project.Main"
 							methodName: [Const:String] "main"
+		[Var array(264092):Array<String>]
+			[Call:Array<String>]
+				[Field:(delimiter : String) -> Array<String>]
+					[Local content(264082):String:String]
+					[FInstance:(delimiter : String) -> Array<String>]
+						String
+						split:(delimiter : String) -> Array<String>
+				[Const:String] "\n"

@@ -33,5 +33,6 @@ _g := !_g + 1;
 (Printf.printf "%i\n" (!i));
  done;
 ;
+let array = ref ((FInstance ("\n"))) in
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 
