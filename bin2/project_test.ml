@@ -13,7 +13,8 @@ let call2() = try
 ignore (raise (FLOAT (1.)));1.;
 with FLOAT ret -> ret;;
 
-let () = let value2 = ref ((call1 (ref 100) (ref 2000.))) in
+let () = let start_time = Sys.time() in
+let value2 = ref ((call1 (ref 100) (ref 2000.))) in
 let i = ref (!value2) in
 (Printf.printf "%f\n" (!i));
 let i2 = ref (2) in
@@ -55,5 +56,5 @@ let array = ref (["123"]) in
 (Printf.printf "%s\n" ((List.nth (!array) (0))));
 let listLength = ref (List.length !array) in
 (Printf.printf "%i\n" (!listLength));
-;;
+Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

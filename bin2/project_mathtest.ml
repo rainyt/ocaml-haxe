@@ -1,5 +1,6 @@
 
-let () = let f1 = ref (1.) in
+let () = let start_time = Sys.time() in
+let f1 = ref (1.) in
 let i1 = ref (1) in
 let f2 = ref (!f1 +. !f1) in
 (Printf.printf "%s%f\n" ("f2=") (!f2));
@@ -35,5 +36,5 @@ let s2 = ref ((string_of_float !f1) ^ !s1) in
 let loop = ref (10000000) in
 let break = ref true in while (!break && (!loop > 0)) do
 loop := !loop - 1 done;
-;;
+Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

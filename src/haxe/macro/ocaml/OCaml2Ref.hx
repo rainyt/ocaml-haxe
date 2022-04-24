@@ -17,7 +17,6 @@ class OCaml2Ref {
 		if (!types.exists(curModule)) {
 			types.set(curModule, new ClassRef());
 		}
-		trace("定义", curModule, name, type);
 		types.get(curModule).ref.set(name, type);
 	}
 }

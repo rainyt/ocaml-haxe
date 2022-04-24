@@ -193,7 +193,6 @@ class OCaml2Tools {
 				switch (expr.expr) {
 					case TCast(e, m):
 						var castToType = OCaml2Type.toString(e.t);
-						trace("castToType", name, castToType);
 						if (!v.meta.has("@:cast")) {
 							v.meta.add("@:cast", [macro $v{castToType}], Context.currentPos());
 						}
@@ -237,13 +236,18 @@ class OCaml2Tools {
 					for (a in tfunc.args) {
 						oc.write(" " + a.v.name);
 					}
-				if (type != "VOID")
+				if (type != "VOID") {
 					oc.write(" = try \n");
-				else
+				} else {
 					oc.write(" = ");
+					oc.write("let start_time = Sys.time() in\n");
+				}
 				oc.write(toString(tfunc.expr));
-				if (type != "VOID")
+				if (type != "VOID") {
 					oc.write("with " + OCaml2Type.toString(tfunc.t).toUpperCase() + " ret -> ret");
+				} else {
+					oc.write('Printf.printf "runtime:%fs" (Sys.time() -. start_time)');
+				}
 				return oc.code;
 			default:
 				return '(* Not suppor ${expr.expr.getName()} *)\n';

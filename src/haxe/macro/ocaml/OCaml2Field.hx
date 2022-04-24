@@ -55,7 +55,6 @@ class OCaml2Field {
 						switch (cf.toString()) {
 							case "length":
 								// todo 需要判断是List还是Array
-								trace("isOCamlArrayCast = ", OCaml2Tools.toString(e), e.t, isOCamlArrayCast);
 								if (isOCamlArrayCast)
 									return 'Array.length ${OCaml2Tools.toString(e)}';
 								return 'List.length ${OCaml2Tools.toString(e)}';

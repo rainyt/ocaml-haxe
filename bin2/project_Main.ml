@@ -4,7 +4,8 @@ let afunc s = try
 ignore (raise (STRING (!s)));!s;
 with STRING ret -> ret;;
 
-let () = let a = ref ("test") in
+let () = let start_time = Sys.time() in
+let a = ref ("test") in
 let b = ref ("README.md") in
 let content = ref ((Ocaml_lib_file.getContent (ref !b))) in
 let input = ref ((Stdlib.open_in (!b))) in
@@ -19,5 +20,5 @@ _g := !_g + 1;
 (Printf.printf "%s\n" (!item));
  done;
 ;
-;;
+Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

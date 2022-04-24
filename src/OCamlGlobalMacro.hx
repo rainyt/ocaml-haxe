@@ -27,10 +27,6 @@ class OCamlGlobalMacro {
 							var type = t.get();
 							OCaml2Tools.currentType = type;
 							OCaml2Tools.currentOCaml = ocaml;
-							// ocaml.write("exception STRING of string\n");
-							// ocaml.write("exception FLOAT of float\n");
-							// ocaml.write("exception BOOL of bool\n");
-							// ocaml.write("exception INT of int\n");
 							ocaml.write("\n");
 							for (item in type.statics.get()) {
 								parserField(ocaml, item);
