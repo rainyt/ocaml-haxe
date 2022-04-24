@@ -31,8 +31,8 @@ class OCamlGlobalMacro {
 							for (item in type.statics.get()) {
 								parserField(ocaml, item);
 							}
-							File.saveContent("bin2/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".ml", ocaml.code);
-							File.saveContent("bin2/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".log", ocaml.log);
+							File.saveContent("bin/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".ml", ocaml.code);
+							File.saveContent("bin/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".log", ocaml.log);
 						}
 					case TTypeDecl(t):
 					// trace("t=", t.get().module, t.toString());

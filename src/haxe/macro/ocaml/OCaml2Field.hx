@@ -65,8 +65,8 @@ class OCaml2Field {
 								throw "Not support FInstance api:" + cf;
 						}
 					default:
+						return '${c.toString()}.${cf.toString()} ${OCaml2Tools.toString(e)}';
 				}
-				return "FInstance";
 			default:
 				throw "Not support FieldAccess:" + fa;
 		}

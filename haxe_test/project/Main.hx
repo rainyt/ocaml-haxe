@@ -35,6 +35,7 @@ class Main {
 			trace(i);
 		}
 
-		var array = content.split("\n");
+		trace("文本的长度：" + content.length);
+		// var array = content.split("\n");
 	}
 }

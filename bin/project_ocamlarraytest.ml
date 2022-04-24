@@ -1,27 +1,22 @@
-exception BOOL of bool;;
-exception STRING of string;;
-exception INT of int;;
-exception FLOAT of float;;
 
-let () = let start = Sys.time() in 
-(*  var array = OCamlSys.args  *)
+let () = let start_time = Sys.time() in
 let array = ref (Sys.argv) in
-(*  for (s in array) {
-	trace("%s", s);
-}  *)
-Array.iter (fun s -> ((
-Printf.printf ("%s") (s);
-))) !array;
-(*  for (s in 0 ... array.length) {
-	var value = array[s];
-	trace("%i%s\n", s, value);
-}  *)
-for s = 0 to Array.length !array - 1 do ((
-let value = !array.(s) in
-Printf.printf ("%i%s\n") (s) (value);
-)) done;
-(*  trace("%s\n", array[0])  *)
-Printf.printf ("%s\n") !array.(0);
-Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
-
+let g = ref (0) in
+let g1 = ref (!array) in
+let break = ref true in while (!break && (!g < Array.length !g1)) do
+let s = ref (!g1.(!g)) in
+g := !g + 1;
+(Printf.printf "%s%s\n" ("%s") (!s));
+ done;
+;
+let g2 = ref (0) in
+let g3 = ref (Array.length !array) in
+let break = ref true in while (!break && (!g2 < !g3)) do
+let s = ref (!g2 + 1) in
+let value = ref (!array.(!s)) in
+(Printf.printf "%s%i%s\n" ("%i%s\n") (!s) (!value));
+ done;
+;
+(Printf.printf "%s%s\n" ("%s\n") (!array.(0)));
+Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

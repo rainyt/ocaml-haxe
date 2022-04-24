@@ -30,23 +30,23 @@ class OCaml2Tools {
 			case "String":
 				switch (selfType) {
 					case "Float":
-						return '(string_of_float ${toString(expr)})';
+						return '(string_of_float (${toString(expr)}))';
 					case "Int":
-						return '(string_of_int ${toString(expr)})';
+						return '(string_of_int (${toString(expr)}))';
 				}
 			case "Float":
 				switch (selfType) {
 					case "String":
-						return '(float_of_string ${toString(expr)})';
+						return '(float_of_string (${toString(expr)}))';
 					case "Int":
-						return '(float_of_int ${toString(expr)})';
+						return '(float_of_int (${toString(expr)}))';
 				}
 			case "Int":
 				switch (selfType) {
 					case "Float":
-						return '(int_of_float ${toString(expr)})';
+						return '(int_of_float (${toString(expr)}))';
 					case "String":
-						return '(int_of_string ${toString(expr)})';
+						return '(int_of_string (${toString(expr)}))';
 				}
 			default:
 				throw "Not support toStringByType type:" + type;

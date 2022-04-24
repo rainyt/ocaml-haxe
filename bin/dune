@@ -1,7 +1,5 @@
 (executable
  (flags -w +42)
- (public_name bin)
  (name project_main)
- ; (libraries bin)
- (modules api_test project_arraytest project_main hxlist ocaml_lib_file)
-)
+ (public_name bin )
+ (modules project_main ocaml_lib_file project_mathtest project_test))

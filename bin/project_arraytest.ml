@@ -1,53 +1,39 @@
-exception BOOL of bool;;
-exception STRING of string;;
-exception INT of int;;
-exception FLOAT of float;;
+exception INT of int
 
-let toArray list = try (*  trace("test=%i\n", ApiTest.labelFunc(@a 1, @b 2))  *)
-Printf.printf ("test=%i\n") (Api_test.labelFunc ~a:1 ~b:2);
-(*  for (i in 0 ... list.length) {
-	trace("%i", list[0]);
-	var f = list[0];
-	return f;
-}  *)
-for i = 0 to List.length !list - 1 do ((
-Printf.printf ("%i") (List.nth !list 0);
-let f = (List.nth !list 0) in
-ignore (raise (INT (f)));
-)) done;
-(*  return 0  *)
-0
+let toArray list = try 
+(Printf.printf "%s%i\n" ("test=%i\n") ((Api_test.labelFunc (1) (2))));
+let g = ref (0) in
+let g1 = ref (List.length !list) in
+let break = ref true in while (!break && (!g < !g1)) do
+let i = ref (!g + 1) in
+(Printf.printf "%s%i\n" ("%i") (List.nth !list (0)));
+let f = ref (List.nth !list (0)) in
+ignore (raise (INT (!f)));!f;
+ done;
+;
+ignore (raise (INT (0)));0;
 with INT ret -> ret;;
 
-let call arr = try (*  return arr[0]  *)
-(List.nth !arr 0)
+let call arr = try 
+ignore (raise (INT (List.nth !arr (0))));List.nth !arr (0);
 with INT ret -> ret;;
 
-let () = let start = Sys.time() in 
-(*  var array = [1, 2, 3, 4, 5, 6]  *)
-let array = ref [1;2;3;4;5;6] in
-(*  array.push(5)  *)
-array := !array @ [5];
-(*  array.push(6)  *)
-array := !array @ [6];
-(*  array.push(7)  *)
-array := !array @ [7];
-(*  array.push(8)  *)
-array := !array @ [8];
-(*  for (i in 0 ... array.length) {
-	trace("%i=%i\n", i, array[i]);
-}  *)
-for i = 0 to List.length !array - 1 do ((
-Printf.printf ("%i=%i\n") (i) (List.nth !array i);
-)) done;
-(*  var data = call(array)  *)
-let data = ref (call array) in
-(*  trace("%i\n", toArray(array))  *)
-Printf.printf ("%i\n") (toArray array);
-(*  trace("%i\n", data)  *)
-Printf.printf ("%i\n") (!data);
-(*  array = array.concat([1, 2, 3])  *)
-array := !array @ [1;2;3];
-Printf.printf "\nRuning time:%f\n" (Sys.time() -. start);;
-
+let () = let start_time = Sys.time() in
+let array = ref ([1;2;3;4;5;6]) in
+(array := !array @ [ (5) ]);
+(array := !array @ [ (6) ]);
+(array := !array @ [ (7) ]);
+(array := !array @ [ (8) ]);
+let g = ref (0) in
+let g1 = ref (List.length !array) in
+let break = ref true in while (!break && (!g < !g1)) do
+let i = ref (!g + 1) in
+(Printf.printf "%s%i%i\n" ("%i=%i\n") (!i) (List.nth !array (!i)));
+ done;
+;
+let data = ref ((call (ref !array))) in
+(Printf.printf "%s%i\n" ("%i\n") ((toArray (ref !array))));
+(Printf.printf "%s%i\n" ("%i\n") (!data));
+array := (!array @  ([1;2;3]));
+Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 
