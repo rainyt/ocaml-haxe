@@ -39,6 +39,14 @@ content2 := (String.concat (!content2) (["1";"2";"3";"4"]));
 let content2 = ref ((String.concat ("test") (["123";"123";"123"]))) in
 (Printf.printf "%s%s\n" ("拼接字符串：") (!content2));
 (Printf.printf "%i\n" ((String.index (!content2) ('3'))));
-(Printf.printf "%s\n" ("文本的长度：" ^ (string_of_int ((String.length (!content))))));
+(Printf.printf "%s\n" ("文本的长度：" ^ (string_of_int (String.length !content))));
+let list = ref ((String.split_on_char ('\n') (!content))) in
+let _g3 = ref (0) in
+let break = ref true in while (!break && (!_g3 < List.length !list)) do
+let s = ref (List.nth !list (!_g3)) in
+_g3 := !_g3 + 1;
+(Printf.printf "%s%s\n" ("切割了？") (!s));
+ done;
+;
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

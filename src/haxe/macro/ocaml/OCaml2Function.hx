@@ -86,8 +86,6 @@ class OCaml2Function {
 		var t = OCaml2Type.toString(type.t);
 		switch (t) {
 			case "OCamlChar":
-				if (value.length > 3)
-					throw "Char type should not exceed 1 character";
 				return StringTools.replace(value, "\"", "'");
 		}
 		return value;

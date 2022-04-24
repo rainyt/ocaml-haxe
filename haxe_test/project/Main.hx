@@ -43,7 +43,12 @@ class Main {
 
 		var content2 = OCamlString.concat("test", ["123", "123", "123"]);
 		trace("拼接字符串：", content2);
-		trace(OCamlString.index(content2, "3"));
-		trace("文本的长度：" + OCamlString.length(content));
+		trace(content2.index("3"));
+		trace("文本的长度：" + content.length);
+
+		var list = OCamlString.split_on_char("\n", content);
+		for (s in list) {
+			trace("切割了？", s);
+		}
 	}
 }
