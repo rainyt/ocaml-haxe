@@ -10,7 +10,8 @@ haxe build.hxml
 ```
 
 ## 项目结构
-- bin 这是编译出来的项目ml内容。
+- bin 这是编译出来的项目ml内容。（由宏定义过程实现，已弃用）
+- bin2 这是重构后编译出来的ml内容。
 - haxe_test/project 这是编译ml的Haxe内容。
 
 ## 路线图
