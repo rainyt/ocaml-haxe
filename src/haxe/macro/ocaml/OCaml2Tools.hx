@@ -192,10 +192,12 @@ class OCaml2Tools {
 				name = StringTools.replace(name, "`", "g");
 				switch (expr.expr) {
 					case TCast(e, m):
-						var castToType = OCaml2Type.toString(e.t);
-						if (!v.meta.has("@:cast")) {
-							v.meta.add("@:cast", [macro $v{castToType}], Context.currentPos());
-						}
+						OCaml2Ref.retianType(v.id, e.t);
+					// var castToType = OCaml2Type.toString(e.t);
+					// if (!v.meta.has("@:cast")) {
+					// 	v.meta.add("@:cast", [macro $v{castToType}], Context.currentPos());
+					// }
+					// trace("转换：", v.id, v.name, castToType, v.meta.get());
 					default:
 				}
 				// 临时变量都是经过Cast处理的

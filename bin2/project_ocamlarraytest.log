@@ -1,0 +1,96 @@
+[Function:() -> Void]
+	[Block:Void]
+		[Var array(11869):ocaml.OCamlArray<String>]
+			[Field:ocaml.OCamlArray<String>]
+				[TypeExpr ocaml.OCamlSys:Class<ocaml.OCamlSys>]
+				[FStatic:ocaml.OCamlArray<String>]
+					ocaml.OCamlSys
+					args:ocaml.OCamlArray<String>
+		[Block:Void]
+			[Var `(11872):Int] [Const:Int] 0
+			[Var `1(11873):Array<String>] [Cast:Array<String>] [Local array(11869):ocaml.OCamlArray<String>:ocaml.OCamlArray<String>]
+			[While:Void]
+				[Binop:Bool]
+					[Local `(11872):Int:Int]
+					<
+					[Field:Int]
+						[Local `1(11873):Array<String>:Array<String>]
+						[FInstance:Int]
+							Array<String>
+							length:Int
+				[Block:Void]
+					[Var s(11871):String]
+						[Array:String]
+							[Local `1(11873):Array<String>:Array<String>]
+							[Local `(11872):Int:Int]
+					[Unop:Int]
+						++
+						Prefix
+						[Local `(11872):Int:Int]
+					[Call:Void]
+						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+							[TypeExpr haxe.Log:Class<haxe.Log>]
+							[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+								haxe.Log
+								trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+						[Const:String] "%s"
+						[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+							fileName: [Const:String] "haxe_test/project/OCamlArrayTest.hx"
+							lineNumber: [Const:Int] 9
+							className: [Const:String] "project.OCamlArrayTest"
+							methodName: [Const:String] "main"
+							customParams: [ArrayDecl:Array<Dynamic>] [Local s(11871):String:String]
+		[Block:Void]
+			[Var `2(11876):Int] [Const:Int] 0
+			[Var `3(11877):Int]
+				[Field:Int]
+					[Local array(11869):ocaml.OCamlArray<String>:Array<String>]
+					[FInstance:Int]
+						Array<String>
+						length:Int
+			[While:Void]
+				[Binop:Bool]
+					[Local `2(11876):Int:Int]
+					<
+					[Local `3(11877):Int:Int]
+				[Block:Void]
+					[Var s(11874):Int]
+						[Unop:Int]
+							++
+							Postfix
+							[Local `2(11876):Int:Int]
+					[Var value(11875):String]
+						[Array:String]
+							[Local array(11869):ocaml.OCamlArray<String>:ocaml.OCamlArray<String>]
+							[Local s(11874):Int:Int]
+					[Call:Void]
+						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+							[TypeExpr haxe.Log:Class<haxe.Log>]
+							[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+								haxe.Log
+								trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+						[Const:String] "%i%s\n"
+						[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+							fileName: [Const:String] "haxe_test/project/OCamlArrayTest.hx"
+							lineNumber: [Const:Int] 13
+							className: [Const:String] "project.OCamlArrayTest"
+							methodName: [Const:String] "main"
+							customParams: [ArrayDecl:Array<Dynamic>]
+								[Local s(11874):Int:Int]
+								[Local value(11875):String:String]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "%s\n"
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/OCamlArrayTest.hx"
+				lineNumber: [Const:Int] 15
+				className: [Const:String] "project.OCamlArrayTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>]
+					[Array:String]
+						[Local array(11869):ocaml.OCamlArray<String>:ocaml.OCamlArray<String>]
+						[Const:Int] 0

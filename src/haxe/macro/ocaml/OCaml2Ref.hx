@@ -5,25 +5,21 @@ package haxe.macro.ocaml;
  * 这个类，好像是多余的？？
  */
 class OCaml2Ref {
-	public static var types:Map<String, ClassRef> = [];
+	public static var types:Map<Int, Type> = [];
 
 	/**
 	 * 定义类型
 	 * @param name 
 	 * @param type 
 	 */
-	public static function retianType(name:String, type:Type):Void {
-		var curModule = OCaml2Tools.currentType.module;
-		if (!types.exists(curModule)) {
-			types.set(curModule, new ClassRef());
-		}
-		types.get(curModule).ref.set(name, type);
+	public static function retianType(id:Int, type:Type):Void {
+		types.set(id, type);
 	}
-}
 
-class ClassRef {
-	public var ref:Map<String, Type> = [];
-
-	public function new() {}
+	public static function getType(id:Int):String {
+		if (types.exists(id))
+			return OCaml2Type.toString(types.get(id));
+		return null;
+	}
 }
 #end

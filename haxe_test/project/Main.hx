@@ -26,10 +26,11 @@ class Main {
 		}
 
 		var list = [1, 2, 3, 4, 5];
-		list.push(6);
+		list.push(123);
 		list.push(7);
 		list.push(8);
 		list.push(9);
+		list = list.concat([10, 11, 12]);
 		for (i in list) {
 			trace(i);
 		}

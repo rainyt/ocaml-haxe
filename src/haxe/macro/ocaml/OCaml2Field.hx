@@ -18,11 +18,8 @@ class OCaml2Field {
 				if (OCaml2Type.toString(v.t) == "ocaml.OCamlArray") {
 					isOCamlArrayCast = true;
 				} else {
-					var meta = v.meta.get()[0];
-					if (meta != null && meta.name == "@:cast") {
-						var param = ExprTools.getValue(meta.params[0]);
-						if (param == "ocaml.OCamlArray")
-							isOCamlArrayCast = true;
+					if (OCaml2Ref.getType(v.id) == "ocaml.OCamlArray") {
+						isOCamlArrayCast = true;
 					}
 				}
 			default:
@@ -62,6 +59,8 @@ class OCaml2Field {
 								return 'List.length ${OCaml2Tools.toString(e)}';
 							case "push":
 								return '${OCaml2Tools.toString(e).removeDeCitation()} := ${OCaml2Tools.toString(e)} @';
+							case "concat":
+								return '${OCaml2Tools.toString(e)} @ ';
 							default:
 								throw "Not support FInstance api:" + cf;
 						}

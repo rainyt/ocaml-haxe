@@ -1,0 +1,198 @@
+[Function:(list : Array<Int>) -> Int]
+	[Arg:Array<Int>] [Local list(12087):Array<Int>]
+	[Block:Dynamic]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "test=%i\n"
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/ArrayTest.hx"
+				lineNumber: [Const:Int] 10
+				className: [Const:String] "project.ArrayTest"
+				methodName: [Const:String] "toArray"
+				customParams: [ArrayDecl:Array<Dynamic>]
+					[Call:Int]
+						[Field:(a : Int, b : Int) -> Int]
+							[TypeExpr externapi.ApiTest:Class<externapi.ApiTest>]
+							[FStatic:(a : Int, b : Int) -> Int]
+								externapi.ApiTest
+								labelFunc:(a : Int, b : Int) -> Int
+						[Const:Int] 1
+						[Const:Int] 2
+		[Block:Void]
+			[Var `(12090):Int] [Const:Int] 0
+			[Var `1(12091):Int]
+				[Field:Int]
+					[Local list(12087):Array<Int>:Array<Int>]
+					[FInstance:Int]
+						Array<Int>
+						length:Int
+			[While:Void]
+				[Binop:Bool]
+					[Local `(12090):Int:Int]
+					<
+					[Local `1(12091):Int:Int]
+				[Block:Dynamic]
+					[Var i(12088):Int]
+						[Unop:Int]
+							++
+							Postfix
+							[Local `(12090):Int:Int]
+					[Call:Void]
+						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+							[TypeExpr haxe.Log:Class<haxe.Log>]
+							[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+								haxe.Log
+								trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+						[Const:String] "%i"
+						[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+							fileName: [Const:String] "haxe_test/project/ArrayTest.hx"
+							lineNumber: [Const:Int] 12
+							className: [Const:String] "project.ArrayTest"
+							methodName: [Const:String] "toArray"
+							customParams: [ArrayDecl:Array<Dynamic>]
+								[Array:Int]
+									[Local list(12087):Array<Int>:Array<Int>]
+									[Const:Int] 0
+					[Var f(12089):Int]
+						[Array:Int]
+							[Local list(12087):Array<Int>:Array<Int>]
+							[Const:Int] 0
+					[Return:Dynamic] [Local f(12089):Int:Int]
+		[Return:Dynamic] [Const:Int] 0[Function:(arr : Array<Int>) -> Int]
+	[Arg:Array<Int>] [Local arr(12092):Array<Int>]
+	[Block:Dynamic]
+		[Return:Dynamic]
+			[Array:Int]
+				[Local arr(12092):Array<Int>:Array<Int>]
+				[Const:Int] 0[Function:() -> Void]
+	[Block:Array<Int>]
+		[Var array(12093):Array<Int>]
+			[ArrayDecl:Array<Int>]
+				[Const:Int] 1
+				[Const:Int] 2
+				[Const:Int] 3
+				[Const:Int] 4
+				[Const:Int] 5
+				[Const:Int] 6
+		[Call:Int]
+			[Field:(x : Int) -> Int]
+				[Local array(12093):Array<Int>:Array<Int>]
+				[FInstance:(x : Int) -> Int]
+					Array<Int>
+					push:(x : Array.T) -> Int
+			[Const:Int] 5
+		[Call:Int]
+			[Field:(x : Int) -> Int]
+				[Local array(12093):Array<Int>:Array<Int>]
+				[FInstance:(x : Int) -> Int]
+					Array<Int>
+					push:(x : Array.T) -> Int
+			[Const:Int] 6
+		[Call:Int]
+			[Field:(x : Int) -> Int]
+				[Local array(12093):Array<Int>:Array<Int>]
+				[FInstance:(x : Int) -> Int]
+					Array<Int>
+					push:(x : Array.T) -> Int
+			[Const:Int] 7
+		[Call:Int]
+			[Field:(x : Int) -> Int]
+				[Local array(12093):Array<Int>:Array<Int>]
+				[FInstance:(x : Int) -> Int]
+					Array<Int>
+					push:(x : Array.T) -> Int
+			[Const:Int] 8
+		[Block:Void]
+			[Var `(12095):Int] [Const:Int] 0
+			[Var `1(12096):Int]
+				[Field:Int]
+					[Local array(12093):Array<Int>:Array<Int>]
+					[FInstance:Int]
+						Array<Int>
+						length:Int
+			[While:Void]
+				[Binop:Bool]
+					[Local `(12095):Int:Int]
+					<
+					[Local `1(12096):Int:Int]
+				[Block:Void]
+					[Var i(12094):Int]
+						[Unop:Int]
+							++
+							Postfix
+							[Local `(12095):Int:Int]
+					[Call:Void]
+						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+							[TypeExpr haxe.Log:Class<haxe.Log>]
+							[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+								haxe.Log
+								trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+						[Const:String] "%i=%i\n"
+						[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+							fileName: [Const:String] "haxe_test/project/ArrayTest.hx"
+							lineNumber: [Const:Int] 35
+							className: [Const:String] "project.ArrayTest"
+							methodName: [Const:String] "main"
+							customParams: [ArrayDecl:Array<Dynamic>]
+								[Local i(12094):Int:Int]
+								[Array:Int]
+									[Local array(12093):Array<Int>:Array<Int>]
+									[Local i(12094):Int:Int]
+		[Var data(12097):Int]
+			[Call:Int]
+				[Field:(arr : Array<Int>) -> Int]
+					[TypeExpr project.ArrayTest:Class<project.ArrayTest>]
+					[FStatic:(arr : Array<Int>) -> Int]
+						project.ArrayTest
+						call:(arr : Array<Int>) -> Int
+				[Local array(12093):Array<Int>:Array<Int>]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "%i\n"
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/ArrayTest.hx"
+				lineNumber: [Const:Int] 38
+				className: [Const:String] "project.ArrayTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>]
+					[Call:Int]
+						[Field:(list : Array<Int>) -> Int]
+							[TypeExpr project.ArrayTest:Class<project.ArrayTest>]
+							[FStatic:(list : Array<Int>) -> Int]
+								project.ArrayTest
+								toArray:(list : Array<Int>) -> Int
+						[Local array(12093):Array<Int>:Array<Int>]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "%i\n"
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/ArrayTest.hx"
+				lineNumber: [Const:Int] 39
+				className: [Const:String] "project.ArrayTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local data(12097):Int:Int]
+		[Binop:Array<Int>]
+			[Local array(12093):Array<Int>:Array<Int>]
+			=
+			[Call:Array<Int>]
+				[Field:(a : Array<Int>) -> Array<Int>]
+					[Local array(12093):Array<Int>:Array<Int>]
+					[FInstance:(a : Array<Int>) -> Array<Int>]
+						Array<Int>
+						concat:(a : Array<Array.T>) -> Array<Array.T>
+				[ArrayDecl:Array<Int>]
+					[Const:Int] 1
+					[Const:Int] 2
+					[Const:Int] 3

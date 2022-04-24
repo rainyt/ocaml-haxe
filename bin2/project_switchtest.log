@@ -1,0 +1,203 @@
+[Function:() -> Void]
+	[Block:Void]
+		[Var i(12235):Int] [Const:Int] 0
+		[Meta:Void]
+			:ast(switch (i) {
+	case 0:
+		trace("%i\n", i);
+		switch (i) {
+			case 2:
+				trace("%i", i);			
+		};	
+	case 1:
+		trace("%i\n", i);	
+	case 2:
+		trace("%i\n", i);	
+})
+			[Switch:Void]
+				[Local i(12235):Int:Int]
+				[Case:Void]
+					[Const:Int] 0
+					[Block:Void]
+						[Block:Void]
+							[Call:Void]
+								[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+									[TypeExpr haxe.Log:Class<haxe.Log>]
+									[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+										haxe.Log
+										trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+								[Const:String] "%i\n"
+								[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+									fileName: [Const:String] "haxe_test/project/SwitchTest.hx"
+									lineNumber: [Const:Int] 10
+									className: [Const:String] "project.SwitchTest"
+									methodName: [Const:String] "main"
+									customParams: [ArrayDecl:Array<Dynamic>] [Local i(12235):Int:Int]
+							[Meta:Void]
+								:ast(switch (i) {
+	case 2:
+		trace("%i", i);	
+})
+								[If:Void]
+									[Binop:Bool]
+										[Local i(12235):Int:Int]
+										==
+										[Const:Int] 2
+									[Then:Void] [Block:Void]
+										[Block:Void]
+											[Call:Void]
+												[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+													[TypeExpr haxe.Log:Class<haxe.Log>]
+													[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+														haxe.Log
+														trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+												[Const:String] "%i"
+												[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+													fileName: [Const:String] "haxe_test/project/SwitchTest.hx"
+													lineNumber: [Const:Int] 13
+													className: [Const:String] "project.SwitchTest"
+													methodName: [Const:String] "main"
+													customParams: [ArrayDecl:Array<Dynamic>] [Local i(12235):Int:Int]
+				[Case:Void]
+					[Const:Int] 1
+					[Block:Void]
+						[Block:Void]
+							[Call:Void]
+								[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+									[TypeExpr haxe.Log:Class<haxe.Log>]
+									[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+										haxe.Log
+										trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+								[Const:String] "%i\n"
+								[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+									fileName: [Const:String] "haxe_test/project/SwitchTest.hx"
+									lineNumber: [Const:Int] 16
+									className: [Const:String] "project.SwitchTest"
+									methodName: [Const:String] "main"
+									customParams: [ArrayDecl:Array<Dynamic>] [Local i(12235):Int:Int]
+				[Case:Void]
+					[Const:Int] 2
+					[Block:Void]
+						[Block:Void]
+							[Call:Void]
+								[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+									[TypeExpr haxe.Log:Class<haxe.Log>]
+									[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+										haxe.Log
+										trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+								[Const:String] "%i\n"
+								[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+									fileName: [Const:String] "haxe_test/project/SwitchTest.hx"
+									lineNumber: [Const:Int] 18
+									className: [Const:String] "project.SwitchTest"
+									methodName: [Const:String] "main"
+									customParams: [ArrayDecl:Array<Dynamic>] [Local i(12235):Int:Int]
+		[Meta:Void]
+			:ast(switch (i + 1) {
+	case 2:
+		trace("%i\n", i);	
+	default:
+		trace("default:%i\n", i);	
+})
+			[Block:Void]
+				[Var `(12237):Int]
+					[Binop:Int]
+						[Local i(12235):Int:Int]
+						+
+						[Const:Int] 1
+				[If:Void]
+					[Binop:Bool]
+						[Local `(12237):Int:Int]
+						==
+						[Const:Int] 2
+					[Then:Void] [Block:Void]
+						[Block:Void]
+							[Call:Void]
+								[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+									[TypeExpr haxe.Log:Class<haxe.Log>]
+									[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+										haxe.Log
+										trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+								[Const:String] "%i\n"
+								[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+									fileName: [Const:String] "haxe_test/project/SwitchTest.hx"
+									lineNumber: [Const:Int] 23
+									className: [Const:String] "project.SwitchTest"
+									methodName: [Const:String] "main"
+									customParams: [ArrayDecl:Array<Dynamic>] [Local i(12235):Int:Int]
+					[Else:Void] [Block:Void]
+						[Call:Void]
+							[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+								[TypeExpr haxe.Log:Class<haxe.Log>]
+								[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+									haxe.Log
+									trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+							[Const:String] "default:%i\n"
+							[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+								fileName: [Const:String] "haxe_test/project/SwitchTest.hx"
+								lineNumber: [Const:Int] 25
+								className: [Const:String] "project.SwitchTest"
+								methodName: [Const:String] "main"
+								customParams: [ArrayDecl:Array<Dynamic>] [Local i(12235):Int:Int]
+		[Meta:Void]
+			:ast(switch ("A") {
+	case "A":
+		trace("%s", "A");	
+	case "B":
+		trace("%s", "B");	
+	case "C":
+		trace("%s", "C");	
+})
+			[Switch:Void]
+				[Const:String] "A"
+				[Case:Void]
+					[Const:String] "A"
+					[Block:Void]
+						[Block:Void]
+							[Call:Void]
+								[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+									[TypeExpr haxe.Log:Class<haxe.Log>]
+									[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+										haxe.Log
+										trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+								[Const:String] "%s"
+								[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+									fileName: [Const:String] "haxe_test/project/SwitchTest.hx"
+									lineNumber: [Const:Int] 30
+									className: [Const:String] "project.SwitchTest"
+									methodName: [Const:String] "main"
+									customParams: [ArrayDecl:Array<Dynamic>] [Const:String] "A"
+				[Case:Void]
+					[Const:String] "B"
+					[Block:Void]
+						[Block:Void]
+							[Call:Void]
+								[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+									[TypeExpr haxe.Log:Class<haxe.Log>]
+									[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+										haxe.Log
+										trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+								[Const:String] "%s"
+								[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+									fileName: [Const:String] "haxe_test/project/SwitchTest.hx"
+									lineNumber: [Const:Int] 32
+									className: [Const:String] "project.SwitchTest"
+									methodName: [Const:String] "main"
+									customParams: [ArrayDecl:Array<Dynamic>] [Const:String] "B"
+				[Case:Void]
+					[Const:String] "C"
+					[Block:Void]
+						[Block:Void]
+							[Call:Void]
+								[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+									[TypeExpr haxe.Log:Class<haxe.Log>]
+									[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+										haxe.Log
+										trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+								[Const:String] "%s"
+								[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+									fileName: [Const:String] "haxe_test/project/SwitchTest.hx"
+									lineNumber: [Const:Int] 34
+									className: [Const:String] "project.SwitchTest"
+									methodName: [Const:String] "main"
+									customParams: [ArrayDecl:Array<Dynamic>] [Const:String] "C"

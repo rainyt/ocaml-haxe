@@ -1,0 +1,136 @@
+[Function:(n : Int, cache : Array<Int>, cacheSize : Int) -> Bool]
+	[Arg:Int] [Local n(12194):Int]
+	[Arg:Array<Int>] [Local cache(12195):Array<Int>]
+	[Arg:Int] [Local cacheSize(12196):Int]
+	[Block:Dynamic]
+		[Var cur(12197):Int] [Const:Int] 1
+		[Block:Void]
+			[Var `(12199):Int] [Const:Int] 0
+			[While:Void]
+				[Binop:Bool]
+					[Local `(12199):Int:Int]
+					<
+					[Field:Int]
+						[Local cache(12195):Array<Int>:Array<Int>]
+						[FInstance:Int]
+							Array<Int>
+							length:Int
+				[Block:Void]
+					[Var item(12198):Int]
+						[Array:Int]
+							[Local cache(12195):Array<Int>:Array<Int>]
+							[Local `(12199):Int:Int]
+					[Unop:Int]
+						++
+						Prefix
+						[Local `(12199):Int:Int]
+					[If:Void]
+						[Binop:Bool]
+							[Binop:Int]
+								[Local n(12194):Int:Int]
+								%
+								[Local item(12198):Int:Int]
+							==
+							[Const:Int] 0
+						[Then:Dynamic] [Block:Dynamic] [Return:Dynamic] [Const:Bool] false
+					[Binop:Int]
+						[Local cur(12197):Int:Int]
+						=
+						[Local item(12198):Int:Int]
+		[Var m(12200):Int]
+			[Call:Int]
+				[Field:(v : Float) -> Int]
+					[TypeExpr Math:Class<Math>]
+					[FStatic:(v : Float) -> Int]
+						Math
+						floor:(v : Float) -> Int
+				[Call:Float]
+					[Field:(v : Float) -> Float]
+						[TypeExpr Math:Class<Math>]
+						[FStatic:(v : Float) -> Float]
+							Math
+							sqrt:(v : Float) -> Float
+					[Cast:Float]
+						[Local n(12194):Int:Int]
+						[TypeExpr Float:Float]
+		[While:Void]
+			[Binop:Bool]
+				[Cast:Float]
+					[Local cur(12197):Int:Int]
+					[TypeExpr Float:Float]
+				<
+				[Local m(12200):Int:Int]
+			[Block:Void]
+				[Binop:Int]
+					[Local cur(12197):Int:Int]
+					=
+					[Binop:Int]
+						[Local cur(12197):Int:Int]
+						+
+						[Const:Int] 2
+				[If:Void]
+					[Binop:Bool]
+						[Binop:Int]
+							[Local n(12194):Int:Int]
+							%
+							[Local cur(12197):Int:Int]
+						==
+						[Const:Int] 0
+					[Then:Dynamic] [Block:Dynamic] [Return:Dynamic] [Const:Bool] false
+		[If:Void]
+			[Binop:Bool]
+				[Field:Int]
+					[Local cache(12195):Array<Int>:Array<Int>]
+					[FInstance:Int]
+						Array<Int>
+						length:Int
+				<
+				[Local cacheSize(12196):Int:Int]
+			[Then:Int] [Block:Int]
+				[Call:Int]
+					[Field:(x : Int) -> Int]
+						[Local cache(12195):Array<Int>:Array<Int>]
+						[FInstance:(x : Int) -> Int]
+							Array<Int>
+							push:(x : Array.T) -> Int
+					[Local n(12194):Int:Int]
+		[Return:Dynamic] [Const:Bool] true[Function:() -> Void]
+	[Block:Void]
+		[Var cache(12201):Array<Int>] [ArrayDecl:Array<Int>]
+		[Var cacheSize(12202):Float] [Const:Float] 400.
+		[Var count(12203):Float] [Const:Float] 1.
+		[Var beginCount(12204):Float] [Const:Float] 3.
+		[Var endCount(12205):Float] [Const:Float] 10000000.0
+		[Var current(12206):Float] [Local beginCount(12204):Float:Float]
+		[While:Void]
+			[Binop:Bool]
+				[Local current(12206):Float:Float]
+				<
+				[Local endCount(12205):Float:Float]
+			[Block:Float]
+				[If:Void]
+					[Call:Bool]
+						[Field:(n : Int, cache : Array<Int>, cacheSize : Int) -> Bool]
+							[TypeExpr project.Test2:Class<project.Test2>]
+							[FStatic:(n : Int, cache : Array<Int>, cacheSize : Int) -> Bool]
+								project.Test2
+								isPrime:(n : Int, cache : Array<Int>, cacheSize : Int) -> Bool
+						[Cast:Int]
+							[Local current(12206):Float:Float]
+							[TypeExpr Int:Int]
+						[Local cache(12201):Array<Int>:Array<Int>]
+						[Cast:Int]
+							[Local cacheSize(12202):Float:Float]
+							[TypeExpr Int:Int]
+					[Then:Float] [Block:Float]
+						[Unop:Float]
+							++
+							Postfix
+							[Local count(12203):Float:Float]
+				[Binop:Float]
+					[Local current(12206):Float:Float]
+					=
+					[Binop:Float]
+						[Local current(12206):Float:Float]
+						+
+						[Const:Float] 2.
