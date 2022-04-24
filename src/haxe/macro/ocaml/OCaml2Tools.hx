@@ -189,7 +189,7 @@ class OCaml2Tools {
 				}
 			case TVar(v, expr):
 				var name = v.name;
-				name = StringTools.replace(name, "`", "g");
+				name = StringTools.replace(name, "`", "_g");
 				switch (expr.expr) {
 					case TCast(e, m):
 						OCaml2Ref.retianType(v.id, e.t);

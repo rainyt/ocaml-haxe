@@ -9,6 +9,12 @@
 haxe build.hxml
 ```
 
+## 运行OCaml脚本
+当如果需要测试OCaml文件时，请按照OCaml文档正确安装OCaml，并拥有dune的环境，接下来：
+```shell
+dune exec bin2
+```
+
 ## 项目结构
 - bin 这是编译出来的项目ml内容。（由宏定义过程实现，已弃用）
 - bin2 这是重构后编译出来的ml内容。
