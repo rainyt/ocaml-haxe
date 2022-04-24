@@ -170,7 +170,6 @@ class OCaml2Tools {
 				}
 			case TField(e, fa):
 				return OCaml2Field.toString(e, fa);
-			// return toString(e) + "." + fa.getParameters()[1];
 			case TConst(c):
 				switch (c) {
 					case TBool(b):

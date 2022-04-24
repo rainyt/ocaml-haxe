@@ -1,3 +1,3 @@
-package extern;
+package;
 
 abstract OCamlChar(String) to String from String {}

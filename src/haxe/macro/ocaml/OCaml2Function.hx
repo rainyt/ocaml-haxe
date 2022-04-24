@@ -56,14 +56,20 @@ class OCaml2Function {
 				for (index => value in array) {
 					args.push(OCaml2Tools.toString(value));
 				}
+				var argsParams:Array<{name:String, opt:Bool, t:Type}> = [];
+				switch (expr.t) {
+					case TFun(args, ret):
+						argsParams = args;
+					default:
+				}
 				var needRef = OCaml2Tools.isHaxe2OCamlType(expr);
 				if (needRef) {
 					for (index => value in args) {
-						args[index] = '(ref ${value})';
+						args[index] = '(ref ${toArgsType(value, argsParams[index])})';
 					}
 				} else {
 					for (index => value in args) {
-						args[index] = '(${value})';
+						args[index] = '(${toArgsType(value, argsParams[index])})';
 					}
 				}
 				var needList = funName.length - 1 == funName.lastIndexOf("@");
@@ -74,6 +80,17 @@ class OCaml2Function {
 					funName += " ]";
 				return funName;
 		}
+	}
+
+	public static function toArgsType(value:String, type:{name:String, opt:Bool, t:Type}):String {
+		var t = OCaml2Type.toString(type.t);
+		switch (t) {
+			case "OCamlChar":
+				if (value.length > 3)
+					throw "Char type should not exceed 1 character";
+				return StringTools.replace(value, "\"", "'");
+		}
+		return value;
 	}
 }
 #end
