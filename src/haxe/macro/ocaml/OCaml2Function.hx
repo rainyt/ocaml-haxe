@@ -66,7 +66,13 @@ class OCaml2Function {
 						args[index] = '(${value})';
 					}
 				}
-				return funName + " " + (args.length > 0 ? args.join(" ") : "()");
+				var needList = funName.length - 1 == funName.lastIndexOf("@");
+				if (needList)
+					funName += " [";
+				funName = funName + " " + (args.length > 0 ? args.join(" ") : "()");
+				if (needList)
+					funName += " ]";
+				return funName;
 		}
 	}
 }

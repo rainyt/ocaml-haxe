@@ -2,6 +2,8 @@ package haxe.macro.ocaml;
 
 import haxe.macro.Type;
 
+using haxe.macro.ocaml.OCaml2Utils;
+
 #if macro
 class OCaml2Field {
 	/**
@@ -58,7 +60,12 @@ class OCaml2Field {
 								if (isOCamlArrayCast)
 									return 'Array.length ${OCaml2Tools.toString(e)}';
 								return 'List.length ${OCaml2Tools.toString(e)}';
+							case "push":
+								return '${OCaml2Tools.toString(e).removeDeCitation()} := ${OCaml2Tools.toString(e)} @';
+							default:
+								throw "Not support FInstance api:" + cf;
 						}
+					default:
 				}
 				return "FInstance";
 			default:

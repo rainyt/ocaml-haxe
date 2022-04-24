@@ -20,5 +20,17 @@ _g := !_g + 1;
 (Printf.printf "%s\n" (!item));
  done;
 ;
+let list = ref ([1;2;3;4;5]) in
+(list := !list @ [ (6) ]);
+(list := !list @ [ (7) ]);
+(list := !list @ [ (8) ]);
+(list := !list @ [ (9) ]);
+let _g = ref (0) in
+let break = ref true in while (!break && (!_g < List.length !list)) do
+let i = ref (List.nth !list (!_g)) in
+_g := !_g + 1;
+(Printf.printf "%i\n" (!i));
+ done;
+;
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

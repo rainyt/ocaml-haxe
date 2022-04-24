@@ -24,5 +24,14 @@ class Main {
 		for (item in array) {
 			trace(item);
 		}
+
+		var list = [1, 2, 3, 4, 5];
+		list.push(6);
+		list.push(7);
+		list.push(8);
+		list.push(9);
+		for (i in list) {
+			trace(i);
+		}
 	}
 }
