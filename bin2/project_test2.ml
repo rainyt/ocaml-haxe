@@ -12,7 +12,7 @@ ignore (raise (BOOL (false)));false;
 cur := !item;
  done;
 ;
-let m = ref ((floor ((sqrt (!n))))) in
+let m = ref ((Math.floor ((Math.sqrt (!n))))) in
 let break = ref true in while (!break && (!cur < !m)) do
 cur := !cur + 2;
 if (!n mod !cur = 0) then (

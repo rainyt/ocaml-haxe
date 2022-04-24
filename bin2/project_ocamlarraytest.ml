@@ -3,8 +3,8 @@ let () = let start_time = Sys.time() in
 let array = ref (Sys.argv) in
 let g = ref (0) in
 let g1 = ref (!array) in
-let break = ref true in while (!break && (!g < List.length !g1)) do
-let s = ref (List.nth !g1 (!g)) in
+let break = ref true in while (!break && (!g < Array.length !g1)) do
+let s = ref (!g1.(!g)) in
 g := !g + 1;
 (Printf.printf "%s%s\n" ("%s") (!s));
  done;

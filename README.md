@@ -31,7 +31,7 @@ haxe build.hxml
 - [ ] Switch int float string
 - [ ] Switch Enum
 - [ ] Array数组访问与创建
-- [ ] For循环
+- [x] For循环
 - [x] While循环
 - [x] 基础运算符:+ - * / += /= *= -= -- ++
     - 运算符有增强实现，会自动转换为String/Float，不受OCaml的类型限制。The operator has an enhanced implementation and will be automatically converted to string / float, which is not limited by the type of Ocaml.

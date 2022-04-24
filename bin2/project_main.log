@@ -66,26 +66,27 @@
 					ocaml.OCamlSys
 					args:ocaml.OCamlArray<String>
 		[Block:Void]
-			[Var `(255791):Int] [Const:Int] 0
-			[Var `1(255792):Array<String>] [Cast:Array<String>] [Local array(255788):ocaml.OCamlArray<String>:ocaml.OCamlArray<String>]
+			[Var _g(255791):Int] [Const:Int] 0
+			[Var _g1(255792):Array<String>] [Cast:Array<String>] [Local array(255788):ocaml.OCamlArray<String>:ocaml.OCamlArray<String>]
 			[While:Void]
-				[Binop:Bool]
-					[Local `(255791):Int:Int]
-					<
-					[Field:Int]
-						[Local `1(255792):Array<String>:Array<String>]
-						[FInstance:Int]
-							Array<String>
-							length:Int
+				[Parenthesis:Bool]
+					[Binop:Bool]
+						[Local _g(255791):Int:Int]
+						<
+						[Field:Int]
+							[Local _g1(255792):Array<String>:Array<String>]
+							[FInstance:Int]
+								Array<String>
+								length:Int
 				[Block:Void]
 					[Var item(255790):String]
 						[Array:String]
-							[Local `1(255792):Array<String>:Array<String>]
-							[Local `(255791):Int:Int]
+							[Local _g1(255792):Array<String>:Array<String>]
+							[Local _g(255791):Int:Int]
 					[Unop:Int]
 						++
 						Prefix
-						[Local `(255791):Int:Int]
+						[Local _g(255791):Int:Int]
 					[Call:Void]
 						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 							[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -147,25 +148,26 @@
 					[Const:Int] 11
 					[Const:Int] 12
 		[Block:Void]
-			[Var `2(255795):Int] [Const:Int] 0
+			[Var _g(255795):Int] [Const:Int] 0
 			[While:Void]
-				[Binop:Bool]
-					[Local `2(255795):Int:Int]
-					<
-					[Field:Int]
-						[Local list(255793):Array<Int>:Array<Int>]
-						[FInstance:Int]
-							Array<Int>
-							length:Int
+				[Parenthesis:Bool]
+					[Binop:Bool]
+						[Local _g(255795):Int:Int]
+						<
+						[Field:Int]
+							[Local list(255793):Array<Int>:Array<Int>]
+							[FInstance:Int]
+								Array<Int>
+								length:Int
 				[Block:Void]
 					[Var i(255794):Int]
 						[Array:Int]
 							[Local list(255793):Array<Int>:Array<Int>]
-							[Local `2(255795):Int:Int]
+							[Local _g(255795):Int:Int]
 					[Unop:Int]
 						++
 						Prefix
-						[Local `2(255795):Int:Int]
+						[Local _g(255795):Int:Int]
 					[Call:Void]
 						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 							[TypeExpr haxe.Log:Class<haxe.Log>]
