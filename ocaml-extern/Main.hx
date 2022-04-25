@@ -5,5 +5,6 @@ class Main {
 	static function main() {
 		// OCamlExternTools.externOCaml()
 		OCamlExternTools.externOCaml("ocaml/string.ml", "extern/OCamlString.hx");
+		OCamlExternTools.externOCaml("ocaml/sys.ml", "extern/OCamlSys.hx");
 	}
 }

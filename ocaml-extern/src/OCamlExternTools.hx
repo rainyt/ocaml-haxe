@@ -23,7 +23,7 @@ class OCamlExternTools {
 		cName = StringTools.replace(cName, ".hx", "");
 		haxeCode.write('@:native("${nName}")\n');
 		haxeCode.write("extern class " + cName + " {\n");
-		var p = new Process("ocamlc -i ocaml/string.ml");
+		var p = new Process("ocamlc -i " + file);
 		var mlcontent = p.stdout.readAll().toString();
 		File.saveContent("test/" + out.substr(out.lastIndexOf("/") + 1), mlcontent);
 		// 开始处理Extern实现
@@ -37,7 +37,7 @@ class OCamlExternTools {
 	}
 
 	public static function parserLine(line:String):Void {
-		var funcName = ~/external [a-z_A-Z]{1,}|val [a-z_A-Z]{1,}/g;
+		var funcName = ~/external [a-z_A-Z]{1,}|val [a-z_A-Z0-9]{1,}/g;
 		if (funcName.match(line)) {
 			var fun = funcName.matched(0);
 			var args = line.split(":")[1];
@@ -48,6 +48,8 @@ class OCamlExternTools {
 			var haxeArgs = args.split("->");
 			var ret = toType(haxeArgs.pop());
 			var m = 0;
+			if (fun.indexOf("argv") != -1)
+				trace(fun, args, ret);
 			for (index => value in haxeArgs) {
 				if (toType(value) == "fun") {
 					haxeArgs[index] = "a" + index + ":" + toType(funArgs.matched(m));
@@ -55,12 +57,18 @@ class OCamlExternTools {
 				} else
 					haxeArgs[index] = "a" + index + ":" + toType(value);
 			}
-			haxeCode.write('public static function ${fun.split(" ")[1]}(${haxeArgs.join(",")}):${ret};\n');
+			if (haxeArgs.length > 0)
+				haxeCode.write('public static function ${fun.split(" ")[1]}(${haxeArgs.join(",")}):${ret};\n');
+			else
+				haxeCode.write('public static var ${fun.split(" ")[1]}:${ret};\n');
 		}
 	}
 
 	public static function toType(type:String):String {
 		type = StringTools.replace(type, " ", "");
+		if (type.indexOf("list") != -1) {
+			trace(type);
+		}
 		switch (type) {
 			case "unit":
 				return "Void";
@@ -72,6 +80,12 @@ class OCamlExternTools {
 				return "OCamlChar";
 			case "fun":
 				return "fun";
+			case "stringarray":
+				return "OCamlArray<String>";
+			case "floatarray":
+				return "OCamlArray<Float>";
+			case "intarray":
+				return "OCamlArray<Int>";
 			case "stringlist":
 				return "Array<String>";
 			case "floatlist":
