@@ -36,6 +36,8 @@ class OCaml2Function {
 				}
 				for (index => value in types) {
 					switch (value) {
+						case "Bool":
+							types[index] = "%b";
 						case "OCamlChar":
 							types[index] = "%c";
 						case "String":
@@ -85,7 +87,6 @@ class OCaml2Function {
 				return funName;
 		}
 	}
-
 	// public static function toArgsType(value:String, type:{name:String, opt:Bool, t:Type}):String {
 	// 	var t = OCaml2Type.toString(type.t);
 	// 	switch (t) {
