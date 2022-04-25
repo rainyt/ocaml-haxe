@@ -50,6 +50,7 @@ _g3 := !_g3 + 1;
  done;
 ;
 content := (String.map (fun data ->  try 
+(Printf.printf '%s%c\n' ('解析') (data));
 if (data = '\n') then (
 ignore (raise (OCAMLCHAR (data)));
  );

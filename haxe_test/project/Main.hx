@@ -54,7 +54,8 @@ class Main {
 		// todo 子方法需要兼容
 		// content := String.map (fun a -> a) !content;
 		content = OCamlString.map(function(data) {
-			// trace("解析", data);
+			// 这里的处理不正确，会被转成OCamlChar
+			trace("解析", data);
 			if (data == "\n")
 				return data;
 			return "2";

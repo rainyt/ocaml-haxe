@@ -36,7 +36,9 @@ class OCaml2Function {
 				}
 				for (index => value in types) {
 					switch (value) {
-						case "String", "OCamlChar":
+						case "OCamlChar":
+							types[index] = "%c";
+						case "String":
 							types[index] = "%s";
 						case "Float":
 							types[index] = "%f";
