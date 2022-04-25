@@ -55,23 +55,25 @@ class OCaml2Function {
 				}
 				return 'Printf.printf "${types.join("")}\\n" ${args.join(" ")}';
 			default:
-				for (index => value in array) {
-					args.push(OCaml2Tools.toString(value));
-				}
 				var argsParams:Array<{name:String, opt:Bool, t:Type}> = [];
 				switch (expr.t) {
 					case TFun(args, ret):
 						argsParams = args;
 					default:
 				}
+				for (index => value in array) {
+					args.push(OCaml2Tools.toString(value, false, argsParams[index].t));
+				}
 				var needRef = OCaml2Tools.isHaxe2OCamlType(expr);
 				if (needRef) {
 					for (index => value in args) {
-						args[index] = '(ref ${toArgsType(value, argsParams[index])})';
+						// args[index] = '(ref ${toArgsType(value, argsParams[index])})';
+						args[index] = '(ref ${value})';
 					}
 				} else {
 					for (index => value in args) {
-						args[index] = '(${toArgsType(value, argsParams[index])})';
+						// args[index] = '(${toArgsType(value, argsParams[index])})';
+						args[index] = '(${value})';
 					}
 				}
 				var needList = funName.length - 1 == funName.lastIndexOf("@");
@@ -84,17 +86,17 @@ class OCaml2Function {
 		}
 	}
 
-	public static function toArgsType(value:String, type:{name:String, opt:Bool, t:Type}):String {
-		var t = OCaml2Type.toString(type.t);
-		switch (t) {
-			case "OCamlChar":
-				if (value.indexOf("ignore (raise (STRING") != -1) {
-					OCaml2Tools.currentOCaml.writeHead('exception OCAMLCHAR of char\n');
-					value = StringTools.replace(value, "ignore (raise (STRING", "ignore (raise (OCAMLCHAR");
-				}
-				return StringTools.replace(value, "\"", "'");
-		}
-		return value;
-	}
+	// public static function toArgsType(value:String, type:{name:String, opt:Bool, t:Type}):String {
+	// 	var t = OCaml2Type.toString(type.t);
+	// 	switch (t) {
+	// 		case "OCamlChar":
+	// 			if (value.indexOf("ignore (raise (STRING") != -1) {
+	// 				OCaml2Tools.currentOCaml.writeHead('exception OCAMLCHAR of char\n');
+	// 				value = StringTools.replace(value, "ignore (raise (STRING", "ignore (raise (OCAMLCHAR");
+	// 			}
+	// 			return StringTools.replace(value, "\"", "'");
+	// 	}
+	// 	return value;
+	// }
 }
 #end

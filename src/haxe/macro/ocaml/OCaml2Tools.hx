@@ -29,6 +29,19 @@ class OCaml2Tools {
 	 */
 	public static var lastBlockExpr:TypedExpr;
 
+	/**
+	 * 方法返回值解析列表
+	 */
+	public static var funcTypeList:Array<Type> = [];
+
+	/**
+	 * 获取当前方法的返回值
+	 * @return Type
+	 */
+	public static function getCurrentReturnType():Type {
+		return funcTypeList[funcTypeList.length - 1];
+	}
+
 	public static function toStringByType(expr:TypedExpr, type:String):String {
 		var selfType = OCaml2Type.toString(expr.t);
 		switch (type) {
@@ -65,7 +78,7 @@ class OCaml2Tools {
 	 * @param ref 是否ref中
 	 * @return String
 	 */
-	public static function toString(expr:TypedExpr, ref:Bool = false):String {
+	public static function toString(expr:TypedExpr, ref:Bool = false, castType:Type = null):String {
 		if (expr == null) {
 			return "(* expr is null? *)";
 		}
@@ -189,6 +202,10 @@ class OCaml2Tools {
 						s = StringTools.replace(s, "\n", "\\n");
 						s = StringTools.replace(s, "\r", "\\r");
 						s = StringTools.replace(s, "\t", "\\t");
+						if (castType != null) {
+							if (OCaml2Type.toString(castType) == "OCamlChar")
+								return '\'${s}\'';
+						}
 						return '"${s}"';
 					case TFloat(s):
 						return Std.string(s);
@@ -214,7 +231,7 @@ class OCaml2Tools {
 
 			case TCast(e, m):
 				// todo 这里的m会不存在
-				return toString(e);
+				return toString(e, false, castType);
 			case TLocal(v):
 				var name = v.name;
 				name = StringTools.replace(name, "`", "_g");
@@ -238,7 +255,7 @@ class OCaml2Tools {
 						default:
 					}
 				}
-				return OCaml2Return.toString(e) + ";" + toString(e);
+				return OCaml2Return.toString(e) + ";" + toString(e, false, OCaml2Tools.getCurrentReturnType());
 			case TBlock(el):
 				var oc:OCaml = new OCaml();
 				for (item in el) {
@@ -254,6 +271,7 @@ class OCaml2Tools {
 				}
 				return oc.code;
 			case TFunction(tfunc):
+				OCaml2Tools.funcTypeList.push(tfunc.t);
 				if (OCaml2Tools.parserDefineFunc) {
 					parserDefineFunc = false;
 					var oc = new OCaml();
@@ -270,12 +288,13 @@ class OCaml2Tools {
 						oc.write(" = ");
 						oc.write("let start_time = Sys.time() in\n");
 					}
-					oc.write(toString(tfunc.expr));
+					oc.write(toString(tfunc.expr, false, tfunc.t));
 					if (type != "VOID") {
 						oc.write("with " + OCaml2Type.toString(tfunc.t).toUpperCase() + " ret -> ret");
 					} else {
 						oc.write('Printf.printf "runtime:%fs" (Sys.time() -. start_time)');
 					}
+					OCaml2Tools.funcTypeList.pop();
 					return oc.code;
 				} else {
 					var oc = new OCaml();
@@ -290,8 +309,9 @@ class OCaml2Tools {
 						}
 					oc.write(" -> ");
 					oc.write(" try \n");
-					oc.write(toString(tfunc.expr));
+					oc.write(toString(tfunc.expr, false, tfunc.t));
 					oc.write("with " + OCaml2Type.toString(tfunc.t).toUpperCase() + " ret -> ret");
+					OCaml2Tools.funcTypeList.pop();
 					return '${oc.code}';
 				}
 			default:

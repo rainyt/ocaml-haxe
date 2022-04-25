@@ -49,7 +49,7 @@ class OCaml2Binop {
 			case ":=":
 				return OCaml2Tools.toString(e1).removeDeCitation() + ' ${opTag} ' + OCaml2Tools.toString(e2);
 		}
-		return OCaml2Tools.toString(e1) + ' ${opTag} ' + OCaml2Tools.toString(e2);
+		return OCaml2Tools.toString(e1, e2.t) + ' ${opTag} ' + OCaml2Tools.toString(e2, false, e1.t);
 	}
 
 	public static function toOp(op:Binop):String {
