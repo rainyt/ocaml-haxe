@@ -44,7 +44,7 @@ public static function filter(a0:Dynamic->Bool,a1:Dynamic):Dynamic;
 public static function find_all(a0:Dynamic->Bool,a1:Dynamic):Dynamic;
 public static function filteri(a0:Int->Dynamic->Bool,a1:Dynamic):Dynamic;
 public static function partition(a0:Dynamic->Bool,a1:Dynamic):Dynamic;
-public static function partition_map(a0:Dynamic->OCaml'b,'cEither.T,a1:Dynamic):Dynamic;
+public static function partition_map(a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
 public static function assoc(a0:Dynamic,a1:Dynamic):Dynamic;
 public static function assoc_opt(a0:Dynamic,a1:Dynamic):Dynamic;
 public static function assq(a0:Dynamic,a1:Dynamic):Dynamic;
@@ -60,6 +60,6 @@ public static function stable_sort(a0:Dynamic->Dynamic->Int,a1:Dynamic):Dynamic;
 public static function fast_sort(a0:Dynamic->Dynamic->Int,a1:Dynamic):Dynamic;
 public static function sort_uniq(a0:Dynamic->Dynamic->Int,a1:Dynamic):Dynamic;
 public static function merge(a0:Dynamic->Dynamic->Int,a1:Dynamic,a2:Dynamic):Dynamic;
-public static function to_seq(a0:Dynamic):OCaml'aSeq.T;
-public static function of_seq(a0:OCaml'aSeq.T):Dynamic;
+public static function to_seq(a0:Dynamic):Dynamic;
+public static function of_seq(a0:Dynamic):Dynamic;
 }

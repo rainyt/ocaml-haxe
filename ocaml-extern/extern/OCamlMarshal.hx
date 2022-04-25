@@ -1,4 +1,4 @@
-typedef Extern_flags = = Dynamic;
+typedef MarshalExtern_flags  = Dynamic;
 
 @:native("Marshal")
 extern class OCamlMarshal {

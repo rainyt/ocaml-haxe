@@ -1,4 +1,4 @@
-typedef T = = String;
+typedef StringT  = String;
 
 @:native("String")
 extern class OCamlString {
@@ -55,7 +55,7 @@ public static function capitalize(a0:String):String;
 public static function uncapitalize(a0:String):String;
 public static function compare(a0:Dynamic,a1:Dynamic):Int;
 public static function equal(a0:String,a1:String):Bool;
-public static function to_seq(a0:String):OCamlcharSeq.T;
-public static function to_seqi(a0:String):OCamlfunSeq.T;
-public static function of_seq(a0:OCamlcharSeq.T):String;
+public static function to_seq(a0:String):Dynamic;
+public static function to_seqi(a0:String):Dynamic;
+public static function of_seq(a0:Dynamic):String;
 }

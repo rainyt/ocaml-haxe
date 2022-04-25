@@ -16,7 +16,7 @@ public static function length(a0:Dynamic):Int;
 public static function iter(a0:Dynamic->Dynamic,a1:Dynamic):Void;
 public static function fold(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
 public static function transfer(a0:Dynamic,a1:Dynamic):Void;
-public static function to_seq(a0:Dynamic):OCaml'aSeq.T;
-public static function add_seq(a0:Dynamic,a1:OCaml'aSeq.T):Void;
-public static function of_seq(a0:OCaml'aSeq.T):Dynamic;
+public static function to_seq(a0:Dynamic):Dynamic;
+public static function add_seq(a0:Dynamic,a1:Dynamic):Void;
+public static function of_seq(a0:Dynamic):Dynamic;
 }

@@ -1,4 +1,4 @@
-typedef T = {
+typedef BufferT = {
 buffer :haxe.io.Bytes,
 position :Int,
 length :Int,
@@ -18,9 +18,9 @@ public static function clear(a0:Dynamic):Void;
 public static function reset(a0:Dynamic):Void;
 public static function resize(a0:Dynamic,a1:Int):Void;
 public static function add_char(a0:Dynamic,a1:OCamlChar):Void;
-public static function add_utf_8_uchar(a0:Dynamic,a1:OCamlUchar.T):Void;
-public static function add_utf_16be_uchar(a0:Dynamic,a1:OCamlUchar.T):Void;
-public static function add_utf_16le_uchar(a0:Dynamic,a1:OCamlUchar.T):Void;
+public static function add_utf_8_uchar(a0:Dynamic,a1:OCamlUchar.UcharT):Void;
+public static function add_utf_16be_uchar(a0:Dynamic,a1:OCamlUchar.UcharT):Void;
+public static function add_utf_16le_uchar(a0:Dynamic,a1:OCamlUchar.UcharT):Void;
 public static function add_substring(a0:Dynamic,a1:String,a2:Int,a3:Int):Void;
 public static function add_subbytes(a0:Dynamic,a1:haxe.io.Bytes,a2:Int,a3:Int):Void;
 public static function add_string(a0:Dynamic,a1:String):Void;
@@ -36,10 +36,10 @@ public static function advance_to_non_alpha(a0:String,a1:Int):Int;
 public static function find_ident(a0:String,a1:Int,a2:Int):Dynamic;
 public static function add_substitute(a0:Dynamic,a1:String->String,a2:String):Void;
 public static function truncate(a0:Dynamic,a1:Int):Void;
-public static function to_seq(a0:Dynamic):OCamlcharSeq.T;
-public static function to_seqi(a0:Dynamic):OCamlfunSeq.T;
-public static function add_seq(a0:Dynamic,a1:OCamlcharSeq.T):Void;
-public static function of_seq(a0:OCamlcharSeq.T):Dynamic;
+public static function to_seq(a0:Dynamic):Dynamic;
+public static function to_seqi(a0:Dynamic):Dynamic;
+public static function add_seq(a0:Dynamic,a1:Dynamic):Void;
+public static function of_seq(a0:Dynamic):Dynamic;
 public static function unsafe_set_int8(a0:haxe.io.Bytes,a1:Int,a2:Int):Void;
 public static function unsafe_set_int16(a0:haxe.io.Bytes,a1:Int,a2:Int):Void;
 public static function unsafe_set_int32(a0:haxe.io.Bytes,a1:Int,a2:Dynamic):Void;

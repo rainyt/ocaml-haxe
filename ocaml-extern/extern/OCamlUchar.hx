@@ -1,4 +1,4 @@
-typedef T = = Int;
+typedef UcharT  = Int;
 
 @:native("Uchar")
 extern class OCamlUchar {

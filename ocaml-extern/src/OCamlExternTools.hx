@@ -32,16 +32,19 @@ class OCamlExternTools {
 		if (tReg.match(mlcontent)) {
 			tReg.map(mlcontent, (data) -> {
 				var value = data.matched(0);
-				trace(file, value, mlcontent);
+				trace(file, value);
 				var typeName = ~/type[a-zA-Z = {\n:;_]{1,}=/g;
 				if (!typeName.match(value))
 					return value;
 				var tName = typeName.matched(0);
 				tName = tName.replace("type ", "");
-				if (value.indexOf("{") == -1)
-					haxeCode.write('typedef ${tName.charAt(0).toUpperCase() + tName.substr(1)} = ${toType(value.split("=")[1])};\n\n');
-				else
-					haxeCode.write('typedef ${tName.charAt(0).toUpperCase() + tName.substr(1)} {\n');
+				if (value.indexOf("{") == -1) {
+					if (tName.indexOf("=") != -1) {
+						tName = tName.substr(0, tName.indexOf("="));
+					}
+					haxeCode.write('typedef ${nName + tName.charAt(0).toUpperCase() + tName.substr(1)} = ${toType(value.split("=")[1])};\n\n');
+				} else
+					haxeCode.write('typedef ${nName + tName.charAt(0).toUpperCase() + tName.substr(1)} {\n');
 				var paramReg = ~/[a-zA-Z0-9_]{1,} : [a-zA-Z0-9_]{1,}/g;
 				paramReg.map(value, (param) -> {
 					var value = param.matched(0);
@@ -132,11 +135,12 @@ class OCamlExternTools {
 					}
 					return calls.join("->");
 				}
-				if (type.indexOf("*") != -1)
+				if (type.indexOf("*") != -1 || type.indexOf("Seq.") != -1 || type.indexOf("'") != -1)
 					return "Dynamic";
 				if (type.indexOf(".") != -1) {
 					var types = type.split(".");
-					return "OCaml" + types[0] + "." + types[1].charAt(0).toUpperCase() + types[1].substr(1);
+					var nName = types[0];
+					return "OCaml" + types[0] + "." + ${nName} + types[1].charAt(0).toUpperCase() + types[1].substr(1);
 				}
 				return "Dynamic";
 				// return '<${type}>';

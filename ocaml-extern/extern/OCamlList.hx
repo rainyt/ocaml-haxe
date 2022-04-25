@@ -52,7 +52,7 @@ public static function filter_map(a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
 public static function concat_map(a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
 public static function fold_left_map(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
 public static function partition(a0:Dynamic->Bool,a1:Dynamic):Dynamic;
-public static function partition_map(a0:Dynamic->OCaml'b,'cEither.T,a1:Dynamic):Dynamic;
+public static function partition_map(a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
 public static function split(a0:Dynamic):Dynamic;
 public static function combine(a0:Dynamic,a1:Dynamic):Dynamic;
 public static function merge(a0:Dynamic->Dynamic->Int,a1:Dynamic,a2:Dynamic):Dynamic;
@@ -64,6 +64,6 @@ public static function compare_lengths(a0:Dynamic,a1:Dynamic):Int;
 public static function compare_length_with(a0:Dynamic,a1:Int):Int;
 public static function equal(a0:Dynamic->Dynamic->Bool,a1:Dynamic,a2:Dynamic):Bool;
 public static function compare(a0:Dynamic->Dynamic->Int,a1:Dynamic,a2:Dynamic):Int;
-public static function to_seq(a0:Dynamic):OCaml'aSeq.T;
-public static function of_seq(a0:OCaml'aSeq.T):Dynamic;
+public static function to_seq(a0:Dynamic):Dynamic;
+public static function of_seq(a0:Dynamic):Dynamic;
 }

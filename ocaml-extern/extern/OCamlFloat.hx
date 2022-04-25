@@ -1,8 +1,8 @@
-typedef Fpclass = = Dynamic;
+typedef FloatFpclass  = Dynamic;
 
-typedef T = = Float;
+typedef FloatT  = Float;
 
-typedef T = = OCamlArray<Float>;
+typedef FloatT  = OCamlArray<Float>;
 
 @:native("Float")
 extern class OCamlFloat {
@@ -111,10 +111,10 @@ public static function sort(a0:Float->Float->Int,a1:Dynamic):Void;
 public static var cutoff:Int;
 public static function stable_sort(a0:Float->Float->Int,a1:Dynamic):Void;
 public static function fast_sort(a0:Float->Float->Int,a1:Dynamic):Void;
-public static function to_seq(a0:Dynamic):OCamlfloatSeq.T;
-public static function to_seqi(a0:Dynamic):OCamlfunSeq.T;
+public static function to_seq(a0:Dynamic):Dynamic;
+public static function to_seqi(a0:Dynamic):Dynamic;
 public static function of_rev_list(a0:Array<Float>):Dynamic;
-public static function of_seq(a0:OCamlfloatSeq.T):Dynamic;
+public static function of_seq(a0:Dynamic):Dynamic;
 public static function map_to_array(a0:Float->Dynamic,a1:Dynamic):Dynamic;
 public static function map_from_array(a0:Dynamic->Float,a1:Dynamic):Dynamic;
 }

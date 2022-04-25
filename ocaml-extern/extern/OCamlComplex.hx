@@ -1,4 +1,4 @@
-typedef T = {
+typedef ComplexT = {
 re :Float,
 im :Float,
 }

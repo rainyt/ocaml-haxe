@@ -49,8 +49,8 @@ public static function sort(a0:Dynamic->Dynamic->Int,a1:Dynamic):Void;
 public static var cutoff:Int;
 public static function stable_sort(a0:Dynamic->Dynamic->Int,a1:Dynamic):Void;
 public static function fast_sort(a0:Dynamic->Dynamic->Int,a1:Dynamic):Void;
-public static function to_seq(a0:Dynamic):OCaml'aSeq.T;
-public static function to_seqi(a0:Dynamic):OCamlfunSeq.T;
+public static function to_seq(a0:Dynamic):Dynamic;
+public static function to_seqi(a0:Dynamic):Dynamic;
 public static function of_rev_list(a0:Dynamic):Dynamic;
-public static function of_seq(a0:OCaml'aSeq.T):Dynamic;
+public static function of_seq(a0:Dynamic):Dynamic;
 }

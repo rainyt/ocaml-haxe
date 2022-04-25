@@ -1,4 +1,4 @@
-typedef T = = Dynamic;
+typedef NativeintT  = Dynamic;
 
 @:native("Nativeint")
 extern class OCamlNativeint {

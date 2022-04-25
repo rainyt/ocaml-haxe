@@ -1,12 +1,12 @@
-typedef Parser_env = {
+typedef ParsingParser_env = {
 }
 
-typedef Parse_tables = {
+typedef ParsingParse_tables = {
 }
 
-typedef Parser_input = = Dynamic;
+typedef ParsingParser_input  = Dynamic;
 
-typedef Parser_output = = Dynamic;
+typedef ParsingParser_output  = Dynamic;
 
 @:native("Parsing")
 extern class OCamlParsing {
@@ -18,10 +18,10 @@ public static function clear_parser(a0:Void):Void;
 public static var current_lookahead_fun:Dynamic;
 public static var yyparse:Dynamic;
 public static function peek_val(a0:Dynamic,a1:Int):Dynamic;
-public static function symbol_start_pos(a0:Void):OCamlLexing.Position;
-public static function symbol_end_pos(a0:Void):OCamlLexing.Position;
-public static function rhs_start_pos(a0:Int):OCamlLexing.Position;
-public static function rhs_end_pos(a0:Int):OCamlLexing.Position;
+public static function symbol_start_pos(a0:Void):OCamlLexing.LexingPosition;
+public static function symbol_end_pos(a0:Void):OCamlLexing.LexingPosition;
+public static function rhs_start_pos(a0:Int):OCamlLexing.LexingPosition;
+public static function rhs_end_pos(a0:Int):OCamlLexing.LexingPosition;
 public static function symbol_start(a0:Void):Int;
 public static function symbol_end(a0:Void):Int;
 public static function rhs_start(a0:Int):Int;

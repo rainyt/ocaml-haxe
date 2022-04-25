@@ -1,47 +1,47 @@
-typedef Box_= = Dynamic;
+typedef FormatBox_ = Dynamic;
 
-typedef = = Dynamic;
+typedef Format = Dynamic;
 
-typedef Pp_token = = Dynamic;
+typedef FormatPp_token  = Dynamic;
 
-typedef Tag = = String;
+typedef FormatTag  = String;
 
-typedef Pp_queue_elem = {
+typedef FormatPp_queue_elem = {
 }
 
-typedef Pp_queue = = Dynamic;
+typedef FormatPp_queue  = Dynamic;
 
-typedef Pp_scan_elem = {
+typedef FormatPp_scan_elem = {
 left_total :Int,
 queue_elem :Dynamic,
 }
 
-typedef Pp_format_elem = {
+typedef FormatPp_format_elem = {
 box_type :Dynamic,
 width :Int,
 }
 
-typedef Formatter = {
+typedef FormatFormatter = {
 }
 
-typedef Formatter_stag_functions = {
+typedef FormatFormatter_stag_functions = {
 }
 
-typedef Formatter_out_functions = {
+typedef FormatFormatter_out_functions = {
 }
 
-typedef Geometry = {
+typedef FormatGeometry = {
 max_indent :Int,
 margin :Int,
 }
 
-typedef Symbolic_output_item = = Dynamic;
+typedef FormatSymbolic_output_item  = Dynamic;
 
-typedef Symbolic_output_buffer = {
+typedef FormatSymbolic_output_buffer = {
 symbolic_output_contents :Dynamic,
 }
 
-typedef Formatter_tag_functions = {
+typedef FormatFormatter_tag_functions = {
 }
 
 @:native("Format")
@@ -69,9 +69,9 @@ public static function pp_skip_token(a0:Dynamic):Void;
 public static function format_pp_token(a0:Dynamic,a1:Int,a2:Dynamic):Void;
 public static function advance_left(a0:Dynamic):Void;
 public static function enqueue_advance(a0:Dynamic,a1:Dynamic):Void;
-public static function enqueue_string_as(a0:Dynamic,a1:OCamlSize.T,a2:String):Void;
+public static function enqueue_string_as(a0:Dynamic,a1:OCamlSize.SizeT,a2:String):Void;
 public static function enqueue_string(a0:Dynamic,a1:String):Void;
-public static function initialize_scan_stack(a0:OCamlpp_scan_elemStack.T):Void;
+public static function initialize_scan_stack(a0:OCamlpp_scan_elemStack.pp_scan_elemStackT):Void;
 public static function set_size(a0:Dynamic,a1:Bool):Void;
 public static function scan_push(a0:Dynamic,a1:Bool,a2:Dynamic):Void;
 public static function pp_open_box_gen(a0:Dynamic,a1:Int,a2:Dynamic):Void;
@@ -91,7 +91,7 @@ public static var pp_set_formatter_stag_functions:Dynamic;
 public static function pp_rinit(a0:Dynamic):Void;
 public static function clear_tag_stack(a0:Dynamic):Void;
 public static function pp_flush_queue(a0:Dynamic,a1:Bool):Void;
-public static function pp_print_as_size(a0:Dynamic,a1:OCamlSize.T,a2:String):Void;
+public static function pp_print_as_size(a0:Dynamic,a1:OCamlSize.SizeT,a2:String):Void;
 public static function pp_print_as(a0:Dynamic,a1:Int,a2:String):Void;
 public static function pp_print_string(a0:Dynamic,a1:String):Void;
 public static function pp_print_int(a0:Dynamic,a1:Int):Void;
@@ -151,14 +151,14 @@ public static var pp_make_formatter:Dynamic;
 public static function formatter_of_out_functions(a0:Dynamic):Dynamic;
 public static var make_formatter:Dynamic;
 public static function formatter_of_out_channel(a0:Dynamic):Dynamic;
-public static function formatter_of_buffer(a0:OCamlBuffer.T):Dynamic;
+public static function formatter_of_buffer(a0:OCamlBuffer.BufferT):Dynamic;
 public static var pp_buffer_size:Int;
-public static function pp_make_buffer(a0:Void):OCamlBuffer.T;
-public static var stdbuf:OCamlBuffer.T;
+public static function pp_make_buffer(a0:Void):OCamlBuffer.BufferT;
+public static var stdbuf:OCamlBuffer.BufferT;
 public static var std_formatter:Dynamic;
 public static var err_formatter:Dynamic;
 public static var str_formatter:Dynamic;
-public static function flush_buffer_formatter(a0:OCamlBuffer.T,a1:Dynamic):String;
+public static function flush_buffer_formatter(a0:OCamlBuffer.BufferT,a1:Dynamic):String;
 public static function flush_str_formatter(a0:Void):String;
 public static function make_symbolic_output_buffer(a0:Void):Dynamic;
 public static function clear_symbolic_output_buffer(a0:Dynamic):Void;
@@ -228,7 +228,7 @@ public static var pp_print_result:Dynamic;
 public static function compute_tag(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic):String;
 public static var output_formatting_lit:Dynamic;
 public static var output_acc:Dynamic;
-public static function strput_acc(a0:Dynamic,a1:OCamlfunCamlinternalFormat.Acc):Void;
+public static function strput_acc(a0:Dynamic,a1:OCamlfunCamlinternalFormat.funCamlinternalFormatAcc):Void;
 public static var kfprintf:Dynamic;
 public static var ikfprintf:Dynamic;
 public static var ifprintf:Dynamic;
@@ -246,7 +246,7 @@ public static var pp_set_all_formatter_output_functions:Dynamic;
 public static var pp_get_all_formatter_output_functions:Dynamic;
 public static var set_all_formatter_output_functions:Dynamic;
 public static var get_all_formatter_output_functions:Dynamic;
-public static function bprintf(a0:OCamlBuffer.T,a1:Dynamic):Dynamic;
+public static function bprintf(a0:OCamlBuffer.BufferT,a1:Dynamic):Dynamic;
 public static var kprintf:Dynamic;
 public static var pp_set_formatter_tag_functions:Dynamic;
 public static var pp_get_formatter_tag_functions:Dynamic;

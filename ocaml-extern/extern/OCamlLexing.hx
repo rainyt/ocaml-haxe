@@ -1,14 +1,14 @@
-typedef Position = {
+typedef LexingPosition = {
 pos_fname :String,
 pos_lnum :Int,
 pos_bol :Int,
 pos_cnum :Int,
 }
 
-typedef Lexbuf = {
+typedef LexingLexbuf = {
 }
 
-typedef Lex_tables = {
+typedef LexingLex_tables = {
 lex_base :String,
 lex_backtrk :String,
 lex_default :String,
