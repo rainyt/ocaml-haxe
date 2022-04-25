@@ -50,6 +50,7 @@ class OCamlGlobalMacro {
 				oc.write(";;\n\n");
 			case FMethod(k):
 				// 方法
+				OCaml2Tools.parserDefineFunc = true;
 				if (item.name == "main") {
 					oc.write("let ");
 				} else {

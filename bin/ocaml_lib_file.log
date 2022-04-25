@@ -1,21 +1,21 @@
 [Function:(path : String) -> String]
-	[Arg:String] [Local path(145395):String]
+	[Arg:String] [Local path(8460):String]
 	[Block:Dynamic]
-		[Var input(145396):ocaml.InputChannel]
+		[Var input(8461):ocaml.InputChannel]
 			[Call:ocaml.InputChannel]
 				[Field:(path : String) -> ocaml.InputChannel]
 					[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
 					[FStatic:(path : String) -> ocaml.InputChannel]
 						ocaml.Stdlib
 						openInput:(path : String) -> ocaml.InputChannel
-				[Local path(145395):String:String]
-		[Var line(145397):String] [Const:String] ""
+				[Local path(8460):String:String]
+		[Var line(8462):String] [Const:String] ""
 		[While:Void]
 			[Parenthesis:Bool] [Const:Bool] true
 			[Try:Void]
 				[Block:String]
 					[Binop:String]
-						[Local line(145397):String:String]
+						[Local line(8462):String:String]
 						+=
 						[Binop:String]
 							[Call:String]
@@ -24,10 +24,10 @@
 									[FStatic:(input : ocaml.InputChannel) -> String]
 										ocaml.Stdlib
 										inputLine:(input : ocaml.InputChannel) -> String
-								[Local input(145396):ocaml.InputChannel:ocaml.InputChannel]
+								[Local input(8461):ocaml.InputChannel:ocaml.InputChannel]
 							+
 							[Const:String] "\n"
-				Catch [Local e(145398):haxe.Exception]
+				Catch [Local e(8463):haxe.Exception]
 					[Block:Dynamic]
 						[Call:Void]
 							[Field:(input : ocaml.InputChannel) -> Void]
@@ -35,6 +35,6 @@
 								[FStatic:(input : ocaml.InputChannel) -> Void]
 									ocaml.Stdlib
 									closeInput:(input : ocaml.InputChannel) -> Void
-							[Local input(145396):ocaml.InputChannel:ocaml.InputChannel]
-						[Return:Dynamic] [Local line(145397):String:String]
-		[Return:Dynamic] [Local line(145397):String:String]
+							[Local input(8461):ocaml.InputChannel:ocaml.InputChannel]
+						[Return:Dynamic] [Local line(8462):String:String]
+		[Return:Dynamic] [Local line(8462):String:String]

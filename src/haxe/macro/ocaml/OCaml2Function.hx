@@ -36,7 +36,7 @@ class OCaml2Function {
 				}
 				for (index => value in types) {
 					switch (value) {
-						case "String":
+						case "String", "OCamlChar":
 							types[index] = "%s";
 						case "Float":
 							types[index] = "%f";
@@ -86,6 +86,10 @@ class OCaml2Function {
 		var t = OCaml2Type.toString(type.t);
 		switch (t) {
 			case "OCamlChar":
+				if (value.indexOf("ignore (raise (STRING") != -1) {
+					OCaml2Tools.currentOCaml.writeHead('exception OCAMLCHAR of char\n');
+					value = StringTools.replace(value, "ignore (raise (STRING", "ignore (raise (OCAMLCHAR");
+				}
 				return StringTools.replace(value, "\"", "'");
 		}
 		return value;

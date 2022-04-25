@@ -1,3 +1,4 @@
+exception OCAMLCHAR of char
 exception STRING of string
 
 let afunc s = try 
@@ -48,5 +49,12 @@ _g3 := !_g3 + 1;
 (Printf.printf "%s%s\n" ("切割了？") (!s));
  done;
 ;
+content := (String.map (fun data ->  try 
+if (data = '\n') then (
+ignore (raise (OCAMLCHAR (data)));
+ );
+ignore (raise (OCAMLCHAR ('2')));'2';
+with OCAMLCHAR ret -> ret) (!content));
+(Printf.printf "%s%s\n" ("发生了什么？") (!content));
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

@@ -10,6 +10,11 @@ using haxe.macro.ocaml.OCaml2Utils;
  */
 class OCaml2Tools {
 	/**
+	 * 是否定义方法
+	 */
+	public static var parserDefineFunc:Bool = false;
+
+	/**
 	 * 当前类型
 	 */
 	public static var currentType:ClassType;
@@ -20,9 +25,9 @@ class OCaml2Tools {
 	public static var currentOCaml:OCaml;
 
 	/**
-	 * 上一个lastExpr
+	 * 上一个lastBlockExpr，如IF While等
 	 */
-	public static var lastExpr:TypedExpr;
+	public static var lastBlockExpr:TypedExpr;
 
 	public static function toStringByType(expr:TypedExpr, type:String):String {
 		var selfType = OCaml2Type.toString(expr.t);
@@ -64,7 +69,6 @@ class OCaml2Tools {
 		if (expr == null) {
 			return "(* expr is null? *)";
 		}
-		lastExpr = expr;
 		switch (expr.expr) {
 			case TTry(e, catches):
 				var oc:OCaml = new OCaml();
@@ -77,7 +81,10 @@ class OCaml2Tools {
 			case TBreak:
 				return "break := false";
 			case TIf(econd, eif, eelse):
-				return 'if (${toString(econd)}) then (\n${toString(eif)} ${eelse != null ? ")else(" + toString(eelse) + ")" : ")"}';
+				lastBlockExpr = expr;
+				var code = 'if (${toString(econd)}) then (\n${toString(eif)} ${eelse != null ? ")else(" + toString(eelse) + ")" : ")"}';
+				lastBlockExpr = null;
+				return code;
 			case TArray(e1, e2):
 				// todo 这里需要判断Array或者List
 				var type = OCaml2Type.toString(e1.t);
@@ -122,6 +129,7 @@ class OCaml2Tools {
 			case TParenthesis(e):
 				return toString(e);
 			case TWhile(econd, e, normalWhile):
+				lastBlockExpr = expr;
 				var oc:OCaml = new OCaml();
 				oc.write('let break = ref true in while (!break && (${toString(econd)})) do\n');
 				if (e.expr.getName() == "TBlock") {
@@ -133,6 +141,7 @@ class OCaml2Tools {
 				} else
 					oc.write(toString(e));
 				oc.write(" done");
+				lastBlockExpr = null;
 				return oc.code;
 			case TBinop(op, e1, e2):
 				return OCaml2Binop.toString(op, e1, e2);
@@ -209,10 +218,26 @@ class OCaml2Tools {
 			case TLocal(v):
 				var name = v.name;
 				name = StringTools.replace(name, "`", "_g");
+				switch (v.t) {
+					case TAbstract(t, params):
+						switch (t.toString()) {
+							case "OCamlChar":
+								return name;
+						}
+					default:
+				}
 				return "!" + name;
 			case TCall(e, el):
 				return '(${OCaml2Function.toString(e, el)})';
 			case TReturn(e):
+				// todo 如果是IF分支，则不应该加后面的返回值
+				if (lastBlockExpr != null) {
+					switch (lastBlockExpr.expr) {
+						case TIf(econd, eif, eelse):
+							return OCaml2Return.toString(e);
+						default:
+					}
+				}
 				return OCaml2Return.toString(e) + ";" + toString(e);
 			case TBlock(el):
 				var oc:OCaml = new OCaml();
@@ -229,27 +254,46 @@ class OCaml2Tools {
 				}
 				return oc.code;
 			case TFunction(tfunc):
-				var oc = new OCaml();
-				var type = OCaml2Type.toString(tfunc.t).toUpperCase();
-				if (tfunc.args.length == 0)
-					oc.write("()");
-				else
-					for (a in tfunc.args) {
-						oc.write(" " + a.v.name);
+				if (OCaml2Tools.parserDefineFunc) {
+					parserDefineFunc = false;
+					var oc = new OCaml();
+					var type = OCaml2Type.toString(tfunc.t).toUpperCase();
+					if (tfunc.args.length == 0)
+						oc.write("()");
+					else
+						for (a in tfunc.args) {
+							oc.write(" " + a.v.name);
+						}
+					if (type != "VOID") {
+						oc.write(" = try \n");
+					} else {
+						oc.write(" = ");
+						oc.write("let start_time = Sys.time() in\n");
 					}
-				if (type != "VOID") {
-					oc.write(" = try \n");
+					oc.write(toString(tfunc.expr));
+					if (type != "VOID") {
+						oc.write("with " + OCaml2Type.toString(tfunc.t).toUpperCase() + " ret -> ret");
+					} else {
+						oc.write('Printf.printf "runtime:%fs" (Sys.time() -. start_time)');
+					}
+					return oc.code;
 				} else {
-					oc.write(" = ");
-					oc.write("let start_time = Sys.time() in\n");
-				}
-				oc.write(toString(tfunc.expr));
-				if (type != "VOID") {
+					var oc = new OCaml();
+					var type = OCaml2Type.toString(tfunc.t).toUpperCase();
+					oc.write("fun");
+					var type = OCaml2Type.toString(tfunc.t).toUpperCase();
+					if (tfunc.args.length == 0)
+						oc.write("()");
+					else
+						for (a in tfunc.args) {
+							oc.write(" " + a.v.name);
+						}
+					oc.write(" -> ");
+					oc.write(" try \n");
+					oc.write(toString(tfunc.expr));
 					oc.write("with " + OCaml2Type.toString(tfunc.t).toUpperCase() + " ret -> ret");
-				} else {
-					oc.write('Printf.printf "runtime:%fs" (Sys.time() -. start_time)');
+					return '${oc.code}';
 				}
-				return oc.code;
 			default:
 				return '(* Not suppor ${expr.expr.getName()} *)\n';
 				// throw "Not support " + expr.expr.getName();

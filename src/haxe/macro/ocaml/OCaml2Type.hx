@@ -7,6 +7,8 @@ class OCaml2Type {
 				return t.toString();
 			case TAbstract(t, params):
 				return t.toString();
+			case TFun(args, ret):
+				return toString(ret);
 			case TDynamic(t):
 				return "Dynamic";
 			default:
