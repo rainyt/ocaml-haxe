@@ -12,12 +12,11 @@ haxe build.hxml
 ## 运行OCaml脚本
 当如果需要测试OCaml文件时，请按照OCaml文档正确安装OCaml，并拥有dune的环境，接下来：
 ```shell
-dune exec bin2
+dune exec bin
 ```
 
 ## 项目结构
-- bin 这是编译出来的项目ml内容。（由宏定义过程实现，已弃用）
-- bin2 这是重构后编译出来的ml内容。
+- bin 这是编译出来的项目ml内容。（已重构）
 - haxe_test/project 这是编译ml的Haxe内容。
 
 ## 路线图
@@ -25,6 +24,7 @@ dune exec bin2
 
 所有实现正在重构：
 
+- [ ] return应判断方法返回类型。
 - [x] 支持using语句。
 - [ ] 新增一个OCaml的extern自动化工具。
 - [x] trace输出，能够自动识别每个参数的类型，使用Printf.printf正确输出的支持。
