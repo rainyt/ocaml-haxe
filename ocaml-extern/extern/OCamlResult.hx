@@ -18,5 +18,5 @@ public static var equal:Dynamic;
 public static var compare:Dynamic;
 public static function to_option(a0:Dynamic):Dynamic;
 public static function to_list(a0:Dynamic):Dynamic;
-public static function to_seq(a0:Dynamic):Dynamic;
+public static function to_seq(a0:Dynamic):OCaml'aSeq.T;
 }

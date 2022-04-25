@@ -1,3 +1,5 @@
+typedef T = = OCamlChar;
+
 @:native("Char")
 extern class OCamlCharTools {
 public static function code(a0:OCamlChar):Int;

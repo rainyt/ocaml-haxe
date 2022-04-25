@@ -15,5 +15,5 @@ public static function equal(a0:Dynamic->Dynamic->Bool,a1:Dynamic,a2:Dynamic):Bo
 public static function compare(a0:Dynamic->Dynamic->Int,a1:Dynamic,a2:Dynamic):Int;
 public static var to_result:Dynamic;
 public static function to_list(a0:Dynamic):Dynamic;
-public static function to_seq(a0:Dynamic):Dynamic;
+public static function to_seq(a0:Dynamic):OCaml'aSeq.T;
 }

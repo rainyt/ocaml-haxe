@@ -1,3 +1,49 @@
+typedef Stat = {
+minor_words :Float,
+promoted_words :Float,
+major_words :Float,
+minor_collections :Int,
+major_collections :Int,
+heap_words :Int,
+heap_chunks :Int,
+live_words :Int,
+live_blocks :Int,
+free_words :Int,
+free_blocks :Int,
+largest_free :Int,
+fragments :Int,
+compactions :Int,
+top_heap_words :Int,
+stack_size :Int,
+forced_major_collections :Int,
+}
+
+typedef Control = {
+minor_heap_size :Int,
+major_heap_increment :Int,
+space_overhead :Int,
+verbose :Int,
+max_overhead :Int,
+stack_limit :Int,
+allocation_policy :Int,
+window_size :Int,
+custom_major_ratio :Int,
+custom_minor_ratio :Int,
+custom_minor_max_size :Int,
+}
+
+typedef Alarm = = Dynamic;
+
+typedef Alarm_rec = {
+active :Dynamic,
+f :Void,
+}
+
+typedef Allocation_source = = Dynamic;
+
+typedef Allocation = {
+}
+
 @:native("Gc")
 extern class OCamlGc {
 public static function stat(a0:Void):Dynamic;

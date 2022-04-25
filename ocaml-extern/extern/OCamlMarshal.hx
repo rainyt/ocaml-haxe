@@ -1,3 +1,5 @@
+typedef Extern_flags = = Dynamic;
+
 @:native("Marshal")
 extern class OCamlMarshal {
 public static function to_channel(a0:Dynamic,a1:Dynamic,a2:Dynamic):Void;

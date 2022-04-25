@@ -1,3 +1,5 @@
+typedef T = unit = = Void;
+
 @:native("Unit")
 extern class OCamlUnit {
 public static function equal(a0:Dynamic,a1:Dynamic):Bool;

@@ -1,3 +1,5 @@
+typedef T = Bool;
+
 @:native("Bool")
 extern class OCamlBool {
 public static function not(a0:Bool):Bool;

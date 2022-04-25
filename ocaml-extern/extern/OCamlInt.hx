@@ -1,3 +1,5 @@
+typedef T = = Int;
+
 @:native("Int")
 extern class OCamlInt {
 public static var zero:Int;

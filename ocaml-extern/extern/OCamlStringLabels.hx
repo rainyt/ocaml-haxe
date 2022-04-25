@@ -1,3 +1,5 @@
+typedef T = = String;
+
 @:native("StringLabels")
 extern class OCamlStringLabels {
 public static function make(a0:Int,a1:OCamlChar):String;
@@ -30,9 +32,9 @@ public static function index(a0:String,a1:OCamlChar):Int;
 public static function index_opt(a0:String,a1:OCamlChar):Dynamic;
 public static function rindex(a0:String,a1:OCamlChar):Int;
 public static function rindex_opt(a0:String,a1:OCamlChar):Dynamic;
-public static function to_seq(a0:Dynamic):Dynamic;
-public static function to_seqi(a0:Dynamic):Dynamic;
-public static function of_seq(a0:Dynamic):Dynamic;
+public static function to_seq(a0:Dynamic):OCamlcharSeq.T;
+public static function to_seqi(a0:Dynamic):OCamlfunSeq.T;
+public static function of_seq(a0:OCamlcharSeq.T):Dynamic;
 public static function create(a0:Int):haxe.io.Bytes;
 public static function set(a0:haxe.io.Bytes,a1:Int,a2:OCamlChar):Void;
 public static function blit(a0:String,a1:Int,a2:haxe.io.Bytes,a3:Int,a4:Int):Void;

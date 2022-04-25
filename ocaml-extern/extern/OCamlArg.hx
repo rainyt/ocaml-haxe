@@ -1,12 +1,24 @@
+typedef Key = = String;
+
+typedef Doc = = String;
+
+typedef Usage_msg = = String;
+
+typedef Anon_fun = = String;
+
+typedef Spec = = Dynamic;
+
+typedef Error = = Dynamic;
+
 @:native("Arg")
 extern class OCamlArg {
 public static function assoc3(a0:Dynamic,a1:Dynamic):Dynamic;
 public static function split(a0:String):Dynamic;
 public static function make_symlist(a0:String,a1:String,a2:String,a3:Array<String>):String;
-public static function print_spec(a0:Dynamic,a1:Dynamic):Void;
+public static function print_spec(a0:OCamlBuffer.T,a1:Dynamic):Void;
 public static function help_action(a0:Void):Dynamic;
 public static var add_help:Dynamic;
-public static function usage_b(a0:Dynamic,a1:Dynamic,a2:String):Void;
+public static function usage_b(a0:OCamlBuffer.T,a1:Dynamic,a2:String):Void;
 public static function usage_string(a0:Dynamic,a1:String):String;
 public static function usage(a0:Dynamic,a1:String):Void;
 public static var current:Dynamic;

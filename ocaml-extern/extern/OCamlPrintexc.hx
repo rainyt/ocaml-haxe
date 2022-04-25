@@ -1,10 +1,35 @@
+typedef T = exn = = Dynamic;
+
+typedef Raw_backtrace_entry = = Dynamic;
+
+typedef Raw_backtrace = = Dynamic;
+
+typedef Backtrace_slot = {
+is_raise :Bool,
+filename :String,
+line_number :Int,
+start_char :Int,
+end_char :Int,
+is_inline :Bool,
+defname :String,
+}
+
+typedef Location = {
+filename :String,
+line_number :Int,
+start_char :Int,
+end_char :Int,
+}
+
+typedef T = = Dynamic;
+
 @:native("Printexc")
 extern class OCamlPrintexc {
-public static var printers:Dynamic;
+public static var printers:OCamlfunlistAtomic.T;
 public static var locfmt:Dynamic;
-public static function field(a0:Dynamic,a1:Int):String;
-public static function other_fields(a0:Dynamic,a1:Int):String;
-public static function fields(a0:Dynamic):String;
+public static function field(a0:OCamlObj.T,a1:Int):String;
+public static function other_fields(a0:OCamlObj.T,a1:Int):String;
+public static function fields(a0:OCamlObj.T):String;
 public static function use_printers(a0:Dynamic):Dynamic;
 public static function to_string_default(a0:Dynamic):String;
 public static function to_string(a0:Dynamic):String;
@@ -40,7 +65,7 @@ public static function record_backtrace(a0:Bool):Void;
 public static function backtrace_status(a0:Void):Bool;
 public static function register_printer(a0:Dynamic->Dynamic):Void;
 public static function get_callstack(a0:Int):Dynamic;
-public static function exn_slot(a0:Dynamic):Dynamic;
+public static function exn_slot(a0:Dynamic):OCamlObj.T;
 public static function exn_slot_id(a0:Dynamic):Int;
 public static function exn_slot_name(a0:Dynamic):String;
 public static function get_debug_info_status(a0:Void):Int;

@@ -1,3 +1,5 @@
+typedef T = = Int;
+
 @:native("Int32")
 extern class OCamlInt32 {
 public static function neg(a0:Dynamic):Dynamic;

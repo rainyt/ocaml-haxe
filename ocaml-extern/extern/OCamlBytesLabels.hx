@@ -1,3 +1,5 @@
+typedef T = = haxe.io.Bytes;
+
 @:native("BytesLabels")
 extern class OCamlBytesLabels {
 public static function length(a0:haxe.io.Bytes):Int;
@@ -47,9 +49,9 @@ public static function compare(a0:Dynamic,a1:Dynamic):Int;
 public static function equal(a0:Dynamic,a1:Dynamic):Bool;
 public static function unsafe_to_string(a0:haxe.io.Bytes):String;
 public static function unsafe_of_string(a0:String):haxe.io.Bytes;
-public static function to_seq(a0:Dynamic):Dynamic;
-public static function to_seqi(a0:Dynamic):Dynamic;
-public static function of_seq(a0:Dynamic):Dynamic;
+public static function to_seq(a0:Dynamic):OCamlcharSeq.T;
+public static function to_seqi(a0:Dynamic):OCamlfunSeq.T;
+public static function of_seq(a0:OCamlcharSeq.T):Dynamic;
 public static function get_uint8(a0:haxe.io.Bytes,a1:Int):Int;
 public static function get_int8(a0:haxe.io.Bytes,a1:Int):Int;
 public static function get_uint16_ne(a0:haxe.io.Bytes,a1:Int):Int;

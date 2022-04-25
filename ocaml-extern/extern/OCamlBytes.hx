@@ -1,3 +1,5 @@
+typedef T = = haxe.io.Bytes;
+
 @:native("Bytes")
 extern class OCamlBytes {
 public static function length(a0:haxe.io.Bytes):Int;
@@ -64,20 +66,20 @@ public static function uppercase(a0:haxe.io.Bytes):haxe.io.Bytes;
 public static function lowercase(a0:haxe.io.Bytes):haxe.io.Bytes;
 public static function capitalize(a0:haxe.io.Bytes):haxe.io.Bytes;
 public static function uncapitalize(a0:haxe.io.Bytes):haxe.io.Bytes;
-public static function to_seq(a0:haxe.io.Bytes):Dynamic;
-public static function to_seqi(a0:haxe.io.Bytes):Dynamic;
-public static function of_seq(a0:Dynamic):haxe.io.Bytes;
-public static function get_uint(a0:haxe.io.Bytes,a1:Int):Int;
-public static function get_uint(a0:haxe.io.Bytes,a1:Int):Int;
-public static function get_int(a0:haxe.io.Bytes,a1:Int):Dynamic;
-public static function get_int(a0:haxe.io.Bytes,a1:Int):Dynamic;
-public static function set_int(a0:haxe.io.Bytes,a1:Int,a2:Int):Void;
-public static function set_int(a0:haxe.io.Bytes,a1:Int,a2:Int):Void;
-public static function set_int(a0:haxe.io.Bytes,a1:Int,a2:Dynamic):Void;
-public static function set_int(a0:haxe.io.Bytes,a1:Int,a2:Dynamic):Void;
-public static function swap(a0:Int):Int;
-public static function swap(a0:Dynamic):Dynamic;
-public static function swap(a0:Dynamic):Dynamic;
+public static function to_seq(a0:haxe.io.Bytes):OCamlcharSeq.T;
+public static function to_seqi(a0:haxe.io.Bytes):OCamlfunSeq.T;
+public static function of_seq(a0:OCamlcharSeq.T):haxe.io.Bytes;
+public static function get_uint8(a0:haxe.io.Bytes,a1:Int):Int;
+public static function get_uint16_ne(a0:haxe.io.Bytes,a1:Int):Int;
+public static function get_int32_ne(a0:haxe.io.Bytes,a1:Int):Dynamic;
+public static function get_int64_ne(a0:haxe.io.Bytes,a1:Int):Dynamic;
+public static function set_int8(a0:haxe.io.Bytes,a1:Int,a2:Int):Void;
+public static function set_int16_ne(a0:haxe.io.Bytes,a1:Int,a2:Int):Void;
+public static function set_int32_ne(a0:haxe.io.Bytes,a1:Int,a2:Dynamic):Void;
+public static function set_int64_ne(a0:haxe.io.Bytes,a1:Int,a2:Dynamic):Void;
+public static function swap16(a0:Int):Int;
+public static function swap32(a0:Dynamic):Dynamic;
+public static function swap64(a0:Dynamic):Dynamic;
 public static function get_int8(a0:haxe.io.Bytes,a1:Int):Int;
 public static function get_uint16_le(a0:haxe.io.Bytes,a1:Int):Int;
 public static function get_uint16_be(a0:haxe.io.Bytes,a1:Int):Int;

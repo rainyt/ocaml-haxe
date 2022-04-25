@@ -1,3 +1,8 @@
+typedef T = {
+re :Float,
+im :Float,
+}
+
 @:native("Complex")
 extern class OCamlComplex {
 public static var zero:Dynamic;

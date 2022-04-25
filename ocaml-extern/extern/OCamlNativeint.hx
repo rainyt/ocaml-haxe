@@ -1,3 +1,5 @@
+typedef T = = Dynamic;
+
 @:native("Nativeint")
 extern class OCamlNativeint {
 public static function neg(a0:Dynamic):Dynamic;
@@ -16,8 +18,8 @@ public static function of_int(a0:Int):Dynamic;
 public static function to_int(a0:Dynamic):Int;
 public static function of_float(a0:Float):Dynamic;
 public static function to_float(a0:Dynamic):Float;
-public static function of_int(a0:Dynamic):Dynamic;
-public static function to_int(a0:Dynamic):Dynamic;
+public static function of_int32(a0:Dynamic):Dynamic;
+public static function to_int32(a0:Dynamic):Dynamic;
 public static var zero:Dynamic;
 public static var one:Dynamic;
 public static var minus_one:Dynamic;

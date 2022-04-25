@@ -1,3 +1,8 @@
+typedef T = {
+st :Int,
+idx :Int,
+}
+
 @:native("Random")
 extern class OCamlRandom {
 public static function random_seed(a0:Void):OCamlArray<Int>;
@@ -18,7 +23,7 @@ public static function nativeint(a0:Dynamic,a1:Dynamic):Dynamic;
 public static function rawfloat(a0:Dynamic):Float;
 public static function float(a0:Dynamic,a1:Float):Float;
 public static function bool(a0:Dynamic):Bool;
-public static var default:Dynamic;
+public static var default:OCamlState.T;
 public static function bits(a0:Void):Int;
 public static function int(a0:Int):Int;
 public static function int32(a0:Dynamic):Dynamic;
@@ -29,6 +34,6 @@ public static function bool(a0:Void):Bool;
 public static function full_init(a0:OCamlArray<Int>):Void;
 public static function init(a0:Int):Void;
 public static function self_init(a0:Void):Void;
-public static function get_state(a0:Void):Dynamic;
-public static function set_state(a0:Dynamic):Void;
+public static function get_state(a0:Void):OCamlState.T;
+public static function set_state(a0:OCamlState.T):Void;
 }

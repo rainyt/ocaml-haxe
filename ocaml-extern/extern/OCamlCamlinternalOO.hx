@@ -1,3 +1,53 @@
+typedef Params = {
+compact_table :Bool,
+copy_parent :Bool,
+clean_when_copying :Bool,
+retry_count :Int,
+bucket_small_size :Int,
+}
+
+typedef Item = Dynamic;
+
+typedef Label = Int;
+
+typedef Closure = = Dynamic;
+
+typedef T = = Dynamic;
+
+typedef Obj = = Dynamic;
+
+typedef Key = = String;
+
+typedef Vars = = Dynamic;
+
+typedef Key = = String;
+
+typedef Meths = = Dynamic;
+
+typedef Key = = Dynamic;
+
+typedef Labs = = Dynamic;
+
+typedef Table = {
+}
+
+typedef Meth = = Dynamic;
+
+typedef Init_table = {
+env_init :Dynamic,
+class_init :Dynamic,
+}
+
+typedef Tables = = Dynamic;
+
+typedef Impl = = Dynamic;
+
+typedef Stats = {
+classes :Int,
+methods :Int,
+inst_vars :Int,
+}
+
 @:native("CamlinternalOO")
 extern class OCamlCamlinternalOO {
 public static function set_id(a0:Dynamic):Dynamic;
@@ -42,11 +92,11 @@ public static function find_last(a0:Dynamic->Bool,a1:Dynamic):Dynamic;
 public static var find_last_opt:Dynamic;
 public static function map(a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
 public static function mapi(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic):Dynamic;
-public static function to_seq(a0:Dynamic):Dynamic;
-public static function to_rev_seq(a0:Dynamic):Dynamic;
-public static function to_seq_from(a0:Dynamic,a1:Dynamic):Dynamic;
-public static function add_seq(a0:Dynamic,a1:Dynamic):Dynamic;
-public static function of_seq(a0:Dynamic):Dynamic;
+public static function to_seq(a0:Dynamic):OCamlfunSeq.T;
+public static function to_rev_seq(a0:Dynamic):OCamlfunSeq.T;
+public static function to_seq_from(a0:Dynamic,a1:Dynamic):OCamlfunSeq.T;
+public static function add_seq(a0:OCamlfunSeq.T,a1:Dynamic):Dynamic;
+public static function of_seq(a0:OCamlfunSeq.T):Dynamic;
 public static var empty:Dynamic;
 public static function is_empty(a0:Dynamic):Bool;
 public static function mem(a0:Dynamic,a1:Dynamic):Bool;
@@ -82,11 +132,11 @@ public static function find_last(a0:Dynamic->Bool,a1:Dynamic):Dynamic;
 public static var find_last_opt:Dynamic;
 public static function map(a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
 public static function mapi(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic):Dynamic;
-public static function to_seq(a0:Dynamic):Dynamic;
-public static function to_rev_seq(a0:Dynamic):Dynamic;
-public static function to_seq_from(a0:Dynamic,a1:Dynamic):Dynamic;
-public static function add_seq(a0:Dynamic,a1:Dynamic):Dynamic;
-public static function of_seq(a0:Dynamic):Dynamic;
+public static function to_seq(a0:Dynamic):OCamlfunSeq.T;
+public static function to_rev_seq(a0:Dynamic):OCamlfunSeq.T;
+public static function to_seq_from(a0:Dynamic,a1:Dynamic):OCamlfunSeq.T;
+public static function add_seq(a0:OCamlfunSeq.T,a1:Dynamic):Dynamic;
+public static function of_seq(a0:OCamlfunSeq.T):Dynamic;
 public static var empty:Dynamic;
 public static function is_empty(a0:Dynamic):Bool;
 public static function mem(a0:Dynamic,a1:Dynamic):Bool;
@@ -122,11 +172,11 @@ public static function find_last(a0:Dynamic->Bool,a1:Dynamic):Dynamic;
 public static var find_last_opt:Dynamic;
 public static function map(a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
 public static function mapi(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic):Dynamic;
-public static function to_seq(a0:Dynamic):Dynamic;
-public static function to_rev_seq(a0:Dynamic):Dynamic;
-public static function to_seq_from(a0:Dynamic,a1:Dynamic):Dynamic;
-public static function add_seq(a0:Dynamic,a1:Dynamic):Dynamic;
-public static function of_seq(a0:Dynamic):Dynamic;
+public static function to_seq(a0:Dynamic):OCamlfunSeq.T;
+public static function to_rev_seq(a0:Dynamic):OCamlfunSeq.T;
+public static function to_seq_from(a0:Dynamic,a1:Dynamic):OCamlfunSeq.T;
+public static function add_seq(a0:OCamlfunSeq.T,a1:Dynamic):Dynamic;
+public static function of_seq(a0:OCamlfunSeq.T):Dynamic;
 public static var dummy_table:Dynamic;
 public static var table_count:Dynamic;
 public static var dummy_met:Dynamic;
@@ -137,25 +187,25 @@ public static function put(a0:Dynamic,a1:Int,a2:Dynamic):Void;
 public static var method_count:Dynamic;
 public static var inst_var_count:Dynamic;
 public static function new_method(a0:Dynamic):Int;
-public static function get_method_label(a0:Dynamic,a1:Dynamic):Dynamic;
-public static function get_method_labels(a0:Dynamic,a1:Dynamic):Dynamic;
-public static function set_method(a0:Dynamic,a1:Dynamic,a2:Dynamic):Void;
+public static function get_method_label(a0:Dynamic,a1:OCamlMeths.Key):Dynamic;
+public static function get_method_labels(a0:Dynamic,a1:OCamlMeths.Keyarray):Dynamic;
+public static function set_method(a0:Dynamic,a1:OCamlLabs.Key,a2:Dynamic):Void;
 public static function get_method(a0:Dynamic,a1:Dynamic):Dynamic;
 public static function to_list(a0:Dynamic):Dynamic;
 public static var narrow:Dynamic;
 public static function widen(a0:Dynamic):Void;
 public static function new_slot(a0:Dynamic):Int;
-public static function new_variable(a0:Dynamic,a1:Dynamic):Int;
+public static function new_variable(a0:Dynamic,a1:OCamlVars.Key):Int;
 public static function to_array(a0:Dynamic):Dynamic;
 public static var new_methods_variables:Dynamic;
-public static function get_variable(a0:Dynamic,a1:Dynamic):Int;
-public static function get_variables(a0:Dynamic,a1:Dynamic):OCamlArray<Int>;
+public static function get_variable(a0:Dynamic,a1:OCamlVars.Key):Int;
+public static function get_variables(a0:Dynamic,a1:OCamlVars.Keyarray):OCamlArray<Int>;
 public static function add_initializer(a0:Dynamic,a1:Dynamic->Void):Void;
-public static function create_table(a0:Dynamic):Dynamic;
+public static function create_table(a0:OCamlMeths.Keyarray):Dynamic;
 public static function init_class(a0:Dynamic):Void;
 public static var inherits:Dynamic;
 public static var make_class:Dynamic;
-public static function make_class_store(a0:Dynamic,a1:Dynamic->Dynamic,a2:Dynamic):Void;
+public static function make_class_store(a0:OCamlMeths.Keyarray,a1:Dynamic->Dynamic,a2:Dynamic):Void;
 public static function dummy_class(a0:Dynamic):Dynamic;
 public static function create_object(a0:Dynamic):Dynamic;
 public static function create_object_opt(a0:Dynamic,a1:Dynamic):Dynamic;
@@ -201,6 +251,6 @@ public static function send_env(a0:Dynamic,a1:Int,a2:Int,a3:Int):Dynamic;
 public static function send_meth(a0:Dynamic,a1:Dynamic,a2:Int):Dynamic;
 public static function new_cache(a0:Dynamic):Int;
 public static function method_impl(a0:Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
-public static function set_methods(a0:Dynamic,a1:Dynamic):Void;
+public static function set_methods(a0:Dynamic,a1:OCamlLabs.Keyarray):Void;
 public static function stats(a0:Void):Dynamic;
 }

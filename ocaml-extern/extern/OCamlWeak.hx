@@ -1,3 +1,7 @@
+typedef S = = Dynamic;
+
+typedef Data = = Dynamic;
+
 @:native("Weak")
 extern class OCamlWeak {
 public static function create(a0:Int):Dynamic;

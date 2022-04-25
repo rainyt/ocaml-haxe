@@ -1,3 +1,13 @@
+typedef Backend_= = Dynamic;
+
+typedef = = Dynamic;
+
+typedef Signal_behavior = = Dynamic;
+
+typedef Non_immediate = = Dynamic;
+
+typedef Immediate = = Dynamic;
+
 @:native("Sys")
 extern class OCamlSys {
 public static function get_config(a0:Void):Dynamic;

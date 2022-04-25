@@ -1,3 +1,5 @@
+typedef T = = Int;
+
 @:native("Uchar")
 extern class OCamlUchar {
 public static function format_int(a0:String,a1:Int):String;

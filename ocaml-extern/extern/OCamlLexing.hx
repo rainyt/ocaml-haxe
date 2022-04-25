@@ -1,3 +1,27 @@
+typedef Position = {
+pos_fname :String,
+pos_lnum :Int,
+pos_bol :Int,
+pos_cnum :Int,
+}
+
+typedef Lexbuf = {
+}
+
+typedef Lex_tables = {
+lex_base :String,
+lex_backtrk :String,
+lex_default :String,
+lex_trans :String,
+lex_check :String,
+lex_base_code :String,
+lex_backtrk_code :String,
+lex_default_code :String,
+lex_trans_code :String,
+lex_check_code :String,
+lex_code :String,
+}
+
 @:native("Lexing")
 extern class OCamlLexing {
 public static var dummy_pos:Dynamic;

@@ -3,6 +3,8 @@ package;
 import sys.io.File;
 import sys.io.Process;
 
+using StringTools;
+
 /**
  * 将OCaml文件转为haxe extern
  */
@@ -21,23 +23,54 @@ class OCamlExternTools {
 		nName = nName.charAt(0).toUpperCase() + nName.substr(1);
 		var cName = StringTools.replace(out, "extern/", "");
 		cName = StringTools.replace(cName, ".hx", "");
-		haxeCode.write('@:native("${nName}")\n');
-		haxeCode.write("extern class " + cName + " {\n");
 		var p = new Process("ocamlc -i " + file);
 		var mlcontent = p.stdout.readAll().toString();
 		File.saveContent("test/" + out.substr(out.lastIndexOf("/") + 1), mlcontent);
+
+		// 类型获取
+		var tReg = ~/type[a-zA-Z = {\n:;_]{1,}}|type[a-zA-Z = {:;_]{1,}/g;
+		if (tReg.match(mlcontent)) {
+			tReg.map(mlcontent, (data) -> {
+				var value = data.matched(0);
+				trace(file, value, mlcontent);
+				var typeName = ~/type[a-zA-Z = {\n:;_]{1,}=/g;
+				if (!typeName.match(value))
+					return value;
+				var tName = typeName.matched(0);
+				tName = tName.replace("type ", "");
+				if (value.indexOf("{") == -1)
+					haxeCode.write('typedef ${tName.charAt(0).toUpperCase() + tName.substr(1)} = ${toType(value.split("=")[1])};\n\n');
+				else
+					haxeCode.write('typedef ${tName.charAt(0).toUpperCase() + tName.substr(1)} {\n');
+				var paramReg = ~/[a-zA-Z0-9_]{1,} : [a-zA-Z0-9_]{1,}/g;
+				paramReg.map(value, (param) -> {
+					var value = param.matched(0);
+					trace("参数：", value);
+					var args = value.split(":");
+					haxeCode.write('${args[0]}:${toType(args[1])},\n');
+					return value;
+				});
+				if (value.indexOf("{") != -1)
+					haxeCode.write("}\n\n");
+				return value;
+			});
+		}
+
+		haxeCode.write('@:native("${nName}")\n');
+		haxeCode.write("extern class " + cName + " {\n");
+
 		// 开始处理Extern实现
 		var lines = mlcontent.split("\n");
 		for (line in lines) {
 			parserLine(line);
 		}
 		haxeCode.write("}");
-		trace("out:", out);
+		// trace("out:", out);
 		File.saveContent(out, haxeCode.code);
 	}
 
 	public static function parserLine(line:String):Void {
-		var funcName = ~/external [a-z_A-Z]{1,}|val [a-z_A-Z0-9]{1,}/g;
+		var funcName = ~/external [a-z_A-Z0-9]{1,}|val [a-z_A-Z0-9]{1,}/g;
 		if (funcName.match(line)) {
 			var fun = funcName.matched(0);
 			var args = line.split(":")[1];
@@ -98,6 +131,12 @@ class OCamlExternTools {
 						calls[index] = toType(value);
 					}
 					return calls.join("->");
+				}
+				if (type.indexOf("*") != -1)
+					return "Dynamic";
+				if (type.indexOf(".") != -1) {
+					var types = type.split(".");
+					return "OCaml" + types[0] + "." + types[1].charAt(0).toUpperCase() + types[1].substr(1);
 				}
 				return "Dynamic";
 				// return '<${type}>';
