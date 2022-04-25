@@ -1,21 +1,74 @@
-[Function:() -> Void]
+[Function:() -> String]
+	[Block:Dynamic]
+		[While:Void]
+			[Const:Bool] true
+			[Block:Dynamic] [Return:Dynamic] [Const:String] "false"
+		[Return:Dynamic] [Const:String] "true"[Function:() -> Void]
 	[Block:Void]
-		[Var data(989971):String]
-			[Field:String]
-				[TypeExpr OCamlSys:Class<OCamlSys>]
-				[FStatic:String]
-					OCamlSys
-					os_type:String
+		[Var data(991653):String] [Const:String] "1,2,3,4,5,6"
+		[Var array(991654):Array<String>]
+			[Call:Array<String>]
+				[Field:(a0 : OCamlChar, a1 : String) -> Array<String>]
+					[TypeExpr OCamlString:Class<OCamlString>]
+					[FStatic:(a0 : OCamlChar, a1 : String) -> Array<String>]
+						OCamlString
+						split_on_char:(a0 : OCamlChar, a1 : String) -> Array<String>
+				[Const:String] ","
+				[Local data(991653):String:String]
+		[Block:Void]
+			[Var `(991656):Int] [Const:Int] 0
+			[While:Void]
+				[Binop:Bool]
+					[Local `(991656):Int:Int]
+					<
+					[Field:Int]
+						[Local array(991654):Array<String>:Array<String>]
+						[FInstance:Int]
+							Array<String>
+							length:Int
+				[Block:Void]
+					[Var s(991655):String]
+						[Array:String]
+							[Local array(991654):Array<String>:Array<String>]
+							[Local `(991656):Int:Int]
+					[Unop:Int]
+						++
+						Prefix
+						[Local `(991656):Int:Int]
+					[Call:Void]
+						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+							[TypeExpr haxe.Log:Class<haxe.Log>]
+							[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+								haxe.Log
+								trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+						[Const:String] "拆分后："
+						[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+							fileName: [Const:String] "haxe_test/project/Main.hx"
+							lineNumber: [Const:Int] 17
+							className: [Const:String] "project.Main"
+							methodName: [Const:String] "main"
+							customParams: [ArrayDecl:Array<Dynamic>] [Local s(991655):String:String]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
 				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 					haxe.Log
 					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
-			[Const:String] "system="
+			[Const:String] "文本的长度:"
 			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
 				fileName: [Const:String] "haxe_test/project/Main.hx"
-				lineNumber: [Const:Int] 6
+				lineNumber: [Const:Int] 19
 				className: [Const:String] "project.Main"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local data(989971):String:String]
+				customParams: [ArrayDecl:Array<Dynamic>]
+					[Field:Int]
+						[Local data(991653):String:String]
+						[FInstance:Int]
+							String
+							length:Int
+					[Call:String]
+						[Field:() -> String]
+							[TypeExpr project.Main:Class<project.Main>]
+							[FStatic:() -> String]
+								project.Main
+								call:() -> String

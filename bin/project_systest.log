@@ -1,0 +1,159 @@
+[Function:() -> Void]
+	[Block:Void]
+		[Var data(990948):String]
+			[Field:String]
+				[TypeExpr OCamlSys:Class<OCamlSys>]
+				[FStatic:String]
+					OCamlSys
+					os_type:String
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "system="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/SysTest.hx"
+				lineNumber: [Const:Int] 6
+				className: [Const:String] "project.SysTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>] [Local data(990948):String:String]
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "big_endian="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/SysTest.hx"
+				lineNumber: [Const:Int] 7
+				className: [Const:String] "project.SysTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>]
+					[Field:Bool]
+						[TypeExpr OCamlSys:Class<OCamlSys>]
+						[FStatic:Bool]
+							OCamlSys
+							big_endian:Bool
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "cygwin="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/SysTest.hx"
+				lineNumber: [Const:Int] 8
+				className: [Const:String] "project.SysTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>]
+					[Field:Bool]
+						[TypeExpr OCamlSys:Class<OCamlSys>]
+						[FStatic:Bool]
+							OCamlSys
+							cygwin:Bool
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "executable_name="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/SysTest.hx"
+				lineNumber: [Const:Int] 9
+				className: [Const:String] "project.SysTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>]
+					[Field:String]
+						[TypeExpr OCamlSys:Class<OCamlSys>]
+						[FStatic:String]
+							OCamlSys
+							executable_name:String
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "int_size="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/SysTest.hx"
+				lineNumber: [Const:Int] 10
+				className: [Const:String] "project.SysTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>]
+					[Field:Int]
+						[TypeExpr OCamlSys:Class<OCamlSys>]
+						[FStatic:Int]
+							OCamlSys
+							int_size:Int
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "ocaml_version="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/SysTest.hx"
+				lineNumber: [Const:Int] 11
+				className: [Const:String] "project.SysTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>]
+					[Field:String]
+						[TypeExpr OCamlSys:Class<OCamlSys>]
+						[FStatic:String]
+							OCamlSys
+							ocaml_version:String
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Const:String] "word_size="
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+				fileName: [Const:String] "haxe_test/project/SysTest.hx"
+				lineNumber: [Const:Int] 12
+				className: [Const:String] "project.SysTest"
+				methodName: [Const:String] "main"
+				customParams: [ArrayDecl:Array<Dynamic>]
+					[Field:Int]
+						[TypeExpr OCamlSys:Class<OCamlSys>]
+						[FStatic:Int]
+							OCamlSys
+							word_size:Int
+		[If:Void]
+			[Call:Bool]
+				[Field:(a0 : String) -> Bool]
+					[TypeExpr OCamlSys:Class<OCamlSys>]
+					[FStatic:(a0 : String) -> Bool]
+						OCamlSys
+						file_exists:(a0 : String) -> Bool
+				[Const:String] "test2"
+			[Then:Void] [Block:Void]
+				[Call:Void]
+					[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+						[TypeExpr haxe.Log:Class<haxe.Log>]
+						[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+							haxe.Log
+							trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+					[Const:String] "已经存在文件夹"
+					[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
+						fileName: [Const:String] "haxe_test/project/SysTest.hx"
+						lineNumber: [Const:Int] 14
+						className: [Const:String] "project.SysTest"
+						methodName: [Const:String] "main"
+			[Else:Void] [Block:Void]
+				[Call:Void]
+					[Field:(a0 : String, a1 : Int) -> Void]
+						[TypeExpr OCamlSys:Class<OCamlSys>]
+						[FStatic:(a0 : String, a1 : Int) -> Void]
+							OCamlSys
+							mkdir:(a0 : String, a1 : Int) -> Void
+					[Const:String] "test2"
+					[Const:Int] 0
