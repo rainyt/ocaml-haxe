@@ -224,10 +224,13 @@ class OCaml2Tools {
 					// }
 					// trace("转换：", v.id, v.name, castToType, v.meta.get());
 					default:
+						if (v.name == "a")
+							trace("定义", v.id, v.t);
+						OCaml2Ref.retianType(v.id, v.t);
 				}
 				// 临时变量都是经过Cast处理的
 				// trace('${name}=${expr.t}');
-				return 'let ${name} = ref (${toString(expr, true)}) in';
+				return 'let ${name} = ref (${toString(expr, true, v.t)}) in';
 
 			case TCast(e, m):
 				// todo 这里的m会不存在
@@ -239,7 +242,7 @@ class OCaml2Tools {
 					case TAbstract(t, params):
 						switch (t.toString()) {
 							case "OCamlChar":
-								return name;
+								return (OCaml2Ref.getType(v.id) != null ? "!" : "") + name;
 						}
 					default:
 				}

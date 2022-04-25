@@ -55,7 +55,8 @@ class Main {
 		// content := String.map (fun a -> a) !content;
 		content = OCamlString.map(function(data) {
 			trace("解析", data);
-			if ("\n" == data)
+			var a:OCamlChar = "\n";
+			if (a == data)
 				return data;
 			return "2";
 		}, content);
