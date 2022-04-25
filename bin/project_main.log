@@ -126,11 +126,33 @@
 						[FStatic:Int]
 							OCamlSys
 							word_size:Int
-		[Call:Void]
-			[Field:(a0 : String, a1 : Int) -> Void]
-				[TypeExpr OCamlSys:Class<OCamlSys>]
-				[FStatic:(a0 : String, a1 : Int) -> Void]
-					OCamlSys
-					mkdir:(a0 : String, a1 : Int) -> Void
-			[Const:String] "test2"
-			[Const:Int] 0
+		[If:Void]
+			[Call:Bool]
+				[Field:(a0 : String) -> Bool]
+					[TypeExpr OCamlSys:Class<OCamlSys>]
+					[FStatic:(a0 : String) -> Bool]
+						OCamlSys
+						file_exists:(a0 : String) -> Bool
+				[Const:String] "test2"
+			[Then:Void] [Block:Void]
+				[Call:Void]
+					[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+						[TypeExpr haxe.Log:Class<haxe.Log>]
+						[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+							haxe.Log
+							trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+					[Const:String] "已经存在文件夹"
+					[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
+						fileName: [Const:String] "haxe_test/project/Main.hx"
+						lineNumber: [Const:Int] 13
+						className: [Const:String] "project.Main"
+						methodName: [Const:String] "main"
+			[Else:Void] [Block:Void]
+				[Call:Void]
+					[Field:(a0 : String, a1 : Int) -> Void]
+						[TypeExpr OCamlSys:Class<OCamlSys>]
+						[FStatic:(a0 : String, a1 : Int) -> Void]
+							OCamlSys
+							mkdir:(a0 : String, a1 : Int) -> Void
+					[Const:String] "test2"
+					[Const:Int] 0

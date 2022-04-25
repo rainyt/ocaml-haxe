@@ -66,9 +66,6 @@ class OCamlExternTools {
 
 	public static function toType(type:String):String {
 		type = StringTools.replace(type, " ", "");
-		if (type.indexOf("list") != -1) {
-			trace(type);
-		}
 		switch (type) {
 			case "unit":
 				return "Void";

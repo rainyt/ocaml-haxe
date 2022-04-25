@@ -9,6 +9,10 @@ class Main {
 		trace("int_size=", OCamlSys.int_size);
 		trace("ocaml_version=", OCamlSys.ocaml_version);
 		trace("word_size=", OCamlSys.word_size);
-		OCamlSys.mkdir("test2",0);
+		if (OCamlSys.file_exists("test2")) {
+			trace("已经存在文件夹");
+		} else {
+			OCamlSys.mkdir("test2", 0);
+		}
 	}
 }
