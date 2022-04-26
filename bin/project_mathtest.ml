@@ -10,7 +10,7 @@ f2 := !f2 /. !f1 /. !f1;
 (Printf.printf "%s%f\n" ("f2=") (!f2));
 f2 := !f2 *. !f1 -. !f1 +. 1.;
 (Printf.printf "%s%f\n" ("f2=") (!f2));
-f2 := !f2 -. !f1;
+f2 := !f2 -. !f1 -. 0.;
 f2 := !f2 +. 1.;
 f2 := !f2 -. 1.;
 (Printf.printf "%s%f\n" ("f2=") (!f2));
@@ -20,7 +20,7 @@ i2 := !i2 + !i1 * !i1;
 (Printf.printf "%s%i\n" ("i2=") (!i2));
 i2 := !i2 * !i1 - !i1 + 1;
 (Printf.printf "%s%i\n" ("i2=") (!i2));
-i2 := !i2 - !i1;
+i2 := !i2 - !i1 - 0;
 i2 := !i2 + 1;
 i2 := !i2 - 1;
 (Printf.printf "%s%i\n" ("i2=") (!i2));
@@ -35,6 +35,7 @@ let s2 = ref ((string_of_float (!f1)) ^ !s1) in
 (Printf.printf "%s\n" (!s2));
 let loop = ref (10000000) in
 let break = ref true in while (!break && (!loop > 0)) do
-loop := !loop - 1 done;
+loop := !loop - 1;
+ done;
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

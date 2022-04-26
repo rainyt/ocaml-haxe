@@ -25,6 +25,7 @@ class OCamlExternTools {
 		cName = StringTools.replace(cName, ".hx", "");
 		var p = new Process("ocamlc -i " + file);
 		var mlcontent = p.stdout.readAll().toString();
+		trace("mlcontent=", mlcontent);
 		File.saveContent("test/" + out.substr(out.lastIndexOf("/") + 1), mlcontent);
 
 		// 类型获取

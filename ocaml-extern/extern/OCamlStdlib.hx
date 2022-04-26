@@ -1,3 +1,1 @@
-@:native("Stdlib")
-extern class OCamlStdlib {
-}
+typedef OCamlStdlib = OCamlStd;

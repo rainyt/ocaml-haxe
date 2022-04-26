@@ -253,6 +253,8 @@ class OCaml2Tools {
 				// todo 如果是IF分支，则不应该加后面的返回值
 				if (lastBlockExpr != null) {
 					switch (lastBlockExpr.expr) {
+						case TWhile(econd, e2, normalWhile):
+							return OCaml2Return.toString(e);
 						case TIf(econd, eif, eelse):
 							return OCaml2Return.toString(e);
 						default:

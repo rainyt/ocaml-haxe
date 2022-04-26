@@ -67,6 +67,9 @@ class OCaml2Field {
 					default:
 						return '${c.toString()}.${cf.toString()} ${OCaml2Tools.toString(e)}';
 				}
+			case FAnon(cf):
+				trace(cf);
+				return "(* FAnon *)";
 			default:
 				throw "Not support FieldAccess:" + fa;
 		}

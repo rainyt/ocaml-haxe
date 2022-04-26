@@ -2,7 +2,7 @@ exception STRING of string
 
 let call() = try 
 let break = ref true in while (!break && (true)) do
-ignore (raise (STRING ("false")));"false";
+ignore (raise (STRING ("false")));
  done;
 ignore (raise (STRING ("true")));"true";
 with STRING ret -> ret;;
@@ -18,5 +18,6 @@ _g := !_g + 1;
  done;
 ;
 (Printf.printf "%s%i%s\n" ("文本的长度:") (String.length !data) ((call ())));
+(Ocaml_lib_file.copy (ref "build.hxml") (ref "build-copy.hxml"));
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

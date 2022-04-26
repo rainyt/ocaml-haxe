@@ -1,12 +1,12 @@
 [Function:() -> Void]
 	[Block:Void]
-		[Var f1(8464):Float] [Const:Float] 1.
-		[Var i1(8465):Int] [Const:Int] 1
-		[Var f2(8466):Float]
+		[Var f1(141747):Float] [Const:Float] 1.
+		[Var i1(141748):Int] [Const:Int] 1
+		[Var f2(141749):Float]
 			[Binop:Float]
-				[Local f1(8464):Float:Float]
+				[Local f1(141747):Float:Float]
 				+
-				[Local f1(8464):Float:Float]
+				[Local f1(141747):Float:Float]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -19,14 +19,14 @@
 				lineNumber: [Const:Int] 12
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(8466):Float:Float]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(141749):Float:Float]
 		[Binop:Float]
-			[Local f2(8466):Float:Float]
+			[Local f2(141749):Float:Float]
 			+=
 			[Binop:Float]
-				[Local f1(8464):Float:Float]
+				[Local f1(141747):Float:Float]
 				*
-				[Local f1(8464):Float:Float]
+				[Local f1(141747):Float:Float]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -39,14 +39,14 @@
 				lineNumber: [Const:Int] 14
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(8466):Float:Float]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(141749):Float:Float]
 		[Binop:Float]
-			[Local f2(8466):Float:Float]
+			[Local f2(141749):Float:Float]
 			/=
 			[Binop:Float]
-				[Local f1(8464):Float:Float]
+				[Local f1(141747):Float:Float]
 				/
-				[Local f1(8464):Float:Float]
+				[Local f1(141747):Float:Float]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -59,15 +59,15 @@
 				lineNumber: [Const:Int] 16
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(8466):Float:Float]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(141749):Float:Float]
 		[Binop:Float]
-			[Local f2(8466):Float:Float]
+			[Local f2(141749):Float:Float]
 			*=
 			[Binop:Float]
 				[Binop:Float]
-					[Local f1(8464):Float:Float]
+					[Local f1(141747):Float:Float]
 					-
-					[Local f1(8464):Float:Float]
+					[Local f1(141747):Float:Float]
 				+
 				[Const:Float] 1.
 		[Call:Void]
@@ -82,19 +82,22 @@
 				lineNumber: [Const:Int] 18
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(8466):Float:Float]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(141749):Float:Float]
 		[Binop:Float]
-			[Local f2(8466):Float:Float]
+			[Local f2(141749):Float:Float]
 			-=
-			[Local f1(8464):Float:Float]
+			[Binop:Float]
+				[Local f1(141747):Float:Float]
+				-
+				[Const:Float] 0.
 		[Unop:Float]
 			++
 			Postfix
-			[Local f2(8466):Float:Float]
+			[Local f2(141749):Float:Float]
 		[Unop:Float]
 			--
 			Postfix
-			[Local f2(8466):Float:Float]
+			[Local f2(141749):Float:Float]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -107,12 +110,12 @@
 				lineNumber: [Const:Int] 22
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(8466):Float:Float]
-		[Var i2(8548):Int]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local f2(141749):Float:Float]
+		[Var i2(141750):Int]
 			[Binop:Int]
-				[Local i1(8465):Int:Int]
+				[Local i1(141748):Int:Int]
 				+
-				[Local i1(8465):Int:Int]
+				[Local i1(141748):Int:Int]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -125,14 +128,14 @@
 				lineNumber: [Const:Int] 26
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(8548):Int:Int]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(141750):Int:Int]
 		[Binop:Int]
-			[Local i2(8548):Int:Int]
+			[Local i2(141750):Int:Int]
 			+=
 			[Binop:Int]
-				[Local i1(8465):Int:Int]
+				[Local i1(141748):Int:Int]
 				*
-				[Local i1(8465):Int:Int]
+				[Local i1(141748):Int:Int]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -145,15 +148,15 @@
 				lineNumber: [Const:Int] 28
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(8548):Int:Int]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(141750):Int:Int]
 		[Binop:Int]
-			[Local i2(8548):Int:Int]
+			[Local i2(141750):Int:Int]
 			*=
 			[Binop:Int]
 				[Binop:Int]
-					[Local i1(8465):Int:Int]
+					[Local i1(141748):Int:Int]
 					-
-					[Local i1(8465):Int:Int]
+					[Local i1(141748):Int:Int]
 				+
 				[Const:Int] 1
 		[Call:Void]
@@ -168,19 +171,22 @@
 				lineNumber: [Const:Int] 30
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(8548):Int:Int]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(141750):Int:Int]
 		[Binop:Int]
-			[Local i2(8548):Int:Int]
+			[Local i2(141750):Int:Int]
 			-=
-			[Local i1(8465):Int:Int]
+			[Binop:Int]
+				[Local i1(141748):Int:Int]
+				-
+				[Const:Int] 0
 		[Unop:Int]
 			++
 			Postfix
-			[Local i2(8548):Int:Int]
+			[Local i2(141750):Int:Int]
 		[Unop:Int]
 			--
 			Postfix
-			[Local i2(8548):Int:Int]
+			[Local i2(141750):Int:Int]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -193,12 +199,12 @@
 				lineNumber: [Const:Int] 34
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(8548):Int:Int]
-		[Var fi(8549):Float]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local i2(141750):Int:Int]
+		[Var fi(141751):Float]
 			[Binop:Float]
-				[Local f2(8466):Float:Float]
+				[Local f2(141749):Float:Float]
 				+
-				[Local i2(8548):Int:Int]
+				[Local i2(141750):Int:Int]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -211,12 +217,12 @@
 				lineNumber: [Const:Int] 38
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local fi(8549):Float:Float]
-		[Var ifv(8550):Float]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local fi(141751):Float:Float]
+		[Var ifv(141752):Float]
 			[Binop:Float]
-				[Local i2(8548):Int:Int]
+				[Local i2(141750):Int:Int]
 				*
-				[Local f2(8466):Float:Float]
+				[Local f2(141749):Float:Float]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -229,12 +235,12 @@
 				lineNumber: [Const:Int] 40
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local ifv(8550):Float:Float]
-		[Var div(8551):Float]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local ifv(141752):Float:Float]
+		[Var div(141753):Float]
 			[Binop:Float]
-				[Local i2(8548):Int:Int]
+				[Local i2(141750):Int:Int]
 				/
-				[Local i2(8548):Int:Int]
+				[Local i2(141750):Int:Int]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -247,33 +253,33 @@
 				lineNumber: [Const:Int] 43
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local div(8551):Float:Float]
-		[Var s1(8552):String] [Const:String] "test"
-		[Var s2(8553):String]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local div(141753):Float:Float]
+		[Var s1(141754):String] [Const:String] "test"
+		[Var s2(141755):String]
 			[Binop:String]
-				[Local f1(8464):Float:Float]
+				[Local f1(141747):Float:Float]
 				+
-				[Local s1(8552):String:String]
+				[Local s1(141754):String:String]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
 				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 					haxe.Log
 					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
-			[Local s2(8553):String:String]
+			[Local s2(141755):String:String]
 			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
 				fileName: [Const:String] "haxe_test/project/MathTest.hx"
 				lineNumber: [Const:Int] 47
 				className: [Const:String] "project.MathTest"
 				methodName: [Const:String] "main"
-		[Var loop(8554):Int] [Const:Int] 10000000
+		[Var loop(141756):Int] [Const:Int] 10000000
 		[While:Void]
-			[Parenthesis:Bool]
-				[Binop:Bool]
-					[Local loop(8554):Int:Int]
-					>
-					[Const:Int] 0
-			[Unop:Int]
-				--
-				Postfix
-				[Local loop(8554):Int:Int]
+			[Binop:Bool]
+				[Local loop(141756):Int:Int]
+				>
+				[Const:Int] 0
+			[Block:Int]
+				[Unop:Int]
+					--
+					Postfix
+					[Local loop(141756):Int:Int]

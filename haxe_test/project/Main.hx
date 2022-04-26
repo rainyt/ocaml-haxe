@@ -1,6 +1,6 @@
 package project;
 
-using OCamlString;
+import ocaml.lib.File;
 
 class Main {
 	static function call():String {
@@ -17,5 +17,7 @@ class Main {
 			trace("拆分后：", s);
 		}
 		trace("文本的长度:", data.length, call());
+
+		File.copy("build.hxml","build-copy.hxml");
 	}
 }

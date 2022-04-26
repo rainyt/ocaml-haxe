@@ -10,8 +10,8 @@ class Main {
 
 		var files = FileSystem.readDirectory("ocaml");
 		for (file in files) {
-			// if (file != "bool.ml")
-				// continue;
+			if (file != "std.ml")
+				continue;
 			var path = "ocaml/" + file;
 			if (file.endsWith(".ml")) {
 				file = file.replace(".ml", "");
