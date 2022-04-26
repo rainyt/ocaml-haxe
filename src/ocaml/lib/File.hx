@@ -14,13 +14,13 @@ class File {
 	 * @return String
 	 */
 	public static function getContent(path:String):String {
-		var input = Stdlib.openInput(path);
+		var input = OCamlStdlib.open_in(path);
 		var line = "";
 		while (true) {
 			try {
-				line += Stdlib.inputLine(input) + "\n";
+				line += OCamlStdlib.input_line(input) + "\n";
 			} catch (e:Exception) {
-				Stdlib.closeInput(input);
+				OCamlStdlib.close_in(input);
 				return line;
 			}
 		}
@@ -48,7 +48,7 @@ class File {
 	 * @return Bytes
 	 */
 	public static function getBytes(path:String):Bytes {
-		var input = Stdlib.openInput(path);
+		var input = OCamlStdlib.open_in(path);
 		var chars:Array<Int> = [];
 		while (true) {
 			try {
