@@ -27,6 +27,7 @@ dune exec bin
 
 所有实现正在重构：
 
+- [ ] return应该要支持返回类型。
 - [ ] return应判断方法返回类型。
 - [x] 支持using语句。
 - [ ] 新增一个OCaml的extern自动化工具。

@@ -4,7 +4,12 @@ class OCaml2Type {
 	public static function toString(type:Type):String {
 		switch (type) {
 			case TInst(t, params):
-				return toTypeString(t.toString());
+				switch (t.toString()) {
+					case "Array":
+						return toString(params[0]) + " List";
+					default:
+						return toTypeString(t.toString());
+				}
 			case TAbstract(t, params):
 				return toTypeString(t.toString());
 			case TFun(args, ret):

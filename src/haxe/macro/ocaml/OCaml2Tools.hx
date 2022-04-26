@@ -209,6 +209,8 @@ class OCaml2Tools {
 						return '"${s}"';
 					case TFloat(s):
 						return Std.string(s);
+					case TNull:
+						return "None";
 					default:
 						throw "Not support TConst:" + c;
 				}
