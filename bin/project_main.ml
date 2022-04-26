@@ -2,8 +2,7 @@ exception STRING of string
 
 let call() = try 
 let break = ref true in while (!break && (true)) do
-ignore (raise (STRING ("false")));
- done;
+ignore (raise (STRING ("false"))) done;
 ignore (raise (STRING ("true")));"true";
 with STRING ret -> ret;;
 
@@ -21,9 +20,16 @@ _g := !_g + 1;
 (Printf.printf "%s%s\n" ("文本内容：") ((Ocaml_lib_file.getContent (ref "build.hxml"))));
 (Ocaml_lib_file.copy (ref "build.hxml") (ref "build-copy.hxml"));
 if ((Ocaml_lib_filesystem.exists (ref "../test-2.mp4"))) then (
-(Printf.printf "%s\n" ("已经存在"));
- )else((Ocaml_lib_file.copy (ref "../test.mp4") (ref "../test-2.mp4"));
-);
+(Printf.printf "%s\n" ("已经存在")) )else((Ocaml_lib_file.copy (ref "../test.mp4") (ref "../test-2.mp4")));
 (Printf.printf "%s\n" ("拷贝完毕"));
+let files = ref ((Ocaml_lib_filesystem.readDirectory (ref "./"))) in
+let _g = ref (0) in
+let _g1 = ref (!files) in
+let break = ref true in while (!break && (!_g < Array.length !_g1)) do
+let s = ref (!_g1.(!_g)) in
+_g := !_g + 1;
+(Printf.printf "%s%s\n" ("文件：") (!s));
+ done;
+;
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

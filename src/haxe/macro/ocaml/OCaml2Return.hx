@@ -12,7 +12,6 @@ class OCaml2Return {
 			case TLocal(v):
 			default:
 		}
-		trace("expr=", expr.t);
 		switch (type) {
 			case "OCAMLCHAR":
 				OCaml2Tools.currentOCaml.writeHead('exception ${type} of char\n');

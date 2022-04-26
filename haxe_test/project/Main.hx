@@ -27,5 +27,10 @@ class Main {
 		else
 			File.copy("../test.mp4", "../test-2.mp4");
 		trace("拷贝完毕");
+
+		var files = FileSystem.readDirectory("./");
+		for (s in files) {
+			trace("文件：", s);
+		}
 	}
 }

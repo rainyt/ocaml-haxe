@@ -1,12 +1,12 @@
 [Function:() -> String]
 	[Block:Dynamic]
 		[While:Void]
-			[Const:Bool] true
-			[Block:Dynamic] [Return:Dynamic] [Const:String] "false"
+			[Parenthesis:Bool] [Const:Bool] true
+			[Return:Dynamic] [Const:String] "false"
 		[Return:Dynamic] [Const:String] "true"[Function:() -> Void]
 	[Block:Void]
-		[Var data(1302974):String] [Const:String] "1,2,3,4,5,6"
-		[Var array(1302975):Array<String>]
+		[Var data(1543200):String] [Const:String] "1,2,3,4,5,6"
+		[Var array(1543201):Array<String>]
 			[Call:Array<String>]
 				[Field:(a0 : OCamlChar, a1 : String) -> Array<String>]
 					[TypeExpr OCamlString:Class<OCamlString>]
@@ -14,27 +14,28 @@
 						OCamlString
 						split_on_char:(a0 : OCamlChar, a1 : String) -> Array<String>
 				[Const:String] ","
-				[Local data(1302974):String:String]
+				[Local data(1543200):String:String]
 		[Block:Void]
-			[Var `(1302977):Int] [Const:Int] 0
+			[Var _g(1543203):Int] [Const:Int] 0
 			[While:Void]
-				[Binop:Bool]
-					[Local `(1302977):Int:Int]
-					<
-					[Field:Int]
-						[Local array(1302975):Array<String>:Array<String>]
-						[FInstance:Int]
-							Array<String>
-							length:Int
+				[Parenthesis:Bool]
+					[Binop:Bool]
+						[Local _g(1543203):Int:Int]
+						<
+						[Field:Int]
+							[Local array(1543201):Array<String>:Array<String>]
+							[FInstance:Int]
+								Array<String>
+								length:Int
 				[Block:Void]
-					[Var s(1302976):String]
+					[Var s(1543202):String]
 						[Array:String]
-							[Local array(1302975):Array<String>:Array<String>]
-							[Local `(1302977):Int:Int]
+							[Local array(1543201):Array<String>:Array<String>]
+							[Local _g(1543203):Int:Int]
 					[Unop:Int]
 						++
 						Prefix
-						[Local `(1302977):Int:Int]
+						[Local _g(1543203):Int:Int]
 					[Call:Void]
 						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 							[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -47,7 +48,7 @@
 							lineNumber: [Const:Int] 18
 							className: [Const:String] "project.Main"
 							methodName: [Const:String] "main"
-							customParams: [ArrayDecl:Array<Dynamic>] [Local s(1302976):String:String]
+							customParams: [ArrayDecl:Array<Dynamic>] [Local s(1543202):String:String]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -62,7 +63,7 @@
 				methodName: [Const:String] "main"
 				customParams: [ArrayDecl:Array<Dynamic>]
 					[Field:Int]
-						[Local data(1302974):String:String]
+						[Local data(1543200):String:String]
 						[FInstance:Int]
 							String
 							length:Int
@@ -101,35 +102,34 @@
 			[Const:String] "build.hxml"
 			[Const:String] "build-copy.hxml"
 		[If:Void]
-			[Call:Bool]
-				[Field:(file : String) -> Bool]
-					[TypeExpr ocaml.lib.FileSystem:Class<ocaml.lib.FileSystem>]
-					[FStatic:(file : String) -> Bool]
-						ocaml.lib.FileSystem
-						exists:(file : String) -> Bool
-				[Const:String] "../test-2.mp4"
-			[Then:Void] [Block:Void]
-				[Call:Void]
-					[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
-						[TypeExpr haxe.Log:Class<haxe.Log>]
-						[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
-							haxe.Log
-							trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
-					[Const:String] "已经存在"
-					[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
-						fileName: [Const:String] "haxe_test/project/Main.hx"
-						lineNumber: [Const:Int] 26
-						className: [Const:String] "project.Main"
-						methodName: [Const:String] "main"
-			[Else:Void] [Block:Void]
-				[Call:Void]
-					[Field:(srcPath : String, dstPath : String) -> Void]
-						[TypeExpr ocaml.lib.File:Class<ocaml.lib.File>]
-						[FStatic:(srcPath : String, dstPath : String) -> Void]
-							ocaml.lib.File
-							copy:(srcPath : String, dstPath : String) -> Void
-					[Const:String] "../test.mp4"
+			[Parenthesis:Bool]
+				[Call:Bool]
+					[Field:(file : String) -> Bool]
+						[TypeExpr ocaml.lib.FileSystem:Class<ocaml.lib.FileSystem>]
+						[FStatic:(file : String) -> Bool]
+							ocaml.lib.FileSystem
+							exists:(file : String) -> Bool
 					[Const:String] "../test-2.mp4"
+			[Then:Void] [Call:Void]
+				[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					[TypeExpr haxe.Log:Class<haxe.Log>]
+					[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+						haxe.Log
+						trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+				[Const:String] "已经存在"
+				[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
+					fileName: [Const:String] "haxe_test/project/Main.hx"
+					lineNumber: [Const:Int] 26
+					className: [Const:String] "project.Main"
+					methodName: [Const:String] "main"
+			[Else:Void] [Call:Void]
+				[Field:(srcPath : String, dstPath : String) -> Void]
+					[TypeExpr ocaml.lib.File:Class<ocaml.lib.File>]
+					[FStatic:(srcPath : String, dstPath : String) -> Void]
+						ocaml.lib.File
+						copy:(srcPath : String, dstPath : String) -> Void
+				[Const:String] "../test.mp4"
+				[Const:String] "../test-2.mp4"
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -142,3 +142,46 @@
 				lineNumber: [Const:Int] 29
 				className: [Const:String] "project.Main"
 				methodName: [Const:String] "main"
+		[Var files(1543204):OCamlArray<String>]
+			[Call:OCamlArray<String>]
+				[Field:(path : String) -> OCamlArray<String>]
+					[TypeExpr ocaml.lib.FileSystem:Class<ocaml.lib.FileSystem>]
+					[FStatic:(path : String) -> OCamlArray<String>]
+						ocaml.lib.FileSystem
+						readDirectory:(path : String) -> OCamlArray<String>
+				[Const:String] "./"
+		[Block:Void]
+			[Var _g(1543207):Int] [Const:Int] 0
+			[Var _g1(1543208):Array<String>] [Cast:Array<String>] [Local files(1543204):OCamlArray<String>:OCamlArray<String>]
+			[While:Void]
+				[Parenthesis:Bool]
+					[Binop:Bool]
+						[Local _g(1543207):Int:Int]
+						<
+						[Field:Int]
+							[Local _g1(1543208):Array<String>:Array<String>]
+							[FInstance:Int]
+								Array<String>
+								length:Int
+				[Block:Void]
+					[Var s(1543206):String]
+						[Array:String]
+							[Local _g1(1543208):Array<String>:Array<String>]
+							[Local _g(1543207):Int:Int]
+					[Unop:Int]
+						++
+						Prefix
+						[Local _g(1543207):Int:Int]
+					[Call:Void]
+						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+							[TypeExpr haxe.Log:Class<haxe.Log>]
+							[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+								haxe.Log
+								trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+						[Const:String] "文件："
+						[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, customParams : Array<Dynamic>, className : String }]
+							fileName: [Const:String] "haxe_test/project/Main.hx"
+							lineNumber: [Const:Int] 33
+							className: [Const:String] "project.Main"
+							methodName: [Const:String] "main"
+							customParams: [ArrayDecl:Array<Dynamic>] [Local s(1543206):String:String]

@@ -1,3 +1,4 @@
+exception STRING_ARRAY of string array
 exception STRING of string
 exception BOOL of bool
 
@@ -21,6 +22,10 @@ with STRING ret -> ret;;
 let isDirectory path = try 
 ignore (raise (BOOL ((Sys.is_directory (!path)))));(Sys.is_directory (!path));
 with BOOL ret -> ret;;
+
+let readDirectory path = try 
+ignore (raise (STRING_ARRAY ((Sys.readdir (!path)))));(Sys.readdir (!path));
+with STRING_ARRAY ret -> ret;;
 
 let rename path newPath = (Sys.rename (!path) (!newPath));
 ;;

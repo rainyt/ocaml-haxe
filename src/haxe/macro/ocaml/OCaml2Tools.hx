@@ -3,6 +3,7 @@ package haxe.macro.ocaml;
 import haxe.macro.Type;
 
 using haxe.macro.ocaml.OCaml2Utils;
+using haxe.macro.ocaml.OCaml2Type;
 
 #if macro
 /**
@@ -293,7 +294,7 @@ class OCaml2Tools {
 					}
 					oc.write(toString(tfunc.expr, false, tfunc.t));
 					if (type != "VOID") {
-						oc.write("with " + OCaml2Type.toString(tfunc.t).toUpperCase() + " ret -> ret");
+						oc.write("with " + OCaml2Type.OCaml2Type.toString(tfunc.t).toTypeString().toUpperCase() + " ret -> ret");
 					} else if (tfunc.args.length == 0) {
 						oc.write('Printf.printf "runtime:%fs" (Sys.time() -. start_time)');
 					}

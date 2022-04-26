@@ -54,14 +54,14 @@ class FileSystem {
 		return OCamlSys.is_directory(path);
 	}
 
-	// /**
-	//  * 读取文件夹列表
-	//  * @param path 
-	//  * @return Array<String>
-	//  */
-	// public static function readDirectory(path:String):Array<String> {
-	// 	return [];
-	// }
+	/**
+	 * 读取文件夹列表
+	 * @param path 
+	 * @return Array<String>
+	 */
+	public static function readDirectory(path:String):OCamlArray<String> {
+		return OCamlSys.readdir(path);
+	}
 
 	/**
 	 * 将path指定的文件或目录重命名/移动到newPath。如果path不是有效的文件系统条目，或者无法访问，或者如果newPath无法访问，则会抛出异常。
@@ -74,7 +74,7 @@ class FileSystem {
 
 	// /**
 	//  * 返回path指定的文件或目录FileStat信息。
-	//  * @param path 
+	//  * @param path
 	//  * @return FileStat
 	//  */
 	// public static function stat(path:String):FileStat {

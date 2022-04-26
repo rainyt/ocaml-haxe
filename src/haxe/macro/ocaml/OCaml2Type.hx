@@ -11,7 +11,12 @@ class OCaml2Type {
 						return toTypeString(t.toString());
 				}
 			case TAbstract(t, params):
-				return toTypeString(t.toString());
+				switch (t.toString()) {
+					case "OCamlArray":
+						return toString(params[0]) + " Array";
+					default:
+						return toTypeString(t.toString());
+				}
 			case TFun(args, ret):
 				return toTypeString(toString(ret));
 			case TDynamic(t):
@@ -25,8 +30,9 @@ class OCaml2Type {
 		}
 	}
 
-	private static function toTypeString(data:String):String {
+	public static function toTypeString(data:String):String {
 		data = StringTools.replace(data, ".", "_");
+		data = StringTools.replace(data, " ", "_");
 		switch (data.toLowerCase()) {
 			case "haxe_io_bytes":
 				return "bytes";
