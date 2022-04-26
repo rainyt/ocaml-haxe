@@ -1,0 +1,11 @@
+[Function:(file : String) -> Bool]
+	[Arg:String] [Local file(1031762):String]
+	[Block:Dynamic]
+		[Return:Dynamic]
+			[Call:Bool]
+				[Field:(a0 : String) -> Bool]
+					[TypeExpr OCamlSys:Class<OCamlSys>]
+					[FStatic:(a0 : String) -> Bool]
+						OCamlSys
+						file_exists:(a0 : String) -> Bool
+				[Local file(1031762):String:String]

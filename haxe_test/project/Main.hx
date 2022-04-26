@@ -1,5 +1,6 @@
 package project;
 
+import ocaml.lib.FileSystem;
 import ocaml.lib.File;
 
 class Main {
@@ -21,6 +22,10 @@ class Main {
 		trace("文本内容：", File.getContent("build.hxml"));
 
 		File.copy("build.hxml", "build-copy.hxml");
-		File.copy("../test.mp4", "../test-2.mp4");
+		if (FileSystem.exists("../test-2.mp4"))
+			trace("已经存在");
+		else
+			File.copy("../test.mp4", "../test-2.mp4");
+		trace("拷贝完毕");
 	}
 }
