@@ -44,14 +44,12 @@ ignore (raise (BYTES ((toBytes (ref !chars)))));
 ignore (raise (BYTES ((toBytes (ref !chars)))));(toBytes (ref !chars));
 with BYTES ret -> ret;;
 
-let saveBytes path bytes = let start_time = Sys.time() in
-let out = ref ((Stdlib.open_out (!path))) in
+let saveBytes path bytes = let out = ref ((Stdlib.open_out (!path))) in
 (Stdlib.output_bytes (!out) (!bytes));
 (Stdlib.close_out (!out));
-Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
+;;
 
-let copy srcPath dstPath = let start_time = Sys.time() in
-let bytes = ref ((getBytes (ref !srcPath))) in
+let copy srcPath dstPath = let bytes = ref ((getBytes (ref !srcPath))) in
 (saveBytes (ref !dstPath) (ref !bytes));
-Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
+;;
 

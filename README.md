@@ -19,6 +19,9 @@ dune exec bin
 - bin 这是编译出来的项目ml内容。（已重构）
 - haxe_test/project 这是编译ml的Haxe内容。
 
+## 编写注意事项
+1. 方法需要按上往下的优先级实现。
+
 ## 路线图
 陆续实现Haxe的所能支持的语法，由于是第一次对语言进行翻译，还不确定能完成到什么程度，后续再更新路线图。Realize the syntax that haxe can support one after another. Since it is the first time to translate the language, it is uncertain to what extent it can be completed. Update the roadmap later
 

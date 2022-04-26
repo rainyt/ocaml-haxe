@@ -291,12 +291,14 @@ class OCaml2Tools {
 						oc.write(" = try \n");
 					} else {
 						oc.write(" = ");
-						oc.write("let start_time = Sys.time() in\n");
+						if (tfunc.args.length == 0) {
+							oc.write("let start_time = Sys.time() in\n");
+						}
 					}
 					oc.write(toString(tfunc.expr, false, tfunc.t));
 					if (type != "VOID") {
 						oc.write("with " + OCaml2Type.toString(tfunc.t).toUpperCase() + " ret -> ret");
-					} else {
+					} else if (tfunc.args.length == 0) {
 						oc.write('Printf.printf "runtime:%fs" (Sys.time() -. start_time)');
 					}
 					OCaml2Tools.funcTypeList.pop();

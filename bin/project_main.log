@@ -5,8 +5,8 @@
 			[Block:Dynamic] [Return:Dynamic] [Const:String] "false"
 		[Return:Dynamic] [Const:String] "true"[Function:() -> Void]
 	[Block:Void]
-		[Var data(181775):String] [Const:String] "1,2,3,4,5,6"
-		[Var array(181776):Array<String>]
+		[Var data(296263):String] [Const:String] "1,2,3,4,5,6"
+		[Var array(296264):Array<String>]
 			[Call:Array<String>]
 				[Field:(a0 : OCamlChar, a1 : String) -> Array<String>]
 					[TypeExpr OCamlString:Class<OCamlString>]
@@ -14,27 +14,27 @@
 						OCamlString
 						split_on_char:(a0 : OCamlChar, a1 : String) -> Array<String>
 				[Const:String] ","
-				[Local data(181775):String:String]
+				[Local data(296263):String:String]
 		[Block:Void]
-			[Var `(181778):Int] [Const:Int] 0
+			[Var `(296266):Int] [Const:Int] 0
 			[While:Void]
 				[Binop:Bool]
-					[Local `(181778):Int:Int]
+					[Local `(296266):Int:Int]
 					<
 					[Field:Int]
-						[Local array(181776):Array<String>:Array<String>]
+						[Local array(296264):Array<String>:Array<String>]
 						[FInstance:Int]
 							Array<String>
 							length:Int
 				[Block:Void]
-					[Var s(181777):String]
+					[Var s(296265):String]
 						[Array:String]
-							[Local array(181776):Array<String>:Array<String>]
-							[Local `(181778):Int:Int]
+							[Local array(296264):Array<String>:Array<String>]
+							[Local `(296266):Int:Int]
 					[Unop:Int]
 						++
 						Prefix
-						[Local `(181778):Int:Int]
+						[Local `(296266):Int:Int]
 					[Call:Void]
 						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 							[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -47,7 +47,7 @@
 							lineNumber: [Const:Int] 17
 							className: [Const:String] "project.Main"
 							methodName: [Const:String] "main"
-							customParams: [ArrayDecl:Array<Dynamic>] [Local s(181777):String:String]
+							customParams: [ArrayDecl:Array<Dynamic>] [Local s(296265):String:String]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -62,7 +62,7 @@
 				methodName: [Const:String] "main"
 				customParams: [ArrayDecl:Array<Dynamic>]
 					[Field:Int]
-						[Local data(181775):String:String]
+						[Local data(296263):String:String]
 						[FInstance:Int]
 							String
 							length:Int
