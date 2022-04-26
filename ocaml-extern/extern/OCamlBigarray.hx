@@ -1,10 +1,10 @@
-typedef BigarrayInt_elt  = Dynamic;
+typedef Bigarray_Int_elt  = Dynamic;
 
-typedef BigarrayNativeint_elt  = Dynamic;
+typedef Bigarray_Nativeint_elt  = Dynamic;
 
-typedef BigarrayC_layout  = Dynamic;
+typedef Bigarray_C_layout  = Dynamic;
 
-typedef BigarrayFortran_layout  = Dynamic;
+typedef Bigarray_Fortran_layout  = Dynamic;
 
 @:native("Bigarray")
 extern class OCamlBigarray {
@@ -18,8 +18,8 @@ public static var int32:Dynamic;
 public static var int64:Dynamic;
 public static var int:Dynamic;
 public static var nativeint:Dynamic;
-public static var complex32:OCamlComplex.ComplexT,complex32_eltkind;
-public static var complex64:OCamlComplex.ComplexT,complex64_eltkind;
+public static var complex32:Dynamic;
+public static var complex64:Dynamic;
 public static var char:Dynamic;
 public static function kind_size_in_bytes(a0:Dynamic):Int;
 public static var c_layout:Dynamic;
@@ -43,9 +43,9 @@ public static var slice_left:Dynamic;
 public static var slice_right:Dynamic;
 public static function blit(a0:Dynamic):Void;
 public static function fill(a0:Dynamic,a1:Dynamic):Void;
-public static var create:OCamlfunGenarray.funGenarrayT;
-public static function get(a0:OCamlfunGenarray.funGenarrayT):Dynamic;
-public static function set(a0:OCamlfunGenarray.funGenarrayT,a1:Dynamic):Void;
+public static var create:Dynamic;
+public static function get(a0:Dynamic):Dynamic;
+public static function set(a0:Dynamic,a1:Dynamic):Void;
 public static var kind:Dynamic;
 public static function layout(a0:Dynamic):Dynamic;
 public static var change_layout:Dynamic;
@@ -53,8 +53,8 @@ public static function size_in_bytes(a0:Dynamic):Int;
 public static function blit(a0:Dynamic):Void;
 public static function fill(a0:Dynamic,a1:Dynamic):Void;
 public static var of_value:Dynamic;
-public static var init:OCamlfunGenarray.funGenarrayT;
-public static var create:OCamlfunGenarray.funGenarrayT;
+public static var init:Dynamic;
+public static var create:Dynamic;
 public static function get(a0:Dynamic,a1:Int):Dynamic;
 public static function set(a0:Dynamic,a1:Int,a2:Dynamic):Void;
 public static function unsafe_get(a0:Dynamic,a1:Int):Dynamic;
@@ -65,7 +65,7 @@ public static function layout(a0:Dynamic):Dynamic;
 public static var change_layout:Dynamic;
 public static function size_in_bytes(a0:Dynamic):Int;
 public static var sub:Dynamic;
-public static var slice:OCamlfunGenarray.funGenarrayT;
+public static var slice:Dynamic;
 public static function blit(a0:Dynamic):Void;
 public static function fill(a0:Dynamic,a1:Dynamic):Void;
 public static function c_init(a0:Dynamic->Int->Int->Dynamic):Void;
@@ -121,13 +121,13 @@ public static var genarray_of_array0:Dynamic;
 public static var genarray_of_array1:Dynamic;
 public static var genarray_of_array2:Dynamic;
 public static var genarray_of_array3:Dynamic;
-public static var array0_of_genarray:OCamlfunGenarray.funGenarrayT;
-public static var array1_of_genarray:OCamlfunGenarray.funGenarrayT;
-public static var array2_of_genarray:OCamlfunGenarray.funGenarrayT;
-public static var array3_of_genarray:OCamlfunGenarray.funGenarrayT;
+public static var array0_of_genarray:Dynamic;
+public static var array1_of_genarray:Dynamic;
+public static var array2_of_genarray:Dynamic;
+public static var array3_of_genarray:Dynamic;
 public static var reshape:Dynamic;
-public static var reshape_0:OCamlfunGenarray.funGenarrayT;
-public static var reshape_1:OCamlfunGenarray.funGenarrayT;
+public static var reshape_0:Dynamic;
+public static var reshape_1:Dynamic;
 public static var reshape_2:Dynamic;
 public static var reshape_3:Dynamic;
 public static function get1(a0:Void):Void;

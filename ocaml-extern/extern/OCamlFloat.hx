@@ -1,8 +1,8 @@
-typedef FloatFpclass  = Dynamic;
+typedef Float_Fpclass  = Dynamic;
 
-typedef FloatT  = Float;
+typedef Float_T  = Float;
 
-typedef FloatT  = OCamlArray<Float>;
+typedef Float_T  = OCamlArray<Float>;
 
 @:native("Float")
 extern class OCamlFloat {

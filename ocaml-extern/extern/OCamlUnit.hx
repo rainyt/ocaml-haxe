@@ -1,4 +1,4 @@
-typedef UnitT  = Void;
+typedef Unit_T  = Void;
 
 @:native("Unit")
 extern class OCamlUnit {

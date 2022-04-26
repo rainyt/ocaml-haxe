@@ -1,21 +1,21 @@
-typedef HashtblStatistics = {
+typedef Hashtbl_Statistics = {
 num_bindings :Int,
 num_buckets :Int,
 max_bucket_length :Int,
 bucket_histogram :Int,
 }
 
-typedef HashtblHashedType  = Dynamic;
+typedef Hashtbl_HashedType  = Dynamic;
 
-typedef HashtblSeededHashedType  = Dynamic;
+typedef Hashtbl_SeededHashedType  = Dynamic;
 
-typedef HashtblS  = Dynamic;
+typedef Hashtbl_S  = Dynamic;
 
-typedef HashtblSeededS  = Dynamic;
+typedef Hashtbl_SeededS  = Dynamic;
 
-typedef HashtblKey  = Dynamic;
+typedef Hashtbl_Key  = Dynamic;
 
-typedef HashtblKey  = Dynamic;
+typedef Hashtbl_Key  = Dynamic;
 
 @:native("Hashtbl")
 extern class OCamlHashtbl {
@@ -25,7 +25,7 @@ public static var randomized_default:Bool;
 public static var randomized:Dynamic;
 public static function randomize(a0:Void):Void;
 public static function is_randomized(a0:Void):Bool;
-public static var prng:OCamlRandom.RandomState;
+public static var prng:Dynamic;
 public static function power_2_above(a0:Int,a1:Int):Int;
 public static var create:Dynamic;
 public static function clear(a0:Dynamic):Void;

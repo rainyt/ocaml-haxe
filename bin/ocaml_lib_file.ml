@@ -1,14 +1,14 @@
 exception STRING of string
 exception BYTES of bytes
-exception OCAMLBUFFER of Buffer.t
+exception BUFFER_T of Buffer.t
 
 let getBuffer path = try 
 let input = ref ((Stdlib.open_in (!path))) in
 let len = ref ((Stdlib.in_channel_length (!input))) in
 let buffer = ref ((Buffer.create (!len))) in
 (Buffer.add_channel (!buffer) (!input) (!len));
-ignore (raise (OCAMLBUFFER (!buffer)));!buffer;
-with OCAMLBUFFER ret -> ret;;
+ignore (raise (BUFFER_T (!buffer)));!buffer;
+with BUFFER_T ret -> ret;;
 
 let getBytes path = try 
 ignore (raise (BYTES ((Buffer.to_bytes ((getBuffer (ref !path)))))));(Buffer.to_bytes ((getBuffer (ref !path))));

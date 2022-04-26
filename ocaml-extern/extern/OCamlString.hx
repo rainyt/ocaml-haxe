@@ -1,4 +1,4 @@
-typedef StringT  = String;
+typedef String_T  = String;
 
 @:native("String")
 extern class OCamlString {

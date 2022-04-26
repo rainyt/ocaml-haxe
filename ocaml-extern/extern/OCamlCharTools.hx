@@ -1,4 +1,4 @@
-typedef CharT  = OCamlChar;
+typedef Char_T  = OCamlChar;
 
 @:native("Char")
 extern class OCamlCharTools {

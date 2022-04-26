@@ -1,4 +1,4 @@
-typedef Int32T  = Int;
+typedef Int32_T  = Int;
 
 @:native("Int32")
 extern class OCamlInt32 {

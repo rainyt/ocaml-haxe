@@ -1,24 +1,24 @@
-typedef CamlinternalFormatBasicsPadty  = Dynamic;
+typedef CamlinternalFormatBasics_Padty  = Dynamic;
 
-typedef CamlinternalFormatBasicsInt_conv  = Dynamic;
+typedef CamlinternalFormatBasics_Int_conv  = Dynamic;
 
-typedef CamlinternalFormatBasicsFloat_flag_conv  = Dynamic;
+typedef CamlinternalFormatBasics_Float_flag_conv  = Dynamic;
 
-typedef CamlinternalFormatBasicsFloat_kind_conv  = Dynamic;
+typedef CamlinternalFormatBasics_Float_kind_conv  = Dynamic;
 
-typedef CamlinternalFormatBasicsFloat_conv  = Dynamic;
+typedef CamlinternalFormatBasics_Float_conv  = Dynamic;
 
-typedef CamlinternalFormatBasicsChar_set  = String;
+typedef CamlinternalFormatBasics_Char_set  = String;
 
-typedef CamlinternalFormatBasicsCounter  = Dynamic;
+typedef CamlinternalFormatBasics_Counter  = Dynamic;
 
-typedef CamlinternalFormatBasicsPad_option  = Dynamic;
+typedef CamlinternalFormatBasics_Pad_option  = Dynamic;
 
-typedef CamlinternalFormatBasicsPrec_option  = Dynamic;
+typedef CamlinternalFormatBasics_Prec_option  = Dynamic;
 
-typedef CamlinternalFormatBasicsBlock_ = Dynamic;
+typedef CamlinternalFormatBasics_Block_ = Dynamic;
 
-typedef CamlinternalFormatBasicsFormatting_lit  = Dynamic;
+typedef CamlinternalFormatBasics_Formatting_lit  = Dynamic;
 
 @:native("CamlinternalFormatBasics")
 extern class OCamlCamlinternalFormatBasics {

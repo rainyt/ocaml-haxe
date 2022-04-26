@@ -13,6 +13,8 @@ class OCaml2Type {
 				return "Dynamic";
 			case TAnonymous(a):
 				return "Dynamic";
+			case TType(t, params):
+				return t.toString();
 			default:
 				throw "Not support Type " + type.getName();
 		}

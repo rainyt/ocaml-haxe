@@ -1,47 +1,47 @@
-typedef FormatBox_ = Dynamic;
+typedef Format_Box_ = Dynamic;
 
-typedef Format = Dynamic;
+typedef Format_ = Format_;
 
-typedef FormatPp_token  = Dynamic;
+typedef Format_Pp_token  = Format_;
 
-typedef FormatTag  = String;
+typedef Format_Tag  = String;
 
-typedef FormatPp_queue_elem = {
+typedef Format_Pp_queue_elem = {
 }
 
-typedef FormatPp_queue  = Dynamic;
+typedef Format_Pp_queue  = Dynamic;
 
-typedef FormatPp_scan_elem = {
+typedef Format_Pp_scan_elem = {
 left_total :Int,
 queue_elem :Dynamic,
 }
 
-typedef FormatPp_format_elem = {
+typedef Format_Pp_format_elem = {
 box_type :Dynamic,
 width :Int,
 }
 
-typedef FormatFormatter = {
+typedef Format_Formatter = {
 }
 
-typedef FormatFormatter_stag_functions = {
+typedef Format_Formatter_stag_functions = {
 }
 
-typedef FormatFormatter_out_functions = {
+typedef Format_Formatter_out_functions = {
 }
 
-typedef FormatGeometry = {
+typedef Format_Geometry = {
 max_indent :Int,
 margin :Int,
 }
 
-typedef FormatSymbolic_output_item  = Dynamic;
+typedef Format_Symbolic_output_item  = Format_;
 
-typedef FormatSymbolic_output_buffer = {
+typedef Format_Symbolic_output_buffer = {
 symbolic_output_contents :Dynamic,
 }
 
-typedef FormatFormatter_tag_functions = {
+typedef Format_Formatter_tag_functions = {
 }
 
 @:native("Format")
@@ -69,9 +69,9 @@ public static function pp_skip_token(a0:Dynamic):Void;
 public static function format_pp_token(a0:Dynamic,a1:Int,a2:Dynamic):Void;
 public static function advance_left(a0:Dynamic):Void;
 public static function enqueue_advance(a0:Dynamic,a1:Dynamic):Void;
-public static function enqueue_string_as(a0:Dynamic,a1:OCamlSize.SizeT,a2:String):Void;
+public static function enqueue_string_as(a0:Dynamic,a1:Dynamic,a2:String):Void;
 public static function enqueue_string(a0:Dynamic,a1:String):Void;
-public static function initialize_scan_stack(a0:OCamlpp_scan_elemStack.pp_scan_elemStackT):Void;
+public static function initialize_scan_stack(a0:Dynamic):Void;
 public static function set_size(a0:Dynamic,a1:Bool):Void;
 public static function scan_push(a0:Dynamic,a1:Bool,a2:Dynamic):Void;
 public static function pp_open_box_gen(a0:Dynamic,a1:Int,a2:Dynamic):Void;
@@ -86,12 +86,12 @@ public static function pp_set_mark_tags(a0:Dynamic,a1:Bool):Void;
 public static function pp_get_print_tags(a0:Dynamic,a1:Void):Bool;
 public static function pp_get_mark_tags(a0:Dynamic,a1:Void):Bool;
 public static function pp_set_tags(a0:Dynamic,a1:Bool):Void;
-public static var pp_get_formatter_stag_functions:Dynamic;
-public static var pp_set_formatter_stag_functions:Dynamic;
+public static var pp_get_formatter_stag_functions:Format_;
+public static var pp_set_formatter_stag_functions:Format_;
 public static function pp_rinit(a0:Dynamic):Void;
 public static function clear_tag_stack(a0:Dynamic):Void;
 public static function pp_flush_queue(a0:Dynamic,a1:Bool):Void;
-public static function pp_print_as_size(a0:Dynamic,a1:OCamlSize.SizeT,a2:String):Void;
+public static function pp_print_as_size(a0:Dynamic,a1:Dynamic,a2:String):Void;
 public static function pp_print_as(a0:Dynamic,a1:Int,a2:String):Void;
 public static function pp_print_string(a0:Dynamic,a1:String):Void;
 public static function pp_print_int(a0:Dynamic,a1:Int):Void;
@@ -107,7 +107,7 @@ public static function pp_print_newline(a0:Dynamic,a1:Void):Void;
 public static function pp_print_flush(a0:Dynamic,a1:Void):Void;
 public static function pp_force_newline(a0:Dynamic,a1:Void):Void;
 public static function pp_print_if_newline(a0:Dynamic,a1:Void):Void;
-public static var pp_print_custom_break:Dynamic;
+public static var pp_print_custom_break:Format_;
 public static function pp_print_break(a0:Dynamic,a1:Int,a2:Int):Void;
 public static function pp_print_space(a0:Dynamic,a1:Void):Void;
 public static function pp_print_cut(a0:Dynamic,a1:Void):Void;
@@ -134,10 +134,10 @@ public static function pp_set_geometry(a0:Dynamic):Dynamic;
 public static function pp_safe_set_geometry(a0:Dynamic):Dynamic;
 public static function pp_get_geometry(a0:Dynamic,a1:Void):Dynamic;
 public static function pp_update_geometry(a0:Dynamic,a1:Dynamic->Dynamic):Void;
-public static var pp_set_formatter_out_functions:Dynamic;
-public static var pp_get_formatter_out_functions:Dynamic;
-public static var pp_set_formatter_output_functions:Dynamic;
-public static var pp_get_formatter_output_functions:Dynamic;
+public static var pp_set_formatter_out_functions:Format_;
+public static var pp_get_formatter_out_functions:Format_;
+public static var pp_set_formatter_output_functions:Format_;
+public static var pp_get_formatter_output_functions:Format_;
 public static function display_newline(a0:Dynamic,a1:Void):Void;
 public static var blank_line:String;
 public static function display_blanks(a0:Dynamic,a1:Int):Void;
@@ -147,24 +147,24 @@ public static function default_pp_mark_open_tag(a0:Dynamic):String;
 public static function default_pp_mark_close_tag(a0:Dynamic):String;
 public static function default_pp_print_open_tag(a0:Dynamic):Void;
 public static function default_pp_print_close_tag(a0:Dynamic):Void;
-public static var pp_make_formatter:Dynamic;
+public static var pp_make_formatter:Format_;
 public static function formatter_of_out_functions(a0:Dynamic):Dynamic;
-public static var make_formatter:Dynamic;
+public static var make_formatter:Format_;
 public static function formatter_of_out_channel(a0:Dynamic):Dynamic;
-public static function formatter_of_buffer(a0:OCamlBuffer.BufferT):Dynamic;
+public static function formatter_of_buffer(a0:Dynamic):Dynamic;
 public static var pp_buffer_size:Int;
-public static function pp_make_buffer(a0:Void):OCamlBuffer.BufferT;
-public static var stdbuf:OCamlBuffer.BufferT;
+public static function pp_make_buffer(a0:Void):Dynamic;
+public static var stdbuf:Dynamic;
 public static var std_formatter:Dynamic;
 public static var err_formatter:Dynamic;
 public static var str_formatter:Dynamic;
-public static function flush_buffer_formatter(a0:OCamlBuffer.BufferT,a1:Dynamic):String;
+public static function flush_buffer_formatter(a0:Dynamic,a1:Dynamic):String;
 public static function flush_str_formatter(a0:Void):String;
 public static function make_symbolic_output_buffer(a0:Void):Dynamic;
 public static function clear_symbolic_output_buffer(a0:Dynamic):Void;
-public static var get_symbolic_output_buffer:Dynamic;
-public static var flush_symbolic_output_buffer:Dynamic;
-public static var add_symbolic_output_item:Dynamic;
+public static var get_symbolic_output_buffer:Format_;
+public static var flush_symbolic_output_buffer:Format_;
+public static var add_symbolic_output_item:Format_;
 public static function formatter_of_symbolic_output_buffer(a0:Dynamic):Dynamic;
 public static function open_hbox(a0:Void):Void;
 public static function open_vbox(a0:Int):Void;
@@ -210,8 +210,8 @@ public static function get_ellipsis_text(a0:Void):String;
 public static function set_formatter_out_channel(a0:Dynamic):Void;
 public static function set_formatter_out_functions(a0:Dynamic):Void;
 public static function get_formatter_out_functions(a0:Void):Dynamic;
-public static var set_formatter_output_functions:Dynamic;
-public static var get_formatter_output_functions:Dynamic;
+public static var set_formatter_output_functions:Format_;
+public static var get_formatter_output_functions:Format_;
 public static function set_formatter_stag_functions(a0:Dynamic):Void;
 public static function get_formatter_stag_functions(a0:Void):Dynamic;
 public static function set_print_tags(a0:Bool):Void;
@@ -219,37 +219,37 @@ public static function get_print_tags(a0:Void):Bool;
 public static function set_mark_tags(a0:Bool):Void;
 public static function get_mark_tags(a0:Void):Bool;
 public static function set_tags(a0:Bool):Void;
-public static var pp_print_list:Dynamic;
-public static var pp_print_seq_in:Dynamic;
-public static var pp_print_seq:Dynamic;
+public static var pp_print_list:Format_;
+public static var pp_print_seq_in:Format_;
+public static var pp_print_seq:Format_;
 public static function pp_print_text(a0:Dynamic,a1:String):Void;
-public static var pp_print_option:Dynamic;
-public static var pp_print_result:Dynamic;
+public static var pp_print_option:Format_;
+public static var pp_print_result:Format_;
 public static function compute_tag(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic):String;
-public static var output_formatting_lit:Dynamic;
-public static var output_acc:Dynamic;
-public static function strput_acc(a0:Dynamic,a1:OCamlfunCamlinternalFormat.funCamlinternalFormatAcc):Void;
-public static var kfprintf:Dynamic;
-public static var ikfprintf:Dynamic;
-public static var ifprintf:Dynamic;
-public static var fprintf:Dynamic;
-public static var printf:Dynamic;
-public static var eprintf:Dynamic;
-public static var kdprintf:Dynamic;
-public static var dprintf:Dynamic;
-public static var ksprintf:Dynamic;
-public static var sprintf:Dynamic;
-public static var kasprintf:Dynamic;
-public static var asprintf:Dynamic;
+public static var output_formatting_lit:Format_;
+public static var output_acc:Format_;
+public static function strput_acc(a0:Dynamic,a1:Dynamic):Void;
+public static var kfprintf:Format_;
+public static var ikfprintf:Format_;
+public static var ifprintf:Format_;
+public static var fprintf:Format_;
+public static var printf:Format_;
+public static var eprintf:Format_;
+public static var kdprintf:Format_;
+public static var dprintf:Format_;
+public static var ksprintf:Format_;
+public static var sprintf:Format_;
+public static var kasprintf:Format_;
+public static var asprintf:Format_;
 public static function flush_standard_formatters(a0:Void):Void;
-public static var pp_set_all_formatter_output_functions:Dynamic;
-public static var pp_get_all_formatter_output_functions:Dynamic;
-public static var set_all_formatter_output_functions:Dynamic;
-public static var get_all_formatter_output_functions:Dynamic;
-public static function bprintf(a0:OCamlBuffer.BufferT,a1:Dynamic):Dynamic;
-public static var kprintf:Dynamic;
-public static var pp_set_formatter_tag_functions:Dynamic;
-public static var pp_get_formatter_tag_functions:Dynamic;
+public static var pp_set_all_formatter_output_functions:Format_;
+public static var pp_get_all_formatter_output_functions:Format_;
+public static var set_all_formatter_output_functions:Format_;
+public static var get_all_formatter_output_functions:Format_;
+public static function bprintf(a0:Dynamic,a1:Dynamic):Dynamic;
+public static var kprintf:Format_;
+public static var pp_set_formatter_tag_functions:Format_;
+public static var pp_get_formatter_tag_functions:Format_;
 public static function set_formatter_tag_functions(a0:Dynamic):Void;
 public static function get_formatter_tag_functions(a0:Void):Dynamic;
 }

@@ -1,4 +1,4 @@
-typedef StringLabelsT  = String;
+typedef StringLabels_T  = String;
 
 @:native("StringLabels")
 extern class OCamlStringLabels {

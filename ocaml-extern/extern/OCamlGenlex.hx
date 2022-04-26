@@ -1,4 +1,4 @@
-typedef GenlexToken  = Dynamic;
+typedef Genlex_Token  = Dynamic;
 
 @:native("Genlex")
 extern class OCamlGenlex {
@@ -8,5 +8,5 @@ public static var bufpos:Dynamic;
 public static function reset_buffer(a0:Void):Void;
 public static function store(a0:OCamlChar):Void;
 public static function get_string(a0:Void):String;
-public static function make_lexer(a0:Array<String>,a1:OCamlcharStream.charStreamT):OCamltokenStream.tokenStreamT;
+public static function make_lexer(a0:Array<String>,a1:Dynamic):Dynamic;
 }

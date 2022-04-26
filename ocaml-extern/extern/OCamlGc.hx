@@ -1,4 +1,4 @@
-typedef GcStat = {
+typedef Gc_Stat = {
 minor_words :Float,
 promoted_words :Float,
 major_words :Float,
@@ -18,7 +18,7 @@ stack_size :Int,
 forced_major_collections :Int,
 }
 
-typedef GcControl = {
+typedef Gc_Control = {
 minor_heap_size :Int,
 major_heap_increment :Int,
 space_overhead :Int,
@@ -32,16 +32,16 @@ custom_minor_ratio :Int,
 custom_minor_max_size :Int,
 }
 
-typedef GcAlarm  = Dynamic;
+typedef Gc_Alarm  = Dynamic;
 
-typedef GcAlarm_rec = {
+typedef Gc_Alarm_rec = {
 active :Dynamic,
 f :Void,
 }
 
-typedef GcAllocation_source  = Dynamic;
+typedef Gc_Allocation_source  = Dynamic;
 
-typedef GcAllocation = {
+typedef Gc_Allocation = {
 }
 
 @:native("Gc")

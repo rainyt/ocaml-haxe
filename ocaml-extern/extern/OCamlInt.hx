@@ -1,4 +1,4 @@
-typedef IntT  = Int;
+typedef Int_T  = Int;
 
 @:native("Int")
 extern class OCamlInt {

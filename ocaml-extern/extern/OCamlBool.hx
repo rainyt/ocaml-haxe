@@ -1,4 +1,4 @@
-typedef BoolT  = Bool;
+typedef Bool_T  = Bool;
 
 @:native("Bool")
 extern class OCamlBool {

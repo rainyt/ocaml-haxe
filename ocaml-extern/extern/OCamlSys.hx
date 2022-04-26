@@ -1,12 +1,12 @@
-typedef SysBackend_ = Dynamic;
+typedef Sys_Backend_ = Dynamic;
 
-typedef Sys = Dynamic;
+typedef Sys_ = Sys_;
 
-typedef SysSignal_behavior  = Dynamic;
+typedef Sys_Signal_behavior  = Sys_;
 
-typedef SysNon_immediate  = Dynamic;
+typedef Sys_Non_immediate  = Dynamic;
 
-typedef SysImmediate  = Dynamic;
+typedef Sys_Immediate  = Dynamic;
 
 @:native("Sys")
 extern class OCamlSys {

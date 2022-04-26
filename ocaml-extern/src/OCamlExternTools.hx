@@ -11,6 +11,10 @@ using StringTools;
 class OCamlExternTools {
 	public static var haxeCode:ExternHaxe;
 
+	public static var currentClassName:String;
+
+	public static var defineTypes:Map<String, Dynamic> = [];
+
 	/**
 	 * 转换OCaml实现
 	 * @param file ml文件
@@ -21,11 +25,12 @@ class OCamlExternTools {
 		var nName = StringTools.replace(file, "ocaml/", "");
 		nName = StringTools.replace(nName, ".ml", "");
 		nName = nName.charAt(0).toUpperCase() + nName.substr(1);
+		currentClassName = nName;
+		defineTypes = [];
 		var cName = StringTools.replace(out, "extern/", "");
 		cName = StringTools.replace(cName, ".hx", "");
 		var p = new Process("ocamlc -i " + file);
 		var mlcontent = p.stdout.readAll().toString();
-		trace("mlcontent=", mlcontent);
 		File.saveContent("test/" + out.substr(out.lastIndexOf("/") + 1), mlcontent);
 
 		// 类型获取
@@ -33,7 +38,6 @@ class OCamlExternTools {
 		if (tReg.match(mlcontent)) {
 			tReg.map(mlcontent, (data) -> {
 				var value = data.matched(0);
-				trace(file, value);
 				var typeName = ~/type[a-zA-Z = {\n:;_]{1,}=/g;
 				if (!typeName.match(value))
 					return value;
@@ -43,9 +47,14 @@ class OCamlExternTools {
 					if (tName.indexOf("=") != -1) {
 						tName = tName.substr(0, tName.indexOf("="));
 					}
-					haxeCode.write('typedef ${nName + tName.charAt(0).toUpperCase() + tName.substr(1)} = ${toType(value.split("=")[1])};\n\n');
-				} else
-					haxeCode.write('typedef ${nName + tName.charAt(0).toUpperCase() + tName.substr(1)} {\n');
+					var typedName = nName + "_" + tName.charAt(0).toUpperCase() + tName.substr(1);
+					defineTypes.set(typedName, typedName);
+					haxeCode.write('typedef ${typedName} = ${toType(value.split("=")[1])};\n\n');
+				} else {
+					var typedName = nName + "_" + tName.charAt(0).toUpperCase();
+					defineTypes.set(typedName, typedName);
+					haxeCode.write('typedef ${typedName + tName.substr(1)} {\n');
+				}
 				var paramReg = ~/[a-zA-Z0-9_]{1,} : [a-zA-Z0-9_]{1,}/g;
 				paramReg.map(value, (param) -> {
 					var value = param.matched(0);
@@ -141,11 +150,13 @@ class OCamlExternTools {
 				if (type.indexOf(".") != -1) {
 					var types = type.split(".");
 					var nName = types[0];
-					return "OCaml" + types[0] + "." + ${nName} + types[1].charAt(0).toUpperCase() + types[1].substr(1);
+					// return "OCaml" + types[0] + "." + ${nName} + types[1].charAt(0).toUpperCase() + types[1].substr(1);
+                    return "Dynamic";
 				}
+				var defineType = currentClassName + "_" + type.charAt(0).toUpperCase() + type.substr(1);
+				if (defineTypes.exists(defineType))
+					return defineType;
 				return "Dynamic";
-				// return '<${type}>';
-				// throw "未处理的类型:" + type;
 		}
 	}
 }

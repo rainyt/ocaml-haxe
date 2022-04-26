@@ -1,4 +1,4 @@
-typedef CamlinternalOOParams = {
+typedef CamlinternalOO_Params = {
 compact_table :Bool,
 copy_parent :Bool,
 clean_when_copying :Bool,
@@ -6,43 +6,43 @@ retry_count :Int,
 bucket_small_size :Int,
 }
 
-typedef CamlinternalOOItem  = Dynamic;
+typedef CamlinternalOO_Item  = Dynamic;
 
-typedef CamlinternalOOLabel  = Int;
+typedef CamlinternalOO_Label  = Int;
 
-typedef CamlinternalOOClosure  = Dynamic;
+typedef CamlinternalOO_Closure  = Dynamic;
 
-typedef CamlinternalOOT  = Dynamic;
+typedef CamlinternalOO_T  = Dynamic;
 
-typedef CamlinternalOOObj  = Dynamic;
+typedef CamlinternalOO_Obj  = Dynamic;
 
-typedef CamlinternalOOKey  = String;
+typedef CamlinternalOO_Key  = String;
 
-typedef CamlinternalOOVars  = Dynamic;
+typedef CamlinternalOO_Vars  = Dynamic;
 
-typedef CamlinternalOOKey  = String;
+typedef CamlinternalOO_Key  = String;
 
-typedef CamlinternalOOMeths  = Dynamic;
+typedef CamlinternalOO_Meths  = Dynamic;
 
-typedef CamlinternalOOKey  = Dynamic;
+typedef CamlinternalOO_Key  = Dynamic;
 
-typedef CamlinternalOOLabs  = Dynamic;
+typedef CamlinternalOO_Labs  = Dynamic;
 
-typedef CamlinternalOOTable = {
+typedef CamlinternalOO_Table = {
 }
 
-typedef CamlinternalOOMeth  = Dynamic;
+typedef CamlinternalOO_Meth  = Dynamic;
 
-typedef CamlinternalOOInit_table = {
-env_init :Dynamic,
+typedef CamlinternalOO_Init_table = {
+env_init :CamlinternalOO_T,
 class_init :Dynamic,
 }
 
-typedef CamlinternalOOTables  = Dynamic;
+typedef CamlinternalOO_Tables  = Dynamic;
 
-typedef CamlinternalOOImpl  = Dynamic;
+typedef CamlinternalOO_Impl  = Dynamic;
 
-typedef CamlinternalOOStats = {
+typedef CamlinternalOO_Stats = {
 classes :Int,
 methods :Int,
 inst_vars :Int,
@@ -187,25 +187,25 @@ public static function put(a0:Dynamic,a1:Int,a2:Dynamic):Void;
 public static var method_count:Dynamic;
 public static var inst_var_count:Dynamic;
 public static function new_method(a0:Dynamic):Int;
-public static function get_method_label(a0:Dynamic,a1:OCamlMeths.MethsKey):Dynamic;
-public static function get_method_labels(a0:Dynamic,a1:OCamlMeths.MethsKeyarray):Dynamic;
-public static function set_method(a0:Dynamic,a1:OCamlLabs.LabsKey,a2:Dynamic):Void;
+public static function get_method_label(a0:Dynamic,a1:Dynamic):Dynamic;
+public static function get_method_labels(a0:Dynamic,a1:Dynamic):Dynamic;
+public static function set_method(a0:Dynamic,a1:Dynamic,a2:Dynamic):Void;
 public static function get_method(a0:Dynamic,a1:Dynamic):Dynamic;
 public static function to_list(a0:Dynamic):Dynamic;
 public static var narrow:Dynamic;
 public static function widen(a0:Dynamic):Void;
 public static function new_slot(a0:Dynamic):Int;
-public static function new_variable(a0:Dynamic,a1:OCamlVars.VarsKey):Int;
+public static function new_variable(a0:Dynamic,a1:Dynamic):Int;
 public static function to_array(a0:Dynamic):Dynamic;
 public static var new_methods_variables:Dynamic;
-public static function get_variable(a0:Dynamic,a1:OCamlVars.VarsKey):Int;
-public static function get_variables(a0:Dynamic,a1:OCamlVars.VarsKeyarray):OCamlArray<Int>;
+public static function get_variable(a0:Dynamic,a1:Dynamic):Int;
+public static function get_variables(a0:Dynamic,a1:Dynamic):OCamlArray<Int>;
 public static function add_initializer(a0:Dynamic,a1:Dynamic->Void):Void;
-public static function create_table(a0:OCamlMeths.MethsKeyarray):Dynamic;
+public static function create_table(a0:Dynamic):Dynamic;
 public static function init_class(a0:Dynamic):Void;
 public static var inherits:Dynamic;
 public static var make_class:Dynamic;
-public static function make_class_store(a0:OCamlMeths.MethsKeyarray,a1:Dynamic->Dynamic,a2:Dynamic):Void;
+public static function make_class_store(a0:Dynamic,a1:Dynamic->CamlinternalOO_T,a2:Dynamic):Void;
 public static function dummy_class(a0:Dynamic):Dynamic;
 public static function create_object(a0:Dynamic):Dynamic;
 public static function create_object_opt(a0:Dynamic,a1:Dynamic):Dynamic;
@@ -214,7 +214,7 @@ public static function run_initializers(a0:Dynamic,a1:Dynamic):Void;
 public static function run_initializers_opt(a0:Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
 public static function create_object_and_run_initializers(a0:Dynamic,a1:Dynamic):Dynamic;
 public static function send(a0:Dynamic,a1:Dynamic):Dynamic;
-public static function sendcache(a0:Dynamic,a1:Dynamic,a2:Dynamic,a3:Int):Dynamic;
+public static function sendcache(a0:Dynamic,a1:Dynamic,a2:CamlinternalOO_T,a3:Int):Dynamic;
 public static function sendself(a0:Dynamic,a1:Dynamic):Dynamic;
 public static function get_public_method(a0:Dynamic,a1:Dynamic):Dynamic;
 public static function set_data(a0:Dynamic,a1:Dynamic):Void;
@@ -231,16 +231,16 @@ public static function get_env(a0:Int,a1:Int):Dynamic;
 public static function get_meth(a0:Dynamic):Dynamic;
 public static function set_var(a0:Int):Dynamic;
 public static function app_const(a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
-public static function app_var(a0:Dynamic->Dynamic,a1:Int):Dynamic;
-public static function app_env(a0:Dynamic->Dynamic,a1:Int,a2:Int):Dynamic;
+public static function app_var(a0:CamlinternalOO_T->Dynamic,a1:Int):Dynamic;
+public static function app_env(a0:CamlinternalOO_T->Dynamic,a1:Int,a2:Int):Dynamic;
 public static function app_meth(a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
 public static function app_const_const(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
-public static function app_const_var(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Int):Dynamic;
+public static function app_const_var(a0:Dynamic->CamlinternalOO_T->Dynamic,a1:Dynamic,a2:Int):Dynamic;
 public static function app_const_meth(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
-public static function app_var_const(a0:Dynamic->Dynamic->Dynamic,a1:Int,a2:Dynamic):Dynamic;
+public static function app_var_const(a0:CamlinternalOO_T->Dynamic->Dynamic,a1:Int,a2:Dynamic):Dynamic;
 public static function app_meth_const(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
-public static function app_const_env(a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Int,a3:Int):Dynamic;
-public static function app_env_const(a0:Dynamic->Dynamic->Dynamic,a1:Int,a2:Int,a3:Dynamic):Dynamic;
+public static function app_const_env(a0:Dynamic->CamlinternalOO_T->Dynamic,a1:Dynamic,a2:Int,a3:Int):Dynamic;
+public static function app_env_const(a0:CamlinternalOO_T->Dynamic->Dynamic,a1:Int,a2:Int,a3:Dynamic):Dynamic;
 public static function meth_app_const(a0:Dynamic,a1:Dynamic):Dynamic;
 public static function meth_app_var(a0:Dynamic,a1:Int):Dynamic;
 public static function meth_app_env(a0:Dynamic,a1:Int,a2:Int):Dynamic;
@@ -251,6 +251,6 @@ public static function send_env(a0:Dynamic,a1:Int,a2:Int,a3:Int):Dynamic;
 public static function send_meth(a0:Dynamic,a1:Dynamic,a2:Int):Dynamic;
 public static function new_cache(a0:Dynamic):Int;
 public static function method_impl(a0:Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
-public static function set_methods(a0:Dynamic,a1:OCamlLabs.LabsKeyarray):Void;
+public static function set_methods(a0:Dynamic,a1:Dynamic):Void;
 public static function stats(a0:Void):Dynamic;
 }

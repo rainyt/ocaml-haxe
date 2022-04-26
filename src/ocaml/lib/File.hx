@@ -7,13 +7,13 @@ import haxe.Exception;
 using OCamlBuffer;
 
 /**
- * 模仿Haxe的文件库
+ * 模仿Haxe的文件API
  */
 class File {
-	public static function getBuffer(path:String):OCamlBuffer {
+	public static function getBuffer(path:String):Buffer_T {
 		var input = OCamlStdlib.open_in(path);
 		var len = OCamlStdlib.in_channel_length(input);
-		var buffer:OCamlBuffer = OCamlBuffer.create(len);
+		var buffer = OCamlBuffer.create(len);
 		buffer.add_channel(input, len);
 		return buffer;
 	}

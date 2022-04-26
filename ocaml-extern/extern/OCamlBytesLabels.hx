@@ -1,4 +1,4 @@
-typedef BytesLabelsT  = haxe.io.Bytes;
+typedef BytesLabels_T  = haxe.io.Bytes;
 
 @:native("BytesLabels")
 extern class OCamlBytesLabels {

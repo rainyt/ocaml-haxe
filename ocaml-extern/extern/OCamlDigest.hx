@@ -1,9 +1,9 @@
-typedef DigestT  = String;
+typedef Digest_T  = String;
 
 @:native("Digest")
 extern class OCamlDigest {
-public static function compare(a0:OCamlString.StringT,a1:OCamlString.StringT):Int;
-public static function equal(a0:OCamlString.StringT,a1:OCamlString.StringT):Bool;
+public static function compare(a0:Dynamic,a1:Dynamic):Int;
+public static function equal(a0:Dynamic,a1:Dynamic):Bool;
 public static function unsafe_string(a0:String,a1:Int,a2:Int):Dynamic;
 public static function channel(a0:Dynamic,a1:Int):Dynamic;
 public static function string(a0:String):Dynamic;

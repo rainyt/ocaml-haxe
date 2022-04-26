@@ -1,4 +1,4 @@
-typedef Int64T  = Int;
+typedef Int64_T  = Int;
 
 @:native("Int64")
 extern class OCamlInt64 {

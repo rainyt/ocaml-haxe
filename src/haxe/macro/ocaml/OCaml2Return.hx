@@ -14,9 +14,18 @@ class OCaml2Return {
 			case "OCAMLCHAR":
 				OCaml2Tools.currentOCaml.writeHead('exception ${type} of char\n');
 			default:
-				OCaml2Tools.currentOCaml.writeHead('exception ${type} of ${type.toLowerCase()}\n');
+				OCaml2Tools.currentOCaml.writeHead('exception ${type} of ${parseType(type.toLowerCase())}\n');
 		}
 		return 'ignore (raise (${type} (${OCaml2Tools.toString(expr, false, OCaml2Tools.getCurrentReturnType())})))';
+	}
+
+	public static function parseType(type:String):String {
+		type = StringTools.replace(type, "_", ".");
+		if (type.indexOf(".") != -1) {
+			var arr = type.split(".");
+			return arr[0].charAt(0).toUpperCase() + arr[0].substr(1) + "." + arr[1];
+		}
+		return type;
 	}
 }
 #end

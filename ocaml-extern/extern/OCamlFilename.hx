@@ -1,4 +1,4 @@
-typedef FilenameSYSDEPS  = Dynamic;
+typedef Filename_SYSDEPS  = Dynamic;
 
 @:native("Filename")
 extern class OCamlFilename {
@@ -41,7 +41,7 @@ public static function chop_extension(a0:String):String;
 public static function remove_extension(a0:String):String;
 public static function open_desc(a0:String,a1:Dynamic,a2:Int):Int;
 public static function close_desc(a0:Int):Void;
-public static var prng:OCamlRandom.RandomState;
+public static var prng:Dynamic;
 public static function temp_file_name(a0:String,a1:String,a2:String):String;
 public static var current_temp_dir_name:Dynamic;
 public static function set_temp_dir_name(a0:String):Void;

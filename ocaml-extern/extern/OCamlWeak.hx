@@ -1,6 +1,6 @@
-typedef WeakS  = Dynamic;
+typedef Weak_S  = Dynamic;
 
-typedef WeakData  = Dynamic;
+typedef Weak_Data  = Dynamic;
 
 @:native("Weak")
 extern class OCamlWeak {
