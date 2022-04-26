@@ -18,6 +18,9 @@ class Main {
 		}
 		trace("文本的长度:", data.length, call());
 
-		File.copy("build.hxml","build-copy.hxml");
+		trace("文本内容：", File.getContent("build.hxml"));
+
+		File.copy("build.hxml", "build-copy.hxml");
+		File.copy("../test.mp4", "../test-2.mp4");
 	}
 }

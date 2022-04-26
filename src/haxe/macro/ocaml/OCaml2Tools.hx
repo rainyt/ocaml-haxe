@@ -218,18 +218,12 @@ class OCaml2Tools {
 				switch (expr.expr) {
 					case TCast(e, m):
 						OCaml2Ref.retianType(v.id, e.t);
-					// var castToType = OCaml2Type.toString(e.t);
-					// if (!v.meta.has("@:cast")) {
-					// 	v.meta.add("@:cast", [macro $v{castToType}], Context.currentPos());
-					// }
-					// trace("转换：", v.id, v.name, castToType, v.meta.get());
 					default:
 						if (v.name == "a")
 							trace("定义", v.id, v.t);
 						OCaml2Ref.retianType(v.id, v.t);
 				}
 				// 临时变量都是经过Cast处理的
-				// trace('${name}=${expr.t}');
 				return 'let ${name} = ref (${toString(expr, true, v.t)}) in';
 
 			case TCast(e, m):

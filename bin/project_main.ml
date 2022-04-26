@@ -18,6 +18,8 @@ _g := !_g + 1;
  done;
 ;
 (Printf.printf "%s%i%s\n" ("文本的长度:") (String.length !data) ((call ())));
+(Printf.printf "%s%s\n" ("文本内容：") ((Ocaml_lib_file.getContent (ref "build.hxml"))));
 (Ocaml_lib_file.copy (ref "build.hxml") (ref "build-copy.hxml"));
+(Ocaml_lib_file.copy (ref "../test.mp4") (ref "../test-2.mp4"));
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

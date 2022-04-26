@@ -4,42 +4,18 @@ import haxe.macro.ocaml.OCaml;
 import haxe.io.Bytes;
 import haxe.Exception;
 
+using OCamlBuffer;
+
 /**
  * 模仿Haxe的文件库
  */
 class File {
-	/**
-	 * 读取文本数据
-	 * @param path 文本路径
-	 * @return String
-	 */
-	public static function getContent(path:String):String {
+	public static function getBuffer(path:String):OCamlBuffer {
 		var input = OCamlStdlib.open_in(path);
-		var line = "";
-		while (true) {
-			try {
-				line += OCamlStdlib.input_line(input) + "\n";
-			} catch (e:Exception) {
-				OCamlStdlib.close_in(input);
-				return line;
-			}
-		}
-		return line;
-	}
-
-	/**
-	 * 将所有chars转换成Bytes
-	 * @param chars 
-	 * @return Bytes
-	 */
-	public static function toBytes(chars:Array<Int>):Bytes {
-		var index = 0;
-		var b = OCamlBytes.create(chars.length);
-		for (char in chars) {
-			OCamlBytes.set(b, index, OCamlCharTools.chr(char));
-			index++;
-		}
-		return b;
+		var len = OCamlStdlib.in_channel_length(input);
+		var buffer:OCamlBuffer = OCamlBuffer.create(len);
+		buffer.add_channel(input, len);
+		return buffer;
 	}
 
 	/**
@@ -48,18 +24,17 @@ class File {
 	 * @return Bytes
 	 */
 	public static function getBytes(path:String):Bytes {
-		var input = OCamlStdlib.open_in(path);
-		var chars:Array<Int> = [];
-		while (true) {
-			try {
-				var readChar = OCamlStdlib.input_byte(input);
-				chars.push(readChar);
-			} catch (e:Exception) {
-				OCamlStdlib.close_in(input);
-				return toBytes(chars);
-			}
-		}
-		return toBytes(chars);
+		return getBuffer(path).to_bytes();
+	}
+
+	/**
+	 * 读取文本数据
+	 * @param path 文本路径
+	 * @return String
+	 */
+	public static function getContent(path:String):String {
+		var data = OCamlString.of_seq(OCamlBuffer.to_seq(getBuffer(path)));
+		return data;
 	}
 
 	/**
