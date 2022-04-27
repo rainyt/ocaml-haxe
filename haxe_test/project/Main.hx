@@ -1,5 +1,7 @@
 package project;
 
+import ocaml.Stdlib;
+import ocaml.Unix;
 import ocaml.OCamlStringTools;
 import ocaml.OCamlString;
 import ocaml.lib.FileSystem;
@@ -36,6 +38,10 @@ class Main {
 			trace("file:", s, "   create time:", stat.st_ctime);
 		}
 
-		ocaml.Sys.command("123");
+		var input = Unix.open_process_in("echo '123123'");
+		var data = Stdlib.input_line(input);
+		trace("read", data);
+
+		// var proess = new Process();
 	}
 }

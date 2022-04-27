@@ -1,8 +1,5 @@
 package ocaml.lib;
 
-import haxe.macro.ocaml.OCaml;
-import haxe.io.Bytes;
-import haxe.Exception;
 import ocaml.Stdlib;
 
 using ocaml.Buffer;
@@ -43,7 +40,7 @@ class File {
 	 * @param path 
 	 * @param bytes 
 	 */
-	public static function saveBytes(path:String, bytes:haxe.io.Bytes):Void {
+	public static function saveBytes(path:String, bytes:Bytes):Void {
 		var out = Stdlib.open_out(path);
 		Stdlib.output_bytes(out, bytes);
 		Stdlib.close_out(out);

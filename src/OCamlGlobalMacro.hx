@@ -59,6 +59,8 @@ class OCamlGlobalMacro {
 				}
 				oc.write(OCaml2Tools.toString(item.expr()) + ";;\n\n");
 				oc.writeDebugLog(TypedExprTools.toString(item.expr()));
+			default:
+				trace("跳过处理：", item.kind);
 		}
 	}
 }
