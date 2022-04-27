@@ -59,7 +59,16 @@ class OCaml2Field {
 							default:
 								throw "Not support FInstance api:" + cf;
 						}
+					case "String":
+						switch (cf.toString()) {
+							case "length":
+								return '${c.toString()}.${cf.toString()} ${OCaml2Tools.toString(e)}';
+						}
 					default:
+						// todo，如果是变量，应该直接访问，而方法应该保持现状
+						var field = TypeTools.findField(c.get(), cf.toString(), false);
+						if (field != null)
+							return '${OCaml2Tools.toString(e)}.${cf.toString()}';
 						return '${c.toString()}.${cf.toString()} ${OCaml2Tools.toString(e)}';
 				}
 			case FAnon(cf):

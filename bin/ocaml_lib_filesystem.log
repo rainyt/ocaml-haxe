@@ -1,5 +1,5 @@
 [Function:(file : String) -> Bool]
-	[Arg:String] [Local file(2893371):String]
+	[Arg:String] [Local file(3135197):String]
 	[Block:Dynamic]
 		[Return:Dynamic]
 			[Call:Bool]
@@ -8,8 +8,8 @@
 					[FStatic:(a0 : String) -> Bool]
 						ocaml.Sys
 						file_exists:(a0 : String) -> Bool
-				[Local file(2893371):String:String][Function:(path : String) -> Void]
-	[Arg:String] [Local path(2893372):String]
+				[Local file(3135197):String:String][Function:(path : String) -> Void]
+	[Arg:String] [Local path(3135198):String]
 	[Block:Void]
 		[Call:Void]
 			[Field:(a0 : String, a1 : Int) -> Void]
@@ -17,9 +17,9 @@
 				[FStatic:(a0 : String, a1 : Int) -> Void]
 					ocaml.Sys
 					mkdir:(a0 : String, a1 : Int) -> Void
-			[Local path(2893372):String:String]
+			[Local path(3135198):String:String]
 			[Const:Int] 0[Function:(dir : String) -> Void]
-	[Arg:String] [Local dir(2893373):String]
+	[Arg:String] [Local dir(3135199):String]
 	[Block:Void]
 		[Call:Void]
 			[Field:(a0 : String) -> Void]
@@ -27,8 +27,8 @@
 				[FStatic:(a0 : String) -> Void]
 					ocaml.Sys
 					rmdir:(a0 : String) -> Void
-			[Local dir(2893373):String:String][Function:(file : String) -> Void]
-	[Arg:String] [Local file(2893374):String]
+			[Local dir(3135199):String:String][Function:(file : String) -> Void]
+	[Arg:String] [Local file(3135200):String]
 	[Block:Void]
 		[Call:Void]
 			[Field:(a0 : String) -> Void]
@@ -36,8 +36,8 @@
 				[FStatic:(a0 : String) -> Void]
 					ocaml.Sys
 					remove:(a0 : String) -> Void
-			[Local file(2893374):String:String][Function:(relPath : String) -> String]
-	[Arg:String] [Local relPath(2893375):String]
+			[Local file(3135200):String:String][Function:(relPath : String) -> String]
+	[Arg:String] [Local relPath(3135201):String]
 	[Block:Dynamic]
 		[Return:Dynamic]
 			[Binop:String]
@@ -50,8 +50,8 @@
 					+
 					[Const:String] "/"
 				+
-				[Local relPath(2893375):String:String][Function:(path : String) -> Bool]
-	[Arg:String] [Local path(2893376):String]
+				[Local relPath(3135201):String:String][Function:(path : String) -> Bool]
+	[Arg:String] [Local path(3135202):String]
 	[Block:Dynamic]
 		[Return:Dynamic]
 			[Call:Bool]
@@ -60,8 +60,8 @@
 					[FStatic:(a0 : String) -> Bool]
 						ocaml.Sys
 						is_directory:(a0 : String) -> Bool
-				[Local path(2893376):String:String][Function:(path : String) -> ocaml.OCamlArray<String>]
-	[Arg:String] [Local path(2893377):String]
+				[Local path(3135202):String:String][Function:(path : String) -> ocaml.OCamlArray<String>]
+	[Arg:String] [Local path(3135203):String]
 	[Block:Dynamic]
 		[Return:Dynamic]
 			[Call:ocaml.OCamlArray<String>]
@@ -70,9 +70,9 @@
 					[FStatic:(a0 : String) -> ocaml.OCamlArray<String>]
 						ocaml.Sys
 						readdir:(a0 : String) -> ocaml.OCamlArray<String>
-				[Local path(2893377):String:String][Function:(path : String, newPath : String) -> Void]
-	[Arg:String] [Local path(2893378):String]
-	[Arg:String] [Local newPath(2893379):String]
+				[Local path(3135203):String:String][Function:(path : String, newPath : String) -> Void]
+	[Arg:String] [Local path(3135204):String]
+	[Arg:String] [Local newPath(3135205):String]
 	[Block:Void]
 		[Call:Void]
 			[Field:(a0 : String, a1 : String) -> Void]
@@ -80,5 +80,15 @@
 				[FStatic:(a0 : String, a1 : String) -> Void]
 					ocaml.Sys
 					rename:(a0 : String, a1 : String) -> Void
-			[Local path(2893378):String:String]
-			[Local newPath(2893379):String:String]
+			[Local path(3135204):String:String]
+			[Local newPath(3135205):String:String][Function:(path : String) -> ocaml.Unix_Stats]
+	[Arg:String] [Local path(3135206):String]
+	[Block:Dynamic]
+		[Return:Dynamic]
+			[Call:ocaml.Unix_Stats]
+				[Field:(a0 : String) -> ocaml.Unix_Stats]
+					[TypeExpr ocaml.Unix:Class<ocaml.Unix>]
+					[FStatic:(a0 : String) -> ocaml.Unix_Stats]
+						ocaml.Unix
+						stat:(a0 : String) -> ocaml.Unix_Stats
+				[Local path(3135206):String:String]

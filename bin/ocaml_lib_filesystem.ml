@@ -1,3 +1,4 @@
+exception UNIX_STATS of Unix.stats
 exception STRING_ARRAY of string array
 exception STRING of string
 exception BOOL of bool
@@ -29,4 +30,8 @@ with STRING_ARRAY ret -> ret;;
 
 let rename path newPath = (Sys.rename (!path) (!newPath));
 ;;
+
+let stat path = try 
+ignore (raise (UNIX_STATS ((Unix.stat (!path)))));(Unix.stat (!path));
+with UNIX_STATS ret -> ret;;
 

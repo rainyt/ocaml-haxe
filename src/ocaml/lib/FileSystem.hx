@@ -1,5 +1,6 @@
 package ocaml.lib;
 
+import ocaml.Unix.Unix_Stats;
 import ocaml.Sys;
 
 class FileSystem {
@@ -72,13 +73,12 @@ class FileSystem {
 		Sys.rename(path, newPath);
 	}
 
-	// /**
-	//  * 返回path指定的文件或目录FileStat信息。
-	//  * @param path
-	//  * @return FileStat
-	//  */
-	// public static function stat(path:String):Dynamic {
-	// 	// Sys.sta
-	// 	return null;
-	// }
+	/**
+	 * 返回path指定的文件或目录FileStat信息。
+	 * @param path
+	 * @return FileStat
+	 */
+	public static function stat(path:String):Unix_Stats {
+		return Unix.stat(path);
+	}
 }

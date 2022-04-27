@@ -2,4 +2,5 @@
  (flags -w +42)
  (name project_main)
  (public_name bin )
+ (libraries Unix)
  (modules project_main project_maintest1 ocaml_lib_file project_mathtest project_test ocaml_lib_filesystem))
