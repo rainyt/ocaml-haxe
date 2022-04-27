@@ -2,8 +2,6 @@ package ocaml.lib;
 
 import ocaml.Sys;
 
-typedef FileStat = {}
-
 class FileSystem {
 	/**
 	 * 判断文件是否存在
@@ -74,13 +72,13 @@ class FileSystem {
 		Sys.rename(path, newPath);
 	}
 
-	/**
-	 * 返回path指定的文件或目录FileStat信息。
-	 * @param path
-	 * @return FileStat
-	 */
-	public static function stat(path:String):FileStat {
-		// Sys.sta
-		return null;
-	}
+	// /**
+	//  * 返回path指定的文件或目录FileStat信息。
+	//  * @param path
+	//  * @return FileStat
+	//  */
+	// public static function stat(path:String):Dynamic {
+	// 	// Sys.sta
+	// 	return null;
+	// }
 }

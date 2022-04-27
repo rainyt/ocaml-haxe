@@ -175,8 +175,8 @@ public static var epsilon_float :Float;
 // Parser external::external classify_float : (float [@unboxed]) -> fpclass =  "caml_classify_float" "caml_classify_float_unboxed" [@@noalloc]
 public static function classify_float (a0:Dynamic):Stdlib_Fpclass;// Parser val::val ( ^ ) : string -> string -> string
 // Parser external::external int_of_char : char -> int = "%identity"
-public static function int_of_char (a0:Dynamic):Int;// Parser val::val char_of_int : int -> char
-public static function char_of_int (a0:Int):Dynamic;
+public static function int_of_char (a0:Char):Int;// Parser val::val char_of_int : int -> char
+public static function char_of_int (a0:Int):Char;
 // Parser external::external ignore : 'a -> unit = "%ignore"
 public static function ignore (a0:Dynamic):Void;// Parser val::val string_of_bool : bool -> string
 public static function string_of_bool (a0:Bool):String;
@@ -206,7 +206,7 @@ public static var stdout :Stdlib_Out_channel;
 // Parser val::val stderr : out_channel
 public static var stderr :Stdlib_Out_channel;
 // Parser val::val print_char : char -> unit
-public static function print_char (a0:Dynamic):Void;
+public static function print_char (a0:Char):Void;
 // Parser val::val print_string : string -> unit
 public static function print_string (a0:String):Void;
 // Parser val::val print_bytes : bytes -> unit
@@ -220,7 +220,7 @@ public static function print_endline (a0:String):Void;
 // Parser val::val print_newline : unit -> unit
 public static function print_newline (a0:Void):Void;
 // Parser val::val prerr_char : char -> unit
-public static function prerr_char (a0:Dynamic):Void;
+public static function prerr_char (a0:Char):Void;
 // Parser val::val prerr_string : string -> unit
 public static function prerr_string (a0:String):Void;
 // Parser val::val prerr_bytes : bytes -> unit
@@ -255,7 +255,7 @@ public static function flush (a0:Stdlib_Out_channel):Void;
 // Parser val::val flush_all : unit -> unit
 public static function flush_all (a0:Void):Void;
 // Parser val::val output_char : out_channel -> char -> unit
-public static function output_char (a0:Stdlib_Out_channel,a1:Dynamic):Void;
+public static function output_char (a0:Stdlib_Out_channel,a1:Char):Void;
 // Parser val::val output_string : out_channel -> string -> unit
 public static function output_string (a0:Stdlib_Out_channel,a1:String):Void;
 // Parser val::val output_bytes : out_channel -> bytes -> unit
@@ -289,7 +289,7 @@ public static function open_in_bin (a0:String):Stdlib_In_channel;
 // Parser val::val open_in_gen : open_flag list -> int -> string -> in_channel
 public static function open_in_gen (a0:Array<Stdlib_Open_flag>,a1:Int,a2:String):Stdlib_In_channel;
 // Parser val::val input_char : in_channel -> char
-public static function input_char (a0:Stdlib_In_channel):Dynamic;
+public static function input_char (a0:Stdlib_In_channel):Char;
 // Parser val::val input_line : in_channel -> string
 public static function input_line (a0:Stdlib_In_channel):String;
 // Parser val::val input : in_channel -> bytes -> int -> int -> int

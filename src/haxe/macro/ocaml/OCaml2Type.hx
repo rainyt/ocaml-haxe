@@ -12,7 +12,7 @@ class OCaml2Type {
 				}
 			case TAbstract(t, params):
 				switch (t.toString()) {
-					case "OCamlArray":
+					case "ocaml.OCamlArray":
 						return toString(params[0]) + " Array";
 					default:
 						return toTypeString(t.toString());

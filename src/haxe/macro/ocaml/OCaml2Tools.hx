@@ -204,7 +204,7 @@ class OCaml2Tools {
 						s = StringTools.replace(s, "\r", "\\r");
 						s = StringTools.replace(s, "\t", "\\t");
 						if (castType != null) {
-							if (OCaml2Type.toString(castType) == "OCamlChar")
+							if (OCaml2Type.toString(castType) == "ocaml_Char")
 								return '\'${s}\'';
 						}
 						return '"${s}"';
@@ -239,7 +239,7 @@ class OCaml2Tools {
 				switch (v.t) {
 					case TAbstract(t, params):
 						switch (t.toString()) {
-							case "OCamlChar":
+							case "ocaml_Char":
 								return (OCaml2Ref.getType(v.id) != null ? "!" : "") + name;
 						}
 					default:

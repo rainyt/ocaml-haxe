@@ -16,7 +16,7 @@ public static function sub (a0:Buffer_T,a1:Int,a2:Int):String;
 // Parser val::val blit : t -> int -> bytes -> int -> int -> unit
 public static function blit (a0:Buffer_T,a1:Int,a2:Dynamic,a3:Int,a4:Int):Void;
 // Parser val::val nth : t -> int -> char
-public static function nth (a0:Buffer_T,a1:Int):Dynamic;
+public static function nth (a0:Buffer_T,a1:Int):Char;
 // Parser val::val length : t -> int
 public static function length (a0:Buffer_T):Int;
 // Parser val::val clear : t -> unit
@@ -24,7 +24,7 @@ public static function clear (a0:Buffer_T):Void;
 // Parser val::val reset : t -> unit
 public static function reset (a0:Buffer_T):Void;
 // Parser val::val add_char : t -> char -> unit
-public static function add_char (a0:Buffer_T,a1:Dynamic):Void;
+public static function add_char (a0:Buffer_T,a1:Char):Void;
 // Parser val::val add_utf_8_uchar : t -> Uchar.t -> unit
 public static function add_utf_8_uchar (a0:Buffer_T,a1:Dynamic):Void;
 // Parser val::val add_utf_16le_uchar : t -> Uchar.t -> unit

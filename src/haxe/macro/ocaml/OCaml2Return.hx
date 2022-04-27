@@ -14,7 +14,7 @@ class OCaml2Return {
 			default:
 		}
 		switch (type) {
-			case "OCAMLCHAR":
+			case "ocaml_Char":
 				OCaml2Tools.currentOCaml.writeHead('exception ${type} of char\n');
 			default:
 				type = type.replace(".", "_");

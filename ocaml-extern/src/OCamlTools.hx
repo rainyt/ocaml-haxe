@@ -35,7 +35,7 @@ class OCamlTools {
 			// 数组
 			return 'OCamlArray<${toUpClassName(StringTools.replace(code, "array", ""), true)}>';
 		}
-		if (FileSystem.exists("extern/" + code + ".hx")) {
+		if (FileSystem.exists("extern/ocaml/" + code + ".hx")) {
 			return code;
 		}
 		if (OCamlTypes.refs.exists(OCamlExternToolsv2.className + "_" + code)) {

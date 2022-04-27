@@ -45,16 +45,16 @@ public var c_echo:Bool;
 public var c_echoe:Bool;
 public var c_echok:Bool;
 public var c_echonl:Bool;
-public var c_vintr:Dynamic;
-public var c_vquit:Dynamic;
-public var c_verase:Dynamic;
-public var c_vkill:Dynamic;
-public var c_veof:Dynamic;
-public var c_veol:Dynamic;
+public var c_vintr:Char;
+public var c_vquit:Char;
+public var c_verase:Char;
+public var c_vkill:Char;
+public var c_veof:Char;
+public var c_veol:Char;
 public var c_vmin:Int;
 public var c_vtime:Int;
-public var c_vstart:Dynamic;
-public var c_vstop:Dynamic;
+public var c_vstart:Char;
+public var c_vstop:Char;
 }
 enum Unix_Getnameinfo_option {
 NI_NOFQDN;

@@ -1,5 +1,4 @@
-exception OCAML_LIB_FILESTAT of Ocaml.lib
-exception OCAML_OCAMLARRAY of Ocaml.ocamlarray
+exception STRING_ARRAY of string array
 exception STRING of string
 exception BOOL of bool
 
@@ -25,13 +24,9 @@ ignore (raise (BOOL ((Sys.is_directory (!path)))));(Sys.is_directory (!path));
 with BOOL ret -> ret;;
 
 let readDirectory path = try 
-ignore (raise (OCAML_OCAMLARRAY ((Sys.readdir (!path)))));(Sys.readdir (!path));
-with OCAML_OCAMLARRAY ret -> ret;;
+ignore (raise (STRING_ARRAY ((Sys.readdir (!path)))));(Sys.readdir (!path));
+with STRING_ARRAY ret -> ret;;
 
 let rename path newPath = (Sys.rename (!path) (!newPath));
 ;;
-
-let stat path = try 
-ignore (raise (OCAML_LIB_FILESTAT (None)));None;
-with OCAML_LIB_FILESTAT ret -> ret;;
 

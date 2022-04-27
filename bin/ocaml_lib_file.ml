@@ -1,6 +1,6 @@
 exception STRING of string
 exception BYTES of bytes
-exception OCAML_BUFFER_T of Ocaml.buffer
+exception OCAML_BUFFER_T of Buffer.t
 
 let getBuffer path = try 
 let input = ref ((Stdlib.open_in (!path))) in
