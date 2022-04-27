@@ -71,9 +71,9 @@ public static function to_seqi (a0:Dynamic):Dynamic;
 // Parser val::val of_seq : char Seq.t -> t
 public static function of_seq (a0:Dynamic):Dynamic;
 // Parser external::external create : int -> bytes = "caml_create_string"  [@@ocaml.deprecated "Use Bytes.create/BytesLabels.create instead."]
-public static function create (a0:Int):Dynamic;// Parser external::external set : bytes -> int -> char -> unit = "%string_safe_set"  [@@ocaml.deprecated "Use Bytes.set/BytesLabels.set instead."]
-public static function set (a0:Dynamic,a1:Int,a2:Char):Void;// Parser val::val blit :  string -> int -> bytes -> int -> int -> unit
-public static function blit (a0:String,a1:Int,a2:Dynamic,a3:Int,a4:Int):Void;
+public static function create (a0:Int):Bytes;// Parser external::external set : bytes -> int -> char -> unit = "%string_safe_set"  [@@ocaml.deprecated "Use Bytes.set/BytesLabels.set instead."]
+public static function set (a0:Bytes,a1:Int,a2:Char):Void;// Parser val::val blit :  string -> int -> bytes -> int -> int -> unit
+public static function blit (a0:String,a1:Int,a2:Bytes,a3:Int,a4:Int):Void;
 // Parser val::val copy : string -> string  [@@ocaml.deprecated "Strings now immutable: no need to copy"]
 // Parser val::val fill : bytes -> int -> int -> char -> unit  [@@ocaml.deprecated "Use Bytes.fill/BytesLabels.fill instead."]
 // Parser val::val uppercase : string -> string  [@@ocaml.deprecated    "Use String.uppercase_ascii/StringLabels.uppercase_ascii instead."]
@@ -82,5 +82,5 @@ public static function blit (a0:String,a1:Int,a2:Dynamic,a3:Int,a4:Int):Void;
 // Parser val::val uncapitalize : string -> string  [@@ocaml.deprecated    "Use String.uncapitalize_ascii/StringLabels.uncapitalize_ascii instead."]
 // Parser external::external unsafe_get : string -> int -> char = "%string_unsafe_get"
 public static function unsafe_get (a0:String,a1:Int):Char;// Parser external::external unsafe_set : bytes -> int -> char -> unit = "%string_unsafe_set"  [@@ocaml.deprecated]
-public static function unsafe_set (a0:Dynamic,a1:Int,a2:Char):Void;// Parser external::external unsafe_blit :  string -> int -> bytes -> int -> int ->    unit = "caml_blit_string" [@@noalloc]
-public static function unsafe_blit (a0:String,a1:Int,a2:Dynamic,a3:Int,a4:Int):Void;}
+public static function unsafe_set (a0:Bytes,a1:Int,a2:Char):Void;// Parser external::external unsafe_blit :  string -> int -> bytes -> int -> int ->    unit = "caml_blit_string" [@@noalloc]
+public static function unsafe_blit (a0:String,a1:Int,a2:Bytes,a3:Int,a4:Int):Void;}

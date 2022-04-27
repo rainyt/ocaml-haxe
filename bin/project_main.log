@@ -4,9 +4,9 @@
 			[Const:Bool] true
 			[Block:Dynamic] [Return:Dynamic] [Const:String] "false"
 		[Return:Dynamic] [Const:String] "true"[Function:() -> Void]
-	[Block:Void]
-		[Var data(3241277):String] [Const:String] "1,2,3,4,5,6"
-		[Var array(3241278):Array<String>]
+	[Block:Int]
+		[Var data(3241817):String] [Const:String] "1,2,3,4,5,6"
+		[Var array(3241818):Array<String>]
 			[Call:Array<String>]
 				[Field:(a0 : ocaml.Char, a1 : String) -> Array<String>]
 					[TypeExpr ocaml.OCamlStringTools:Class<ocaml.OCamlStringTools>]
@@ -14,27 +14,27 @@
 						ocaml.OCamlStringTools
 						split_on_char:(a0 : ocaml.Char, a1 : String) -> Array<String>
 				[Const:String] ","
-				[Local data(3241277):String:String]
+				[Local data(3241817):String:String]
 		[Block:Void]
-			[Var `(3241280):Int] [Const:Int] 0
+			[Var `(3241820):Int] [Const:Int] 0
 			[While:Void]
 				[Binop:Bool]
-					[Local `(3241280):Int:Int]
+					[Local `(3241820):Int:Int]
 					<
 					[Field:Int]
-						[Local array(3241278):Array<String>:Array<String>]
+						[Local array(3241818):Array<String>:Array<String>]
 						[FInstance:Int]
 							Array<String>
 							length:Int
 				[Block:Void]
-					[Var s(3241279):String]
+					[Var s(3241819):String]
 						[Array:String]
-							[Local array(3241278):Array<String>:Array<String>]
-							[Local `(3241280):Int:Int]
+							[Local array(3241818):Array<String>:Array<String>]
+							[Local `(3241820):Int:Int]
 					[Unop:Int]
 						++
 						Prefix
-						[Local `(3241280):Int:Int]
+						[Local `(3241820):Int:Int]
 					[Call:Void]
 						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 							[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -47,7 +47,7 @@
 							lineNumber: [Const:Int] 20
 							className: [Const:String] "project.Main"
 							methodName: [Const:String] "main"
-							customParams: [ArrayDecl:Array<Dynamic>] [Local s(3241279):String:String]
+							customParams: [ArrayDecl:Array<Dynamic>] [Local s(3241819):String:String]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -62,7 +62,7 @@
 				methodName: [Const:String] "main"
 				customParams: [ArrayDecl:Array<Dynamic>]
 					[Field:Int]
-						[Local data(3241277):String:String]
+						[Local data(3241817):String:String]
 						[FInstance:Int]
 							String
 							length:Int
@@ -142,7 +142,7 @@
 				lineNumber: [Const:Int] 31
 				className: [Const:String] "project.Main"
 				methodName: [Const:String] "main"
-		[Var files(3241281):ocaml.OCamlArray<String>]
+		[Var files(3241821):ocaml.OCamlArray<String>]
 			[Call:ocaml.OCamlArray<String>]
 				[Field:(path : String) -> ocaml.OCamlArray<String>]
 					[TypeExpr ocaml.lib.FileSystem:Class<ocaml.lib.FileSystem>]
@@ -151,34 +151,34 @@
 						readDirectory:(path : String) -> ocaml.OCamlArray<String>
 				[Const:String] "./"
 		[Block:Void]
-			[Var `1(3241285):Int] [Const:Int] 0
-			[Var `2(3241286):Array<String>] [Cast:Array<String>] [Local files(3241281):ocaml.OCamlArray<String>:ocaml.OCamlArray<String>]
+			[Var `1(3241825):Int] [Const:Int] 0
+			[Var `2(3241826):Array<String>] [Cast:Array<String>] [Local files(3241821):ocaml.OCamlArray<String>:ocaml.OCamlArray<String>]
 			[While:Void]
 				[Binop:Bool]
-					[Local `1(3241285):Int:Int]
+					[Local `1(3241825):Int:Int]
 					<
 					[Field:Int]
-						[Local `2(3241286):Array<String>:Array<String>]
+						[Local `2(3241826):Array<String>:Array<String>]
 						[FInstance:Int]
 							Array<String>
 							length:Int
 				[Block:Void]
-					[Var s(3241283):String]
+					[Var s(3241823):String]
 						[Array:String]
-							[Local `2(3241286):Array<String>:Array<String>]
-							[Local `1(3241285):Int:Int]
+							[Local `2(3241826):Array<String>:Array<String>]
+							[Local `1(3241825):Int:Int]
 					[Unop:Int]
 						++
 						Prefix
-						[Local `1(3241285):Int:Int]
-					[Var stat(3241284):ocaml.Unix_Stats]
+						[Local `1(3241825):Int:Int]
+					[Var stat(3241824):ocaml.Unix_Stats]
 						[Call:ocaml.Unix_Stats]
 							[Field:(path : String) -> ocaml.Unix_Stats]
 								[TypeExpr ocaml.lib.FileSystem:Class<ocaml.lib.FileSystem>]
 								[FStatic:(path : String) -> ocaml.Unix_Stats]
 									ocaml.lib.FileSystem
 									stat:(path : String) -> ocaml.Unix_Stats
-							[Local s(3241283):String:String]
+							[Local s(3241823):String:String]
 					[Call:Void]
 						[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 							[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -192,10 +192,17 @@
 							className: [Const:String] "project.Main"
 							methodName: [Const:String] "main"
 							customParams: [ArrayDecl:Array<Dynamic>]
-								[Local s(3241283):String:String]
+								[Local s(3241823):String:String]
 								[Const:String] "   create time:"
 								[Field:Float]
-									[Local stat(3241284):ocaml.Unix_Stats:ocaml.Unix_Stats]
+									[Local stat(3241824):ocaml.Unix_Stats:ocaml.Unix_Stats]
 									[FInstance:Float]
 										ocaml.Unix_Stats
 										st_ctime:Float
+		[Call:Int]
+			[Field:(a0 : String) -> Int]
+				[TypeExpr ocaml.Sys:Class<ocaml.Sys>]
+				[FStatic:(a0 : String) -> Int]
+					ocaml.Sys
+					command:(a0 : String) -> Int
+			[Const:String] "123"

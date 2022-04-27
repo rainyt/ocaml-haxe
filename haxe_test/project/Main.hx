@@ -35,5 +35,7 @@ class Main {
 			var stat = FileSystem.stat(s);
 			trace("file:", s, "   create time:", stat.st_ctime);
 		}
+
+		ocaml.Sys.command("123");
 	}
 }

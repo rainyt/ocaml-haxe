@@ -10,11 +10,11 @@ public static function create (a0:Int):Buffer_T;
 // Parser val::val contents : t -> string
 public static function contents (a0:Buffer_T):String;
 // Parser val::val to_bytes : t -> bytes
-public static function to_bytes (a0:Buffer_T):Dynamic;
+public static function to_bytes (a0:Buffer_T):Bytes;
 // Parser val::val sub : t -> int -> int -> string
 public static function sub (a0:Buffer_T,a1:Int,a2:Int):String;
 // Parser val::val blit : t -> int -> bytes -> int -> int -> unit
-public static function blit (a0:Buffer_T,a1:Int,a2:Dynamic,a3:Int,a4:Int):Void;
+public static function blit (a0:Buffer_T,a1:Int,a2:Bytes,a3:Int,a4:Int):Void;
 // Parser val::val nth : t -> int -> char
 public static function nth (a0:Buffer_T,a1:Int):Char;
 // Parser val::val length : t -> int
@@ -34,11 +34,11 @@ public static function add_utf_16be_uchar (a0:Buffer_T,a1:Dynamic):Void;
 // Parser val::val add_string : t -> string -> unit
 public static function add_string (a0:Buffer_T,a1:String):Void;
 // Parser val::val add_bytes : t -> bytes -> unit
-public static function add_bytes (a0:Buffer_T,a1:Dynamic):Void;
+public static function add_bytes (a0:Buffer_T,a1:Bytes):Void;
 // Parser val::val add_substring : t -> string -> int -> int -> unit
 public static function add_substring (a0:Buffer_T,a1:String,a2:Int,a3:Int):Void;
 // Parser val::val add_subbytes : t -> bytes -> int -> int -> unit
-public static function add_subbytes (a0:Buffer_T,a1:Dynamic,a2:Int,a3:Int):Void;
+public static function add_subbytes (a0:Buffer_T,a1:Bytes,a2:Int,a3:Int):Void;
 // Parser val::val add_substitute : t -> (string -> string) -> string -> unit
 public static function add_substitute (a0:Buffer_T,a1:Dynamic,a2:Dynamic,a3:String):Void;
 // Parser val::val add_buffer : t -> t -> unit

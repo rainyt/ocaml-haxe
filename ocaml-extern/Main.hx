@@ -7,6 +7,7 @@ using StringTools;
 class Main {
 	static function main() {
 		OCamlExternToolsv2.externMLI("buffer");
+		OCamlExternToolsv2.externMLI("bytes");
 		OCamlExternToolsv2.externMLI("string", "OCamlStringTools");
 		OCamlExternToolsv2.externMLI("unix");
 		OCamlExternToolsv2.externMLI("stdlib");

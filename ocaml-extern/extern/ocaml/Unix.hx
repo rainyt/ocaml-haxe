@@ -414,11 +414,11 @@ public static function close (a0:Unix_File_descr):Void;
 // Parser val::val fsync : file_descr -> unit
 public static function fsync (a0:Unix_File_descr):Void;
 // Parser val::val read : file_descr -> bytes -> int -> int -> int
-public static function read (a0:Unix_File_descr,a1:Dynamic,a2:Int,a3:Int):Int;
+public static function read (a0:Unix_File_descr,a1:Bytes,a2:Int,a3:Int):Int;
 // Parser val::val write : file_descr -> bytes -> int -> int -> int
-public static function write (a0:Unix_File_descr,a1:Dynamic,a2:Int,a3:Int):Int;
+public static function write (a0:Unix_File_descr,a1:Bytes,a2:Int,a3:Int):Int;
 // Parser val::val single_write : file_descr -> bytes -> int -> int -> int
-public static function single_write (a0:Unix_File_descr,a1:Dynamic,a2:Int,a3:Int):Int;
+public static function single_write (a0:Unix_File_descr,a1:Bytes,a2:Int,a3:Int):Int;
 // Parser val::val write_substring : file_descr -> string -> int -> int -> int
 public static function write_substring (a0:Unix_File_descr,a1:String,a2:Int,a3:Int):Int;
 // Parser val::val single_write_substring :  file_descr -> string -> int -> int -> int
@@ -662,15 +662,15 @@ public static function getsockname (a0:Unix_File_descr):Unix_Sockaddr;
 public static function getpeername (a0:Unix_File_descr):Unix_Sockaddr;
 // Parser type::type msg_flag =    MSG_OOB  | MSG_DONTROUTE  | MSG_PEEK 
 // Parser val::val recv :  file_descr -> bytes -> int -> int -> msg_flag list -> int
-public static function recv (a0:Unix_File_descr,a1:Dynamic,a2:Int,a3:Int,a4:Array<Unix_Msg_flag>):Int;
+public static function recv (a0:Unix_File_descr,a1:Bytes,a2:Int,a3:Int,a4:Array<Unix_Msg_flag>):Int;
 // Parser val::val recvfrom :  file_descr -> bytes -> int -> int -> msg_flag list ->    int * sockaddr
-public static function recvfrom (a0:Unix_File_descr,a1:Dynamic,a2:Int,a3:Int,a4:Array<Unix_Msg_flag>):Dynamic;
+public static function recvfrom (a0:Unix_File_descr,a1:Bytes,a2:Int,a3:Int,a4:Array<Unix_Msg_flag>):Dynamic;
 // Parser val::val send :  file_descr -> bytes -> int -> int -> msg_flag list -> int
-public static function send (a0:Unix_File_descr,a1:Dynamic,a2:Int,a3:Int,a4:Array<Unix_Msg_flag>):Int;
+public static function send (a0:Unix_File_descr,a1:Bytes,a2:Int,a3:Int,a4:Array<Unix_Msg_flag>):Int;
 // Parser val::val send_substring :  file_descr -> string -> int -> int -> msg_flag list -> int
 public static function send_substring (a0:Unix_File_descr,a1:String,a2:Int,a3:Int,a4:Array<Unix_Msg_flag>):Int;
 // Parser val::val sendto :  file_descr -> bytes -> int -> int -> msg_flag list ->    sockaddr -> int
-public static function sendto (a0:Unix_File_descr,a1:Dynamic,a2:Int,a3:Int,a4:Array<Unix_Msg_flag>,a5:Unix_Sockaddr):Int;
+public static function sendto (a0:Unix_File_descr,a1:Bytes,a2:Int,a3:Int,a4:Array<Unix_Msg_flag>,a5:Unix_Sockaddr):Int;
 // Parser val::val sendto_substring :  file_descr -> string -> int -> int -> msg_flag list  -> sockaddr -> int
 public static function sendto_substring (a0:Unix_File_descr,a1:String,a2:Int,a3:Int,a4:Array<Unix_Msg_flag>,a5:Unix_Sockaddr):Int;
 // Parser type::type socket_bool_option =    SO_DEBUG         | SO_BROADCAST     | SO_REUSEADDR     | SO_KEEPALIVE     | SO_DONTROUTE     | SO_OOBINLINE     | SO_ACCEPTCONN    | TCP_NODELAY      | IPV6_ONLY        | SO_REUSEPORT   

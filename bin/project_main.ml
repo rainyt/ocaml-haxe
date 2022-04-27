@@ -35,5 +35,6 @@ let stat = ref ((Ocaml_lib_filesystem.stat (ref !s))) in
 (Printf.printf "%s%s%s%f\n" ("file:") (!s) ("   create time:") (!stat.st_ctime));
  done;
 ;
+(Sys.command ("123"));
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

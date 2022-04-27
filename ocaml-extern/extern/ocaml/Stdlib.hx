@@ -210,7 +210,7 @@ public static function print_char (a0:Char):Void;
 // Parser val::val print_string : string -> unit
 public static function print_string (a0:String):Void;
 // Parser val::val print_bytes : bytes -> unit
-public static function print_bytes (a0:Dynamic):Void;
+public static function print_bytes (a0:Bytes):Void;
 // Parser val::val print_int : int -> unit
 public static function print_int (a0:Int):Void;
 // Parser val::val print_float : float -> unit
@@ -224,7 +224,7 @@ public static function prerr_char (a0:Char):Void;
 // Parser val::val prerr_string : string -> unit
 public static function prerr_string (a0:String):Void;
 // Parser val::val prerr_bytes : bytes -> unit
-public static function prerr_bytes (a0:Dynamic):Void;
+public static function prerr_bytes (a0:Bytes):Void;
 // Parser val::val prerr_int : int -> unit
 public static function prerr_int (a0:Int):Void;
 // Parser val::val prerr_float : float -> unit
@@ -259,9 +259,9 @@ public static function output_char (a0:Stdlib_Out_channel,a1:Char):Void;
 // Parser val::val output_string : out_channel -> string -> unit
 public static function output_string (a0:Stdlib_Out_channel,a1:String):Void;
 // Parser val::val output_bytes : out_channel -> bytes -> unit
-public static function output_bytes (a0:Stdlib_Out_channel,a1:Dynamic):Void;
+public static function output_bytes (a0:Stdlib_Out_channel,a1:Bytes):Void;
 // Parser val::val output : out_channel -> bytes -> int -> int -> unit
-public static function output (a0:Stdlib_Out_channel,a1:Dynamic,a2:Int,a3:Int):Void;
+public static function output (a0:Stdlib_Out_channel,a1:Bytes,a2:Int,a3:Int):Void;
 // Parser val::val output_substring : out_channel -> string -> int -> int -> unit
 public static function output_substring (a0:Stdlib_Out_channel,a1:String,a2:Int,a3:Int):Void;
 // Parser val::val output_byte : out_channel -> int -> unit
@@ -293,9 +293,9 @@ public static function input_char (a0:Stdlib_In_channel):Char;
 // Parser val::val input_line : in_channel -> string
 public static function input_line (a0:Stdlib_In_channel):String;
 // Parser val::val input : in_channel -> bytes -> int -> int -> int
-public static function input (a0:Stdlib_In_channel,a1:Dynamic,a2:Int,a3:Int):Int;
+public static function input (a0:Stdlib_In_channel,a1:Bytes,a2:Int,a3:Int):Int;
 // Parser val::val really_input : in_channel -> bytes -> int -> int -> unit
-public static function really_input (a0:Stdlib_In_channel,a1:Dynamic,a2:Int,a3:Int):Void;
+public static function really_input (a0:Stdlib_In_channel,a1:Bytes,a2:Int,a3:Int):Void;
 // Parser val::val really_input_string : in_channel -> int -> string
 public static function really_input_string (a0:Stdlib_In_channel,a1:Int):String;
 // Parser val::val input_byte : in_channel -> int
@@ -338,7 +338,7 @@ public static function at_exit (a0:Dynamic,a1:Dynamic):Void;
 // Parser val::val valid_float_lexem : string -> string
 public static function valid_float_lexem (a0:String):String;
 // Parser val::val unsafe_really_input : in_channel -> bytes -> int -> int -> unit
-public static function unsafe_really_input (a0:Stdlib_In_channel,a1:Dynamic,a2:Int,a3:Int):Void;
+public static function unsafe_really_input (a0:Stdlib_In_channel,a1:Bytes,a2:Int,a3:Int):Void;
 // Parser val::val do_at_exit : unit -> unit
 public static function do_at_exit (a0:Void):Void;
 // Parser module::module Arg          = Arg
