@@ -8,6 +8,12 @@ class OCaml2Type {
 					case "Array":
 						return toString(params[0]) + " List";
 					default:
+						// @:native实现
+						var meta = t.get().meta.get().filter(data -> {
+							return data.name == ":native";
+						})[0];
+						if (meta != null)
+							return ExprTools.getValue(meta.params[0]);
 						return toTypeString(t.toString());
 				}
 			case TAbstract(t, params):

@@ -13,13 +13,13 @@ class OCaml2Ref {
 	 * @param type 
 	 */
 	public static function retianType(id:Int, type:Type):Void {
-		trace("定义：", id, type);
+		// trace("定义：", id, type);
 		types.set(id, type);
 	}
 
 	public static function getType(id:Int):String {
 		if (types.exists(id)) {
-			trace("查询：", id, types.get(id));
+			// trace("查询：", id, types.get(id));
 			return OCaml2Type.toString(types.get(id));
 		}
 		return null;
