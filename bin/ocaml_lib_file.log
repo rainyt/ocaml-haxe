@@ -1,121 +1,121 @@
-[Function:(path : String) -> Buffer_T]
-	[Arg:String] [Local path(1302919):String]
+[Function:(path : String) -> ocaml.T]
+	[Arg:String] [Local path(2859582):String]
 	[Block:Dynamic]
-		[Var input(1302920):Unknown<0>]
+		[Var input(2859583):ocaml.In_channel]
+			[Call:ocaml.In_channel]
+				[Field:(a0 : Dynamic) -> ocaml.In_channel]
+					[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
+					[FStatic:(a0 : Dynamic) -> ocaml.In_channel]
+						ocaml.Stdlib
+						open_in:(a0 : Dynamic) -> ocaml.In_channel
+				[Local path(2859582):String:String]
+		[Var len(2859584):Unknown<0>]
 			[Call:Dynamic]
-				[Field:(a0 : String) -> Dynamic]
-					[TypeExpr OCamlStd:Class<OCamlStd>]
-					[FStatic:(a0 : String) -> Dynamic]
-						OCamlStd
-						open_in:(a0 : String) -> Dynamic
-				[Local path(1302919):String:String]
-		[Var len(1302921):Int]
-			[Call:Int]
-				[Field:(a0 : Dynamic) -> Int]
-					[TypeExpr OCamlStd:Class<OCamlStd>]
-					[FStatic:(a0 : Dynamic) -> Int]
-						OCamlStd
-						in_channel_length:(a0 : Dynamic) -> Int
-				[Local input(1302920):Unknown<0>:Unknown<1>]
-		[Var buffer(1302922):Buffer_T]
-			[Call:Buffer_T]
-				[Field:(a0 : Int) -> Buffer_T]
-					[TypeExpr OCamlBuffer:Class<OCamlBuffer>]
-					[FStatic:(a0 : Int) -> Buffer_T]
-						OCamlBuffer
-						create:(a0 : Int) -> Buffer_T
-				[Local len(1302921):Int:Int]
+				[Field:(a0 : ocaml.In_channel) -> Dynamic]
+					[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
+					[FStatic:(a0 : ocaml.In_channel) -> Dynamic]
+						ocaml.Stdlib
+						in_channel_length:(a0 : ocaml.In_channel) -> Dynamic
+				[Local input(2859583):ocaml.In_channel:ocaml.In_channel]
+		[Var buffer(2859585):ocaml.T]
+			[Call:ocaml.T]
+				[Field:(a0 : Dynamic) -> ocaml.T]
+					[TypeExpr ocaml.Buffer:Class<ocaml.Buffer>]
+					[FStatic:(a0 : Dynamic) -> ocaml.T]
+						ocaml.Buffer
+						create:(a0 : Dynamic) -> ocaml.T
+				[Local len(2859584):Unknown<0>:Unknown<1>]
 		[Call:Void]
-			[Field:(a0 : Buffer_T, a1 : Dynamic, a2 : Int) -> Void]
-				[TypeExpr OCamlBuffer:{ Statics OCamlBuffer }]
-				[FStatic:(a0 : Buffer_T, a1 : Dynamic, a2 : Int) -> Void]
-					OCamlBuffer
-					add_channel:(a0 : Buffer_T, a1 : Dynamic, a2 : Int) -> Void
-			[Local buffer(1302922):Buffer_T:Buffer_T]
-			[Local input(1302920):Unknown<0>:Unknown<2>]
-			[Local len(1302921):Int:Int]
-		[Return:Dynamic] [Local buffer(1302922):Buffer_T:Buffer_T][Function:(path : String) -> haxe.io.Bytes]
-	[Arg:String] [Local path(1302923):String]
+			[Field:(a0 : ocaml.T, a1 : Dynamic, a2 : Dynamic) -> Void]
+				[TypeExpr ocaml.Buffer:{ Statics ocaml.Buffer }]
+				[FStatic:(a0 : ocaml.T, a1 : Dynamic, a2 : Dynamic) -> Void]
+					ocaml.Buffer
+					add_channel:(a0 : ocaml.T, a1 : Dynamic, a2 : Dynamic) -> Void
+			[Local buffer(2859585):ocaml.T:ocaml.T]
+			[Local input(2859583):ocaml.In_channel:ocaml.In_channel]
+			[Local len(2859584):Unknown<0>:Unknown<2>]
+		[Return:Dynamic] [Local buffer(2859585):ocaml.T:ocaml.T][Function:(path : String) -> haxe.io.Bytes]
+	[Arg:String] [Local path(2859586):String]
 	[Block:Dynamic]
 		[Return:Dynamic]
-			[Call:haxe.io.Bytes]
-				[Field:(a0 : Buffer_T) -> haxe.io.Bytes]
-					[TypeExpr OCamlBuffer:{ Statics OCamlBuffer }]
-					[FStatic:(a0 : Buffer_T) -> haxe.io.Bytes]
-						OCamlBuffer
-						to_bytes:(a0 : Buffer_T) -> haxe.io.Bytes
-				[Call:Buffer_T]
-					[Field:(path : String) -> Buffer_T]
-						[TypeExpr ocaml.lib.File:Class<ocaml.lib.File>]
-						[FStatic:(path : String) -> Buffer_T]
-							ocaml.lib.File
-							getBuffer:(path : String) -> Buffer_T
-					[Local path(1302923):String:String][Function:(path : String) -> String]
-	[Arg:String] [Local path(1302924):String]
-	[Block:Dynamic]
-		[Var data(1302925):String]
-			[Call:String]
-				[Field:(a0 : Dynamic) -> String]
-					[TypeExpr OCamlString:Class<OCamlString>]
-					[FStatic:(a0 : Dynamic) -> String]
-						OCamlString
-						of_seq:(a0 : Dynamic) -> String
-				[Call:Dynamic]
-					[Field:(a0 : Buffer_T) -> Dynamic]
-						[TypeExpr OCamlBuffer:Class<OCamlBuffer>]
-						[FStatic:(a0 : Buffer_T) -> Dynamic]
-							OCamlBuffer
-							to_seq:(a0 : Buffer_T) -> Dynamic
-					[Call:Buffer_T]
-						[Field:(path : String) -> Buffer_T]
-							[TypeExpr ocaml.lib.File:Class<ocaml.lib.File>]
-							[FStatic:(path : String) -> Buffer_T]
-								ocaml.lib.File
-								getBuffer:(path : String) -> Buffer_T
-						[Local path(1302924):String:String]
-		[Return:Dynamic] [Local data(1302925):String:String][Function:(path : String, bytes : haxe.io.Bytes) -> Void]
-	[Arg:String] [Local path(1302926):String]
-	[Arg:haxe.io.Bytes] [Local bytes(1302927):haxe.io.Bytes]
-	[Block:Void]
-		[Var out(1302928):Unknown<0>]
 			[Call:Dynamic]
-				[Field:(a0 : String) -> Dynamic]
-					[TypeExpr OCamlStd:Class<OCamlStd>]
-					[FStatic:(a0 : String) -> Dynamic]
-						OCamlStd
-						open_out:(a0 : String) -> Dynamic
-				[Local path(1302926):String:String]
-		[Call:Void]
-			[Field:(a0 : Dynamic, a1 : haxe.io.Bytes) -> Void]
-				[TypeExpr OCamlStd:Class<OCamlStd>]
-				[FStatic:(a0 : Dynamic, a1 : haxe.io.Bytes) -> Void]
-					OCamlStd
-					output_bytes:(a0 : Dynamic, a1 : haxe.io.Bytes) -> Void
-			[Local out(1302928):Unknown<0>:Unknown<1>]
-			[Local bytes(1302927):haxe.io.Bytes:haxe.io.Bytes]
-		[Call:Void]
-			[Field:(a0 : Dynamic) -> Void]
-				[TypeExpr OCamlStd:Class<OCamlStd>]
-				[FStatic:(a0 : Dynamic) -> Void]
-					OCamlStd
-					close_out:(a0 : Dynamic) -> Void
-			[Local out(1302928):Unknown<0>:Unknown<2>][Function:(srcPath : String, dstPath : String) -> Void]
-	[Arg:String] [Local srcPath(1302929):String]
-	[Arg:String] [Local dstPath(1302930):String]
+				[Field:(a0 : ocaml.T) -> Dynamic]
+					[TypeExpr ocaml.Buffer:{ Statics ocaml.Buffer }]
+					[FStatic:(a0 : ocaml.T) -> Dynamic]
+						ocaml.Buffer
+						to_bytes:(a0 : ocaml.T) -> Dynamic
+				[Call:ocaml.T]
+					[Field:(path : String) -> ocaml.T]
+						[TypeExpr ocaml.lib.File:Class<ocaml.lib.File>]
+						[FStatic:(path : String) -> ocaml.T]
+							ocaml.lib.File
+							getBuffer:(path : String) -> ocaml.T
+					[Local path(2859586):String:String][Function:(path : String) -> String]
+	[Arg:String] [Local path(2859587):String]
+	[Block:Dynamic]
+		[Var data(2859588):String]
+			[Call:Dynamic]
+				[Field:(a0 : Dynamic) -> Dynamic]
+					[TypeExpr ocaml.OCamlStringTools:Class<ocaml.OCamlStringTools>]
+					[FStatic:(a0 : Dynamic) -> Dynamic]
+						ocaml.OCamlStringTools
+						of_seq:(a0 : Dynamic) -> Dynamic
+				[Call:Dynamic]
+					[Field:(a0 : ocaml.T) -> Dynamic]
+						[TypeExpr ocaml.Buffer:Class<ocaml.Buffer>]
+						[FStatic:(a0 : ocaml.T) -> Dynamic]
+							ocaml.Buffer
+							to_seq:(a0 : ocaml.T) -> Dynamic
+					[Call:ocaml.T]
+						[Field:(path : String) -> ocaml.T]
+							[TypeExpr ocaml.lib.File:Class<ocaml.lib.File>]
+							[FStatic:(path : String) -> ocaml.T]
+								ocaml.lib.File
+								getBuffer:(path : String) -> ocaml.T
+						[Local path(2859587):String:String]
+		[Return:Dynamic] [Local data(2859588):String:String][Function:(path : String, bytes : haxe.io.Bytes) -> Void]
+	[Arg:String] [Local path(2859589):String]
+	[Arg:haxe.io.Bytes] [Local bytes(2859590):haxe.io.Bytes]
 	[Block:Void]
-		[Var bytes(1302931):haxe.io.Bytes]
+		[Var out(2859591):ocaml.Out_channel]
+			[Call:ocaml.Out_channel]
+				[Field:(a0 : Dynamic) -> ocaml.Out_channel]
+					[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
+					[FStatic:(a0 : Dynamic) -> ocaml.Out_channel]
+						ocaml.Stdlib
+						open_out:(a0 : Dynamic) -> ocaml.Out_channel
+				[Local path(2859589):String:String]
+		[Call:Void]
+			[Field:(a0 : ocaml.Out_channel, a1 : Dynamic) -> Void]
+				[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
+				[FStatic:(a0 : ocaml.Out_channel, a1 : Dynamic) -> Void]
+					ocaml.Stdlib
+					output_bytes:(a0 : ocaml.Out_channel, a1 : Dynamic) -> Void
+			[Local out(2859591):ocaml.Out_channel:ocaml.Out_channel]
+			[Local bytes(2859590):haxe.io.Bytes:haxe.io.Bytes]
+		[Call:Void]
+			[Field:(a0 : ocaml.Out_channel) -> Void]
+				[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
+				[FStatic:(a0 : ocaml.Out_channel) -> Void]
+					ocaml.Stdlib
+					close_out:(a0 : ocaml.Out_channel) -> Void
+			[Local out(2859591):ocaml.Out_channel:ocaml.Out_channel][Function:(srcPath : String, dstPath : String) -> Void]
+	[Arg:String] [Local srcPath(2859592):String]
+	[Arg:String] [Local dstPath(2859593):String]
+	[Block:Void]
+		[Var bytes(2859594):haxe.io.Bytes]
 			[Call:haxe.io.Bytes]
 				[Field:(path : String) -> haxe.io.Bytes]
 					[TypeExpr ocaml.lib.File:Class<ocaml.lib.File>]
 					[FStatic:(path : String) -> haxe.io.Bytes]
 						ocaml.lib.File
 						getBytes:(path : String) -> haxe.io.Bytes
-				[Local srcPath(1302929):String:String]
+				[Local srcPath(2859592):String:String]
 		[Call:Void]
 			[Field:(path : String, bytes : haxe.io.Bytes) -> Void]
 				[TypeExpr ocaml.lib.File:Class<ocaml.lib.File>]
 				[FStatic:(path : String, bytes : haxe.io.Bytes) -> Void]
 					ocaml.lib.File
 					saveBytes:(path : String, bytes : haxe.io.Bytes) -> Void
-			[Local dstPath(1302930):String:String]
-			[Local bytes(1302931):haxe.io.Bytes:haxe.io.Bytes]
+			[Local dstPath(2859593):String:String]
+			[Local bytes(2859594):haxe.io.Bytes:haxe.io.Bytes]

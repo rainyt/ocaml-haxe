@@ -8,7 +8,7 @@ with STRING ret -> ret;;
 
 let () = let start_time = Sys.time() in
 let data = ref ("1,2,3,4,5,6") in
-let array = ref ((String.split_on_char (',') (!data))) in
+let array = ref ((String.split_on_char (",") (!data))) in
 let _g = ref (0) in
 let break = ref true in while (!break && (!_g < List.length !array)) do
 let s = ref (List.nth !array (!_g)) in
@@ -25,8 +25,8 @@ if ((Ocaml_lib_filesystem.exists (ref "../test-2.mp4"))) then (
 let files = ref ((Ocaml_lib_filesystem.readDirectory (ref "./"))) in
 let _g = ref (0) in
 let _g1 = ref (!files) in
-let break = ref true in while (!break && (!_g < Array.length !_g1)) do
-let s = ref (!_g1.(!_g)) in
+let break = ref true in while (!break && (!_g < List.length !_g1)) do
+let s = ref (List.nth !_g1 (!_g)) in
 _g := !_g + 1;
 (Printf.printf "%s%s\n" ("文件：") (!s));
  done;

@@ -1,4 +1,4 @@
-package;
+package ocaml;
 
 /**
  * 固定长度的数组

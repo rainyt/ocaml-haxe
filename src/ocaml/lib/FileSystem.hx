@@ -1,5 +1,7 @@
 package ocaml.lib;
 
+import ocaml.Sys;
+
 typedef FileStat = {}
 
 class FileSystem {
@@ -9,7 +11,7 @@ class FileSystem {
 	 * @return Bool
 	 */
 	public static function exists(file:String):Bool {
-		return OCamlSys.file_exists(file);
+		return Sys.file_exists(file);
 	}
 
 	/**
@@ -17,7 +19,7 @@ class FileSystem {
 	 * @param path 
 	 */
 	public static function createDirectory(path:String):Void {
-		OCamlSys.mkdir(path, 0);
+		Sys.mkdir(path, 0);
 	}
 
 	/**
@@ -25,7 +27,7 @@ class FileSystem {
 	 * @param dir 
 	 */
 	public static function deleteDirectory(dir:String):Void {
-		OCamlSys.rmdir(dir);
+		Sys.rmdir(dir);
 	}
 
 	/**
@@ -33,7 +35,7 @@ class FileSystem {
 	 * @param file 
 	 */
 	public static function deleteFile(file:String):Void {
-		OCamlSys.remove(file);
+		Sys.remove(file);
 	}
 
 	/**
@@ -42,7 +44,7 @@ class FileSystem {
 	 * @return String
 	 */
 	public static function fullPath(relPath:String):String {
-		return OCamlSys.executable_name + "/" + relPath;
+		return Sys.executable_name + "/" + relPath;
 	}
 
 	/**
@@ -51,7 +53,7 @@ class FileSystem {
 	 * @return Bool
 	 */
 	public static function isDirectory(path:String):Bool {
-		return OCamlSys.is_directory(path);
+		return Sys.is_directory(path);
 	}
 
 	/**
@@ -60,7 +62,7 @@ class FileSystem {
 	 * @return Array<String>
 	 */
 	public static function readDirectory(path:String):OCamlArray<String> {
-		return OCamlSys.readdir(path);
+		return Sys.readdir(path);
 	}
 
 	/**
@@ -69,15 +71,16 @@ class FileSystem {
 	 * @param newPath 
 	 */
 	public static function rename(path:String, newPath:String):Void {
-		OCamlSys.rename(path, newPath);
+		Sys.rename(path, newPath);
 	}
 
-	// /**
-	//  * 返回path指定的文件或目录FileStat信息。
-	//  * @param path
-	//  * @return FileStat
-	//  */
-	// public static function stat(path:String):FileStat {
-	// 	return null;
-	// }
+	/**
+	 * 返回path指定的文件或目录FileStat信息。
+	 * @param path
+	 * @return FileStat
+	 */
+	public static function stat(path:String):FileStat {
+		// Sys.sta
+		return null;
+	}
 }

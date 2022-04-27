@@ -2,3 +2,5 @@
 .DS_Store
 _build
 cpp_bin
+extern2
+ocaml-extern/ocaml

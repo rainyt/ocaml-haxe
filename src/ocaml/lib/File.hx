@@ -3,17 +3,18 @@ package ocaml.lib;
 import haxe.macro.ocaml.OCaml;
 import haxe.io.Bytes;
 import haxe.Exception;
+import ocaml.Stdlib;
 
-using OCamlBuffer;
+using ocaml.Buffer;
 
 /**
  * 模仿Haxe的文件API
  */
 class File {
-	public static function getBuffer(path:String):Buffer_T {
-		var input = OCamlStdlib.open_in(path);
-		var len = OCamlStdlib.in_channel_length(input);
-		var buffer = OCamlBuffer.create(len);
+	public static function getBuffer(path:String):Buffer.T {
+		var input = Stdlib.open_in(path);
+		var len = Stdlib.in_channel_length(input);
+		var buffer = Buffer.create(len);
 		buffer.add_channel(input, len);
 		return buffer;
 	}
@@ -33,7 +34,7 @@ class File {
 	 * @return String
 	 */
 	public static function getContent(path:String):String {
-		var data = OCamlString.of_seq(OCamlBuffer.to_seq(getBuffer(path)));
+		var data = OCamlStringTools.of_seq(Buffer.to_seq(getBuffer(path)));
 		return data;
 	}
 
@@ -43,9 +44,9 @@ class File {
 	 * @param bytes 
 	 */
 	public static function saveBytes(path:String, bytes:haxe.io.Bytes):Void {
-		var out = OCamlStdlib.open_out(path);
-		OCamlStdlib.output_bytes(out, bytes);
-		OCamlStdlib.close_out(out);
+		var out = Stdlib.open_out(path);
+		Stdlib.output_bytes(out, bytes);
+		Stdlib.close_out(out);
 	}
 
 	/**

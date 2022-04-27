@@ -218,14 +218,15 @@ class OCaml2Tools {
 			case TVar(v, expr):
 				var name = v.name;
 				name = StringTools.replace(name, "`", "_g");
-				switch (expr.expr) {
-					case TCast(e, m):
-						OCaml2Ref.retianType(v.id, e.t);
-					default:
-						if (v.name == "a")
-							trace("定义", v.id, v.t);
-						OCaml2Ref.retianType(v.id, v.t);
-				}
+				if (expr != null)
+					switch (expr.expr) {
+						case TCast(e, m):
+							OCaml2Ref.retianType(v.id, e.t);
+						default:
+							if (v.name == "a")
+								trace("定义", v.id, v.t);
+							OCaml2Ref.retianType(v.id, v.t);
+					}
 				// 临时变量都是经过Cast处理的
 				return 'let ${name} = ref (${toString(expr, true, v.t)}) in';
 

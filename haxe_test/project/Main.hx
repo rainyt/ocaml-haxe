@@ -1,5 +1,7 @@
 package project;
 
+import ocaml.OCamlStringTools;
+import ocaml.OCamlString;
 import ocaml.lib.FileSystem;
 import ocaml.lib.File;
 
@@ -13,7 +15,7 @@ class Main {
 
 	static function main() {
 		var data = "1,2,3,4,5,6";
-		var array = OCamlString.split_on_char(",", data);
+		var array = OCamlStringTools.split_on_char(",", data);
 		for (s in array) {
 			trace("拆分后：", s);
 		}
