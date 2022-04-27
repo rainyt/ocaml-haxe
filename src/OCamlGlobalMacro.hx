@@ -1,3 +1,4 @@
+import haxe.macro.ocaml.OCamlNewTypedef;
 import haxe.macro.TypedExprTools;
 import haxe.macro.ocaml.OCaml;
 import haxe.macro.ocaml.OCaml2Tools;
@@ -26,7 +27,13 @@ class OCamlGlobalMacro {
 							OCaml2Tools.currentOCaml = ocaml;
 							ocaml.write("\n");
 							for (item in type.statics.get()) {
-								parserField(ocaml, item);
+								parserField(ocaml, item, true);
+							}
+							if (type.constructor != null) {
+								// 需要对自已构造一个type
+								ocaml.writeHead(OCamlNewTypedef.define(type));
+								parserField(ocaml, type.constructor.get());
+								trace("构造函数：", type.name, type.constructor);
 							}
 							File.saveContent("bin/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".ml", ocaml.code);
 							File.saveContent("bin/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".log", ocaml.log);
@@ -40,7 +47,7 @@ class OCamlGlobalMacro {
 		return null;
 	}
 
-	public static function parserField(oc:OCaml, item:ClassField):Void {
+	public static function parserField(oc:OCaml, item:ClassField, isStatic:Bool = false):Void {
 		var runtime = true;
 		var haxecode = true;
 		switch (item.kind) {
@@ -52,10 +59,16 @@ class OCamlGlobalMacro {
 				// 方法
 				OCaml2Tools.funcTypeList = [];
 				OCaml2Tools.parserDefineFunc = true;
-				if (item.name == "main") {
+				if (item.name == "new") {
+					oc.write("let createSelf");
+				} else if (item.name == "main") {
 					oc.write("let ");
 				} else {
 					oc.write("let " + item.name);
+				}
+				if (!isStatic) {
+					// 如果不是静态变量时，则第一个参数永远为this
+					oc.write(" this");
 				}
 				oc.write(OCaml2Tools.toString(item.expr()) + ";;\n\n");
 				oc.writeDebugLog(TypedExprTools.toString(item.expr()));

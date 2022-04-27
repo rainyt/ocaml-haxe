@@ -212,6 +212,8 @@ class OCaml2Tools {
 						return Std.string(s);
 					case TNull:
 						return "None";
+					case TThis:
+						return "this";
 					default:
 						throw "Not support TConst:" + c;
 				}
