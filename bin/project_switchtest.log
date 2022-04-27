@@ -1,6 +1,6 @@
 [Function:() -> Void]
 	[Block:Void]
-		[Var i(255884):Int] [Const:Int] 0
+		[Var i(3298278):Int] [Const:Int] 0
 		[Meta:Void]
 			:ast(switch (i) {
 	case 0:
@@ -15,7 +15,7 @@
 		trace("%i\n", i);	
 })
 			[Switch:Void]
-				[Local i(255884):Int:Int]
+				[Local i(3298278):Int:Int]
 				[Case:Void]
 					[Const:Int] 0
 					[Block:Void]
@@ -32,7 +32,7 @@
 									lineNumber: [Const:Int] 10
 									className: [Const:String] "project.SwitchTest"
 									methodName: [Const:String] "main"
-									customParams: [ArrayDecl:Array<Dynamic>] [Local i(255884):Int:Int]
+									customParams: [ArrayDecl:Array<Dynamic>] [Local i(3298278):Int:Int]
 							[Meta:Void]
 								:ast(switch (i) {
 	case 2:
@@ -40,7 +40,7 @@
 })
 								[If:Void]
 									[Binop:Bool]
-										[Local i(255884):Int:Int]
+										[Local i(3298278):Int:Int]
 										==
 										[Const:Int] 2
 									[Then:Void] [Block:Void]
@@ -57,7 +57,7 @@
 													lineNumber: [Const:Int] 13
 													className: [Const:String] "project.SwitchTest"
 													methodName: [Const:String] "main"
-													customParams: [ArrayDecl:Array<Dynamic>] [Local i(255884):Int:Int]
+													customParams: [ArrayDecl:Array<Dynamic>] [Local i(3298278):Int:Int]
 				[Case:Void]
 					[Const:Int] 1
 					[Block:Void]
@@ -74,7 +74,7 @@
 									lineNumber: [Const:Int] 16
 									className: [Const:String] "project.SwitchTest"
 									methodName: [Const:String] "main"
-									customParams: [ArrayDecl:Array<Dynamic>] [Local i(255884):Int:Int]
+									customParams: [ArrayDecl:Array<Dynamic>] [Local i(3298278):Int:Int]
 				[Case:Void]
 					[Const:Int] 2
 					[Block:Void]
@@ -91,7 +91,7 @@
 									lineNumber: [Const:Int] 18
 									className: [Const:String] "project.SwitchTest"
 									methodName: [Const:String] "main"
-									customParams: [ArrayDecl:Array<Dynamic>] [Local i(255884):Int:Int]
+									customParams: [ArrayDecl:Array<Dynamic>] [Local i(3298278):Int:Int]
 		[Meta:Void]
 			:ast(switch (i + 1) {
 	case 2:
@@ -100,14 +100,14 @@
 		trace("default:%i\n", i);	
 })
 			[Block:Void]
-				[Var `(255886):Int]
+				[Var `(3298280):Int]
 					[Binop:Int]
-						[Local i(255884):Int:Int]
+						[Local i(3298278):Int:Int]
 						+
 						[Const:Int] 1
 				[If:Void]
 					[Binop:Bool]
-						[Local `(255886):Int:Int]
+						[Local `(3298280):Int:Int]
 						==
 						[Const:Int] 2
 					[Then:Void] [Block:Void]
@@ -124,7 +124,7 @@
 									lineNumber: [Const:Int] 23
 									className: [Const:String] "project.SwitchTest"
 									methodName: [Const:String] "main"
-									customParams: [ArrayDecl:Array<Dynamic>] [Local i(255884):Int:Int]
+									customParams: [ArrayDecl:Array<Dynamic>] [Local i(3298278):Int:Int]
 					[Else:Void] [Block:Void]
 						[Call:Void]
 							[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
@@ -138,7 +138,7 @@
 								lineNumber: [Const:Int] 25
 								className: [Const:String] "project.SwitchTest"
 								methodName: [Const:String] "main"
-								customParams: [ArrayDecl:Array<Dynamic>] [Local i(255884):Int:Int]
+								customParams: [ArrayDecl:Array<Dynamic>] [Local i(3298278):Int:Int]
 		[Meta:Void]
 			:ast(switch ("A") {
 	case "A":
