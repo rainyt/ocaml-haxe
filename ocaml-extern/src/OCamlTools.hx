@@ -10,6 +10,12 @@ class OCamlTools {
 	public static function toUpClassName(code:String, canCastDynamic:Bool):String {
 		code = toParamName(code);
 		code = code.charAt(0).toUpperCase() + code.substr(1);
+
+		switch (code) {
+			case "Int", "Bool", "Float", "String":
+				return code;
+		}
+
 		if (code.indexOf("?") != -1 || code.indexOf("(") != -1 || code.indexOf(")") != -1) {
 			return "Dynamic";
 		} else if (code.indexOf("*") != -1) {
@@ -23,17 +29,17 @@ class OCamlTools {
 		}
 		if (code.indexOf("list") != -1) {
 			// 数组
-			return 'Array<${StringTools.replace(code, "list", "")}>';
+			return 'Array<${toUpClassName(StringTools.replace(code, "list", ""), true)}>';
 		}
 		if (code.indexOf("array") != -1) {
 			// 数组
-			return 'OCamlArray<${StringTools.replace(code, "array", "")}>';
+			return 'OCamlArray<${toUpClassName(StringTools.replace(code, "array", ""), true)}>';
 		}
 		if (FileSystem.exists("extern/" + code + ".hx")) {
 			return code;
 		}
-		if (OCamlTypes.refs.exists(code)){
-			return code;
+		if (OCamlTypes.refs.exists(OCamlExternToolsv2.className + "_" + code)) {
+			return OCamlExternToolsv2.className + "_" + code;
 		}
 		return canCastDynamic ? "Dynamic" : code;
 	}

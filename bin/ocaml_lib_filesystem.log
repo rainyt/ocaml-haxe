@@ -1,92 +1,86 @@
 [Function:(file : String) -> Bool]
-	[Arg:String] [Local file(2859572):String]
+	[Arg:String] [Local file(2885684):String]
 	[Block:Dynamic]
 		[Return:Dynamic]
-			[Call:Dynamic]
-				[Field:(a0 : Dynamic) -> Dynamic]
+			[Call:Bool]
+				[Field:(a0 : String) -> Bool]
 					[TypeExpr ocaml.Sys:Class<ocaml.Sys>]
-					[FStatic:(a0 : Dynamic) -> Dynamic]
+					[FStatic:(a0 : String) -> Bool]
 						ocaml.Sys
-						file_exists:(a0 : Dynamic) -> Dynamic
-				[Local file(2859572):String:String][Function:(path : String) -> Void]
-	[Arg:String] [Local path(2859573):String]
+						file_exists:(a0 : String) -> Bool
+				[Local file(2885684):String:String][Function:(path : String) -> Void]
+	[Arg:String] [Local path(2885685):String]
 	[Block:Void]
 		[Call:Void]
-			[Field:(a0 : Dynamic, a1 : Dynamic) -> Void]
+			[Field:(a0 : String, a1 : Int) -> Void]
 				[TypeExpr ocaml.Sys:Class<ocaml.Sys>]
-				[FStatic:(a0 : Dynamic, a1 : Dynamic) -> Void]
+				[FStatic:(a0 : String, a1 : Int) -> Void]
 					ocaml.Sys
-					mkdir:(a0 : Dynamic, a1 : Dynamic) -> Void
-			[Local path(2859573):String:String]
+					mkdir:(a0 : String, a1 : Int) -> Void
+			[Local path(2885685):String:String]
 			[Const:Int] 0[Function:(dir : String) -> Void]
-	[Arg:String] [Local dir(2859574):String]
+	[Arg:String] [Local dir(2885686):String]
 	[Block:Void]
 		[Call:Void]
-			[Field:(a0 : Dynamic) -> Void]
+			[Field:(a0 : String) -> Void]
 				[TypeExpr ocaml.Sys:Class<ocaml.Sys>]
-				[FStatic:(a0 : Dynamic) -> Void]
+				[FStatic:(a0 : String) -> Void]
 					ocaml.Sys
-					rmdir:(a0 : Dynamic) -> Void
-			[Local dir(2859574):String:String][Function:(file : String) -> Void]
-	[Arg:String] [Local file(2859575):String]
+					rmdir:(a0 : String) -> Void
+			[Local dir(2885686):String:String][Function:(file : String) -> Void]
+	[Arg:String] [Local file(2885687):String]
 	[Block:Void]
 		[Call:Void]
-			[Field:(a0 : Dynamic) -> Void]
+			[Field:(a0 : String) -> Void]
 				[TypeExpr ocaml.Sys:Class<ocaml.Sys>]
-				[FStatic:(a0 : Dynamic) -> Void]
+				[FStatic:(a0 : String) -> Void]
 					ocaml.Sys
-					remove:(a0 : Dynamic) -> Void
-			[Local file(2859575):String:String][Function:(relPath : String) -> String]
-	[Arg:String] [Local relPath(2859576):String]
+					remove:(a0 : String) -> Void
+			[Local file(2885687):String:String][Function:(relPath : String) -> String]
+	[Arg:String] [Local relPath(2885688):String]
 	[Block:Dynamic]
 		[Return:Dynamic]
 			[Binop:String]
 				[Binop:String]
-					[Call:String]
-						[Field:(s : Dynamic) -> String]
-							[TypeExpr Std:Class<Std>]
-							[FStatic:(s : Dynamic) -> String]
-								Std
-								string:(s : Dynamic) -> String
-						[Field:Dynamic]
-							[TypeExpr ocaml.Sys:Class<ocaml.Sys>]
-							[FStatic:Dynamic]
-								ocaml.Sys
-								executable_name:Dynamic
+					[Field:String]
+						[TypeExpr ocaml.Sys:Class<ocaml.Sys>]
+						[FStatic:String]
+							ocaml.Sys
+							executable_name:String
 					+
 					[Const:String] "/"
 				+
-				[Local relPath(2859576):String:String][Function:(path : String) -> Bool]
-	[Arg:String] [Local path(2859577):String]
+				[Local relPath(2885688):String:String][Function:(path : String) -> Bool]
+	[Arg:String] [Local path(2885689):String]
 	[Block:Dynamic]
 		[Return:Dynamic]
-			[Call:Dynamic]
-				[Field:(a0 : Dynamic) -> Dynamic]
+			[Call:Bool]
+				[Field:(a0 : String) -> Bool]
 					[TypeExpr ocaml.Sys:Class<ocaml.Sys>]
-					[FStatic:(a0 : Dynamic) -> Dynamic]
+					[FStatic:(a0 : String) -> Bool]
 						ocaml.Sys
-						is_directory:(a0 : Dynamic) -> Dynamic
-				[Local path(2859577):String:String][Function:(path : String) -> ocaml.OCamlArray<String>]
-	[Arg:String] [Local path(2859578):String]
+						is_directory:(a0 : String) -> Bool
+				[Local path(2885689):String:String][Function:(path : String) -> ocaml.OCamlArray<String>]
+	[Arg:String] [Local path(2885690):String]
 	[Block:Dynamic]
 		[Return:Dynamic]
 			[Call:ocaml.OCamlArray<String>]
-				[Field:(a0 : Dynamic) -> ocaml.OCamlArray<String>]
+				[Field:(a0 : String) -> ocaml.OCamlArray<String>]
 					[TypeExpr ocaml.Sys:Class<ocaml.Sys>]
-					[FStatic:(a0 : Dynamic) -> ocaml.OCamlArray<String>]
+					[FStatic:(a0 : String) -> ocaml.OCamlArray<String>]
 						ocaml.Sys
-						readdir:(a0 : Dynamic) -> ocaml.OCamlArray<String>
-				[Local path(2859578):String:String][Function:(path : String, newPath : String) -> Void]
-	[Arg:String] [Local path(2859579):String]
-	[Arg:String] [Local newPath(2859580):String]
+						readdir:(a0 : String) -> ocaml.OCamlArray<String>
+				[Local path(2885690):String:String][Function:(path : String, newPath : String) -> Void]
+	[Arg:String] [Local path(2885691):String]
+	[Arg:String] [Local newPath(2885692):String]
 	[Block:Void]
 		[Call:Void]
-			[Field:(a0 : Dynamic, a1 : Dynamic) -> Void]
+			[Field:(a0 : String, a1 : String) -> Void]
 				[TypeExpr ocaml.Sys:Class<ocaml.Sys>]
-				[FStatic:(a0 : Dynamic, a1 : Dynamic) -> Void]
+				[FStatic:(a0 : String, a1 : String) -> Void]
 					ocaml.Sys
-					rename:(a0 : Dynamic, a1 : Dynamic) -> Void
-			[Local path(2859579):String:String]
-			[Local newPath(2859580):String:String][Function:(path : String) -> ocaml.lib.FileStat]
-	[Arg:String] [Local path(2859581):String]
+					rename:(a0 : String, a1 : String) -> Void
+			[Local path(2885691):String:String]
+			[Local newPath(2885692):String:String][Function:(path : String) -> ocaml.lib.FileStat]
+	[Arg:String] [Local path(2885693):String]
 	[Block:Dynamic] [Return:Dynamic] [Const:ocaml.lib.FileStat] null

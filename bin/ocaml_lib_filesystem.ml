@@ -17,7 +17,7 @@ let deleteFile file = (Sys.remove (!file));
 ;;
 
 let fullPath relPath = try 
-ignore (raise (STRING ((Std.string (Sys.executable_name)) ^ "/" ^ !relPath)));(Std.string (Sys.executable_name)) ^ "/" ^ !relPath;
+ignore (raise (STRING (Sys.executable_name ^ "/" ^ !relPath)));Sys.executable_name ^ "/" ^ !relPath;
 with STRING ret -> ret;;
 
 let isDirectory path = try 

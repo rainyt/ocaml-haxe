@@ -8,6 +8,7 @@ using StringTools;
 class OCaml2Return {
 	public static function toString(expr:TypedExpr):String {
 		var type = OCaml2Type.toString(OCaml2Tools.getCurrentReturnType()).toUpperCase();
+		trace("类型转换：", type, expr);
 		switch (expr.expr) {
 			case TLocal(v):
 			default:

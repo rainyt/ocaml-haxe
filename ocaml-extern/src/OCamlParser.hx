@@ -2,7 +2,11 @@ using OCamlTools;
 using StringTools;
 
 class OCamlParser {
-	public function new() {}
+	public var moudelClass:String;
+
+	public function new(moudelClass:String) {
+		this.moudelClass = moudelClass;
+	}
 
 	private var req = ~/[a-zA-Z][a-zA-Z0-9_]{1,}/;
 	private var enumsReq = ~/[A-Z][a-zA-Z0-9_]{1,}/g;
@@ -42,6 +46,7 @@ class OCamlParser {
 				if (code.indexOf("=") == -1) {
 					// 没有=于号，直接extern处理
 					haxeCode.writeHead("extern class " + toClassName() + "{}\n");
+					haxeCode.writeHead('@:native("${moudelClass}.${toClassName(true)}")\n');
 				} else if (code.indexOf(":") == -1) {
 					// 枚举
 					haxeCode.writeHead("enum " + toClassName() + " {\n");
@@ -50,6 +55,7 @@ class OCamlParser {
 					// 写入枚举
 					haxeCode.putHead("}\n");
 				} else if (code.indexOf(":") != -1) {
+					haxeCode.writeHead('@:native("${moudelClass}.${toClassName(true)}")\n');
 					haxeCode.putHead("extern class " + toClassName() + "{\n");
 					var array = toParams();
 					for (item in array) {
@@ -127,11 +133,17 @@ class OCamlParser {
 		return array;
 	}
 
-	public function toClassName():String {
+	public function toClassName(rootScr:Bool = false):String {
 		var cName = code.substr(code.indexOf(" ") + 1);
 		if (req.match(cName)) {
-			return req.matched(0).toUpClassName(false);
+			if (rootScr)
+				return req.matched(0);
+			else
+				return moudelClass + "_" + req.matched(0).toUpClassName(false);
 		}
-		return cName.toUpClassName(false);
+		if (rootScr)
+			return cName.replace(" ", "").replace("\n", "");
+		else
+			return moudelClass + "_" + cName.toUpClassName(false);
 	}
 }

@@ -11,7 +11,7 @@ using ocaml.Buffer;
  * 模仿Haxe的文件API
  */
 class File {
-	public static function getBuffer(path:String):Buffer.T {
+	public static function getBuffer(path:String):Buffer_T {
 		var input = Stdlib.open_in(path);
 		var len = Stdlib.in_channel_length(input);
 		var buffer = Buffer.create(len);

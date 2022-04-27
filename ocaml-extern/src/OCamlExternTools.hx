@@ -151,7 +151,7 @@ class OCamlExternTools {
 					var types = type.split(".");
 					var nName = types[0];
 					// return "OCaml" + types[0] + "." + ${nName} + types[1].charAt(0).toUpperCase() + types[1].substr(1);
-                    return "Dynamic";
+					return "Dynamic";
 				}
 				var defineType = currentClassName + "_" + type.charAt(0).toUpperCase() + type.substr(1);
 				if (defineTypes.exists(defineType))

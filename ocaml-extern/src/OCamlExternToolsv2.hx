@@ -65,7 +65,7 @@ class OCamlExternToolsv2 {
 						// trace("最终生成", parser.code + "\n\n");
 						parser.writeToHaxeCode(haxeCode);
 					}
-					parser = new OCamlParser();
+					parser = new OCamlParser(className);
 					parser.write(s + "\n");
 					if (-1 != s.indexOf("module")) {
 						isModule = true;
