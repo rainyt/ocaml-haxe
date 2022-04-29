@@ -9,16 +9,13 @@ using ocaml.Buffer;
  * 构造一个Process对象，该对象立即运行给定的命令。
  */
 class Process {
-	public static function create(cmd:String, args:Array<String>):String {
-		var text = "";
-		var input = Unix.open_process_in(cmd);
-		while (true) {
-			try {
-				text += Stdlib.input_line(input) + "\n";
-			} catch (e:Exception) {
-				break;
-			}
-		}
-		return text;
+	public var stdin:Stdlib_In_channel;
+
+	public var stdout:Stdlib_Out_channel;
+
+	public var data:String;
+
+	public function new(cmd) {
+		stdin = Unix.open_process_in(cmd);
 	}
 }

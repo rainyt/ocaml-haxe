@@ -48,6 +48,7 @@ class OCamlGlobalMacro {
 	}
 
 	public static function parserField(oc:OCaml, item:ClassField, isStatic:Bool = false):Void {
+		OCaml2Tools.currentField = item;
 		var runtime = true;
 		var haxecode = true;
 		switch (item.kind) {
@@ -60,13 +61,13 @@ class OCamlGlobalMacro {
 				OCaml2Tools.funcTypeList = [];
 				OCaml2Tools.parserDefineFunc = true;
 				if (item.name == "new") {
-					oc.write("let createSelf");
+					oc.write("let create_this");
 				} else if (item.name == "main") {
 					oc.write("let ");
 				} else {
 					oc.write("let " + item.name);
 				}
-				if (!isStatic) {
+				if (!isStatic && item.name != "new") {
 					// 如果不是静态变量时，则第一个参数永远为this
 					oc.write(" this");
 				}

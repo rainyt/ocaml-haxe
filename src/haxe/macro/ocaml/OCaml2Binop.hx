@@ -7,6 +7,7 @@ using haxe.macro.ocaml.OCaml2Utils;
 
 #if macro
 class OCaml2Binop {
+
 	public static function toString(op:Binop, e1:TypedExpr, e2:TypedExpr):String {
 		var opTag = toOp(op);
 		var type1 = OCaml2Type.toString(e1.t);
@@ -18,6 +19,7 @@ class OCaml2Binop {
 		} else if (type1 == "Int" && opTag.charAt(0) == "/") {
 			type1 = "Float";
 		}
+		trace(TypedExprTools.toString(e1));
 		switch (opTag) {
 			case "+=", "-=", "/=", "*=":
 				switch (type1) {
@@ -47,7 +49,13 @@ class OCaml2Binop {
 						throw "Not support type:" + type1;
 				}
 			case ":=":
-				return OCaml2Tools.toString(e1).removeDeCitation() + ' ${opTag} ' + OCaml2Tools.toString(e2);
+				var self = OCaml2Tools.toString(e1).removeDeCitation();
+				if (self.indexOf("this") == 0) {
+					var c = self + ' <- VALUE ' + OCaml2Tools.toString(e2);
+					return c;
+				}
+				var c = self + ' ${opTag} ' + OCaml2Tools.toString(e2);
+				return c;
 		}
 		return OCaml2Tools.toString(e1, e2.t) + ' ${opTag} ' + OCaml2Tools.toString(e2, false, e1.t);
 	}

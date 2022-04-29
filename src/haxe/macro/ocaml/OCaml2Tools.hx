@@ -21,6 +21,11 @@ class OCaml2Tools {
 	public static var currentType:ClassType;
 
 	/**
+	 * 当前定义
+	 */
+	public static var currentField:ClassField;
+
+	/**
 	 * 当前的脚本编译器
 	 */
 	public static var currentOCaml:OCaml;
@@ -84,6 +89,15 @@ class OCaml2Tools {
 			return "(* expr is null? *)";
 		}
 		switch (expr.expr) {
+			case TNew(c, params, el):
+				// trace(c, params, el);
+				var oc:OCaml = new OCaml();
+				oc.write('${c.toString().toTypeString(true)}.create_this ');
+				var needRef = OCaml2Tools.isHaxe2OCamlType(expr);
+				for (e in el) {
+					oc.write("(" + (needRef ? "ref " : "") + toString(e) + ")");
+				}
+				return oc.code;
 			case TTry(e, catches):
 				var oc:OCaml = new OCaml();
 				oc.write("try\n" + toString(e) + "with _ -> \n");
@@ -291,13 +305,17 @@ class OCaml2Tools {
 						oc.write(" = try \n");
 					} else {
 						oc.write(" = ");
-						if (tfunc.args.length == 0) {
+						if (currentField.name == "new") {
+							oc.write(OCamlNewTypedef.createThis(currentType));
+						} else if (tfunc.args.length == 0) {
 							oc.write("let start_time = Sys.time() in\n");
 						}
 					}
 					oc.write(toString(tfunc.expr, false, tfunc.t));
 					if (type != "VOID") {
 						oc.write("with " + OCaml2Type.OCaml2Type.toString(tfunc.t).toTypeString().toUpperCase() + " ret -> ret");
+					} else if (currentField.name == "new") {
+						oc.write("this");
 					} else if (tfunc.args.length == 0) {
 						oc.write('Printf.printf "runtime:%fs" (Sys.time() -. start_time)');
 					}
@@ -334,20 +352,25 @@ class OCaml2Tools {
 	 * @return Bool
 	 */
 	public static function isHaxe2OCamlType(expr:TypedExpr):Bool {
+		var type:Type = null;
 		switch (expr.expr) {
+			case TNew(c, params, el):
+				type = Context.getType(c.get().module);
 			case TField(e, fa):
 				// trace(e.t);
 				switch (e.t) {
 					case TType(t, params):
-						var type = Context.getType(t.get().module);
-						switch (type) {
-							case TInst(t, params):
-								return OCamlGlobalMacro.mlCompileEReg.match(t.get().module);
-							default:
-						}
+						type = Context.getType(t.get().module);
 					default:
 				}
 			default:
+		}
+		if (type != null) {
+			switch (type) {
+				case TInst(t, params):
+					return OCamlGlobalMacro.mlCompileEReg.match(t.get().module);
+				default:
+			}
 		}
 		return false;
 	}

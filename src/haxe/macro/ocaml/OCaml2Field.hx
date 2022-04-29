@@ -67,9 +67,13 @@ class OCaml2Field {
 					default:
 						// todo，如果是变量，应该直接访问，而方法应该保持现状
 						var field = TypeTools.findField(c.get(), cf.toString(), false);
+						var fieldValue = OCaml2Tools.toString(e);
+						if (!c.get().isExtern && fieldValue.indexOf("this") != 0) {
+							return 'match ${fieldValue}.${cf.toString()} with | Nil -> raise Not_found | VALUE v -> v';
+						}
 						if (field != null)
-							return '${OCaml2Tools.toString(e)}.${cf.toString()}';
-						return '${c.toString()}.${cf.toString()} ${OCaml2Tools.toString(e)}';
+							return '${fieldValue}.${cf.toString()}';
+						return '${c.toString()}.${cf.toString()} ${fieldValue}';
 				}
 			case FAnon(cf):
 				trace(cf);

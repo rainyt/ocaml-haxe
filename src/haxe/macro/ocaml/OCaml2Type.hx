@@ -36,13 +36,15 @@ class OCaml2Type {
 		}
 	}
 
-	public static function toTypeString(data:String):String {
+	public static function toTypeString(data:String, upChar:Bool = false):String {
 		data = StringTools.replace(data, ".", "_");
 		data = StringTools.replace(data, " ", "_");
 		switch (data.toLowerCase()) {
 			case "haxe_io_bytes":
 				return "bytes";
 		}
-		return data;
+		if (upChar)
+			return data.charAt(0).toUpperCase() + data.substr(1).toLowerCase();
+		return data.toLowerCase();
 	}
 }

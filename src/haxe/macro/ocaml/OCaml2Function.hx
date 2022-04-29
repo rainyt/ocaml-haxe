@@ -35,7 +35,8 @@ class OCaml2Function {
 					default:
 				}
 				for (index => value in types) {
-					switch (value) {
+					var type = value.charAt(0).toUpperCase() + value.substr(1).toLowerCase();
+					switch (type) {
 						case "Bool":
 							types[index] = "%b";
 						case "OCamlChar":
