@@ -10,8 +10,7 @@ class Main {
 		trace("data=", data);
 
 		var process2 = new Process("haxelib -help");
-		var data2 = Stdlib.input_line(process2.stdin);
-		trace("data2=", data2); 
-		// trace(msg);
+		// Call process2.readAllString();
+		trace("__11 ", process2.readAllString("Message:"));
 	}
 }

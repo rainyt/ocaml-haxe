@@ -31,6 +31,11 @@ class OCaml2Tools {
 	public static var currentOCaml:OCaml;
 
 	/**
+	 * 是否静态方法
+	 */
+	public static var currentStatic:Bool = false;
+
+	/**
 	 * 上一个lastBlockExpr，如IF While等
 	 */
 	public static var lastBlockExpr:TypedExpr;
@@ -295,7 +300,7 @@ class OCaml2Tools {
 					parserDefineFunc = false;
 					var oc = new OCaml();
 					var type = OCaml2Type.toString(tfunc.t).toUpperCase();
-					if (tfunc.args.length == 0)
+					if (tfunc.args.length == 0 && OCaml2Tools.currentStatic)
 						oc.write("()");
 					else
 						for (a in tfunc.args) {
@@ -361,14 +366,18 @@ class OCaml2Tools {
 				switch (e.t) {
 					case TType(t, params):
 						type = Context.getType(t.get().module);
+					case TInst(t, params):
+						return !t.get().isExtern;
 					default:
+						throw "??" + e.t;
 				}
 			default:
 		}
 		if (type != null) {
 			switch (type) {
 				case TInst(t, params):
-					return OCamlGlobalMacro.mlCompileEReg.match(t.get().module);
+					return !t.get().isExtern;
+				// return OCamlGlobalMacro.mlCompileEReg.match(t.get().module);
 				default:
 			}
 		}

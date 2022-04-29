@@ -11,11 +11,19 @@ using ocaml.Buffer;
 class Process {
 	public var stdin:Stdlib_In_channel;
 
-	public var stdout:Stdlib_Out_channel;
-
-	public var data:String;
-
 	public function new(cmd) {
 		stdin = Unix.open_process_in(cmd);
+	}
+
+	public function readAllString(msg:String):String {
+		var lines = "";
+		while (true) {
+			try {
+				lines += Stdlib.input_line(stdin) + "\n";
+			} catch (e:Exception) {
+				return msg + lines;
+			}
+		}
+		return msg + lines;
 	}
 }

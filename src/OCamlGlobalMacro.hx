@@ -33,7 +33,9 @@ class OCamlGlobalMacro {
 								// 需要对自已构造一个type
 								ocaml.writeHead(OCamlNewTypedef.define(type));
 								parserField(ocaml, type.constructor.get());
-								trace("构造函数：", type.name, type.constructor);
+								for (index => value in type.fields.get()) {
+									parserField(ocaml, value, false);
+								}
 							}
 							File.saveContent("bin/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".ml", ocaml.code);
 							File.saveContent("bin/" + StringTools.replace(t.toString(), ".", "_").toLowerCase() + ".log", ocaml.log);
@@ -48,11 +50,14 @@ class OCamlGlobalMacro {
 	}
 
 	public static function parserField(oc:OCaml, item:ClassField, isStatic:Bool = false):Void {
+		OCaml2Tools.currentStatic = isStatic;
 		OCaml2Tools.currentField = item;
 		var runtime = true;
 		var haxecode = true;
 		switch (item.kind) {
 			case FVar(read, write):
+				if (!isStatic)
+					return;
 				// 定义
 				oc.write("let " + item.name + ' = ref (${OCaml2Tools.toString(item.expr())})');
 				oc.write(";;\n\n");

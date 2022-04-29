@@ -1,23 +1,25 @@
-type t_string = 
-| Nil
-| VALUE of string
-type t_stdlib_out_channel = 
-| Nil
-| VALUE of Stdlib.out_channel
+exception STRING of string
 type t_stdlib_in_channel = 
 | Nil
 | VALUE of Stdlib.in_channel
 
 type process_this={
 mutable stdin:t_stdlib_in_channel;
-mutable stdout:t_stdlib_out_channel;
-mutable data:t_string;
 }
 let create_this cmd = let this = {
 stdin=Nil;
-stdout=Nil;
-data=Nil;
 } in
 this.stdin <- VALUE (Unix.open_process_in (!cmd));
 this;;
+
+let readAllString this msg = try 
+let lines = ref ("") in
+let break = ref true in while (!break && (true)) do
+try
+lines := !lines ^ (Stdlib.input_line (match this.stdin with | Nil -> raise Not_found | VALUE v -> v)) ^ "\n";
+with _ -> 
+ignore (raise (STRING (!msg ^ !lines)));
+() done;
+ignore (raise (STRING (!msg ^ !lines)));!msg ^ !lines;
+with STRING ret -> ret;;
 

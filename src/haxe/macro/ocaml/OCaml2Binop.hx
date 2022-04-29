@@ -4,10 +4,10 @@ import haxe.macro.Type.TypedExpr;
 import haxe.macro.Expr.Binop;
 
 using haxe.macro.ocaml.OCaml2Utils;
+using haxe.macro.ocaml.OCaml2Type;
 
 #if macro
 class OCaml2Binop {
-
 	public static function toString(op:Binop, e1:TypedExpr, e2:TypedExpr):String {
 		var opTag = toOp(op);
 		var type1 = OCaml2Type.toString(e1.t);
@@ -19,7 +19,7 @@ class OCaml2Binop {
 		} else if (type1 == "Int" && opTag.charAt(0) == "/") {
 			type1 = "Float";
 		}
-		trace(TypedExprTools.toString(e1));
+		type1 = type1.toTypeString(true);
 		switch (opTag) {
 			case "+=", "-=", "/=", "*=":
 				switch (type1) {
@@ -49,11 +49,27 @@ class OCaml2Binop {
 						throw "Not support type:" + type1;
 				}
 			case ":=":
-				var self = OCaml2Tools.toString(e1).removeDeCitation();
-				if (self.indexOf("this") == 0) {
-					var c = self + ' <- VALUE ' + OCaml2Tools.toString(e2);
-					return c;
+				trace(e1.expr);
+				switch (e1.expr) {
+					case TField(e, fa):
+						switch (e.expr) {
+							case TConst(c):
+								switch (c) {
+									case TThis:
+										var tname = "";
+										switch (fa) {
+											case FInstance(c, params, cf):
+												tname = cf.toString();
+											default:
+										}
+										return 'this.${tname} <- VALUE ${OCaml2Tools.toString(e2)}';
+									default:
+								}
+							default:
+						}
+					default:
 				}
+				var self = OCaml2Tools.toString(e1).removeDeCitation();
 				var c = self + ' ${opTag} ' + OCaml2Tools.toString(e2);
 				return c;
 		}

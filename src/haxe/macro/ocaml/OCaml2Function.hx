@@ -82,23 +82,41 @@ class OCaml2Function {
 				var needList = funName.length - 1 == funName.lastIndexOf("@");
 				if (needList)
 					funName += " [";
-				funName = funName + " " + (args.length > 0 ? args.join(" ") : "()");
+				var fundata = findFunctionField(expr);
+				if (fundata == null || fundata.isStatic)
+					funName = funName + " " + (args.length > 0 ? args.join(" ") : "()");
+				else {
+					funName = funName + " " + fundata.name + " " + (args.length > 0 ? args.join(" ") : "");
+				}
 				if (needList)
 					funName += " ]";
 				return funName;
 		}
 	}
-	// public static function toArgsType(value:String, type:{name:String, opt:Bool, t:Type}):String {
-	// 	var t = OCaml2Type.toString(type.t);
-	// 	switch (t) {
-	// 		case "OCamlChar":
-	// 			if (value.indexOf("ignore (raise (STRING") != -1) {
-	// 				OCaml2Tools.currentOCaml.writeHead('exception OCAMLCHAR of char\n');
-	// 				value = StringTools.replace(value, "ignore (raise (STRING", "ignore (raise (OCAMLCHAR");
-	// 			}
-	// 			return StringTools.replace(value, "\"", "'");
-	// 	}
-	// 	return value;
-	// }
+
+	public static function findFunctionField(expr:TypedExpr):{
+		name:String,
+		isStatic:Bool
+	} {
+		switch (expr.expr) {
+			case TField(e, fa):
+				switch (fa) {
+					case FInstance(c, params, cf):
+						var isStatic = true;
+						var f = TypeTools.findField(c.get(), cf.toString(), true);
+						if (f == null) {
+							isStatic = false;
+							f = TypeTools.findField(c.get(), cf.toString(), false);
+						}
+						return {
+							name: OCaml2Tools.toString(e),
+							isStatic: isStatic
+						}
+					default:
+				}
+			default:
+		}
+		return null;
+	}
 }
 #end

@@ -68,8 +68,14 @@ class OCaml2Field {
 						// todo，如果是变量，应该直接访问，而方法应该保持现状
 						var field = TypeTools.findField(c.get(), cf.toString(), false);
 						var fieldValue = OCaml2Tools.toString(e);
-						if (!c.get().isExtern && fieldValue.indexOf("this") != 0) {
-							return 'match ${fieldValue}.${cf.toString()} with | Nil -> raise Not_found | VALUE v -> v';
+						var cget = c.get();
+						if (!cget.isExtern) {
+							switch (field.kind) {
+								case FVar(read, write):
+									return 'match ${fieldValue}.${cf.toString()} with | Nil -> raise Not_found | VALUE v -> v';
+								case FMethod(k):
+									return OCaml2Type.toTypeString(cget.module, true) + '.${cf.toString()}';
+							}
 						}
 						if (field != null)
 							return '${fieldValue}.${cf.toString()}';
