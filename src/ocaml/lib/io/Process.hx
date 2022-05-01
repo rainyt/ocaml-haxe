@@ -31,6 +31,10 @@ class Process {
 		}
 		return msg + lines + msg;
 	}
+
+	public function getProcess2():Process2 {
+		return process2;
+	}
 }
 
 class Process2 {

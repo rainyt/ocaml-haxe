@@ -1,3 +1,4 @@
+exception OCAML_LIB_IO_PROCESS2_PROCESS2_THIS of Ocaml_lib_io_process2.process2_this
 exception STRING of string
 type t_ocaml_lib_io_process2_process2_this = 
 | Nil
@@ -31,4 +32,8 @@ ignore (raise (STRING (!msg ^ !lines ^ !msg)));
  done;
 ignore (raise (STRING (!msg ^ !lines ^ !msg)));!msg ^ !lines ^ !msg;
 with STRING ret -> ret;;
+
+let getProcess2 this = try 
+ignore (raise (OCAML_LIB_IO_PROCESS2_PROCESS2_THIS (match this.process2 with | Nil -> raise Not_found | VALUE v -> v)));match this.process2 with | Nil -> raise Not_found | VALUE v -> v;
+with OCAML_LIB_IO_PROCESS2_PROCESS2_THIS ret -> ret;;
 

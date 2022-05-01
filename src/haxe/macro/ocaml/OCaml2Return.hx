@@ -16,13 +16,27 @@ class OCaml2Return {
 			case "ocaml_Char":
 				OCaml2Tools.currentOCaml.writeHead('exception ${type} of char\n');
 			default:
+				// type = type.replace(".", "_");
+				// var noParser = false;
+				// if (type.indexOf(" ") != -1) {
+				// 	noParser = true;
+				// 	type = type.replace(" ", "_");
+				// }
+				// OCaml2Tools.currentOCaml.writeHead('exception ${type} of ${parseType(type.toLowerCase(), noParser)}\n');
+				var ptype = type;
+				if(ptype.indexOf(".") != -1){
+					ptype = ptype.charAt(0).toUpperCase() + ptype.substr(1).toLowerCase();
+				}
+				else{
+					ptype = ptype.toLowerCase();
+				}
 				type = type.replace(".", "_");
 				var noParser = false;
 				if (type.indexOf(" ") != -1) {
 					noParser = true;
 					type = type.replace(" ", "_");
 				}
-				OCaml2Tools.currentOCaml.writeHead('exception ${type} of ${parseType(type.toLowerCase(), noParser)}\n');
+				OCaml2Tools.currentOCaml.writeHead('exception ${type} of ${ptype}\n');
 		}
 		return 'ignore (raise (${type} (${OCaml2Tools.toString(expr, false, OCaml2Tools.getCurrentReturnType())})))';
 	}
