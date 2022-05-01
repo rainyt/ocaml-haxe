@@ -38,9 +38,9 @@ class Process {
 }
 
 class Process2 {
-	public var name:String;
+	public var name:String = "123123123";
 
-	public function new() {
-		name = "123123";
-	}
+	public var name2:String = null;
+
+	public function new() {}
 }

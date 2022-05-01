@@ -91,7 +91,8 @@ class OCaml2Tools {
 	 */
 	public static function toString(expr:TypedExpr, ref:Bool = false, castType:Type = null):String {
 		if (expr == null) {
-			return "(* expr is null? *)";
+			// return "(* expr is null? *)";
+			return "Nil";
 		}
 		switch (expr.expr) {
 			case TNew(c, params, el):
@@ -230,7 +231,7 @@ class OCaml2Tools {
 					case TFloat(s):
 						return Std.string(s);
 					case TNull:
-						return "None";
+						return "Nil";
 					case TThis:
 						return "this";
 					default:

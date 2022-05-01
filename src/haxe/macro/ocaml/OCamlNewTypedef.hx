@@ -4,6 +4,7 @@ import haxe.macro.Type.ClassType;
 
 using StringTools;
 
+#if macro
 class OCamlNewTypedef {
 	public static function define(type:ClassType):String {
 		var oc:OCaml = new OCaml();
@@ -19,7 +20,7 @@ class OCamlNewTypedef {
 						var type = OCaml2Type.toString(item.type);
 						var toTypedefType = "t_" + type.replace(".", "_").toLowerCase();
 						oc.writeHead('type ${toTypedefType} = \n| Nil\n| VALUE of ${type}\n');
-						oc.write("mutable "+item.name + ":" + toTypedefType + ";\n");
+						oc.write("mutable " + item.name + ":" + toTypedefType + ";\n");
 					default:
 				}
 			}
@@ -40,9 +41,13 @@ class OCamlNewTypedef {
 						// 追加Null定义
 						var type = OCaml2Type.toString(item.type);
 						var toTypedefType = "t_" + type.replace(".", "_").toLowerCase();
-						oc.write(item.name + "=Nil;\n");
-						// oc.writeHead('type ${toTypedefType} = \n| Nil\n| OBJ of ${type}\n');
-						// oc.write(item.name + ":" + toTypedefType + ";\n");
+						var itemValue = OCaml2Tools.toString(item.expr());
+						if (itemValue != "Nil") {
+							itemValue = "VALUE " + itemValue;
+						}
+						oc.write(item.name + "=" + itemValue + ";\n");
+					// oc.writeHead('type ${toTypedefType} = \n| Nil\n| OBJ of ${type}\n');
+					// oc.write(item.name + ":" + toTypedefType + ";\n");
 					default:
 				}
 			}
@@ -51,3 +56,4 @@ class OCamlNewTypedef {
 		return oc.code;
 	}
 }
+#end
