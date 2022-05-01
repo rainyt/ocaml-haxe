@@ -10,7 +10,7 @@ class Main {
 		trace("data=", data);
 
 		var process2 = new Process("haxelib -help");
-		// Call process2.readAllString();
-		trace("__11 ", process2.readAllString("Message:"));
+		var data2 = process2.readAllString(">>>><<<");
+		// trace(data2);
 	}
 }

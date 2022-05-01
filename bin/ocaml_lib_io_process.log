@@ -1,6 +1,6 @@
 [Function:(cmd : String) -> Void]
-	[Arg:String] [Local cmd(1559717):String]
-	[Block:ocaml.Stdlib_In_channel]
+	[Arg:String] [Local cmd(397500):String]
+	[Block:ocaml.lib.io.Process2]
 		[Binop:ocaml.Stdlib_In_channel]
 			[Field:ocaml.Stdlib_In_channel]
 				[Const:ocaml.lib.io.Process] this
@@ -14,40 +14,72 @@
 					[FStatic:(a0 : String) -> Dynamic]
 						ocaml.Unix
 						open_process_in:(a0 : String) -> Dynamic
-				[Local cmd(1559717):String:String][Function:(msg : String) -> String]
-	[Arg:String] [Local msg(1559718):String]
+				[Local cmd(397500):String:String]
+		[Binop:ocaml.lib.io.Process2]
+			[Field:ocaml.lib.io.Process2]
+				[Const:ocaml.lib.io.Process] this
+				[FInstance:ocaml.lib.io.Process2]
+					ocaml.lib.io.Process
+					process2:ocaml.lib.io.Process2
+			=
+			[New:ocaml.lib.io.Process2] ocaml.lib.io.Process2[Function:(msg : String) -> String]
+	[Arg:String] [Local msg(397501):String]
 	[Block:Dynamic]
-		[Var lines(1559719):String] [Const:String] ""
+		[Var lines(397502):String] [Const:String] ""
+		[Var p(397503):ocaml.lib.io.Process2] [New:ocaml.lib.io.Process2] ocaml.lib.io.Process2
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Field:String]
+				[Local p(397503):ocaml.lib.io.Process2:ocaml.lib.io.Process2]
+				[FInstance:String]
+					ocaml.lib.io.Process2
+					name:String
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
+				fileName: [Const:String] "src/ocaml/lib/io/Process.hx"
+				lineNumber: [Const:Int] 24
+				className: [Const:String] "ocaml.lib.io.Process"
+				methodName: [Const:String] "readAllString"
 		[While:Void]
-			[Parenthesis:Bool] [Const:Bool] true
-			[Try:Void]
-				[Block:String]
-					[Binop:String]
-						[Local lines(1559719):String:String]
-						+=
+			[Const:Bool] true
+			[Block:Void]
+				[Try:Void]
+					[Block:String]
 						[Binop:String]
-							[Call:String]
-								[Field:(a0 : ocaml.Stdlib_In_channel) -> String]
-									[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
-									[FStatic:(a0 : ocaml.Stdlib_In_channel) -> String]
-										ocaml.Stdlib
-										input_line:(a0 : ocaml.Stdlib_In_channel) -> String
-								[Field:ocaml.Stdlib_In_channel]
-									[Const:ocaml.lib.io.Process] this
-									[FInstance:ocaml.Stdlib_In_channel]
-										ocaml.lib.io.Process
-										stdin:ocaml.Stdlib_In_channel
-							+
-							[Const:String] "\n"
-				Catch [Local e(1559720):haxe.Exception]
-					[Block:Dynamic]
-						[Return:Dynamic]
+							[Local lines(397502):String:String]
+							+=
 							[Binop:String]
-								[Local msg(1559718):String:String]
+								[Call:String]
+									[Field:(a0 : ocaml.Stdlib_In_channel) -> String]
+										[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
+										[FStatic:(a0 : ocaml.Stdlib_In_channel) -> String]
+											ocaml.Stdlib
+											input_line:(a0 : ocaml.Stdlib_In_channel) -> String
+									[Field:ocaml.Stdlib_In_channel]
+										[Const:ocaml.lib.io.Process] this
+										[FInstance:ocaml.Stdlib_In_channel]
+											ocaml.lib.io.Process
+											stdin:ocaml.Stdlib_In_channel
 								+
-								[Local lines(1559719):String:String]
+								[Const:String] "\n"
+					Catch [Local e(397504):haxe.Exception]
+						[Block:Dynamic]
+							[Return:Dynamic]
+								[Binop:String]
+									[Binop:String]
+										[Local msg(397501):String:String]
+										+
+										[Local lines(397502):String:String]
+									+
+									[Local msg(397501):String:String]
 		[Return:Dynamic]
 			[Binop:String]
-				[Local msg(1559718):String:String]
+				[Binop:String]
+					[Local msg(397501):String:String]
+					+
+					[Local lines(397502):String:String]
 				+
-				[Local lines(1559719):String:String]
+				[Local msg(397501):String:String]

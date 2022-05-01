@@ -14,6 +14,9 @@ class OCaml2Type {
 						})[0];
 						if (meta != null)
 							return ExprTools.getValue(meta.params[0]);
+						if (!t.get().isExtern) {
+							return toTypeString(t.toString(), true) + "." + t.get().name.toLowerCase() + "_this";
+						}
 						return toTypeString(t.toString());
 				}
 			case TAbstract(t, params):
