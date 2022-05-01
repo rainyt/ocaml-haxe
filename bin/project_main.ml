@@ -6,5 +6,7 @@ let data = ref ((Stdlib.input_line (match !process.stdin with | Nil -> raise Not
 let process2 = ref (Ocaml_lib_io_process.create_this (ref "haxelib -help")) in
 let data2 = ref ((Ocaml_lib_io_process.readAllString !process2 (ref ">>>><<<"))) in
 (Printf.printf "%s\n" (match (Ocaml_lib_io_process.getProcess2 !process2 ).name with | Nil -> raise Not_found | VALUE v -> v));
+let msg = ref (match (Ocaml_lib_io_process.getProcess2 !process2 ).name with | Nil -> raise Not_found | VALUE v -> v ^ "___123__" ^ match (Ocaml_lib_io_process.getProcess2 !process2 ).name with | Nil -> raise Not_found | VALUE v -> v) in
+(Printf.printf "%s\n" (!msg));
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

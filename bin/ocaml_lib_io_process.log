@@ -1,5 +1,5 @@
 [Function:(cmd : String) -> Void]
-	[Arg:String] [Local cmd(142155):String]
+	[Arg:String] [Local cmd(156260):String]
 	[Block:ocaml.lib.io.Process2]
 		[Binop:ocaml.Stdlib_In_channel]
 			[Field:ocaml.Stdlib_In_channel]
@@ -14,7 +14,7 @@
 					[FStatic:(a0 : String) -> Dynamic]
 						ocaml.Unix
 						open_process_in:(a0 : String) -> Dynamic
-				[Local cmd(142155):String:String]
+				[Local cmd(156260):String:String]
 		[Binop:ocaml.lib.io.Process2]
 			[Field:ocaml.lib.io.Process2]
 				[Const:ocaml.lib.io.Process] this
@@ -23,10 +23,10 @@
 					process2:ocaml.lib.io.Process2
 			=
 			[New:ocaml.lib.io.Process2] ocaml.lib.io.Process2[Function:(msg : String) -> String]
-	[Arg:String] [Local msg(142156):String]
+	[Arg:String] [Local msg(156261):String]
 	[Block:Dynamic]
-		[Var lines(142157):String] [Const:String] ""
-		[Var p(142158):ocaml.lib.io.Process2] [New:ocaml.lib.io.Process2] ocaml.lib.io.Process2
+		[Var lines(156262):String] [Const:String] ""
+		[Var p(156263):ocaml.lib.io.Process2] [New:ocaml.lib.io.Process2] ocaml.lib.io.Process2
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 				[TypeExpr haxe.Log:Class<haxe.Log>]
@@ -34,13 +34,13 @@
 					haxe.Log
 					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
 			[Field:String]
-				[Local p(142158):ocaml.lib.io.Process2:ocaml.lib.io.Process2]
+				[Local p(156263):ocaml.lib.io.Process2:ocaml.lib.io.Process2]
 				[FInstance:String]
 					ocaml.lib.io.Process2
 					name:String
 			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
 				fileName: [Const:String] "src/ocaml/lib/io/Process.hx"
-				lineNumber: [Const:Int] 24
+				lineNumber: [Const:Int] 26
 				className: [Const:String] "ocaml.lib.io.Process"
 				methodName: [Const:String] "readAllString"
 		[While:Void]
@@ -49,7 +49,7 @@
 				[Try:Void]
 					[Block:String]
 						[Binop:String]
-							[Local lines(142157):String:String]
+							[Local lines(156262):String:String]
 							+=
 							[Binop:String]
 								[Call:String]
@@ -65,24 +65,24 @@
 											stdin:ocaml.Stdlib_In_channel
 								+
 								[Const:String] "\n"
-					Catch [Local e(142159):haxe.Exception]
+					Catch [Local e(156264):haxe.Exception]
 						[Block:Dynamic]
 							[Return:Dynamic]
 								[Binop:String]
 									[Binop:String]
-										[Local msg(142156):String:String]
+										[Local msg(156261):String:String]
 										+
-										[Local lines(142157):String:String]
+										[Local lines(156262):String:String]
 									+
-									[Local msg(142156):String:String]
+									[Local msg(156261):String:String]
 		[Return:Dynamic]
 			[Binop:String]
 				[Binop:String]
-					[Local msg(142156):String:String]
+					[Local msg(156261):String:String]
 					+
-					[Local lines(142157):String:String]
+					[Local lines(156262):String:String]
 				+
-				[Local msg(142156):String:String][Function:() -> ocaml.lib.io.Process2]
+				[Local msg(156261):String:String][Function:() -> ocaml.lib.io.Process2]
 	[Block:Dynamic]
 		[Return:Dynamic]
 			[Field:ocaml.lib.io.Process2]

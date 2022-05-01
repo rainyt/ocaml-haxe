@@ -13,6 +13,8 @@ class Process {
 
 	public var process2:Process2;
 
+	public var name2:String;
+
 	public function new(cmd) {
 		stdin = Unix.open_process_in(cmd);
 		process2 = new Process2();
@@ -42,5 +44,6 @@ class Process2 {
 
 	public var name2:String = null;
 
-	public function new() {}
+	public function new() {
+	}
 }

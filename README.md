@@ -21,14 +21,15 @@ dune exec bin
 
 ## 编写注意事项
 1. 方法需要按上往下的优先级实现。
+2. 避免参数存在null值，如果调用到null值，会发生Not_Found的错误。
 
 ## 路线图
 陆续实现Haxe的所能支持的语法，由于是第一次对语言进行翻译，还不确定能完成到什么程度，后续再更新路线图。Realize the syntax that haxe can support one after another. Since it is the first time to translate the language, it is uncertain to what extent it can be completed. Update the roadmap later
 
 所有实现正在重构：
 
-- [ ] return应该要支持返回类型。
-- [ ] return应判断方法返回类型。
+- [x] return应该要支持返回类型。
+- [x] return应判断方法返回类型。
 - [x] 支持using语句。
 - [ ] 新增一个OCaml的extern自动化工具。
 - [x] trace输出，能够自动识别每个参数的类型，使用Printf.printf正确输出的支持。
@@ -52,3 +53,4 @@ dune exec bin
 - [ ] 标签变量
     - 可通过`@param 1`的表达式来处理，例如：`ApiTest.labelFunc(@a 1, @b 2)`
     - 注意不能含:，否则会无法识别。
+- [x] 支持自定义类型，方法访问、变量访问、自定义变量等。

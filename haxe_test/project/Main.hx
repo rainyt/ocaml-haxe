@@ -12,5 +12,7 @@ class Main {
 		var process2 = new Process("haxelib -help");
 		var data2 = process2.readAllString(">>>><<<");
 		trace(process2.getProcess2().name);
+		var msg = process2.getProcess2().name + "___123__" + process2.getProcess2().name;
+		trace(msg);
 	}
 }

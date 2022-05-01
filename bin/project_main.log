@@ -1,10 +1,10 @@
 [Function:() -> Void]
 	[Block:Void]
-		[Var process(142160):ocaml.lib.io.Process]
+		[Var process(156265):ocaml.lib.io.Process]
 			[New:ocaml.lib.io.Process]
 				ocaml.lib.io.Process
 				[Const:String] "ocaml -help"
-		[Var data(142161):String]
+		[Var data(156266):String]
 			[Call:String]
 				[Field:(a0 : ocaml.Stdlib_In_channel) -> String]
 					[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
@@ -12,7 +12,7 @@
 						ocaml.Stdlib
 						input_line:(a0 : ocaml.Stdlib_In_channel) -> String
 				[Field:ocaml.Stdlib_In_channel]
-					[Local process(142160):ocaml.lib.io.Process:ocaml.lib.io.Process]
+					[Local process(156265):ocaml.lib.io.Process:ocaml.lib.io.Process]
 					[FInstance:ocaml.Stdlib_In_channel]
 						ocaml.lib.io.Process
 						stdin:ocaml.Stdlib_In_channel
@@ -28,15 +28,15 @@
 				lineNumber: [Const:Int] 10
 				className: [Const:String] "project.Main"
 				methodName: [Const:String] "main"
-				customParams: [ArrayDecl:Array<Dynamic>] [Local data(142161):String:String]
-		[Var process2(142162):ocaml.lib.io.Process]
+				customParams: [ArrayDecl:Array<Dynamic>] [Local data(156266):String:String]
+		[Var process2(156267):ocaml.lib.io.Process]
 			[New:ocaml.lib.io.Process]
 				ocaml.lib.io.Process
 				[Const:String] "haxelib -help"
-		[Var data2(142163):String]
+		[Var data2(156268):String]
 			[Call:String]
 				[Field:(msg : String) -> String]
-					[Local process2(142162):ocaml.lib.io.Process:ocaml.lib.io.Process]
+					[Local process2(156267):ocaml.lib.io.Process:ocaml.lib.io.Process]
 					[FInstance:(msg : String) -> String]
 						ocaml.lib.io.Process
 						readAllString:(msg : String) -> String
@@ -50,7 +50,7 @@
 			[Field:String]
 				[Call:ocaml.lib.io.Process2]
 					[Field:() -> ocaml.lib.io.Process2]
-						[Local process2(142162):ocaml.lib.io.Process:ocaml.lib.io.Process]
+						[Local process2(156267):ocaml.lib.io.Process:ocaml.lib.io.Process]
 						[FInstance:() -> ocaml.lib.io.Process2]
 							ocaml.lib.io.Process
 							getProcess2:() -> ocaml.lib.io.Process2
@@ -60,5 +60,43 @@
 			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
 				fileName: [Const:String] "haxe_test/project/Main.hx"
 				lineNumber: [Const:Int] 14
+				className: [Const:String] "project.Main"
+				methodName: [Const:String] "main"
+		[Var msg(156269):String]
+			[Binop:String]
+				[Binop:String]
+					[Field:String]
+						[Call:ocaml.lib.io.Process2]
+							[Field:() -> ocaml.lib.io.Process2]
+								[Local process2(156267):ocaml.lib.io.Process:ocaml.lib.io.Process]
+								[FInstance:() -> ocaml.lib.io.Process2]
+									ocaml.lib.io.Process
+									getProcess2:() -> ocaml.lib.io.Process2
+						[FInstance:String]
+							ocaml.lib.io.Process2
+							name:String
+					+
+					[Const:String] "___123__"
+				+
+				[Field:String]
+					[Call:ocaml.lib.io.Process2]
+						[Field:() -> ocaml.lib.io.Process2]
+							[Local process2(156267):ocaml.lib.io.Process:ocaml.lib.io.Process]
+							[FInstance:() -> ocaml.lib.io.Process2]
+								ocaml.lib.io.Process
+								getProcess2:() -> ocaml.lib.io.Process2
+					[FInstance:String]
+						ocaml.lib.io.Process2
+						name:String
+		[Call:Void]
+			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+				[TypeExpr haxe.Log:Class<haxe.Log>]
+				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
+					haxe.Log
+					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
+			[Local msg(156269):String:String]
+			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
+				fileName: [Const:String] "haxe_test/project/Main.hx"
+				lineNumber: [Const:Int] 16
 				className: [Const:String] "project.Main"
 				methodName: [Const:String] "main"
