@@ -1,3 +1,4 @@
+import sys.FileSystem;
 import haxe.macro.ocaml.OCamlNewTypedef;
 import haxe.macro.TypedExprTools;
 import haxe.macro.ocaml.OCaml;
@@ -11,16 +12,37 @@ import haxe.macro.Context;
 class OCamlGlobalMacro {
 	public static var mlCompileEReg:EReg;
 
+	public static var parserHaxeMapFiles:Map<String, String> = [];
+
+	public static function parserDirHaxeFile(dir:String, rootDir:String):Void {
+		var files = FileSystem.readDirectory(dir);
+		for (s in files) {
+			var path = dir + "/" + s;
+			if (FileSystem.isDirectory(path)) {
+				parserDirHaxeFile(path, rootDir);
+			} else if (StringTools.endsWith(path, ".hx")) {
+				var cName = StringTools.replace(path, rootDir + "/", "");
+				cName = StringTools.replace(cName, ".hx", "");
+				cName = StringTools.replace(cName, "/", ".");
+				parserHaxeMapFiles.set(cName, "true");
+			}
+		}
+	}
+
 	macro public static function build(classPkg:String):Array<Field> {
 		trace("compile OCaml code...");
 		var array = classPkg.split(";");
-		trace("compile pkgs:", array);
-		mlCompileEReg = new EReg(array.join("|"), "g");
+		for (file in array) {
+			parserDirHaxeFile(file, file);
+		}
+		// trace("compile pkgs:", array);
+		// mlCompileEReg = new EReg(array.join("|"), "g");
 		Context.onAfterTyping((types) -> {
 			for (t in types) {
 				switch (t) {
 					case TClassDecl(t):
-						if (mlCompileEReg.match(t.toString())) {
+						if (!t.get().isExtern && parserHaxeMapFiles.exists(t.toString())) {
+							trace("build:", t.toString());
 							var ocaml = new OCaml();
 							var type = t.get();
 							OCaml2Tools.currentType = type;

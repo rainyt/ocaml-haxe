@@ -1,6 +1,6 @@
 [Function:(cmd : String) -> Void]
-	[Arg:String] [Local cmd(156260):String]
-	[Block:ocaml.lib.io.Process2]
+	[Arg:String] [Local cmd(9256):String]
+	[Block:ocaml.Stdlib_In_channel]
 		[Binop:ocaml.Stdlib_In_channel]
 			[Field:ocaml.Stdlib_In_channel]
 				[Const:ocaml.lib.io.Process] this
@@ -14,79 +14,29 @@
 					[FStatic:(a0 : String) -> Dynamic]
 						ocaml.Unix
 						open_process_in:(a0 : String) -> Dynamic
-				[Local cmd(156260):String:String]
-		[Binop:ocaml.lib.io.Process2]
-			[Field:ocaml.lib.io.Process2]
-				[Const:ocaml.lib.io.Process] this
-				[FInstance:ocaml.lib.io.Process2]
-					ocaml.lib.io.Process
-					process2:ocaml.lib.io.Process2
-			=
-			[New:ocaml.lib.io.Process2] ocaml.lib.io.Process2[Function:(msg : String) -> String]
-	[Arg:String] [Local msg(156261):String]
+				[Local cmd(9256):String:String][Function:() -> String]
 	[Block:Dynamic]
-		[Var lines(156262):String] [Const:String] ""
-		[Var p(156263):ocaml.lib.io.Process2] [New:ocaml.lib.io.Process2] ocaml.lib.io.Process2
-		[Call:Void]
-			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
-				[TypeExpr haxe.Log:Class<haxe.Log>]
-				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
-					haxe.Log
-					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
-			[Field:String]
-				[Local p(156263):ocaml.lib.io.Process2:ocaml.lib.io.Process2]
-				[FInstance:String]
-					ocaml.lib.io.Process2
-					name:String
-			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
-				fileName: [Const:String] "src/ocaml/lib/io/Process.hx"
-				lineNumber: [Const:Int] 26
-				className: [Const:String] "ocaml.lib.io.Process"
-				methodName: [Const:String] "readAllString"
+		[Var lines(9257):String] [Const:String] ""
 		[While:Void]
-			[Const:Bool] true
-			[Block:Void]
-				[Try:Void]
-					[Block:String]
+			[Parenthesis:Bool] [Const:Bool] true
+			[Try:Void]
+				[Block:String]
+					[Binop:String]
+						[Local lines(9257):String:String]
+						+=
 						[Binop:String]
-							[Local lines(156262):String:String]
-							+=
-							[Binop:String]
-								[Call:String]
-									[Field:(a0 : ocaml.Stdlib_In_channel) -> String]
-										[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
-										[FStatic:(a0 : ocaml.Stdlib_In_channel) -> String]
-											ocaml.Stdlib
-											input_line:(a0 : ocaml.Stdlib_In_channel) -> String
-									[Field:ocaml.Stdlib_In_channel]
-										[Const:ocaml.lib.io.Process] this
-										[FInstance:ocaml.Stdlib_In_channel]
-											ocaml.lib.io.Process
-											stdin:ocaml.Stdlib_In_channel
-								+
-								[Const:String] "\n"
-					Catch [Local e(156264):haxe.Exception]
-						[Block:Dynamic]
-							[Return:Dynamic]
-								[Binop:String]
-									[Binop:String]
-										[Local msg(156261):String:String]
-										+
-										[Local lines(156262):String:String]
-									+
-									[Local msg(156261):String:String]
-		[Return:Dynamic]
-			[Binop:String]
-				[Binop:String]
-					[Local msg(156261):String:String]
-					+
-					[Local lines(156262):String:String]
-				+
-				[Local msg(156261):String:String][Function:() -> ocaml.lib.io.Process2]
-	[Block:Dynamic]
-		[Return:Dynamic]
-			[Field:ocaml.lib.io.Process2]
-				[Const:ocaml.lib.io.Process] this
-				[FInstance:ocaml.lib.io.Process2]
-					ocaml.lib.io.Process
-					process2:ocaml.lib.io.Process2
+							[Call:String]
+								[Field:(a0 : ocaml.Stdlib_In_channel) -> String]
+									[TypeExpr ocaml.Stdlib:Class<ocaml.Stdlib>]
+									[FStatic:(a0 : ocaml.Stdlib_In_channel) -> String]
+										ocaml.Stdlib
+										input_line:(a0 : ocaml.Stdlib_In_channel) -> String
+								[Field:ocaml.Stdlib_In_channel]
+									[Const:ocaml.lib.io.Process] this
+									[FInstance:ocaml.Stdlib_In_channel]
+										ocaml.lib.io.Process
+										stdin:ocaml.Stdlib_In_channel
+							+
+							[Const:String] "\n"
+				Catch [Local e(9258):haxe.Exception] [Block:Dynamic] [Return:Dynamic] [Local lines(9257):String:String]
+		[Return:Dynamic] [Local lines(9257):String:String]

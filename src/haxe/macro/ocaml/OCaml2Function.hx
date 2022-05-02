@@ -68,6 +68,12 @@ class OCaml2Function {
 					args.push(OCaml2Tools.toString(value, false, argsParams[index].t));
 				}
 				var needRef = OCaml2Tools.isHaxe2OCamlType(expr);
+				if (!needRef) {
+					if (args.length > 0) {
+						if (args[0] == "this")
+							needRef = true;
+					}
+				}
 				if (needRef) {
 					for (index => value in args) {
 						// args[index] = '(ref ${toArgsType(value, argsParams[index])})';

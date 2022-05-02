@@ -14,6 +14,7 @@ class Main {
 		OCamlExternToolsv2.externMLI("unix");
 		OCamlExternToolsv2.externMLI("stdlib");
 		OCamlExternToolsv2.externMLI("sys");
+		OCamlExternToolsv2.externMLI("str");
 
 		// OCamlExternTools.externOCaml()
 

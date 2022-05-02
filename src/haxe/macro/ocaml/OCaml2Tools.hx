@@ -343,7 +343,7 @@ class OCaml2Tools {
 					oc.write(toString(tfunc.expr, false, tfunc.t));
 					oc.write("with " + OCaml2Type.toString(tfunc.t).toUpperCase() + " ret -> ret");
 					OCaml2Tools.funcTypeList.pop();
-					return '${oc.code}';
+					return '(${oc.code})';
 				}
 			default:
 				return '(* Not suppor ${expr.expr.getName()} *)\n';
@@ -372,6 +372,9 @@ class OCaml2Tools {
 					default:
 						throw "??" + e.t;
 				}
+			case TLocal(v):
+				// trace(v.name,v.t.getParameters()[0]);
+				// trace(v.t);
 			default:
 		}
 		if (type != null) {
@@ -382,6 +385,7 @@ class OCaml2Tools {
 				default:
 			}
 		}
+		trace("type", expr.expr);
 		return false;
 	}
 }

@@ -16,6 +16,8 @@ class OCaml2Field {
 		switch (e.expr) {
 			case TLocal(v):
 				var readType = OCaml2Ref.getType(v.id);
+				if(readType == null)
+					return false;
 				isOCamlArrayCast = readType.indexOf(" Array") != -1;
 			default:
 				return false;

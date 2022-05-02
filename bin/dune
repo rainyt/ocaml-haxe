@@ -2,5 +2,5 @@
  (flags -w +42)
  (name project_main)
  (public_name bin )
- (libraries Unix)
- (modules ocaml_lib_io_process2 ocaml_lib_io_process project_systest project_main project_maintest1 ocaml_lib_file project_mathtest project_test ocaml_lib_filesystem))
+ (libraries Unix Str)
+ (modules ereg ocaml_lib_io_process2 ocaml_lib_io_process project_systest project_main project_maintest1 ocaml_lib_file project_mathtest project_test ocaml_lib_filesystem))

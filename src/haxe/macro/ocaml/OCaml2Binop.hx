@@ -49,7 +49,7 @@ class OCaml2Binop {
 						throw "Not support type:" + type1;
 				}
 			case ":=":
-				trace(e1.expr);
+				// trace(e1.expr);
 				switch (e1.expr) {
 					case TField(e, fa):
 						switch (e.expr) {
