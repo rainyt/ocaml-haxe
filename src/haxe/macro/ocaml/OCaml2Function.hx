@@ -69,9 +69,8 @@ class OCaml2Function {
 				}
 				var needRef = OCaml2Tools.isHaxe2OCamlType(expr);
 				if (!needRef) {
-					if (args.length > 0) {
-						if (args[0] == "this")
-							needRef = true;
+					if(funName.indexOf("!") != -1){
+						needRef = true;
 					}
 				}
 				if (needRef) {

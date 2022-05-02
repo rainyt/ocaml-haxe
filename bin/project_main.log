@@ -1,31 +1,31 @@
 [Function:() -> Void]
 	[Block:Void]
-		[Var process(433352):ocaml.lib.io.Process]
+		[Var process(553659):ocaml.lib.io.Process]
 			[New:ocaml.lib.io.Process]
 				ocaml.lib.io.Process
 				[Const:String] "ocamlc -i ocaml-extern/ocaml/arg.mli"
-		[Var mliData(433353):String]
+		[Var mliData(553660):String]
 			[Call:String]
 				[Field:() -> String]
-					[Local process(433352):ocaml.lib.io.Process:ocaml.lib.io.Process]
+					[Local process(553659):ocaml.lib.io.Process:ocaml.lib.io.Process]
 					[FInstance:() -> String]
 						ocaml.lib.io.Process
 						readAllString:() -> String
-		[Var req(433354):EReg]
+		[Var req(553661):EReg]
 			[New:EReg]
 				EReg
 				[Const:String] "[a-zA-Z]+"
 				[Const:String] "g"
 		[Binop:String]
-			[Local mliData(433353):String:String]
+			[Local mliData(553660):String:String]
 			=
 			[Call:String]
 				[Field:(s : String, by : String) -> String]
-					[Local req(433354):EReg:EReg]
+					[Local req(553661):EReg:EReg]
 					[FInstance:(s : String, by : String) -> String]
 						EReg
 						replace:(s : String, by : String) -> String
-				[Local mliData(433353):String:String]
+				[Local mliData(553660):String:String]
 				[Const:String] "123"
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
@@ -33,41 +33,41 @@
 				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 					haxe.Log
 					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
-			[Local mliData(433353):String:String]
+			[Local mliData(553660):String:String]
 			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
 				fileName: [Const:String] "haxe_test/project/Main.hx"
 				lineNumber: [Const:Int] 14
 				className: [Const:String] "project.Main"
 				methodName: [Const:String] "main"
-		[Var content(433355):String] [Const:String] "hello world"
-		[Var req2(433356):EReg]
+		[Var content(553662):String] [Const:String] "hello world"
+		[Var req2(553663):EReg]
 			[New:EReg]
 				EReg
 				[Const:String] "[A-Za-z]"
 				[Const:String] "g"
-		[Var data(433357):String]
+		[Var data(553664):String]
 			[Call:String]
 				[Field:(s : String, by : String) -> String]
-					[Local req2(433356):EReg:EReg]
+					[Local req2(553663):EReg:EReg]
 					[FInstance:(s : String, by : String) -> String]
 						EReg
 						replace:(s : String, by : String) -> String
-				[Local content(433355):String:String]
+				[Local content(553662):String:String]
 				[Const:String] "A"
 		[Call:String]
 			[Field:(s : String, f : (EReg -> String)) -> String]
-				[Local req2(433356):EReg:EReg]
+				[Local req2(553663):EReg:EReg]
 				[FInstance:(s : String, f : (EReg -> String)) -> String]
 					EReg
 					map:(s : String, f : (EReg -> String)) -> String
-			[Local content(433355):String:String]
+			[Local content(553662):String:String]
 			[Function:(e : EReg) -> String]
-				[Arg:EReg] [Local e(433358):EReg]
+				[Arg:EReg] [Local e(553665):EReg]
 				[Block:Dynamic]
-					[Var v(433359):String]
+					[Var v(553666):String]
 						[Call:String]
 							[Field:(n : Int) -> String]
-								[Local e(433358):EReg:EReg]
+								[Local e(553665):EReg:EReg]
 								[FInstance:(n : Int) -> String]
 									EReg
 									matched:(n : Int) -> String
@@ -84,7 +84,7 @@
 							lineNumber: [Const:Int] 22
 							className: [Const:String] "project.Main"
 							methodName: [Const:String] "main"
-							customParams: [ArrayDecl:Array<Dynamic>] [Local v(433359):String:String]
+							customParams: [ArrayDecl:Array<Dynamic>] [Local v(553666):String:String]
 					[Return:Dynamic] [Const:String] "value"
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
@@ -92,7 +92,7 @@
 				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 					haxe.Log
 					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
-			[Local data(433357):String:String]
+			[Local data(553664):String:String]
 			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
 				fileName: [Const:String] "haxe_test/project/Main.hx"
 				lineNumber: [Const:Int] 25
