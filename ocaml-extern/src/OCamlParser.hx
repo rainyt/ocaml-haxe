@@ -81,6 +81,12 @@ class OCamlParser {
 		var args = c.split(":");
 		if (args.length == 1) {} else {
 			c = args[0];
+			var req = ~/\(.+\)/g;
+			args[1] = req.map(args[1], (data) -> {
+				var value = data.matched(0);
+				value = StringTools.replace(value, "->", "#>");
+				return value;
+			});
 			var prams = args[1].split("->");
 			if (prams.length == 1) {
 				// 变量

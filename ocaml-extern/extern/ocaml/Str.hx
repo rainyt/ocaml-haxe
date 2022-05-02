@@ -44,9 +44,9 @@ public static function global_replace (a0:Str_Regexp,a1:String,a2:String):String
 // Parser val::val replace_first : regexp -> string -> string -> string
 public static function replace_first (a0:Str_Regexp,a1:String,a2:String):String;
 // Parser val::val global_substitute : regexp -> (string -> string) -> string -> string
-public static function global_substitute (a0:Str_Regexp,a1:Dynamic,a2:Dynamic,a3:String):String;
+public static function global_substitute (a0:Str_Regexp,a1:String->String,a2:String):String;
 // Parser val::val substitute_first : regexp -> (string -> string) -> string -> string
-public static function substitute_first (a0:Str_Regexp,a1:Dynamic,a2:Dynamic,a3:String):String;
+public static function substitute_first (a0:Str_Regexp,a1:String->String,a2:String):String;
 // Parser val::val replace_matched : string -> string -> string
 public static function replace_matched (a0:String,a1:String):String;
 // Parser val::val split : regexp -> string -> string list

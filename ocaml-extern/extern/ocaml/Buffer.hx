@@ -40,7 +40,7 @@ public static function add_substring (a0:Buffer_T,a1:String,a2:Int,a3:Int):Void;
 // Parser val::val add_subbytes : t -> bytes -> int -> int -> unit
 public static function add_subbytes (a0:Buffer_T,a1:Bytes,a2:Int,a3:Int):Void;
 // Parser val::val add_substitute : t -> (string -> string) -> string -> unit
-public static function add_substitute (a0:Buffer_T,a1:Dynamic,a2:Dynamic,a3:String):Void;
+public static function add_substitute (a0:Buffer_T,a1:String->String,a2:String):Void;
 // Parser val::val add_buffer : t -> t -> unit
 public static function add_buffer (a0:Buffer_T,a1:Buffer_T):Void;
 // Parser val::val add_channel : t -> in_channel -> int -> unit

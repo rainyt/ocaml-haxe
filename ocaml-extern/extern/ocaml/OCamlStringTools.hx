@@ -9,7 +9,7 @@ extern class OCamlStringTools{
 // Parser val::val make : int -> char -> string
 public static function make (a0:Int,a1:Char):String;
 // Parser val::val init : int -> (int -> char) -> string
-public static function init (a0:Int,a1:Dynamic,a2:Dynamic):String;
+public static function init (a0:Int,a1:Int->Char):String;
 // Parser external::external length : string -> int = "%string_length"
 public static function length (a0:String):Int;// Parser external::external get : string -> int -> char = "%string_safe_get"
 public static function get (a0:String,a1:Int):Char;// Parser val::val concat : string -> string list -> string
@@ -29,9 +29,9 @@ public static function sub (a0:String,a1:Int,a2:Int):String;
 // Parser val::val split_on_char : char -> string -> string list
 public static function split_on_char (a0:Char,a1:String):Array<String>;
 // Parser val::val map : (char -> char) -> string -> string
-public static function map (a0:Dynamic,a1:Dynamic,a2:String):String;
+public static function map (a0:Char->Char,a1:String):String;
 // Parser val::val mapi : (int -> char -> char) -> string -> string
-public static function mapi (a0:Dynamic,a1:Char,a2:Dynamic,a3:String):String;
+public static function mapi (a0:Int->Char->Char,a1:String):String;
 // Parser val::val trim : string -> string
 public static function trim (a0:String):String;
 // Parser val::val escaped : string -> string
@@ -45,9 +45,9 @@ public static function capitalize_ascii (a0:String):String;
 // Parser val::val uncapitalize_ascii : string -> string
 public static function uncapitalize_ascii (a0:String):String;
 // Parser val::val iter : (char -> unit) -> string -> unit
-public static function iter (a0:Dynamic,a1:Dynamic,a2:String):Void;
+public static function iter (a0:Char->Void,a1:String):Void;
 // Parser val::val iteri : (int -> char -> unit) -> string -> unit
-public static function iteri (a0:Dynamic,a1:Char,a2:Dynamic,a3:String):Void;
+public static function iteri (a0:Int->Char->Void,a1:String):Void;
 // Parser val::val index_from : string -> int -> char -> int
 public static function index_from (a0:String,a1:Int,a2:Char):Int;
 // Parser val::val index_from_opt : string -> int -> char -> int option

@@ -1,6 +1,8 @@
 import sys.FileSystem;
 import sys.io.File;
 
+using StringTools;
+
 class OCamlTools {
 	public static function toParamName(code:String):String {
 		code = StringTools.replace(code, "\n", "");
@@ -8,6 +10,18 @@ class OCamlTools {
 	}
 
 	public static function toUpClassName(code:String, canCastDynamic:Bool):String {
+		if (code.indexOf("#>") != -1) {
+			// 是一个方法
+			var c = [];
+			code = code.replace("(", "");
+			code = code.replace(")", "");
+			var cs = code.split("#>");
+			for (s in cs) {
+				c.push(toUpClassName(s, true));
+			}
+			return c.join("->");
+		}
+
 		code = toParamName(code);
 		code = code.charAt(0).toUpperCase() + code.substr(1);
 

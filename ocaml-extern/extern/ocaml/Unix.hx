@@ -361,7 +361,7 @@ extern class Unix{
 // Parser val::val error_message : error -> string
 public static function error_message (a0:Unix_Error):String;
 // Parser val::val handle_unix_error : ('a -> 'b) -> 'a -> 'b
-public static function handle_unix_error (a0:Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
+public static function handle_unix_error (a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
 // Parser val::val environment : unit -> string array
 public static function environment (a0:Void):OCamlArray<String>;
 // Parser val::val unsafe_environment : unit -> string array
@@ -700,7 +700,7 @@ public static function open_connection (a0:Unix_Sockaddr):Dynamic;
 // Parser val::val shutdown_connection : in_channel -> unit
 public static function shutdown_connection (a0:Dynamic):Void;
 // Parser val::val establish_server :  (in_channel -> out_channel -> unit) -> sockaddr -> unit
-public static function establish_server (a0:Dynamic,a1:Dynamic,a2:Dynamic,a3:Unix_Sockaddr):Void;
+public static function establish_server (a0:Dynamic->Dynamic->Void,a1:Unix_Sockaddr):Void;
 // Parser type::type host_entry =  { h_name : string;    h_aliases : string array;    h_addrtype : socket_domain;    h_addr_list : inet_addr array  }
 // Parser type::type protocol_entry =  { p_name : string;    p_aliases : string array;    p_proto : int  }
 // Parser type::type service_entry =  { s_name : string;    s_aliases : string array;    s_port : int;    s_proto : string  }

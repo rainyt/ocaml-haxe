@@ -154,7 +154,7 @@ public static function abs_float (a0:Float):Float;// Parser external::external c
 public static function copysign (a0:Float,a1:Float):Float;// Parser external::external mod_float : float -> float -> float = "caml_fmod_float" "fmod"  [@@unboxed] [@@noalloc]
 public static function mod_float (a0:Float,a1:Float):Float;// Parser external::external frexp : float -> float * int = "caml_frexp_float"
 public static function frexp (a0:Float):Dynamic;// Parser external::external ldexp : (float [@unboxed]) -> (int [@untagged]) -> (float [@unboxed]) =  "caml_ldexp_float" "caml_ldexp_float_unboxed" [@@noalloc]
-public static function ldexp (a0:Dynamic,a1:Dynamic):Dynamic;// Parser external::external modf : float -> float * float = "caml_modf_float"
+public static var ldexp :Dynamic->Dynamic->Dynamic;// Parser external::external modf : float -> float * float = "caml_modf_float"
 public static function modf (a0:Float):Dynamic;// Parser external::external float : int -> float = "%floatofint"
 public static function float (a0:Int):Float;// Parser external::external float_of_int : int -> float = "%floatofint"
 public static function float_of_int (a0:Int):Float;// Parser external::external truncate : float -> int = "%intoffloat"
@@ -334,7 +334,7 @@ public static function format_of_string (a0:Dynamic):Dynamic;// Parser val::val 
 // Parser val::val exit : int -> 'a
 public static function exit (a0:Int):Dynamic;
 // Parser val::val at_exit : (unit -> unit) -> unit
-public static function at_exit (a0:Dynamic,a1:Dynamic):Void;
+public static function at_exit (a0:Void->Void):Void;
 // Parser val::val valid_float_lexem : string -> string
 public static function valid_float_lexem (a0:String):String;
 // Parser val::val unsafe_really_input : in_channel -> bytes -> int -> int -> unit

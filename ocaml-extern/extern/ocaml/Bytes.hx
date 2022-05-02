@@ -12,7 +12,7 @@ public static function set (a0:Bytes,a1:Int,a2:Char):Void;// Parser external::ex
 public static function create (a0:Int):Bytes;// Parser val::val make : int -> char -> bytes
 public static function make (a0:Int,a1:Char):Bytes;
 // Parser val::val init : int -> (int -> char) -> bytes
-public static function init (a0:Int,a1:Dynamic,a2:Dynamic):Bytes;
+public static function init (a0:Int,a1:Int->Char):Bytes;
 // Parser val::val empty : bytes
 public static var empty :Bytes;
 // Parser val::val copy : bytes -> bytes
@@ -38,13 +38,13 @@ public static function concat (a0:Bytes,a1:Array<Bytes>):Bytes;
 // Parser val::val cat : bytes -> bytes -> bytes
 public static function cat (a0:Bytes,a1:Bytes):Bytes;
 // Parser val::val iter : (char -> unit) -> bytes -> unit
-public static function iter (a0:Dynamic,a1:Dynamic,a2:Bytes):Void;
+public static function iter (a0:Char->Void,a1:Bytes):Void;
 // Parser val::val iteri : (int -> char -> unit) -> bytes -> unit
-public static function iteri (a0:Dynamic,a1:Char,a2:Dynamic,a3:Bytes):Void;
+public static function iteri (a0:Int->Char->Void,a1:Bytes):Void;
 // Parser val::val map : (char -> char) -> bytes -> bytes
-public static function map (a0:Dynamic,a1:Dynamic,a2:Bytes):Bytes;
+public static function map (a0:Char->Char,a1:Bytes):Bytes;
 // Parser val::val mapi : (int -> char -> char) -> bytes -> bytes
-public static function mapi (a0:Dynamic,a1:Char,a2:Dynamic,a3:Bytes):Bytes;
+public static function mapi (a0:Int->Char->Char,a1:Bytes):Bytes;
 // Parser val::val trim : bytes -> bytes
 public static function trim (a0:Bytes):Bytes;
 // Parser val::val escaped : bytes -> bytes
