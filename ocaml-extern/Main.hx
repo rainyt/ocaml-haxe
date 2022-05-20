@@ -8,7 +8,7 @@ class Main {
 	static function main() {
 		OCamlExternToolsv2.externMLI("buffer");
 		OCamlExternToolsv2.externMLI("array","OCamlArrayTools");
-		OCamlExternToolsv2.externMLI("array","List");
+		OCamlExternToolsv2.externMLI("list");
 		OCamlExternToolsv2.externMLI("bytes");
 		OCamlExternToolsv2.externMLI("string", "OCamlStringTools");
 		OCamlExternToolsv2.externMLI("unix");

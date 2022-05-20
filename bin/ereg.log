@@ -1,6 +1,6 @@
 [Function:(a1 : String, b1 : String) -> Void]
-	[Arg:String] [Local a1(223831):String]
-	[Arg:String] [Local b1(223832):String]
+	[Arg:String] [Local a1(124426):String]
+	[Arg:String] [Local b1(124427):String]
 	[Block:String]
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
@@ -15,9 +15,9 @@
 				className: [Const:String] "Ereg"
 				methodName: [Const:String] "new"
 				customParams: [ArrayDecl:Array<Dynamic>]
-					[Local a1(223831):String:String]
+					[Local a1(124426):String:String]
 					[Const:String] ","
-					[Local b1(223832):String:String]
+					[Local b1(124427):String:String]
 		[Binop:ocaml.Str_Regexp]
 			[Field:ocaml.Str_Regexp]
 				[Const:Ereg] this
@@ -31,7 +31,7 @@
 					[FStatic:(a0 : String) -> ocaml.Str_Regexp]
 						ocaml.Str
 						regexp:(a0 : String) -> ocaml.Str_Regexp
-				[Local a1(223831):String:String]
+				[Local a1(124426):String:String]
 		[Binop:String]
 			[Field:String]
 				[Const:Ereg] this
@@ -39,9 +39,9 @@
 					Ereg
 					mode:String
 			=
-			[Local b1(223832):String:String][Function:(s : String, by : String) -> String]
-	[Arg:String] [Local s(223833):String]
-	[Arg:String] [Local by(223834):String]
+			[Local b1(124427):String:String][Function:(s : String, by : String) -> String]
+	[Arg:String] [Local s(124428):String]
+	[Arg:String] [Local by(124429):String]
 	[Block:Dynamic]
 		[If:Void]
 			[Parenthesis:Bool]
@@ -54,7 +54,7 @@
 					==
 					[Const:String] "g"
 			[Then:Dynamic] [Block:Dynamic]
-				[Var data(223835):String]
+				[Var data(124430):String]
 					[Call:String]
 						[Field:(a0 : ocaml.Str_Regexp, a1 : String, a2 : String) -> String]
 							[TypeExpr ocaml.Str:Class<ocaml.Str>]
@@ -66,9 +66,9 @@
 							[FInstance:ocaml.Str_Regexp]
 								Ereg
 								ocamlEreg:ocaml.Str_Regexp
-						[Local by(223834):String:String]
-						[Local s(223833):String:String]
-				[Return:Dynamic] [Local data(223835):String:String]
+						[Local by(124429):String:String]
+						[Local s(124428):String:String]
+				[Return:Dynamic] [Local data(124430):String:String]
 		[Return:Dynamic]
 			[Call:String]
 				[Field:(a0 : ocaml.Str_Regexp, a1 : String, a2 : String) -> String]
@@ -81,13 +81,13 @@
 					[FInstance:ocaml.Str_Regexp]
 						Ereg
 						ocamlEreg:ocaml.Str_Regexp
-				[Local by(223834):String:String]
-				[Local s(223833):String:String][Function:(s : String, cb : (Ereg -> String)) -> Void]
-	[Arg:String] [Local s(223836):String]
-	[Arg:Ereg -> String] [Local cb(223837):Ereg -> String]
+				[Local by(124429):String:String]
+				[Local s(124428):String:String][Function:(s : String, cb : (Ereg -> String)) -> Void]
+	[Arg:String] [Local s(124431):String]
+	[Arg:Ereg -> String] [Local cb(124432):Ereg -> String]
 	[Block:String]
 		[Call:String]
-			[Local cb(223837):Ereg -> String:Ereg -> String]
+			[Local cb(124432):Ereg -> String:Ereg -> String]
 			[Const:Ereg] this[Function:(index : Int) -> String]
-	[Arg:Int] [Local index(223838):Int]
+	[Arg:Int] [Local index(124433):Int]
 	[Block:Dynamic] [Return:Dynamic] [Const:String] ""

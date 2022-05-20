@@ -15,5 +15,9 @@ let v = ref ((Ereg.matched !e (ref 0))) in
 ignore (raise (STRING ("value")));"value";
 with STRING ret -> ret)));
 (Printf.printf "%s\n" (!data));
+let array = ref ([1;2;3;4]) in
+(List.iter ((fun data -> let l = ref (!data) in
+!l;
+)) (!array));
 Printf.printf "runtime:%fs" (Sys.time() -. start_time);;
 

@@ -1,79 +1,131 @@
 package ocaml;
-enum List_Array {
-
+@:native("List.list")
+extern class List_List{
 }
 
-@:native("Array")
+@:native("List")
 extern class List{
-// Parser type::type 'a t = 'a array
-// Parser external::external length : 'a array -> int = "%array_length"
-public static function length (a0:Dynamic):Int;// Parser external::external get : 'a array -> int -> 'a = "%array_safe_get"
-public static function get (a0:Dynamic,a1:Int):Dynamic;// Parser external::external set : 'a array -> int -> 'a -> unit = "%array_safe_set"
-public static function set (a0:Dynamic,a1:Int,a2:Dynamic):Void;// Parser external::external make : int -> 'a -> 'a array = "caml_make_vect"
-public static function make (a0:Int,a1:Dynamic):Dynamic;// Parser external::external create : int -> 'a -> 'a array = "caml_make_vect"  [@@ocaml.deprecated "Use Array.make/ArrayLabels.make instead."]
-public static function create (a0:Int,a1:Dynamic):Dynamic;// Parser external::external create_float: int -> float array = "caml_make_float_vect"
-public static function create_float(a0:Int):OCamlArray<Float>;// Parser val::val make_float: int -> float array  [@@ocaml.deprecated    "Use Array.create_float/ArrayLabels.create_float instead."]
-// Parser val::val init : int -> (int -> 'a) -> 'a array
+// Parser type::type 'a t = 'a list = [] | (::) of 'a * 'a list 
+// Parser val::val length : 'a list -> int
+public static function length (a0:Dynamic):Int;
+// Parser val::val compare_lengths : 'a list -> 'b list -> int
+public static function compare_lengths (a0:Dynamic,a1:Dynamic):Int;
+// Parser val::val compare_length_with : 'a list -> int -> int
+public static function compare_length_with (a0:Dynamic,a1:Int):Int;
+// Parser val::val cons : 'a -> 'a list -> 'a list
+public static function cons (a0:Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val hd : 'a list -> 'a
+public static function hd (a0:Dynamic):Dynamic;
+// Parser val::val tl : 'a list -> 'a list
+public static function tl (a0:Dynamic):Dynamic;
+// Parser val::val nth : 'a list -> int -> 'a
+public static function nth (a0:Dynamic,a1:Int):Dynamic;
+// Parser val::val nth_opt : 'a list -> int -> 'a option
+public static function nth_opt (a0:Dynamic,a1:Int):Dynamic;
+// Parser val::val rev : 'a list -> 'a list
+public static function rev (a0:Dynamic):Dynamic;
+// Parser val::val init : int -> (int -> 'a) -> 'a list
 public static function init (a0:Int,a1:Int->Dynamic):Dynamic;
-// Parser val::val make_matrix : int -> int -> 'a -> 'a array array
-public static function make_matrix (a0:Int,a1:Int,a2:Dynamic):Dynamic;
-// Parser val::val create_matrix : int -> int -> 'a -> 'a array array  [@@ocaml.deprecated    "Use Array.make_matrix/ArrayLabels.make_matrix instead."]
-// Parser val::val append : 'a array -> 'a array -> 'a array
+// Parser val::val append : 'a list -> 'a list -> 'a list
 public static function append (a0:Dynamic,a1:Dynamic):Dynamic;
-// Parser val::val concat : 'a array list -> 'a array
+// Parser val::val rev_append : 'a list -> 'a list -> 'a list
+public static function rev_append (a0:Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val concat : 'a list list -> 'a list
 public static function concat (a0:Dynamic):Dynamic;
-// Parser val::val sub : 'a array -> int -> int -> 'a array
-public static function sub (a0:Dynamic,a1:Int,a2:Int):Dynamic;
-// Parser val::val copy : 'a array -> 'a array
-public static function copy (a0:Dynamic):Dynamic;
-// Parser val::val fill : 'a array -> int -> int -> 'a -> unit
-public static function fill (a0:Dynamic,a1:Int,a2:Int,a3:Dynamic):Void;
-// Parser val::val blit :  'a array -> int -> 'a array -> int -> int ->    unit
-public static function blit (a0:Dynamic,a1:Int,a2:Dynamic,a3:Int,a4:Int):Void;
-// Parser val::val to_list : 'a array -> 'a list
-public static function to_list (a0:Dynamic):Dynamic;
-// Parser val::val of_list : 'a list -> 'a array
-public static function of_list (a0:Dynamic):Dynamic;
-// Parser val::val iter : ('a -> unit) -> 'a array -> unit
+// Parser val::val flatten : 'a list list -> 'a list
+public static function flatten (a0:Dynamic):Dynamic;
+// Parser val::val equal : ('a -> 'a -> bool) -> 'a list -> 'a list -> bool
+public static function equal (a0:Dynamic->Dynamic->Bool,a1:Dynamic,a2:Dynamic):Bool;
+// Parser val::val compare : ('a -> 'a -> int) -> 'a list -> 'a list -> int
+public static function compare (a0:Dynamic->Dynamic->Int,a1:Dynamic,a2:Dynamic):Int;
+// Parser val::val iter : ('a -> unit) -> 'a list -> unit
 public static function iter (a0:Dynamic->Void,a1:Dynamic):Void;
-// Parser val::val iteri : (int -> 'a -> unit) -> 'a array -> unit
+// Parser val::val iteri : (int -> 'a -> unit) -> 'a list -> unit
 public static function iteri (a0:Int->Dynamic->Void,a1:Dynamic):Void;
-// Parser val::val map : ('a -> 'b) -> 'a array -> 'b array
+// Parser val::val map : ('a -> 'b) -> 'a list -> 'b list
 public static function map (a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
-// Parser val::val mapi : (int -> 'a -> 'b) -> 'a array -> 'b array
+// Parser val::val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
 public static function mapi (a0:Int->Dynamic->Dynamic,a1:Dynamic):Dynamic;
-// Parser val::val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b array -> 'a
+// Parser val::val rev_map : ('a -> 'b) -> 'a list -> 'b list
+public static function rev_map (a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val filter_map : ('a -> 'b option) -> 'a list -> 'b list
+public static function filter_map (a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val concat_map : ('a -> 'b list) -> 'a list -> 'b list
+public static function concat_map (a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val fold_left_map :  ('a -> 'b -> 'a * 'c) -> 'a -> 'b list -> 'a * 'c list
+public static function fold_left_map (a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
+// Parser val::val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
 public static function fold_left (a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
-// Parser val::val fold_right : ('b -> 'a -> 'a) -> 'b array -> 'a -> 'a
+// Parser val::val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
 public static function fold_right (a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
-// Parser val::val iter2 : ('a -> 'b -> unit) -> 'a array -> 'b array -> unit
+// Parser val::val iter2 : ('a -> 'b -> unit) -> 'a list -> 'b list -> unit
 public static function iter2 (a0:Dynamic->Dynamic->Void,a1:Dynamic,a2:Dynamic):Void;
-// Parser val::val map2 : ('a -> 'b -> 'c) -> 'a array -> 'b array -> 'c array
+// Parser val::val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
 public static function map2 (a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
-// Parser val::val for_all : ('a -> bool) -> 'a array -> bool
+// Parser val::val rev_map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
+public static function rev_map2 (a0:Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic):Dynamic;
+// Parser val::val fold_left2 :  ('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> 'a
+public static function fold_left2 (a0:Dynamic->Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic,a3:Dynamic):Dynamic;
+// Parser val::val fold_right2 :  ('a -> 'b -> 'c -> 'c) -> 'a list -> 'b list -> 'c -> 'c
+public static function fold_right2 (a0:Dynamic->Dynamic->Dynamic->Dynamic,a1:Dynamic,a2:Dynamic,a3:Dynamic):Dynamic;
+// Parser val::val for_all : ('a -> bool) -> 'a list -> bool
 public static function for_all (a0:Dynamic->Bool,a1:Dynamic):Bool;
-// Parser val::val exists : ('a -> bool) -> 'a array -> bool
+// Parser val::val exists : ('a -> bool) -> 'a list -> bool
 public static function exists (a0:Dynamic->Bool,a1:Dynamic):Bool;
-// Parser val::val for_all2 : ('a -> 'b -> bool) -> 'a array -> 'b array -> bool
+// Parser val::val for_all2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
 public static function for_all2 (a0:Dynamic->Dynamic->Bool,a1:Dynamic,a2:Dynamic):Bool;
-// Parser val::val exists2 : ('a -> 'b -> bool) -> 'a array -> 'b array -> bool
+// Parser val::val exists2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
 public static function exists2 (a0:Dynamic->Dynamic->Bool,a1:Dynamic,a2:Dynamic):Bool;
-// Parser val::val mem : 'a -> 'a array -> bool
+// Parser val::val mem : 'a -> 'a list -> bool
 public static function mem (a0:Dynamic,a1:Dynamic):Bool;
-// Parser val::val memq : 'a -> 'a array -> bool
+// Parser val::val memq : 'a -> 'a list -> bool
 public static function memq (a0:Dynamic,a1:Dynamic):Bool;
-// Parser val::val sort : ('a -> 'a -> int) -> 'a array -> unit
-public static function sort (a0:Dynamic->Dynamic->Int,a1:Dynamic):Void;
-// Parser val::val stable_sort : ('a -> 'a -> int) -> 'a array -> unit
-public static function stable_sort (a0:Dynamic->Dynamic->Int,a1:Dynamic):Void;
-// Parser val::val fast_sort : ('a -> 'a -> int) -> 'a array -> unit
-public static function fast_sort (a0:Dynamic->Dynamic->Int,a1:Dynamic):Void;
-// Parser val::val to_seq : 'a array -> 'a Seq.t
+// Parser val::val find : ('a -> bool) -> 'a list -> 'a
+public static function find (a0:Dynamic->Bool,a1:Dynamic):Dynamic;
+// Parser val::val find_opt : ('a -> bool) -> 'a list -> 'a option
+public static function find_opt (a0:Dynamic->Bool,a1:Dynamic):Dynamic;
+// Parser val::val find_map : ('a -> 'b option) -> 'a list -> 'b option
+public static function find_map (a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val filter : ('a -> bool) -> 'a list -> 'a list
+public static function filter (a0:Dynamic->Bool,a1:Dynamic):Dynamic;
+// Parser val::val find_all : ('a -> bool) -> 'a list -> 'a list
+public static function find_all (a0:Dynamic->Bool,a1:Dynamic):Dynamic;
+// Parser val::val filteri : (int -> 'a -> bool) -> 'a list -> 'a list
+public static function filteri (a0:Int->Dynamic->Bool,a1:Dynamic):Dynamic;
+// Parser val::val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
+public static function partition (a0:Dynamic->Bool,a1:Dynamic):Dynamic;
+// Parser val::val partition_map : ('a -> ('b, 'c) Either.t) -> 'a list -> 'b list * 'c list
+public static function partition_map (a0:Dynamic->Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val assoc : 'a -> ('a * 'b) list -> 'b
+public static function assoc (a0:Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val assoc_opt : 'a -> ('a * 'b) list -> 'b option
+public static function assoc_opt (a0:Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val assq : 'a -> ('a * 'b) list -> 'b
+public static function assq (a0:Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val assq_opt : 'a -> ('a * 'b) list -> 'b option
+public static function assq_opt (a0:Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val mem_assoc : 'a -> ('a * 'b) list -> bool
+public static function mem_assoc (a0:Dynamic,a1:Dynamic):Bool;
+// Parser val::val mem_assq : 'a -> ('a * 'b) list -> bool
+public static function mem_assq (a0:Dynamic,a1:Dynamic):Bool;
+// Parser val::val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
+public static function remove_assoc (a0:Dynamic):Dynamic->Dynamic;
+// Parser val::val remove_assq : 'a -> ('a * 'b) list -> ('a * 'b) list
+public static function remove_assq (a0:Dynamic):Dynamic->Dynamic;
+// Parser val::val split : ('a * 'b) list -> 'a list * 'b list
+public static function split (a0:Dynamic):Dynamic;
+// Parser val::val combine : 'a list -> 'b list -> ('a * 'b) list
+public static function combine (a0:Dynamic,a1:Dynamic):Dynamic;
+// Parser val::val sort : ('a -> 'a -> int) -> 'a list -> 'a list
+public static function sort (a0:Dynamic->Dynamic->Int,a1:Dynamic):Dynamic;
+// Parser val::val stable_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+public static function stable_sort (a0:Dynamic->Dynamic->Int,a1:Dynamic):Dynamic;
+// Parser val::val fast_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+public static function fast_sort (a0:Dynamic->Dynamic->Int,a1:Dynamic):Dynamic;
+// Parser val::val sort_uniq : ('a -> 'a -> int) -> 'a list -> 'a list
+public static function sort_uniq (a0:Dynamic->Dynamic->Int,a1:Dynamic):Dynamic;
+// Parser val::val merge : ('a -> 'a -> int) -> 'a list -> 'a list -> 'a list
+public static function merge (a0:Dynamic->Dynamic->Int,a1:Dynamic,a2:Dynamic):Dynamic;
+// Parser val::val to_seq : 'a list -> 'a Seq.t
 public static function to_seq (a0:Dynamic):Dynamic;
-// Parser val::val to_seqi : 'a array -> (int * 'a) Seq.t
-public static function to_seqi (a0:Dynamic):Dynamic;
-// Parser val::val of_seq : 'a Seq.t -> 'a array
-public static function of_seq (a0:Dynamic):Dynamic;
-// Parser external::external unsafe_get : 'a array -> int -> 'a = "%array_unsafe_get"
-public static function unsafe_get (a0:Dynamic,a1:Int):Dynamic;// Parser external::external unsafe_set : 'a array -> int -> 'a -> unit = "%array_unsafe_set"
-public static function unsafe_set (a0:Dynamic,a1:Int,a2:Dynamic):Void;}
+}

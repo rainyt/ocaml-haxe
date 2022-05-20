@@ -339,9 +339,11 @@ class OCaml2Tools {
 							oc.write(" " + a.v.name);
 						}
 					oc.write(" -> ");
-					oc.write(" try \n");
+					if (type != "VOID")
+						oc.write(" try \n");
 					oc.write(toString(tfunc.expr, false, tfunc.t));
-					oc.write("with " + OCaml2Type.toString(tfunc.t).toUpperCase() + " ret -> ret");
+					if (type != "VOID")
+						oc.write("with " + OCaml2Type.toString(tfunc.t).toUpperCase() + " ret -> ret");
 					OCaml2Tools.funcTypeList.pop();
 					return '(${oc.code})';
 				}
@@ -373,8 +375,8 @@ class OCaml2Tools {
 						throw "??" + e.t;
 				}
 			case TLocal(v):
-				// trace(v.name,v.t.getParameters()[0]);
-				// trace(v.t);
+			// trace(v.name,v.t.getParameters()[0]);
+			// trace(v.t);
 			default:
 		}
 		if (type != null) {

@@ -1,5 +1,5 @@
 [Function:(cmd : String) -> Void]
-	[Arg:String] [Local cmd(9256):String]
+	[Arg:String] [Local cmd(124423):String]
 	[Block:ocaml.Stdlib_In_channel]
 		[Binop:ocaml.Stdlib_In_channel]
 			[Field:ocaml.Stdlib_In_channel]
@@ -14,15 +14,15 @@
 					[FStatic:(a0 : String) -> Dynamic]
 						ocaml.Unix
 						open_process_in:(a0 : String) -> Dynamic
-				[Local cmd(9256):String:String][Function:() -> String]
+				[Local cmd(124423):String:String][Function:() -> String]
 	[Block:Dynamic]
-		[Var lines(9257):String] [Const:String] ""
+		[Var lines(124424):String] [Const:String] ""
 		[While:Void]
 			[Parenthesis:Bool] [Const:Bool] true
 			[Try:Void]
 				[Block:String]
 					[Binop:String]
-						[Local lines(9257):String:String]
+						[Local lines(124424):String:String]
 						+=
 						[Binop:String]
 							[Call:String]
@@ -38,5 +38,5 @@
 										stdin:ocaml.Stdlib_In_channel
 							+
 							[Const:String] "\n"
-				Catch [Local e(9258):haxe.Exception] [Block:Dynamic] [Return:Dynamic] [Local lines(9257):String:String]
-		[Return:Dynamic] [Local lines(9257):String:String]
+				Catch [Local e(124425):haxe.Exception] [Block:Dynamic] [Return:Dynamic] [Local lines(124424):String:String]
+		[Return:Dynamic] [Local lines(124424):String:String]

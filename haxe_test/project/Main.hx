@@ -23,5 +23,13 @@ class Main {
 			return "value";
 		});
 		trace(data);
+
+		// todo 这个未兼容，如果需要兼容，则需要判断data是否ref。
+		var array = [1, 2, 3, 4];
+		ocaml.List.iter(function(data) {
+			// trace("?", data);
+			var l = data;
+			l;
+		}, array);
 	}
 }

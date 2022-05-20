@@ -1,31 +1,31 @@
 [Function:() -> Void]
 	[Block:Void]
-		[Var process(553659):ocaml.lib.io.Process]
+		[Var process(124434):ocaml.lib.io.Process]
 			[New:ocaml.lib.io.Process]
 				ocaml.lib.io.Process
 				[Const:String] "ocamlc -i ocaml-extern/ocaml/arg.mli"
-		[Var mliData(553660):String]
+		[Var mliData(124435):String]
 			[Call:String]
 				[Field:() -> String]
-					[Local process(553659):ocaml.lib.io.Process:ocaml.lib.io.Process]
+					[Local process(124434):ocaml.lib.io.Process:ocaml.lib.io.Process]
 					[FInstance:() -> String]
 						ocaml.lib.io.Process
 						readAllString:() -> String
-		[Var req(553661):EReg]
+		[Var req(124436):EReg]
 			[New:EReg]
 				EReg
 				[Const:String] "[a-zA-Z]+"
 				[Const:String] "g"
 		[Binop:String]
-			[Local mliData(553660):String:String]
+			[Local mliData(124435):String:String]
 			=
 			[Call:String]
 				[Field:(s : String, by : String) -> String]
-					[Local req(553661):EReg:EReg]
+					[Local req(124436):EReg:EReg]
 					[FInstance:(s : String, by : String) -> String]
 						EReg
 						replace:(s : String, by : String) -> String
-				[Local mliData(553660):String:String]
+				[Local mliData(124435):String:String]
 				[Const:String] "123"
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
@@ -33,41 +33,41 @@
 				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 					haxe.Log
 					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
-			[Local mliData(553660):String:String]
+			[Local mliData(124435):String:String]
 			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
 				fileName: [Const:String] "haxe_test/project/Main.hx"
 				lineNumber: [Const:Int] 14
 				className: [Const:String] "project.Main"
 				methodName: [Const:String] "main"
-		[Var content(553662):String] [Const:String] "hello world"
-		[Var req2(553663):EReg]
+		[Var content(124437):String] [Const:String] "hello world"
+		[Var req2(124438):EReg]
 			[New:EReg]
 				EReg
 				[Const:String] "[A-Za-z]"
 				[Const:String] "g"
-		[Var data(553664):String]
+		[Var data(124439):String]
 			[Call:String]
 				[Field:(s : String, by : String) -> String]
-					[Local req2(553663):EReg:EReg]
+					[Local req2(124438):EReg:EReg]
 					[FInstance:(s : String, by : String) -> String]
 						EReg
 						replace:(s : String, by : String) -> String
-				[Local content(553662):String:String]
+				[Local content(124437):String:String]
 				[Const:String] "A"
 		[Call:String]
 			[Field:(s : String, f : (EReg -> String)) -> String]
-				[Local req2(553663):EReg:EReg]
+				[Local req2(124438):EReg:EReg]
 				[FInstance:(s : String, f : (EReg -> String)) -> String]
 					EReg
 					map:(s : String, f : (EReg -> String)) -> String
-			[Local content(553662):String:String]
+			[Local content(124437):String:String]
 			[Function:(e : EReg) -> String]
-				[Arg:EReg] [Local e(553665):EReg]
+				[Arg:EReg] [Local e(124440):EReg]
 				[Block:Dynamic]
-					[Var v(553666):String]
+					[Var v(124441):String]
 						[Call:String]
 							[Field:(n : Int) -> String]
-								[Local e(553665):EReg:EReg]
+								[Local e(124440):EReg:EReg]
 								[FInstance:(n : Int) -> String]
 									EReg
 									matched:(n : Int) -> String
@@ -84,7 +84,7 @@
 							lineNumber: [Const:Int] 22
 							className: [Const:String] "project.Main"
 							methodName: [Const:String] "main"
-							customParams: [ArrayDecl:Array<Dynamic>] [Local v(553666):String:String]
+							customParams: [ArrayDecl:Array<Dynamic>] [Local v(124441):String:String]
 					[Return:Dynamic] [Const:String] "value"
 		[Call:Void]
 			[Field:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
@@ -92,9 +92,27 @@
 				[FStatic:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void]
 					haxe.Log
 					trace:(v : Dynamic, ?infos : Null<haxe.PosInfos>) -> Void
-			[Local data(553664):String:String]
+			[Local data(124439):String:String]
 			[ObjectDecl:{ methodName : String, lineNumber : Int, fileName : String, className : String }]
 				fileName: [Const:String] "haxe_test/project/Main.hx"
 				lineNumber: [Const:Int] 25
 				className: [Const:String] "project.Main"
 				methodName: [Const:String] "main"
+		[Var array(124442):Array<Int>]
+			[ArrayDecl:Array<Int>]
+				[Const:Int] 1
+				[Const:Int] 2
+				[Const:Int] 3
+				[Const:Int] 4
+		[Call:Void]
+			[Field:(a0 : (Dynamic -> Void), a1 : Dynamic) -> Void]
+				[TypeExpr ocaml.List:Class<ocaml.List>]
+				[FStatic:(a0 : (Dynamic -> Void), a1 : Dynamic) -> Void]
+					ocaml.List
+					iter:(a0 : (Dynamic -> Void), a1 : Dynamic) -> Void
+			[Function:(data : Unknown<4>) -> Void]
+				[Arg:Unknown<1>] [Local data(124443):Unknown<1>]
+				[Block:Unknown<3>]
+					[Var l(124444):Unknown<1>] [Local data(124443):Unknown<1>:Unknown<0>]
+					[Local l(124444):Unknown<1>:Unknown<2>]
+			[Local array(124442):Array<Int>:Array<Int>]
